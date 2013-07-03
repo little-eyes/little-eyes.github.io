@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="description" content="{{ page.title }}" />
+    <title>{{ page.title}} &#8211; tamaslnagy.com</title>
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Tamas Nagy</h1>
+        <p>Biochemist-to-be and something of a programmer</p>
+
+        <p class="view"><a href="https://github.com/tamaslnagy">About</a></p>
+	    <p class="view"><a href="https://github.com/tamaslnagy">Archive</a></p>
+
+      </header>
+      <section>
+        <h3><a name="about" class="anchor" href="#about">{{ page.title }}</a></h3>
+	<div>
+		{{ content }}
+	</div>
+      </section>
+      <footer>
+        <p>Bluebird account: <a 
+href="http://twitter.com/tamaslnagy">@tamaslnagy</a><br>Updated: {{ site.time }}</p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+  </body>
+</html>
