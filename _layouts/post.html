@@ -1,7 +1,7 @@
 ---
 layout: default
 ---
-<h3>{{ page.title }}</h3>
+<h3>{{ page.title | downcase }}</h3>
 <p class="post-meta">
 {{ page.date | date_to_string }} {{ page.location }}
 {% for tag in page.tags %}

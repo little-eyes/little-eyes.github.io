@@ -11,6 +11,11 @@
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
+    {% if page.needsjs == true %}
+		<script language="javascript" type="text/javascript">
+			{{ content | strip_html | split:"startjs" | last | split:"endjs" | first }}
+		</script>
+    {% endif %}
   </head>
   <body>
     <div class="wrapper">
@@ -25,7 +30,11 @@
       </header>
       <section>
 	<div>
-		{{ content }}
+		{% if page.needsjs == true %}
+			{{ content | split:"endjs" | last }}
+		{% else %}
+			{{ content }}
+		{% endif %}
 	</div>
       </section>
       <footer>
