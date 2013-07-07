@@ -7,8 +7,8 @@ title: Tamas Nagy
 <p class="post-meta">
   {{ post.date | date_to_string }} {{ post.location }}
   {% for tag in post.tags %}
-<a href="/tags/#{{ tag }}"><span class="badge">{{ tag }}</span></a>
-  {% endfor %}
+<a href="/tags.html#{{ tag }}"><span class="label">{{ tag }}</span></a>
+  {% endfor %}	
 </p>
   {{ post.content | strip_html | truncate:200 }}
 <p><a href="{{ post.url | append:'#more' }}">Read more...</a></p>
