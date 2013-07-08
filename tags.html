@@ -3,7 +3,7 @@ layout: default
 title: Tags
 ---
 <h3>tags</h3>
-{% for tag in site.tags %}
+{% for tag in site.tags order:ascending%}
 <br>
 <a name="{{ tag[0] }}"></a>
 <h4>{{ tag[0] }}</h4>

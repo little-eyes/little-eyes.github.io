@@ -38,6 +38,17 @@
 	</div>
       </section>
       <footer>
+		  <div id="tags">
+            {% for tag in site.tags %}
+            <a href="/tags.html#{{ tag[0] }}">
+				<span class="label" style="margin-top:2px;font-size: {{ tag[1] | size | minus:1 | times:4 | plus:12 }}px;line-height:{{ tag[1] | size | minus:1 | times:4 | times:14 | divided_by:12 | plus:14 }}px">{{ tag[0] }}
+					<span class="tag-count" style="font-size: {{ tag[1] | size | minus:1 | times:4 | plus:12 | times:0.6 }}px;">{{ tag[1] | size }}
+					</span>
+				</span>
+			</a>
+            {% endfor %}
+          </div>
+          <br>
 		<p>powered by <a href="http://jekyllrb.com">open source</a><br>updated: {{ site.time | date: "%Y %b %d" }}</p>
       </footer>
     </div>
