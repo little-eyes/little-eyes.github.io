@@ -3,7 +3,7 @@ layout: default
 ---
 <h3>{{ page.title | downcase }}</h3>
 <p class="post-meta">
-{{ page.date | date_to_string }} {{ page.location }}
+{{ page.date | date: "%Y %b %d" }} {{ page.location }}
 {% for tag in page.tags %}
 <a href="/tags.html#{{ tag }}"><span class="label">{{ tag }}</span></a>
 {% endfor %}
