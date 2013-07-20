@@ -3,23 +3,23 @@ layout: post
 title: thoughts on open source
 tags: oss
 ---
-The Open Source Software (OSS) approach can be loosely defined as releasing
-the source code of a product to be freely viewed, modified, and
+The Open Source Software (OSS) approach can be loosely defined as the
+public release of source code to be freely viewed, modified, and
 redistributed under a given license. This short essay
 explores various aspects of the OSS model, touches on some common
-misconceptions, and attempts to address its shortcomings.
+misconceptions, and considers some of its shortcomings.
 
 --
 
 It is easy to draw parallels between OSS and scientific research because the
 scientific method is, intrinsically, an open source process. Science is
-built on replication and peer-review and therefore it is requisite that 
+built on replication and peer-review; therefore, it is requisite that 
 the methodology be made available for scrutiny. Since there are
-thousands of researchers working on every facet of it, science progresses
+thousands of researchers working on all of its facets, science progresses
 at a rapid pace with a high level of accuracy and innovativeness. It is the sharing of
 ideas, work, and results that allows the whole process to function. 
 In the same manner as scientific theories, software will become more robust if more people 
-with differing backgrounds look at it, tinker with it, and break it.
+look at it, tinker with it, and break it.
 
 It is not, however, a basic science. Open Source produces a tangible
 result---the software---in addition to its intellectual contributions.
@@ -41,14 +41,12 @@ altruism is generally fairly low on the list. A common misconception is that, be
 the end product is given away for free, OSS developers will not be compensated for their work.
 The same could be said of other scientific research because the knowledge
 is being given without any expectation of direct repayment. This view avoids 
-the importance of resume and reputation building. For a programmer to show 
-a potential employer some  real, practical examples of ones work is a 
-huge advantage over hearsay. Additionally, said programmer may get recommendations 
-from within in the OSS community based on his/her work. One's work is 
-proudly displayed to the world instead of existing on a private company 
-server, protected by firewalls and legal teams.
+the importance of resume and reputation building. Showing a potential employer real,
+useful examples of one's work is a large bonus; it shows enjoyment of coding and 
+the possession of applicable programming knowledge. Additionally, one may get recommendations 
+from within in the OSS community based on one's work.
 
-The aforementioned independent OSS developers are predominant 
+The aforementioned independent developers are predominant 
 on small, specific projects, but paid OSS developers are now the principal
 contributors to most large OSS projects like Linux. Corporations often have 
 several full-time software engineers working on various OSS projects. Their reasons for doing so can be 
@@ -59,7 +57,6 @@ the company provides paid support for the OSS project, e.g. Novell or Red
 Hat. Richard Stallman may think that the association with industry is an
 inherent negative, but the current situation is a quantum improvement
 over the homogeneous closed-development models of the past.
-
 
 Security is often other reason for choosing open source, albeit one that
 is perhaps slightly counterintuitive and hotly debated. Open-sourced 
