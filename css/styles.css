@@ -49,6 +49,10 @@ a small {
   display:block;
 }
 
+a, img {
+    border:none;
+}
+
 .wrapper {
   width:860px;
   margin:0 auto;
