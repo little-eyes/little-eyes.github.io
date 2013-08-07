@@ -1,6 +1,7 @@
 @import url(http://fonts.googleapis.com/css?family=Fjord+One);
 
 body {
+  background: url('/images/stripe.png') fixed;
   padding:50px;
   font:16px/1.5 "Fjord One", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight:300;
@@ -25,7 +26,6 @@ h1 {
 
 h2 {
   color:#393939;
-  margin: 0px 0 20px;
 }
 
 h3 {
@@ -303,3 +303,20 @@ a.badge:focus {
     color:#444;
   }
 }
+
+
+#posts time,
+#posts h3 {
+  display: inline;
+}
+
+#archive,
+#comments {
+  background: #ffffff;
+  border: 1px solid #ccc;
+  border-width: 1px 0;
+  margin: 0 0px 0 0px;
+  padding: 20px 40px 20px 20px;
+}
+
+
