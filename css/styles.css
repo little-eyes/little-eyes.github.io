@@ -1,7 +1,7 @@
 @import url(http://fonts.googleapis.com/css?family=Fjord+One);
 
 body {
-  font:16px/1.5 "Fjord One", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font:16px "Fjord One", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight:300;
 }
 
@@ -67,6 +67,35 @@ a, img {
 #content > article,
 #content > #pager{
   max-width: 700px;
+}
+
+#content article ul {
+  list-style-type: disc;
+}
+
+#content article ol {
+  list-style-type: decimal;
+}
+
+#content ol li,
+#content ul li {
+  margin-bottom: 10px;
+}
+
+#content blockquote {
+  background: #f0f0f0;
+  border-radius: 5px;
+  font-size: 0.75em;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  color: #444;
+  font-style: italic;
+  margin-bottom: 20px;
+  padding: 20px;
+}
+
+#content blockquote p {
+  font-size: 16px;
 }
 
 #archivecont{
