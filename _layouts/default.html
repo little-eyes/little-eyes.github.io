@@ -1,59 +1,48 @@
 <!doctype html>
 <html>
   <head>
+	<title>{{ page.title }} &#8211; tamaslnagy.com</title>
+	  
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <meta name="description" content="{{ page.title }}" />
-    <title>{{ page.title}} &#8211; tamaslnagy.com</title>
-    <link rel="stylesheet" href="/css/styles.css">
-    <link rel="stylesheet" href="/css/pygment_trac.css">
+    <meta name="description" content="Tamas Nagy's rambles on open source, technology, biochemistry, and minimalism in blog form." />
+    <meta name="author" content="Tamas Nagy">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    
+    <link rel="stylesheet" href="/css/reset.css">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/pygment_trac.css">
+    <link rel="stylesheet" href="/css/styles.css">
+    
     <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+		<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
-    {% if page.needsjs == true %}
-		<script language="javascript" type="text/javascript">
-			{{ content | strip_html | split:"startjs" | last | split:"endjs" | first }}
-		</script>
-    {% endif %}
+    
   </head>
-  <body>
-    <div class="wrapper">
-      <header>
-        <center><a href="/"><img src="/images/nagybrew.png" width="140"></a></center>
-        <br>
-        <a href="/"><h2><em>grep</em>TAMAS</h2></a>
-        <p>I'm Tamas Nagy. A biochemist-to-be and something of a programmer.</p>
-		<p>Bluebird account: <a href="http://twitter.com/tamaslnagy">@tamaslnagy</a></p>
-        <p class="view">
-			<a href="/about.html">about</a>    |
-			<a href="/research.html">research</a>    |    
-			<a href="/archive.html">archive</a>
-      </header>
-      <section>
-	<div>
-		{% if page.needsjs == true %}
-			{{ content | split:"endjs" | last }}
-		{% else %}
+  <body data-spy="scroll" data-target="header">
+    
+    <div id="content">
+		<nav id="header">
+			<div>
+				<ul id="links">
+					<li class="home"><a href="{{ base.url }}/">Tamas Nagy's blog</a></li>
+					<li class="twitter"><a href="http://www.twitter.com/tamaslnagy">Tamas Nagy's Twitter</a></li>
+					<li class="rss"><a href="#">Tamas Nagy's blog RSS feed</a></li>
+					<li class="info"><a href="/about.html">Tamas Nagy's blog info</a></li>
+				</ul>
+			</div>
+		</nav>
 			{{ content }}
-		{% endif %}
-	</div>
-      </section>
-      <footer>
-		  <div id="tags">
-            {% for tag in site.tags order:ascending %}
-            <a href="/tags.html#{{ tag[0] }}">
-				<span class="label" style="margin-top:2px;font-size: {{ tag[1] | size | minus:1 | times:4 | plus:12 }}px;line-height:{{ tag[1] | size | minus:1 | times:4 | times:14 | divided_by:12 | plus:14 }}px">{{ tag[0] }}
-					<span class="tag-count" style="font-size: {{ tag[1] | size | minus:1 | times:4 | plus:12 | times:0.6 }}px;">{{ tag[1] | size }}
-					</span>
-				</span>
-			</a>
-            {% endfor %}
-          </div>
-          <br>
-		<p>powered by <a href="http://jekyllrb.com">open source</a><br>updated: {{ site.time | date: "%Y %b %d" }}</p>
-      </footer>
     </div>
-    <script src="/js/scale.fix.js"></script>
+
+    <script src="/js/jquery.min.js"></script>
+	<script src="/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+		$(document).ready(function () {
+			$('.bar').click(function() {
+				return false;
+			}).tooltip({placement: 'right', animate: false});
+	});
+	</script>
   </body>
+	
 </html>

@@ -1,18 +1,17 @@
 @import url(http://fonts.googleapis.com/css?family=Fjord+One);
 
 body {
-  background: url('/images/stripe.png') fixed;
-  padding:50px;
   font:16px/1.5 "Fjord One", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight:300;
 }
 
 h1, h2, h3, h4, h5, h6 {
+  font-family:"Fjord One", "Helvetica Neue", Helvetica, Arial, sans-serif;
   color:#222;
   margin:0 0 20px;
 }
 
-p, ul, ol, table, pre, dl {
+p, ul, ol, table, dl {
   margin:0 0 20px;
 }
 
@@ -26,9 +25,11 @@ h1 {
 
 h2 {
   color:#393939;
+  font-size: 28px;
 }
 
 h3 {
+	font-size:20px;
 	margin: 12px 0 20px;
 }
 
@@ -37,9 +38,14 @@ h4, h5, h6 {
 }
 
 a {
-  color:#D45500;
+  color:#5FBCD3;
   font-weight:400;
   text-decoration:none;
+}
+
+a:hover, a:focus{
+  text-decoration:none;
+  color:#2C89A0;
 }
 
 a small {
@@ -53,270 +59,122 @@ a, img {
     border:none;
 }
 
-.wrapper {
-  width:860px;
-  margin:0 auto;
+#content {
+  text-align: justify;
+  padding: 20px 40px 0 200px;
 }
 
-blockquote {
-  border-left:1px solid #e5e5e5;
-  margin:0;
-  padding:0 0 0 20px;
-  font-style:italic;
+#content > article,
+#content > #pager{
+  max-width: 700px;
 }
 
-code, pre {
-  font-family:Monaco, Bitstream Vera Sans Mono, Lucida Console, Terminal;
-  color:#333;
-  font-size:12px;
+#archivecont{
+  border: 1px solid #ccc;
+  border-width: 1px 0;
+  background: #f0f0f0;
+  border-bottom: 0;
+  margin: 0 -40px 0 -200px;
+  padding: 20px 40px 20px 200px;
 }
 
-pre {
-  padding:8px 15px;
-  background: #f8f8f8;  
-  border-radius:5px;
-  border:1px solid #e5e5e5;
-  overflow-x: auto;
+#archive {
+  max-width:700px;
 }
-
-table {
-  width:100%;
-  border-collapse:collapse;
-}
-
-th, td {
-  text-align:left;
-  padding:5px 10px;
-  border-bottom:1px solid #e5e5e5;
-}
-
-dt {
-  color:#444;
-  font-weight:700;
-}
-
-th {
-  color:#444;
-}
-
-img {
-  max-width:100%;
-}
-
-header {
-  width:270px;
-  float:left;
-  position:fixed;
-}
-
-header ul {
-  list-style:none;
-  height:40px;
-  
-  padding:0;
-  
-  background: #eee;
-  background: -moz-linear-gradient(top, #f8f8f8 0%, #dddddd 100%);
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f8f8f8), color-stop(100%,#dddddd));
-  background: -webkit-linear-gradient(top, #f8f8f8 0%,#dddddd 100%);
-  background: -o-linear-gradient(top, #f8f8f8 0%,#dddddd 100%);
-  background: -ms-linear-gradient(top, #f8f8f8 0%,#dddddd 100%);
-  background: linear-gradient(top, #f8f8f8 0%,#dddddd 100%);
-  
-  border-radius:5px;
-  border:1px solid #d2d2d2;
-  box-shadow:inset #fff 0 1px 0, inset rgba(0,0,0,0.03) 0 -1px 0;
-  width:270px;
-}
-
-header li {
-  width:89px;
-  float:left;
-  border-right:1px solid #d2d2d2;
-  height:40px;
-}
-
-header ul a {
-  line-height:1;
-  font-size:11px;
-  color:#999;
-  display:block;
-  text-align:center;
-  padding-top:6px;
-  height:40px;
-}
-
-strong {
-  color:#222;
-  font-weight:700;
-}
-
-header ul li + li {
-  width:88px;
-  border-left:1px solid #fff;
-}
-
-header ul li + li + li {
-  border-right:none;
-  width:89px;
-}
-
-header ul a strong {
-  font-size:14px;
-  display:block;
-  color:#222;
-}
-
-section {
-  width:500px;
-  float:right;
-  padding-bottom:50px;
-}
-
-small {
-  font-size:11px;
-}
-
-hr {
-  border:0;
-  background:#e5e5e5;
-  height:1px;
-  margin:0 0 20px;
-}
-
-footer {
-  width:270px;
-  float:left;
-  position:fixed;
-  bottom:50px;
-}
-
-@media print, screen and (max-width: 960px) {
-  
-  div.wrapper {
-    width:auto;
-    margin:0;
-  }
-  
-  header, section, footer {
-    float:none;
-    position:static;
-    width:auto;
-  }
-  
-  header {
-    padding-right:320px;
-  }
-  
-  section {
-    border:1px solid #e5e5e5;
-    border-width:1px 0;
-    padding:20px 0;
-    margin:0 0 20px;
-  }
-  
-  header a small {
-    display:inline;
-  }
-  
-  header ul {
-    position:absolute;
-    right:50px;
-    top:52px;
-  }
-}
-
-@media print, screen and (max-width: 720px) {
-  body {
-    word-wrap:break-word;
-  }
-  
-  header {
-    padding:0;
-  }
-  
-  header ul, header p.view {
-    position:static;
-  }
-  
-  pre, code {
-    word-wrap:normal;
-  }
-}
-
-.label,
-.badge {
-  display: inline-block;
-  padding: 4px 6px;
-  font-size: 11.844px;
-  font-weight: bold;
-  line-height: 14px;
-  color: #ffffff;
-  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
-  white-space: nowrap;
-  vertical-align: baseline;
-  background-color: #999999;
-}
-
-.label {
-  -webkit-border-radius: 3px;
-     -moz-border-radius: 3px;
-          border-radius: 3px;
-}
-
-.badge {
-  padding-right: 9px;
-  padding-left: 9px;
-  -webkit-border-radius: 9px;
-     -moz-border-radius: 9px;
-          border-radius: 9px;
-}
-
-.label:empty,
-.badge:empty {
-  display: none;
-}
-
-a.label:hover,
-a.label:focus,
-a.badge:hover,
-a.badge:focus {
-  color: #ffffff;
-  text-decoration: none;
-  cursor: pointer;
-}
-
-@media print, screen and (max-width: 480px) {
-  body {
-    padding:15px;
-  }
-  
-  header ul {
-    display:none;
-  }
-}
-
-@media print {
-  body {
-    padding:0.4in;
-    font-size:12pt;
-    color:#444;
-  }
-}
-
 
 #posts time,
 #posts h3 {
   display: inline;
 }
 
-#archive,
-#comments {
-  background: #ffffff;
-  border: 1px solid #ccc;
-  border-width: 1px 0;
-  margin: 0 0px 0 0px;
-  padding: 20px 40px 20px 20px;
+#header {
+  width: 70px;
+  position: fixed;
+  padding: 5px;
+  left:0;
+  margin: 0px 0px 0px 100px;
 }
 
+#links li {
+  display: inline;
+  margin: 0 5px;
+}
 
+#links a {
+  background: url(/images/chimp.svg) center center no-repeat;
+  display: inline-block;
+  height: 60px;
+  text-indent: -999em;
+  width: 60px;
+  margin: 0 0 5px 0;
+}
+
+#links .twitter a {
+  background-image: url(/images/twitter.svg);
+}
+
+#links .rss a {
+  background-image: url(/images/rss.svg);
+}
+
+#links .info a {
+  background-image: url(/images/info.svg);
+}
+
+.bar {
+	background:#AFDDE9; 
+	height:14px; 
+	margin-top:4px; 
+	float:right; 
+	cursor:default;
+}
+.bar:hover {
+	background:#5FBCD3;
+}
+
+.tooltip {
+  font-weight:600;
+  font-size:12px;
+}
+
+@media all and (max-width: 800px) {
+  body {
+    font:16px/1.5 "Fjord One", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    padding-top: 70px;
+  }
+  
+  header ul {
+    display:none;
+  }
+  
+   #header {
+    background: #fff;
+    border: 0;
+    border-bottom: 1px solid #ddd;
+    top: 0;
+    margin: 0;
+    padding: 0px 0px;
+    width: 100%;
+    z-index: 999;
+  }
+  
+  #links {
+    display: inline-block;
+    list-style-type: none;
+    margin: 5px 0px 5px 5px;
+  }
+  
+  #content {
+    margin: 0;
+    padding: 10px;
+  }
+  
+  #archivecont{
+    margin: 0 -10px -10px -10px;
+    padding: 10px;
+  }
+  
+  .bar{
+    display: none;
+  }
+}
