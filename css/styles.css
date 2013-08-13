@@ -141,6 +141,7 @@ a, img {
   body {
     font:16px/1.5 "Fjord One", "Helvetica Neue", Helvetica, Arial, sans-serif;
     padding-top: 70px;
+    text-align: left;
   }
   
   header ul {
