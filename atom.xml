@@ -1,0 +1,24 @@
+---
+layout: nil
+---
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+ <title>Tamas Nagy</title>
+ <link href="http://tamaslnagy.github.io/atom.xml" rel="self"/>
+ <link href="http://tamaslnagy.github.io/"/>
+ <updated>{{ site.time | date_to_xmlschema }}</updated>
+ <id>http://tamaslnagy.github.io/</id>
+ <author>
+   <name>Tamas Nagy</name>
+   <email>tamas.nagy@live.com</email>
+ </author>
+ {% for post in site.posts limit:10 %}
+   <entry>
+     <title>{{ post.title | xml_escape }}</title>
+     <link href="http://tamaslnagy.github.io{{ post.url }}"/>
+     <updated>{{ post.date | date_to_xmlschema }}</updated>
+     <id>http://tamaslnagy.github.io{{ post.id }}</id>
+     <content type="html">{{ post.content | xml_escape }}</content>
+   </entry>
+ {% endfor %}
+</feed>
