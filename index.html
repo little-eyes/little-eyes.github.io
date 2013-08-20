@@ -4,7 +4,7 @@ title: Tamas Nagy
 ---
 <article>
 	<time>{{ site.posts.first.date | date: "%Y %b %d" }}</time>
-	<h2><a href="{{ site.posts.first.url }}">{{ site.posts.first.title | downcase }}</a></h2>
+	<h2><a href="{{ site.posts.first.url }}">{{ site.posts.first.title }}</a></h2>
 	{{ site.posts.first.content }}
 </article>
 
@@ -28,5 +28,11 @@ title: Tamas Nagy
 			</li>
 		{% endfor %}
 	</ul>
+	<p id="tagline">Tamas Nagy's personal blog on science, technology, open-source, and minimalism.</p>
+	
+		<iframe allowtransparency="true" frameborder="0" scrolling="no"
+			src="//platform.twitter.com/widgets/follow_button.html?screen_name=tamaslnagy&show_count=false"
+			style="width:300px; height:20px;">
+		</iframe>
 </div>
 </div>
