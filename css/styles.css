@@ -1,8 +1,9 @@
 @import url(http://fonts.googleapis.com/css?family=Fjord+One);
 
 body {
-  font:16px "Fjord One", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font:18px "Fjord One", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight:300;
+  line-height:1.75;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -11,8 +12,8 @@ h1, h2, h3, h4, h5, h6 {
   margin:0 0 20px;
 }
 
-p, ul, ol, table, dl {
-  margin:0 0 20px;
+p, ul, ol, table, dl, hr {
+  margin:0 0 40px;
 }
 
 h1, h2, h3 {
@@ -45,7 +46,6 @@ a {
 }
 
 a:hover, a:focus{
-  text-decoration:none;
   color:#2C89A0;
 }
 
@@ -61,7 +61,7 @@ a, img {
 }
 
 #content {
-  text-align: justify;
+  text-align: left;
   padding: 20px 40px 0 200px;
 }
 
@@ -91,12 +91,12 @@ a, img {
   -webkit-border-radius: 5px;
   color: #444;
   font-style: italic;
-  margin-bottom: 20px;
+  margin-bottom: 40px;
   padding: 20px;
 }
 
 #content blockquote p {
-  font-size: 16px;
+  font-size: 18px;
 }
 
 #archivecont{
@@ -104,7 +104,7 @@ a, img {
   border-width: 1px 0;
   background: #f0f0f0;
   border-bottom: 0;
-  margin: 0 -40px 0 -200px;
+  margin: -40px -40px 0 -200px;
   padding: 20px 40px 20px 200px;
 }
 
@@ -115,6 +115,14 @@ a, img {
 #posts time,
 #posts h3 {
   display: inline;
+}
+
+#content pre {
+  margin-bottom: 40px;
+}
+
+#content p code{
+  color: #5FBCD3;
 }
 
 #header {
@@ -177,8 +185,9 @@ a, img {
 
 @media all and (max-width: 800px) {
   body {
-    font:16px/1.5 "Fjord One", "Helvetica Neue", Helvetica, Arial, sans-serif;
-    padding-top: 70px;
+    font:18px "Fjord One", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    padding-top: 80px;
+    line-height:1.75;
   }
   
   header ul {
