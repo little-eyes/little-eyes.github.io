@@ -104,7 +104,7 @@ a, img {
   border-width: 1px 0;
   background: #f0f0f0;
   border-bottom: 0;
-  margin: -40px -40px 0 -200px;
+  margin: 0px -40px 0 -200px;
   padding: 20px 40px 20px 200px;
 }
 
@@ -164,8 +164,6 @@ a, img {
   /*text-align: center;*/
   margin: 50px 0 10px 0px;
 }
-
-
 
 .bar {
 	background:#AFDDE9; 
