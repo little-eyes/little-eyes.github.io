@@ -1,6 +1,6 @@
 ---
 layout: post
-title: thoughts on open source
+title: Thoughts on Open Source
 tags: oss
 ---
 The Open Source Software (OSS) approach can be loosely defined as the
