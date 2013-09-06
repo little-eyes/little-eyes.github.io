@@ -73,6 +73,7 @@ a, img {
 
 #content article ul {
   list-style-type: disc;
+  margin-left: 35px;
 }
 
 #content article ol {
