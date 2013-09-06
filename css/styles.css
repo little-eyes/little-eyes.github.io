@@ -47,6 +47,7 @@ a {
 
 a:hover, a:focus{
   color:#2C89A0;
+  text-decoration:none;
 }
 
 a small {
