@@ -18,11 +18,11 @@ For `personalized`, I mean the benchmarks should consider the usage pattern of a
 
 From these two angels, we consider a two-step benchmark method:
 
-* Usage Collection Stage 
+### Usage Collection Stage 
 
 Anyone who wants to test whether a smartphone is suitable for him or not, he can simply help himself by recording his previous smartphone usage for a while, say one week. During the week, we can collect the app usage details, such as when did he use the app, how long did he use? Note that the `privacy concern` may rise because we are collecting data. However, we are not planning to send the data to anywhere but store the data locally in the smartphone, then the user can always preserve the confidential data.
 
-* Auto Recapture Stage 
+### Auto Recapture Stage 
 
 Once we collect enough data, the benchmark program will take the _data_ as input, then based on the timestamp and duration of app usage to reconstruct an auto execution sequence. Then the benchmark start auto emulate the user's action on the new phone. In the meantime, the program will monitor the performance of the smartphone's CPU, battery, network and graphics, which will be used to generate the final report.
 
@@ -32,15 +32,15 @@ After the two stage, we are able to calculate the scores of the smartphone. In a
 
 The most immediate extra features or benefits of the _ReCapture_ project I can think of is the data collection for researchers. Nowadays, the researchers in mobile system area feel hard to collect data about CPU, network and graphics from the daily usage of a user. Three things block the way:
 
-* Legal/ethnic issue to collect data 
+### Legal/ethnic issue to collect data 
 
 In fact, if the researchers want to collect the data from participants, an IRB approval must be obtained. [Dr. Welsh's blog][2] gives a clear description for this and the ethnics in research.
 
-* Standard usage control
+### Standard usage control
 
 It is very hard to control the usage of a person, if you just tell him how to do. If you cannot control the standard normal usage, how can you claim the standard normal usage in the research paper? How can people trust the results? I always read papers saying "comparing to the normal usage", but they never define what is the `normal` and how to guarantee it.
 
-* Multiple user at the same time
+### Multiple user at the same time
 
 If you are interested in the networking issue on the smartphone, you may need to consider multiple devices. So do you want to ask a bunch of students to use their smartphone for a month? How do you control their usage?
 
