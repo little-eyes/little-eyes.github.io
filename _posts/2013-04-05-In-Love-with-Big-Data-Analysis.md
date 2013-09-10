@@ -4,7 +4,7 @@ layout: post
 tags: big data
 ---
 
-> One must have good tools to do good jobs</p>
+> One must have good tools to do good jobs
 
 For a long time we handle data within our single desktop or workstation, but the data explodes so quickly recently. The first situation of `big data`, meaningful to the public, appears when we want to search the whole Internet and the search should be realtime. Perhaps you want to handle the whole Internet with a super computer, but how much expensive it is? How many company or research institution can afford it? How can you guarantee it works? How long can it stand in the current Internet explosion? One of the cheap solutions is to use thousands of commercial machines such as your desktop.
 
@@ -30,7 +30,7 @@ Solution #2: Write a distributed or parallel program. Well, this time is much be
 
 So, what about others? Yes, a team of engineers from Google solve this problem very well by proposing such a successful programming framework called `MapReduce`, which is supported by `Google File System`. Thereafter, people shortly understand the importance of this framework: the two systems can store the whole internet and can make index of it within an hour. What a huge jump, isn't it?
 
-### Hadoop: the open source GFS/MapReduce</h4>
+### Hadoop: the open source GFS/MapReduce
 
 Apache Software Foundation rewrite the two system from Google's paper in OSDI 2006. Now the project is called `Hadoop`. It contains two parts: `HDFS` and `MapReduce core`. We are not going into details of Hadoop's architecture in this article because it worth another complete post. People use Hadoop in almost every big company who has big data. Hadoop is almost becomes the industry standards!
 
