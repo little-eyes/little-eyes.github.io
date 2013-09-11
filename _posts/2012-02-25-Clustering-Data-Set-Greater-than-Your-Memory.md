@@ -26,9 +26,9 @@ Now you have learned Map/Reduce and let's start using it to solve our clustering
 
 There are typically four kernel component of Mahout's k-means algorithm: kMeansMapper, kMeansCombiner, kMeansReducer and kMeansDriver. Each of these four components is coming from the Map/Reduce framework.
 
-### kMeansMapper:
+1. kMeansMapper:
 
-1. Read a point from data set.
+* Read a point from data set.
 
 * Calculate the distance among k clusters and find the nearest cluster. Output the key-value pair: cluster id and the cluster observation.
 
