@@ -61,7 +61,6 @@ Second, you must modify the /etc/apache2/sites-avaliable/default:
 
 Then add the following to the file:
     
-    ```xml
     <Location /repos>
         DAV svn 
         SVNParentPath /var/www/svn
@@ -70,7 +69,6 @@ Then add the following to the file:
         AuthUserFile /var/www/svn-auth/passwd
         Require valid-user
     </Location>
-    ```
 
 **ATTENTION: the red label part should be consistent, or you will be failed to find the correct URL.**
 
