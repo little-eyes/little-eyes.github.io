@@ -49,7 +49,7 @@ Install the Subversion.
 
 ### Step 5
 
-Config the SVN server. Suppose you want the following URL as your SVN repository: _http://ec2-192-168-10-90.compute-1.amazonaws.com/repos/<your-project-here>_.
+Config the SVN server. Suppose you want the following URL as your SVN repository: _http://ec2-192-168-10-90.compute-1.amazonaws.com/repos/your-project-here_.
 
 First, you need two directories in the **/var/www**. One is **/var/www/svn** where you create your svn repository, the other is **/var/www/svn-auth** where stores users' password. The /var/www/svn should belongs to **www-data** and have a more public rights. Run the command:
 
@@ -83,11 +83,11 @@ Create user name and password. Use the following command:
 
 If it is the first time:
 
-    $ sudo htpasswd -cb /var/www/svn-auth/passwd <user-name> <passwd>
+    $ sudo htpasswd -cb /var/www/svn-auth/passwd user-name passwd
 
 Or not:
 
-    $ sudo htpasswd -b /var/www/svn-auth/passwd <user-name> <passwd>
+    $ sudo htpasswd -b /var/www/svn-auth/passwd user-name passwd
 
 Run more times if multiple user needed.
 
@@ -104,3 +104,4 @@ Now the "test" project's repository is ready to use! Don't forget to chmod /var/
 [1]: http://aws.amazon.com
 [2]: http://cloud-images.ubuntu.com/releases/11.10/release/
 [3]: https://help.ubuntu.com/community/phpMyAdmin
+
