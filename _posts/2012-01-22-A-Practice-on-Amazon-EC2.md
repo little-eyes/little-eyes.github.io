@@ -16,7 +16,7 @@ When your instance is ready to use, we will use SSH to login. Since the design c
 
     $ sudo chmod 400 amazon-ec2.pem
 
-After you get it done, you can login to your Amazon EC2 instance via the public DNS. Suppose you have the DNS: `c2-192-168-10-90.compute-1.amazonaws.com`. 
+After you get it done, you can login to your Amazon EC2 instance via the public DNS. Suppose you have the DNS: _c2-192-168-10-90.compute-1.amazonaws.com_. 
 
 Then you can login the instance with your key.
 
@@ -31,13 +31,13 @@ Once you login, things become easy as you do your local Ubuntu Server. Apparentl
     $ sudo apt-get install lamp-server^
     $ sudo apt-get install phpmyadmin
 
-This two command line will guide you to setup your LAMP stack. Then try the URL: `http://ec2-192-168-10-90.compute-1.amazonaws.com`, which will show "It Works!!".
+This two command line will guide you to setup your LAMP stack. Then try the URL: _http://ec2-192-168-10-90.compute-1.amazonaws.com_, which will show "It Works!!".
 
 However, this is not end for using phpmyadmin. You need a very small configuration to make it work, though sometime it works without doing anything. If you install those two packages, the Apache2 configuration file is in **/etc/apache2/apache2.conf**; the phpmyadmin configuration file is in **/etc/phpmyadmin/apache.conf**. So add the following line to Apache2 configuration file:
 
     Include /etc/phpmyadmin/apache.conf
 
-Now the phpmyadmin should work correctly, you may verify via the URL: `http://ec2-192-168-10-90.compute-1.amazonaws.com/phpmyadmin`. If you failed, you'd better to read [this article][3].
+Now the phpmyadmin should work correctly, you may verify via the URL: _http://ec2-192-168-10-90.compute-1.amazonaws.com/phpmyadmin_. If you failed, you'd better to read [this article][3].
 
 
 ### Step 4
@@ -49,7 +49,7 @@ Install the Subversion.
 
 ### Step 5
 
-Config the SVN server. Suppose you want the following URL as your SVN repository: `http://ec2-192-168-10-90.compute-1.amazonaws.com/repos/<your-project-here>`.
+Config the SVN server. Suppose you want the following URL as your SVN repository: _http://ec2-192-168-10-90.compute-1.amazonaws.com/repos/<your-project-here>_.
 
 First, you need two directories in the **/var/www**. One is **/var/www/svn** where you create your svn repository, the other is **/var/www/svn-auth** where stores users' password. The /var/www/svn should belongs to **www-data** and have a more public rights. Run the command:
 
