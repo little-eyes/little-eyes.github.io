@@ -4,7 +4,7 @@ layout: post
 tags: hadoop, deployment, big data
 ---
 
-> This is an article for UTK EECS student who wants to use Hydra lab (or similar school-operated lab) to set up a Hadoop cluster and process big data.
+> This is an article for the UTK EECS students who want to use Hydra lab (or similar school-operated lab) to set up a Hadoop cluster and process big data.
 
 ## A Brief Review of Hydra Lab Environment
 
@@ -18,7 +18,7 @@ Besides the hardware details, several operating system (Ubuntu 12.04 LTS) deploy
 
 * Third, unfortunately, the /local_scratch directory will be deleted within *two weeks* if there is no data change. So it's a good idea to touch the path on each machine every couple of days.
 
-* Fouth, the Java environment root path is located in /usr/lib/jvm/java-6-openjdk, which is different from a typical Ubuntu 12.04 LTS system after installing Java.
+* Fouth, the Java environment root path is located in */usr/lib/jvm/java-6-openjdk*, which is different from a typical Ubuntu 12.04 LTS system after installing Java.
 
 * Fifth, the DNSs of the Hydra lab's machines are very straightforward. For instance, the name of the Hydra machines are Hydra1 -- Hydra30, so the DNSs are hydra1.eecs.utk.edu -- hydra30.eecs.utk.edu. 
 
@@ -34,7 +34,7 @@ You may download the Hadoop package into your /home/netid directory and I would 
 
 ### Step 2. Configure Hadoop Environment
 
-The `hadoop-env.sh` file contains the Hadoop environment parameters, among which the most important parameter is the *JAVA_HOME* parameter. So edit the ./conf/hadoop-env.sh file by adding the following information.
+The `hadoop-env.sh` file contains the Hadoop environment parameters, among which the most important parameter is the *JAVA_HOME* parameter. So edit the `./conf/hadoop-env.sh` file by adding the following information.
 
 	export JAVA_HOME=/usr/lib/jvm/java-6-openjdk
 
@@ -46,13 +46,13 @@ Besides this parameter, where to store the log file should also be in considerat
 
 As to the HDFS, three very important parameters need to be set in order to make sure the cluster in Hydra lab works properly. The three parameter are the following:
 
-* dfs.replication: the number of replications.
+* `dfs.replication`: the number of replications.
 
-* dfs.name.dir: the place for the namenode to maintain all the files in the distributed file system.
+* `dfs.name.dir`: the place for the namenode to maintain all the files in the distributed file system.
 
-* dfs.data.dir: the place to store the data content on the slave nodes.
+* `dfs.data.dir`: the place to store the data content on the slave nodes.
 
-The HDFS site configuration is via the ./conf/hdfs-site.xml file. So add the following XML block will apply the changes.
+The HDFS site configuration is via the `./conf/hdfs-site.xml` file. So add the following XML block will apply the changes.
 
 	<configuration>
 		<property>
@@ -71,7 +71,7 @@ The HDFS site configuration is via the ./conf/hdfs-site.xml file. So add the fol
 
 ### Step 4. Configure the MapReduce Site
 
-The MapReduce Site information is mainly about the job tracker and the its TCP port. So the configuration is simply edit the ./conf/mapred-site.xml through the following XML block.
+The MapReduce Site information is mainly about the job tracker and its TCP port. So the configuration is simply edit the `./conf/mapred-site.xml` through the following XML block.
 
 	<configuration>
 		<property>
@@ -82,7 +82,7 @@ The MapReduce Site information is mainly about the job tracker and the its TCP p
 
 ### Step 5. Configure Master and Slaves
 
-Typically, one master and several slave nodes are used in the Hadoop system. So we need to tell the Hadoop system which one is master and which nodes are slaves. In ./conf/masters and ./conf/slaves files, you can list the master and slaves accordingly. For instance, the ./conf/masters can be the following.
+Typically, one master and several slave nodes are used in the Hadoop system. So we need to tell the Hadoop system which one is master and which nodes are slaves. In `./conf/masters` and `./conf/slaves` files, you can list the master and slaves accordingly. For instance, the ./conf/masters can be the following.
 
 	hydra1.eecs.utk.edu
 
@@ -106,13 +106,13 @@ Two steps should be followed to start the cluster. The first one is to start DFS
 
 	$ ./bin/start-dfs.sh
 
-Then you will see your terminal screen keeps poping message to write log into your `HADOOP_LOG_DIR`.
+Then you will see your terminal screen keeps popping message to write log into your `HADOOP_LOG_DIR`.
 
 Then, you need to start the Map Reduce framework by execute the following command.
 
 	$ ./bin/start-mapred.sh
 
-Similarly, you will see the terminal screen keeps saying to write write log to your `HADOOP_LOG_DIR`.
+Similarly, you will see the terminal screen keeps saying to write log to your *HADOOP_LOG_DIR*.
 
 Finally, if you go to your web browser, and check the following two pages, which contains HDFS and MapReduce status details. You will see if your cluster has been started.
 
@@ -142,7 +142,5 @@ If you check the website again, you will see the ongoing job is reflected on the
 Additionally, you can see the progress of this map/reduce task from your terminal windows.
 
 ![hadoop-randomwrite-terminal]({{site.url}}/images/hadoop-randomwrite-terminal.png)
-
-## Special Notes
 
 [1]: http://www.apache.org/dyn/closer.cgi/hadoop/common/
