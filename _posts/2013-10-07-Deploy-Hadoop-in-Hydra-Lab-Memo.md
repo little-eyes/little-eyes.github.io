@@ -112,7 +112,7 @@ Then, you need to start the Map Reduce framework by execute the following comman
 
 	$ ./bin/start-mapred.sh
 
-Similarly, you will see the terminal screen keeps saying to write log to your *HADOOP_LOG_DIR*.
+Similarly, you will see the terminal screen keeps saying to write log to your HADOOP_LOG_DIR.
 
 Finally, if you go to your web browser, and check the following two pages, which contains HDFS and MapReduce status details. You will see if your cluster has been started.
 
