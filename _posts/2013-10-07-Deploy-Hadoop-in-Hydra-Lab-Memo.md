@@ -150,14 +150,14 @@ Additionally, you can see the progress of this map/reduce task from your termina
 HDFS is a distributed file system and its shell-like commands are close to the typical Linux shell command. The following basic commands are from [the official site][2], which I think is quite useful.
 
 | Commands | Sample Use | Meaning |
-| :------- | :--------- | :------ |
+| :------: | :--------- | :------ |
 | ls | ./bin/hadoop fs -ls | directory list |
 | mkdir | ./bin/hadoop fs -mkdir | create a new directory/file |
 | mv | ./bin/hadoop fs - mv | move a directory/file |
 | rm | ./bin/hadoop fs -rm | remove a directory/file |
 | cp | ./bin/hadoop fs -cp | copy a directory/file |
-| put | ./bin/hadoop fs -put | copy a local directory/file to HDFS |
-| get | ./bin/hadoop fs -get | copy a HDFS directory/file to local |
+| put | ./bin/hadoop fs -put | copy from local to HDFS |
+| get | ./bin/hadoop fs -get | copy from HDFS to local |
 
 [1]: http://www.apache.org/dyn/closer.cgi/hadoop/common/
 [2]: http://hadoop.apache.org/docs/r0.18.3/hdfs_shell.html
