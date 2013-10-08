@@ -42,7 +42,22 @@ Besides this parameter, where to store the log file should also be in considerat
 
 	export HADOOP_LOG_DIR=/local_scratch/netid/hadoop/logs
 
-### Step 3. Configure HDFS Site
+### Step 3. Configure Core Site
+
+The core site defines some important parameters related to the whole system's work. For instance the `hadoop.tmp.dir` and the `fs.default.name`, which defines the temporary directory and master or namenode for the whole system. The core site configuration file is the `./conf/core-site.xml`, and you can use the following XML block.
+
+	<configuration>
+		<property>
+			<name>hadoop.tmp.dir</name>
+			<value>/local_scratch/netid/hadoop</value>
+		</property>
+		<property>
+			<name>fs.default.name</name>
+			<value>hdfs://hydra1.eecs.utk.edu:54310</value>
+		</property>
+	</configuration>
+
+### Step 4. Configure HDFS Site
 
 As to the HDFS, three very important parameters need to be set in order to make sure the cluster in Hydra lab works properly. The three parameter are the following:
 
@@ -69,7 +84,7 @@ The HDFS site configuration is via the `./conf/hdfs-site.xml` file. So add the f
 		</property>
 	</configuration>
 
-### Step 4. Configure the MapReduce Site
+### Step 5. Configure the MapReduce Site
 
 The MapReduce Site information is mainly about the job tracker and its TCP port. So the configuration is simply edit the `./conf/mapred-site.xml` through the following XML block.
 
@@ -80,7 +95,7 @@ The MapReduce Site information is mainly about the job tracker and its TCP port.
 		</property>
 	</configuration>
 
-### Step 5. Configure Master and Slaves
+### Step 6. Configure Master and Slaves
 
 Typically, one master and several slave nodes are used in the Hadoop system. So we need to tell the Hadoop system which one is master and which nodes are slaves. In `./conf/masters` and `./conf/slaves` files, you can list the master and slaves accordingly. For instance, the ./conf/masters can be the following.
 
