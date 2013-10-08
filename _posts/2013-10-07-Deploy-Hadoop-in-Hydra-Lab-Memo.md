@@ -78,7 +78,7 @@ The MapReduce Site information is mainly about the job tracker and its TCP port.
 			<name>mapred.job.tracker</name>
 			<value>hydra1.eecs.utk.edu:54311</value>
 		</property>
-	</configuratin>
+	</configuration>
 
 ### Step 5. Configure Master and Slaves
 
@@ -162,6 +162,22 @@ HDFS is a distributed file system and its shell-like commands are close to the t
 * `put`, to copy from local to HDFS, usage: ./bin/hadoop fs -put [args]
 
 * `get`, to copy from HDFS to local, usage: ./bin/hadoop fs -get [args]
+
+### SSH Permission Problem
+
+Some of the errors comes from the SSH access permission problem. Specifically, you may not be able to SSH directly from Hydra1 to any other Hydra machines, in other words, it requires your netid and password to do so.
+
+If this issue happens, you may need to create an `SSH public key` without encrpted phrases from any Hydra machine, say hydra1, and copy this public key to any other machine. Note that, your /home/netid directory is in networked file system, so this one time key copy resolve all the issues between any two machines inside the department's infrastructure. The following commands should help.
+
+	$ ssh-keygen -t rsa -C ""
+
+When it asks for the filename to save the key, you can either use the default one by clicking enter key or give a new name. I use the default name `/home/netid/.ssh/id_rsa` here.
+
+Next, you copy key to any other Hydra machine, say hydra7.eecs.utk.edu. Use the following commands.
+
+	$ ssh-copy-id -i /home/netid/.ssh/id_rsa.pub hydra7.eecs.utk.edu
+
+You may need to enter your password, but it should be the last time. After this, you should be restart your Hadoop cluster very smoothly.
 
 [1]: http://www.apache.org/dyn/closer.cgi/hadoop/common/
 [2]: http://hadoop.apache.org/docs/r0.18.3/hdfs_shell.html
