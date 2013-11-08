@@ -48,7 +48,7 @@ First, we create 4 instances with Ubuntu Server 12.04.3 LTS 64-bit instance in A
 		Private IP: 10.185.65.179
 		Hostname: ip-10-185-65-179
 
-One thing we need to pay attention is the **hostname**, because Ceph heavily relies on the hostname instead of IP address. So figure the hostname of an instance is the most important thing. When you create the instance, you will associate it with a security group and a private key. The security group needs to allows all TCP connections, so you may need to add ``All TCPs'' into your security group's inbound rules.
+One thing we need to pay attention is the **hostname**, because Ceph heavily relies on the hostname instead of IP address. So figure the hostname of an instance is the most important thing. When you create the instance, you will associate it with a security group and a private key. The security group needs to allows all TCP connections, so you may need to add "All TCPs" into your security group's inbound rules.
 
 Next, login to the `node-admin` through the SSH with the following command.
 
@@ -122,7 +122,12 @@ To validate whether the storage cluster has been successfully deployed, execute 
 
 If we can see the message saying **HEALTH_OK**, then it means we have succeed. A sample message from our sample cluster is the following.
 
-
+	cluster 1aae0add-cc1f-40e8-89cb-8a7e50be6c4a
+	health HEALTH_OK
+    monmap e1: 1 mons at {ip-10-185-23-23=10.185.23.23:6789/0}, election epoch 2, quorum 0 ip-10-185-23-23
+    osdmap e9: 2 osds: 2 up, 2 in
+    pgmap v24: 192 pgs: 192 active+clean; 9518 bytes data, 4390 MB used, 10916 MB / 16126 MB avail
+    mdsmap e4: 1/1/1 up {0=ip-10-185-23-23=up:active}
 
 
 [1]: http://ceph.com
