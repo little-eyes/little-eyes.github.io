@@ -4,7 +4,7 @@ layout: post
 tags: big data, object storage, distributed system
 ---
 
-> What if we do not use HDFS...
+> What if we do not use HDFS ...
 
 Recently I was working on a data placement project related to high performance computer. How to effectively maintain the data object among the devices become a very challenge problem in the HPC's big data storage. Then I have a chance to look at an alternative file system or object store [Ceph][1].
 
@@ -122,12 +122,7 @@ To validate whether the storage cluster has been successfully deployed, execute 
 
 If we can see the message saying **HEALTH_OK**, then it means we have succeed. A sample message from our sample cluster is the following.
 
-	cluster 1aae0add-cc1f-40e8-89cb-8a7e50be6c4a
-	health HEALTH_OK
-    monmap e1: 1 mons at {ip-10-185-23-23=10.185.23.23:6789/0}, election epoch 2, quorum 0 ip-10-185-23-23
-    osdmap e9: 2 osds: 2 up, 2 in
-    pgmap v24: 192 pgs: 192 active+clean; 9518 bytes data, 4390 MB used, 10916 MB / 16126 MB avail
-    mdsmap e4: 1/1/1 up {0=ip-10-185-23-23=up:active}
+
 
 
 [1]: http://ceph.com
