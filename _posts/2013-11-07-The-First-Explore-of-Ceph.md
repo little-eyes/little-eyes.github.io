@@ -67,9 +67,7 @@ Because Ceph requires password-less access from `node-admin` to other nodes, we 
 The keyring will be stored in `~/.ssh` directory. Unfortunately, we cannot use `ssh-copy-id` to share the public key directly, because `ssh-copy-id` does not work with private key which prevents us from access the other instance. So we use an alternative way to copy the public key in the following.
 
 	$ cat .ssh/id_rsa.pub | ssh -i ceph-deploy.pem ubuntu@ec2-50-17-21-155.compute-1.amazonaws.com "cat - >> ~/.ssh/authorized_keys2"
-
 	$ cat .ssh/id_rsa.pub | ssh -i ceph-deploy.pem ubuntu@ec2-54-227-102-224.compute-1.amazonaws.com "cat - >> ~/.ssh/authorized_keys2"
-
 	$ cat .ssh/id_rsa.pub | ssh -i ceph-deploy.pem ubuntu@ec2-184-73-131-183.compute-1.amazonaws.com "cat - >> ~/.ssh/authorized_keys2"
 
 After sharing the public key with the other nodes, we can SSH `node-0`, `node-1` and `node-2` directly without any password or secure private key.
@@ -77,17 +75,59 @@ After sharing the public key with the other nodes, we can SSH `node-0`, `node-1`
 Thereafter, we can install **ceph-deploy** package on `node-admin` through the following commands.
 
 	$ wget -q -O- 'https://ceph.com/git/?p=ceph.git;a=blob_plain;f=keys/release.asc' | sudo apt-key add -
-
 	$ echo deb http://ceph.com/debian-dumpling/ $(lsb_release -sc) main | sudo tee /etc/apt/sources.list.d/ceph.list
-
 	$ sudo apt-get update
-
 	$ sudo apt-get install ceph-deploy 
 
 ## Deploy the Storage Cluster
 
-On the `node-admin`, we first create
+On the `node-admin`, we first create a new storage cluster by initially adding a monitor. For example, we add `node-0` into the cluster via the following command.
 
+	$ ceph-deploy new ip-10-185-23-23
+
+Then we need to install ceph on `node-0`, `node-1` and `node-2`.
+
+	$ ceph-deploy install ip-10-185-23-23 ip-10-185-199-213 ip-10-185-65-179
+
+This step could take several minutes to finish, so just be patient. Once it finishes, we need to setup the monitors. In our example, we use `node-0` as the single monitor in the testbed.
+
+	$ ceph-deploy mon create ip-10-185-23-23
+
+Next, we need to gather the keyrings from the monitor.
+
+	$ ceph-deploy gatherkeys ip-10-185-23-23
+
+Till now, Ceph has been installed on every node, and we have created a cluster with one monitor `node-0`. Now we move on to add OSDs into the cluster. As we know, `node-1` and `node-2` are the two OSDs in our testbed. We need to make sure each of them has a clear directory or disk to contain the data objects. Thus we create a directory `/tmp/osd` on each of the instance.
+
+	$ ssh ip-10-185-199-213
+	$ sudo mkdir /tmp/osd
+	$ exit
+
+	$ ssh ip-10-185-65-179
+	$ sudo mkdir /tmp/osd
+	$ exit
+
+After we have such a directory reserved for Ceph, then we can prepare the OSDs and activate them.
+
+	$ ceph-deploy osd prepare ip-10-185-199-213:/tmp/osd ip-10-185-65-179:/tmp/osd
+	$ ceph-deploy osd activate ip-10-185-199-213:/tmp/osd ip-10-185-65-179:/tmp/osd
+
+Note that this step may jump up several **errors**, you could just ignore them first. By repeating the above two commands again, the error will disappear. Finally, we will add the MDS into the cluster. Here we use `node-0` to hold both MON and MDS. So the command is the following.
+
+	$ ceph-deploy mds create ip-10-185-23-23
+
+To validate whether the storage cluster has been successfully deployed, execute the following command on `node-0`.
+
+	$ sudo ceph -w
+
+If we can see the message saying **HEALTH_OK**, then it means we have succeed. A sample message from our sample cluster is the following.
+
+	cluster 1aae0add-cc1f-40e8-89cb-8a7e50be6c4a
+	health HEALTH_OK
+    monmap e1: 1 mons at {ip-10-185-23-23=10.185.23.23:6789/0}, election epoch 2, quorum 0 ip-10-185-23-23
+    osdmap e9: 2 osds: 2 up, 2 in
+    pgmap v24: 192 pgs: 192 active+clean; 9518 bytes data, 4390 MB used, 10916 MB / 16126 MB avail
+    mdsmap e4: 1/1/1 up {0=ip-10-185-23-23=up:active}
 
 
 [1]: http://ceph.com
