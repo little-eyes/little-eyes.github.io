@@ -1,0 +1,24 @@
+---
+layout: default
+title: Tamas Nagy
+---
+{% for post in paginator.posts %}
+
+    <article class="post">
+        <header class="post-header">
+            {% if post.link %}
+                <h5><a href="{{ post.link }}">{{ post.title }} →</a></h5>
+            {% else %}
+                <h1 class="post-title"><a href="{{ post.url }}">{{ post.title }}</a></h1>
+            {% endif %}
+            <span class="post-meta"><time datetime="{{ post.date | date_to_string }}">{{ post.date | date: "%Y %b %d" }}</time> {{!tags prefix="on "}}</span>
+        </header>
+        <section class="post-excerpt">
+            {{post.excerpt}}
+        </section>
+        <hr>
+    </article>
+
+{% endfor %}
+
+<div class="archive-link"><a href="/archive/"><i class="fa fa-archive"></i> archive</a></div>

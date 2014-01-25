@@ -1,0 +1,23 @@
+---
+layout: default
+---
+<article class="post">
+	<header class="post-header">
+        {% if post.link %}
+            <h5><a href="{{ post.link }}">{{ post.title }} →</a></h5>
+        {% else %}
+            <h1 class="post-title"><a href="{{ page.url }}">{{ page.title }}</a></h1>
+        {% endif %}
+        <span class="post-meta">{{ page.date | date: "%Y %b %d" }} by <a href="/about/">Tamas Nagy</a> <i class="fa fa-book"></i>{% include word_count.html %}</span>
+    </header>
+	{{ content }}
+    <br>
+    <p><em>Let me know what you think via <a href="{{ site.author.twitter }}">Twitter</a> or <a href="mailto:{{ site.author.email }}">email</a></em></p>
+	{% unless page.tags == empty %}
+  		<ul class="tag_box inline">
+    		<li><i class="fa fa-tags fa-lg"></i></li>
+    		{% assign tags_list = page.tags %}
+    		{% include tags_list.html %}
+  		</ul>
+	{% endunless %}
+</article>

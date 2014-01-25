@@ -1,0 +1,305 @@
+@import url(http://fonts.googleapis.com/css?family=PT+Serif:400,700,400italic,700italic&subset=latin,latin-ext);
+@import url(http://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic,700italic&subset=latin,latin-ext);
+
+body {
+  padding-top: 50px;
+  padding-left: 50px;
+  padding-right: 50px;
+  font:21px/1.7 "PT Serif", serif;
+  font-weight: lighter;
+  color:#393939;
+}
+
+blockquote p {
+  font-size: inherit;
+  line-height: inherit;
+}
+
+h1, h2, h3, h4, h5, h6, nav, footer, tag_box, .post-meta, .banner, .archive-link {
+  font-family: "PT Sans", sans-serif;
+}
+
+nav, .archive-link {
+  font-size: 19px;
+}
+
+p, table, dl, hr, .post-header, figure, pre {
+  margin:0 0 30px;
+}
+
+.banner a{
+  font-size: 26px;
+}
+
+.banner a, h1 a, h2 a, nav li a, .archive-link a {
+  border: none;
+}
+
+h1, h2, h3 {
+  line-height:1.1;
+}
+
+h1 {
+  font-size:36px;
+}
+
+h2 {
+  color:#393939;
+  font-size: 32px;
+  text-align: left;
+}
+
+h3 {
+	font-size:20px;
+	margin: 12px 0 20px;
+}
+
+ul {
+  list-style-type: circle;
+  padding: 0 0 20px 50px;
+}
+
+ol {
+  list-style-type: decimal;
+  padding: 0 0 20px 50px;
+}
+
+blockquote {
+  font-style: italic;
+  margin: 1.6em 0 1.6em -2.1em;
+  padding: 0 0 0 1.6em;
+  border-left: #4a4a4a 0.4em solid;
+}
+
+h4 {
+  font:18px;
+  color:#888;
+  margin: 0 0 30px;
+}
+
+hr {
+  border: none;
+  border-top: 1px #e5e5e5 solid;
+  height: 0px;
+}
+
+.post-meta {
+  color: #a1a1a1;
+}
+
+a {
+  color: inherit;
+  -o-transition:0.3s;
+  -ms-transition:0.3s;
+  -moz-transition:0.3s;
+  -webkit-transition:0.3s;
+  transition:0.3s;
+  text-decoration:none;
+  border-bottom: 1px dotted #393939;
+}
+
+p code {
+  color: #000;
+  font-size: 80%;
+  background-color: #f8f8f8;
+  border: 1px solid #ccc;
+}
+
+.sourceCode {
+  font-size: 80%;
+}
+
+a:hover, a:active, a:focus {
+  color: #A300B9;
+  text-decoration: none;
+  border-bottom-color: #A300B9;
+}
+
+.wrapper {
+  width:650px;
+  margin:0px auto;
+}
+
+header {
+  margin: 20px 0 0;
+  border: none;
+}
+
+img.profile {
+  width:150px;
+  height:auto;
+  margin: 15px 30px 15px 0;
+  border-radius: 75px;
+}
+
+figcaption {
+  padding: 20px 40px 0 40px;
+}
+
+nav {
+  border:1px solid #e5e5e5;
+  border-width:1px 0 0 0;
+  margin: 0 0 30px 0;
+  padding: 20px 0 0 0;
+  text-align: center;
+}
+
+nav li {
+  display: inline;
+  margin: 0 10px 0px 10px;
+}
+
+footer {
+  margin: 0 0 40px 0;
+  font-size: 16px;
+  text-align: center;
+  padding-top: 30px;
+}
+
+section img{
+  max-width: 100%;
+}
+
+.footnotes {
+  border:1px solid #e5e5e5;
+  border-width:1px 0 0 0;
+  padding-top: 30px;
+}
+
+.footnote {
+  vertical-align: super;
+  font-size: 80%;
+  margin: 0 2px 0 1px;
+  border: none;
+}
+
+.footnotes ol{
+  padding: 0 30px 20px;
+}
+
+.footnotes ol li p{
+  margin: 0 0 10px;
+}
+
+.archive-link{
+  margin: auto;
+  text-align: center;
+}
+
+.tag_box {
+  list-style: none;
+  margin: 0;
+  overflow: hidden; 
+  padding: 0;
+}
+
+.tag_box li {
+  display: inline;
+}
+
+.tag_box.inline li {
+  float: left; 
+  margin-bottom: 20px;
+}
+
+.tag_box a {
+  padding: 6px 10px;
+  margin: 2px;
+  color: #555;
+  border-radius: 3px;
+  text-decoration: none;
+  border: none;
+}
+
+.tag_box a span {
+  vertical-align: super;
+  font-size: 0.6em;
+}
+
+.tag_box a:hover {
+  background-color: #e5e5e5;
+}
+
+@media (max-width: 950px) {
+  
+  div.wrapper {
+    width:auto;
+    margin:0 40px 0px;
+  }
+
+  body {
+    font-size: 19px;
+  }
+  
+  header, section {
+    float:none;
+    position:static;
+    width:auto;
+  }
+
+  .sharing {
+    padding: 20px 0 5px;
+  }
+
+  footer {
+    padding: 30px 0px 0px 0;
+  }
+
+  nav {
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 775px) {
+  div.wrapper {
+    margin: 0 -30px 0px;
+  }
+
+  @-ms-viewport{
+    width:320px;
+  }
+
+  body {
+    font-size: 14px;
+  }
+
+  h1 {
+    font-size: 32px;
+  }
+
+  h2 {
+    font-size: 26px;
+  }
+
+  .navtext {
+    display: none;
+  }
+
+  footer {
+    font-size: 15px;
+  }
+  
+  ul, ol {
+    padding-left: 30px; 
+  }
+
+  nav, .archive-link {
+    font-size: 18px;
+  }
+
+  nav li {
+    margin: 0 10px 0 10px;
+  }
+
+  .banner a{
+    font-size: 20px;
+  }
+
+  blockquote {
+    margin-left: 0;
+  }
+
+  span.separator {
+    display: none;
+  }
+}

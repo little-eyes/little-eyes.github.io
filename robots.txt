@@ -1,0 +1,4 @@
+Sitemap: http://tamaslnagy.github.com/sitemap.xml
+
+User-agent: *
+Disallow: /assets/images/
