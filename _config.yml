@@ -25,4 +25,4 @@ pandoc:
   skip: true
   flags: '--smart --mathjax --filter pandoc-citeproc'
 
-source_url: http://github.com/tlnagy/blog-source
+source_url: http://github.com/tlnagy/blog
