@@ -79,14 +79,13 @@ tr,
 th,
 td {
   margin:0px;
-  padding:20px;
-  border:1px solid black;
+  padding:0px;
+  border:0px;
   outline:0px;
   font-size:100%;
   vertical-align:baseline;
-  background-color: gray;
+  background:transparent;
   line-height:inherit;
-  color: white;
   }
 
 ol,
