@@ -89,10 +89,9 @@ td {
   }
 
 table, thead, td, th, tr {
-  padding: 20px;
   margin-left: 10px;
   margin-right: 10px;
-  border: 1px;
+  border: 1px solid black;
 }
 
 ol,
