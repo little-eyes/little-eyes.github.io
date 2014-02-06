@@ -1,64 +1,18 @@
 <!doctype html>
 <html>
-  <head>
-	<title>{{ page.title }}</title>
-	  
-    <meta charset="utf-8">
-    <meta name="description" content="Jilong Liao's rambles on computer science in blog form." />
-    <meta name="author" content="Jilong Liao">
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-    <meta name="msvalidate.01" content="3B35E668C995BED02D56D7A7C9D7AD8D" />
-    <meta property="wb:webmaster" content="7df8c8da68e784a1" />
-    
-    <link rel="stylesheet" href="/css/reset.css">
-    <link rel="stylesheet" href="/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/css/pygment_trac.css">
-    <link rel="stylesheet" href="/css/styles.css">
-    
-    <!--[if lt IE 9]>
-		<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-    
-  </head>
-  <body data-spy="scroll" data-target="header">
-    
-    <div id="content">
-		<nav id="header">
-			<div>
-				<ul id="links">
-					<li class="home"><a href="{{ base.url }}/">Jilong Liao's blog</a></li>
-					<li class="twitter"><a href="http://www.twitter.com/littleeyes1">Jilong Liao's Twitter</a></li>
-					<li class="rss"><a href="/atom.xml">Jilong Liao's blog RSS feed</a></li>
-					<li class="info"><a href="/about.html">Jilong Liao's blog info</a></li>
-				</ul>
-			</div>
-		</nav>
-			{{ content }}
+  {% include head.html %}
+  <body>
+    <div class="wrapper">
+      <header class="banner">
+        <a href="/"><i class="fa fa-plus-circle fa-2x"></i> jilongliao.com</a>
+      </header>
+      <section>
+		    {{ content }}
+      </section>
+      <footer>
+        {% include nav.html %}
+        Copyright &copy; 2014 Jilong Liao - Powered by <a href="http://jekyllrb.com">Jekyll</a> and <a href="http://getbootstrap.com">Bootstrap</a>
+      </footer>
     </div>
-
-    <script src="/js/jquery.min.js"></script>
-	<script src="/js/bootstrap.min.js"></script>
-    <script type="text/javascript">
-		$(document).ready(function () {
-			$('.bar').click(function() {
-				return false;
-			}).tooltip({placement: 'right', animate: false});
-	});
-	</script>
   </body>
-
-
-<script type="text/javascript">
-
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-32402817-1']);
-  _gaq.push(['_trackPageview']);
-
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-
-</script>	
 </html>

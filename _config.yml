@@ -1,0 +1,28 @@
+# Blog information
+name: tamasnagy.me
+description: 
+meta-description: "Tamas Nagy's little home on the web"
+url: http://tamasnagy.me
+
+# Author
+author:
+  name: Tamas Nagy
+  email: tamas@tamasnagy.me
+  gravatar: f0373dd7cb70ffcd7d803827cfabecca
+  github: http://github.com/tlnagy/
+  500px: http://500px.com/tamas305
+  twitter: http://twitter.com/tamaslnagy
+
+include:
+- .nojekyll
+
+permalink: /:year/:title/ 
+paginate: 15
+
+destination: source/
+markdown: pandoc
+pandoc:
+  skip: true
+  flags: '--smart --mathjax --filter pandoc-citeproc'
+
+source_url: http://github.com/tlnagy/blog
