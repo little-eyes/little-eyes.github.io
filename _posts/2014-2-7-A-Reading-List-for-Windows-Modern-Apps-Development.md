@@ -50,7 +50,7 @@ Now, if you are at language choice decision stage, you might want to read [this 
 The answer is absolutely YES. Generally, two ways to do it: `Windows Runtime Component` and `Portable Class Library`. For Windows Runtime Component, you can create it in C++ or C#, and consume it from C++, C# and Javascript. It is a very powerful and controllable way to share your app core across the windows platforms.
 
 | Platform | Create      | Consume                 |
-| -------- | ----------- | ----------------------- |
+| -------------- | ----------------- | ----------------------------- |
 | Windows  | C++, C#, VB | C++, C#, VB, Javascript |
 | Phone 8  | C++         | C++, C#, VB             |
 
