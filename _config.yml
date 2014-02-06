@@ -17,7 +17,7 @@ include:
 - .nojekyll
 
 permalink: /:year/:title/ 
-paginate: 15
+paginate: 5
 
 destination: source/
 markdown: pandoc
