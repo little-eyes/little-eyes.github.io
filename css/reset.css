@@ -88,6 +88,13 @@ td {
   line-height:inherit;
   }
 
+table, thead, td, th, tr {
+  padding: 20px;
+  margin-left: 10px;
+  margin-right: 10px;
+  border: 1px;
+}
+
 ol,
 ul,
 .item-list ul,
