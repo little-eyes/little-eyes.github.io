@@ -12,9 +12,10 @@ title: Research
 * Z. Wang, J. Liao, Q. Cao, H. Qi, Z. Wang. Barrier Coverage in Hybrid Directional Sensor Networks, IEEE MASS, 2013. [pdf][3]
 * J. Liao, Z. Wang, Q. Cao, and H. Qi. Smart Diary: the Narrative of Your Daily Life. NSF 2012 Southeastern Workshop on Cognitive Sensing, Computing and Networking and Their Applications in Human-Cyber-Physical Systems. Tuscaloosa, Alabama. August 15, 2012. [pdf][4]
 * J. Liao, Q. Cao. Demo Abstract: Uno - A Sharing Infrastructure for Semartphone Sensors and Files. ACM SenSys, 2011. [pdf][5]
-Academic Services
 
-## Reviewer
+## Academic Services
+
+### Reviewer
 
 * IEEE INFOCOM 2014
 * International Conference on Wireless Sensor Networks for Developing Contries, 2013
