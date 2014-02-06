@@ -49,10 +49,10 @@ Now, if you are at language choice decision stage, you might want to read [this 
 
 The answer is absolutely YES. Generally, two ways to do it: `Windows Runtime Component` and `Portable Class Library`. For Windows Runtime Component, you can create it in C++ or C#, and consume it from C++, C# and Javascript. It is a very powerful and controllable way to share your app core across the windows platforms.
 
-| Platform | Windows Runtime Component Create | Windows Runtime Component Consume |
-| -------- | -------------------------------- | --------------------------------- |
-| Windows  | C++, C#, VB                      | C++, C#, VB, Javascript           |
-| Phone 8  | C++                              | C++, C#, VB                       |
+| Platform | Create      | Consume                 |
+| -------- | ----------- | ----------------------- |
+| Windows  | C++, C#, VB | C++, C#, VB, Javascript |
+| Phone 8  | C++         | C++, C#, VB             |
 
 The C++ example on MSDN can be found here: [Create Component][19], [Consume Component][20]. Also, the Bing Maps Trip Optimizer is a good real example that use Javascript to power the UI and C++ to power the app core ([The article][21]).
 
@@ -60,9 +60,9 @@ If your app consider XBOX 360 or potentially XBOX ONE, the [Portable Class][22] 
 
 ### Q2: Multiple screen size or different DPI, how to handle it?
 
-In general, the problem has been automatically solved by XAML if you use flexible controls such as Grid, CSS Grid and CSS multi-column layout. Fixed layout design is not recommend except for some game apps, so I would recommend you to read [this guide][24]. For Windows Phone, the rotation may need some manual work to make the UI more smoothly, like change the position of some buttons. [More to read here][25].
+In general, the problem has been automatically solved by XAML if you use flexible controls such as Grid, CSS Grid and CSS multi-column layout. Fixed layout design is not recommend except for some game apps, so I would recommend you to read [this guide][24]. For Windows Phone, the rotation may need some manual work to make the UI more smoothly, like change the position of some buttons. ([More to read here][25])
 
-What if you have a different screen pixel density and I have photos to show? The answer is you always use higher quality graphics to scale down instead of lower quality graphics to scale up. [More information is here][26].
+What if you have a different screen pixel density and I have photos to show? The answer is you always use higher quality graphics to scale down instead of lower quality graphics to scale up. ([More information is here][26])
 
 ### Q3: Can we mix the UI design lanugages (HTML5/XAML)?
 
@@ -72,9 +72,9 @@ Currently, it is not possible for your to write your UI with both XAML and HTML5
 
 ### Q4: How can we integrate it with SkyDrive or Dropbox?
 
-Each of them have REST API to use, so C# or Javascript based modern app may be more efficient to develop. For SkyDrive, you need to use Live API which needs credentials in your app, but you can always obtain them by becoming a store app/phone app developer. Note that the credential channel is different from each other. [Article][27]
+Each of them have REST API to use, so C# or Javascript based modern app may be more efficient to develop. For SkyDrive, you need to use Live API which needs credentials in your app, but you can always obtain them by becoming a store app/phone app developer. Note that the credential channel is different from each other. ([Article][27])
 
-One more thing you need to know about the Live API is the `Scope and Permission`, which generally defines what security and privacy level your app is on so that the user may have a sense to control how they want to use your app. [Article][28]
+One more thing you need to know about the Live API is the `Scope and Permission`, which generally defines what security and privacy level your app is on so that the user may have a sense to control how they want to use your app. ([Article][28])
 
 [1]: http://msdn.microsoft.com/en-us/library/windows/apps/hh974576.aspx
 [2]: http://msdn.microsoft.com/en-us/library/windows/apps/hh974580.aspx
