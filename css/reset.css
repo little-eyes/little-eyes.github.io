@@ -84,6 +84,7 @@ td {
   outline:0px;
   font-size:100%;
   vertical-align:baseline;
+  background:transparent;
   line-height:inherit;
   }
 
@@ -94,7 +95,7 @@ table, thead, td, th, tr {
 }
 
 tr:nth-child(even) {
-  background-color: #fcfcfc;
+  background-color: green;
 }
 
 ol,
