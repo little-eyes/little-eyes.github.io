@@ -1,8 +1,0 @@
-{% assign time = content | strip_html | number_of_words | divided_by:200 %}
-{% if time < 2 %}
-	1 min read
-{% elsif time < 4 %}
-	3 min read
-{% else %}
-	{{ time | plus:2 | divided_by:5 | times:5 }} min read
-{% endif %}
