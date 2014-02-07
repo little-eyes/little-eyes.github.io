@@ -1,7 +1,7 @@
 @import url(http://fonts.googleapis.com/css?family=Fjord+One);
 
 body {
-  font:18px "Fjord One", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font:20px "Fjord One", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight:300;
   line-height:1.75;
 }
@@ -9,11 +9,11 @@ body {
 h1, h2, h3, h4, h5, h6 {
   font-family:"Fjord One", "Helvetica Neue", Helvetica, Arial, sans-serif;
   color:#222;
-  margin:0 0 20px;
+  margin:0 0 25px;
 }
 
 p, ul, ol, table, dl, hr {
-  margin:0 0 40px;
+  margin:0 0 25px;
 }
 
 h1, h2, h3 {
@@ -31,7 +31,7 @@ h2 {
 }
 
 h3 {
-	font-size:20px;
+	font-size:22px;
 	margin: 12px 0 20px;
 }
 
@@ -40,14 +40,14 @@ h4, h5, h6 {
 }
 
 a {
-  color:#5FBCD3;
+  color:#393939;
   font-weight:400;
   text-decoration:none;
+  text-decoration: underline;
 }
 
 a:hover, a:focus{
-  color:#2C89A0;
-  text-decoration:none;
+  color:#393939;
 }
 
 a small {
@@ -68,12 +68,13 @@ a, img {
 
 #content > article,
 #content > #pager{
-  max-width: 700px;
+  max-width: 800px;
+  margin-left: 10px;
 }
 
 #content article ul {
   list-style-type: disc;
-  margin-left: 35px;
+  margin-left: 25px;
 }
 
 #content article ol {
@@ -86,8 +87,8 @@ a, img {
 }
 
 #content blockquote {
-  background: #f0f0f0;
-  border-radius: 5px;
+  background: transparent;
+  border-left: 6px solid #6CD16C;
   font-size: 0.75em;
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
@@ -124,7 +125,12 @@ a, img {
 }
 
 #content p code{
+  font-size: 18px;
   color: #5FBCD3;
+}
+
+.highlight code {
+  font-size: 14px;
 }
 
 #header {
@@ -144,8 +150,14 @@ a, img {
 #links a {
   background: transparent;
   display: inline-block;
-  margin: 0 0 5px 0;
+  margin-bottom: 10px;
   color: #1f1f1f;
+  font-size: 18px;
+  text-decoration: none;
+}
+
+#links a:hover {
+  color: #5FBCD3
 }
 
 #links .twitter a {
