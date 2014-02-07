@@ -3,29 +3,20 @@ layout: default
 title: Tags
 ---
 <h1>Tags</h1>
-
-<ul class="tag_box inline">
-  {% assign tags_list = site.tags %}
-  {% include tags_list.html %}
-</ul>
-
 <hr>
 
-{% for tag in site.tags %}
-  <h2 id="{{ tag[0] }}">{{ tag[0] }}</h2>
+{% capture tags %}
+  {% for tag in site.tags %}
+    {{ tag[0] }}
+  {% endfor %}
+{% endcapture %}
+{% assign sortedtags = tags | split:' ' | sort %}
+
+{% for tag in sortedtags %}
+  <h3 id="{{ tag }}">{{ tag }}</h3>
   <ul>
-    {% assign pages_list = tag[1] %}
-    {% include pages_list.html %}
+  {% for post in site.tags[tag] %}
+    <li><a href="{{ post.url }}">{{ post.title }}</a></li>
+  {% endfor %}
   </ul>
 {% endfor %}
-
-<div id="archivecont">
-	<div id="archive">
-		<h5>Blog specifics</h5>
-		<p>
-			This blog is powered by <a href="http://jekyllrb.com">Jekyll</a> and <a href="http://www.github.com">Github</a>. The web design is from <a href="http://tamasnagy.me/">http://tamasnagy.me/</a>.
-		</p>
-
-	    <p>Last update in Feb. 2014.</p>
-	</div>
-</div>
