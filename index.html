@@ -5,6 +5,8 @@ title: jilongliao.com
 <article>
 	<time>{{ site.posts.first.date | date: "%Y %b %d" }}</time>
 	<h2><a href="{{ site.posts.first.url }}" style="text-decoration: none;">{{ site.posts.first.title }}</a></h2>
+	<i class="fa fa-book fa-1g"></i>{% include word_count.html %}
+	<hr>
 	{{ site.posts.first.content }}
 </article>
 
