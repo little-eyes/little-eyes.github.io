@@ -7,20 +7,18 @@ layout: default
   <i class="fa fa-book fa-1g"></i>{% include word_count.html %}
   <hr>
 	{{ content }}
-  <div>
-    <div style="float:left"> 
+  <div id="move">
+    <div style="float:left;"> 
       {% if page.previous.url %} 
-        <a href="{{page.previous.url}}" title="Previous Post: {{page.previous.title}}">&laquo; Previous</a> 
+        <a href="{{page.previous.url}}" title="Previous Post: {{page.previous.title}}" type="button" class="btn btn-info">&laquo; Previous</a> 
       {% endif %} 
     </div>
-    <div style="float:right"> 
+    <div style="float:right;"> 
       {% if page.next.url %} 
-        <a href="{{page.next.url}}" title="next Post: {{page.next.title}}">Next &raquo; </a> 
+        <a href="{{page.next.url}}" title="next Post: {{page.next.title}}" type="button" class="btn btn-info">Next &raquo; </a> 
       {% endif %} 
     </div> 
   </div>
-
-	<hr />
 
   <div id="disqus_thread"></div>
   <script type="text/javascript">

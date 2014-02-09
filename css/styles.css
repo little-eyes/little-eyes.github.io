@@ -1,13 +1,19 @@
 @import url(http://fonts.googleapis.com/css?family=Fjord+One);
 
+@font-face {
+  font-family: AvenirLT-Roman;
+  src:url("//dpy9sntq9t470.cloudfront.net/jellyco/css/fonts/27EEB9_2_0.woff");
+}
+
 body {
-  font:20px "Fjord One", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font:20px "Fjord One", "AvenirLT-Roman", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight:300;
-  line-height:1.75;
+  line-height:1.5;
+  background-color: #eee;
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family:"Fjord One", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family:"Fjord One", "AvenirLT-Roman", "Helvetica Neue", Helvetica, Arial, sans-serif;
   color:#222;
   margin:0 0 25px;
 }
@@ -42,7 +48,6 @@ h4, h5, h6 {
 a {
   color:#393939;
   font-weight:400;
-  text-decoration:none;
   text-decoration: underline;
 }
 
@@ -171,6 +176,10 @@ a, img {
 
 #links .info a {
   background-image: url(/images/info.svg);
+}
+
+#move a {
+  text-decoration: none;
 }
 
 #tagline {
