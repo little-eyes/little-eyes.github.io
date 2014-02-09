@@ -110,14 +110,18 @@ a, img {
 #archivecont{
   border: 1px solid #ccc;
   border-width: 1px 0;
-  background: #f0f0f0;
+  background: #dcdcdc;
   border-bottom: 0;
   margin: 0px -40px 0 -200px;
   padding: 20px 40px 20px 200px;
 }
 
+#archive p {
+  font-size: 14px;
+}
+
 #archive {
-  max-width:700px;
+  max-width:750px;
 }
 
 #posts time,
