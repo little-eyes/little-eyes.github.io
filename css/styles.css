@@ -150,9 +150,10 @@ a, img {
 #links a {
   background: transparent;
   display: inline-block;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
+  text-align: center;
   color: #1f1f1f;
-  font-size: 18px;
+  font-size: 14px;
   text-decoration: none;
 }
 
