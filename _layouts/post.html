@@ -1,23 +1,21 @@
 ---
 layout: default
 ---
-<article>
-	<time>{{ page.date | date: "%Y %b %d" }}</time>
-	<h2>{{ page.title }}</h2>
-  <i class="fa fa-book fa-1g"></i>{% include word_count.html %}
-  <hr>
+<div class="article">
+	<h1>{{ page.title }}</h1>
+  <time>{{ page.date | date: "%Y %b %d" }}</time>, <span class="glyphicon glyphicon-book"></span>{% include word_count.html %}
+  <hr />
 	{{ content }}
-  <div id="move">
-    <div style="float:left;"> 
+
+  <div>
+    <ul class="pager">
       {% if page.previous.url %} 
-        <a href="{{page.previous.url}}" title="Previous Post: {{page.previous.title}}" type="button" class="btn btn-info">&laquo; Previous</a> 
-      {% endif %} 
-    </div>
-    <div style="float:right;"> 
+      <li class="previous"><a href="{{page.previous.url}}">Older</a></li>
+      {% endif %}
       {% if page.next.url %} 
-        <a href="{{page.next.url}}" title="next Post: {{page.next.title}}" type="button" class="btn btn-info">Next &raquo; </a> 
-      {% endif %} 
-    </div> 
+      <li class="next"><a href="{{page.next.url}}">Newer</a></li>
+      {% endif %}
+    </ul>
   </div>
 
   <div id="disqus_thread"></div>
@@ -34,14 +32,6 @@ layout: default
   </script>
   <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
   <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-</article>
-
-<div id="archivecont">
-  <div id="archive">
-    <p>
-      &copy;2014 Jilong Liao. The opinions in this blog represent my personal opinions not my employer or any other organizations and institutes.
-    </p>
-  </div>
 </div>
 
 <script type="text/javascript">

@@ -1,252 +1,124 @@
-@import url(http://fonts.googleapis.com/css?family=Fjord+One);
-
 @font-face {
-  font-family: AvenirLT-Roman;
-  src:url("//dpy9sntq9t470.cloudfront.net/jellyco/css/fonts/27EEB9_2_0.woff");
+  font-family:'AvenirLT-Medium';
+  src:url("//dpy9sntq9t470.cloudfront.net/jellyco/css/fonts/27EEB9_0_0.eot");
+  src:url("//dpy9sntq9t470.cloudfront.net/jellyco/css/fonts/27EEB9_0_0.eot?#iefix") 
+  format("embedded-opentype"),
+  url("//dpy9sntq9t470.cloudfront.net/jellyco/css/fonts/27EEB9_0_0.woff") 
+  format("woff"),
+  url("//dpy9sntq9t470.cloudfront.net/jellyco/css/fonts/27EEB9_0_0.ttf") 
+  format("truetype")
 }
 
-body {
-  font:20px "Fjord One", "AvenirLT-Roman", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-weight:300;
-  line-height:1.5;
+@font-face {
+  font-family:'AvenirLT-Roman';
+  src:url("//dpy9sntq9t470.cloudfront.net/jellyco/css/fonts/27EEB9_1_0.eot");
+  src:url("//dpy9sntq9t470.cloudfront.net/jellyco/css/fonts/27EEB9_1_0.eot?#iefix") 
+  format("embedded-opentype"),
+  url("//dpy9sntq9t470.cloudfront.net/jellyco/css/fonts/27EEB9_1_0.woff") 
+  format("woff"),
+  url("//dpy9sntq9t470.cloudfront.net/jellyco/css/fonts/27EEB9_1_0.ttf") 
+  format("truetype")
+}
+
+@font-face {
+  font-family:'AvenirLT-Book';
+  src:url("//dpy9sntq9t470.cloudfront.net/jellyco/css/fonts/27EEB9_2_0.eot");
+  src:url("//dpy9sntq9t470.cloudfront.net/jellyco/css/fonts/27EEB9_2_0.eot?#iefix") 
+  format("embedded-opentype"),
+  url("//dpy9sntq9t470.cloudfront.net/jellyco/css/fonts/27EEB9_2_0.woff") 
+  format("woff"),
+  url("//dpy9sntq9t470.cloudfront.net/jellyco/css/fonts/27EEB9_2_0.ttf") 
+  format("truetype")
+}
+
+@font-face {
+  font-family:'AvenirLT-Light';
+  src:url("//dpy9sntq9t470.cloudfront.net/jellyco/css/fonts/27EEB9_3_0.eot");
+  src:url("//dpy9sntq9t470.cloudfront.net/jellyco/css/fonts/27EEB9_3_0.eot?#iefix") 
+  format("embedded-opentype"),
+  url("//dpy9sntq9t470.cloudfront.net/jellyco/css/fonts/27EEB9_3_0.woff") 
+  format("woff"),
+  url("//dpy9sntq9t470.cloudfront.net/jellyco/css/fonts/27EEB9_3_0.ttf") 
+  format("truetype")
+}
+
+@font-face {
+  font-family:'AvenirLT-Heavy';
+  src:url("//dpy9sntq9t470.cloudfront.net/jellyco/css/fonts/27EEB9_4_0.eot");
+  src:url("//dpy9sntq9t470.cloudfront.net/jellyco/css/fonts/27EEB9_4_0.eot?#iefix") 
+  format("embedded-opentype"),
+  url("//dpy9sntq9t470.cloudfront.net/jellyco/css/fonts/27EEB9_4_0.woff") 
+  format("woff"),url("//dpy9sntq9t470.cloudfront.net/jellyco/css/fonts/27EEB9_4_0.ttf") 
+  format("truetype")
+}
+
+@font-face {
+  font-family:'AvenirLT-Black';
+  src:url("//dpy9sntq9t470.cloudfront.net/jellyco/css/fonts/27EEB9_5_0.eot");
+  src:url("//dpy9sntq9t470.cloudfront.net/jellyco/css/fonts/27EEB9_5_0.eot?#iefix") 
+  format("embedded-opentype"),
+  url("//dpy9sntq9t470.cloudfront.net/jellyco/css/fonts/27EEB9_5_0.woff") 
+  format("woff"),
+  url("//dpy9sntq9t470.cloudfront.net/jellyco/css/fonts/27EEB9_5_0.ttf") 
+  format("truetype")
+}
+
+body, html{
+  font: 18px "AvenirLT-Book", sans-serif;
+  height: 100%;
+  width: 100%;
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family:"Fjord One", "AvenirLT-Roman", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  color:#222;
-  margin:0 0 25px;
+  font-family: "AvenirLT-Black", sans-serif;
+  margin-bottom: 25px;
 }
 
 p, ul, ol, table, dl, hr {
-  margin:0 0 25px;
-}
-
-h1, h2, h3 {
-  line-height:1.1;
+  margin-bottom: 25px;
 }
 
 h1 {
-  font-size:36px;
+  font-size: 30px;
+  font-weight: bold;
+  text-align: left;
+  margin-bottom: 5px;
 }
 
 h2 {
-  color:#393939;
-  font-size: 28px;
+  font-size: 24px;
+  font-weight: bold;
   text-align: left;
 }
 
 h3 {
 	font-size:22px;
-	margin: 12px 0 20px;
 }
 
-h4, h5, h6 {
-  color:#494949;
+h4 {
+  font-size: 20px;
 }
 
-a {
-  color:#393939;
-  font-weight:400;
-  text-decoration: underline;
-}
-
-a:hover, a:focus{
-  color:#393939;
-}
-
-a small {
-  font-size:11px;
-  color:#777;
-  margin-top:-0.6em;
-  display:block;
-}
-
-a, img {
+img {
     border:none;
+    width: 100%;
+}
+
+blockquote {
+  border-left: 6px solid #6CD16C;
+  font-style: italic;
+}
+
+#footer {
+  font-size: 14px;
+  text-align: center;
+}
+
+#navigation {
+  margin-top: 30px;
+  font-size: 22px;
 }
 
 #content {
-  text-align: left;
-  padding: 20px 40px 0 200px;
-}
-
-#content > article,
-#content > #pager{
-  max-width: 750px;
-  margin-left: 10px;
-}
-
-#content article ul {
-  list-style-type: disc;
-  margin-left: 25px;
-}
-
-#content article ol {
-  list-style-type: decimal;
-}
-
-#content ol li,
-#content ul li {
-  margin-bottom: 10px;
-}
-
-#content blockquote {
-  background: transparent;
-  border-left: 6px solid #6CD16C;
-  font-size: 0.75em;
-  -moz-border-radius: 5px;
-  -webkit-border-radius: 5px;
-  color: #444;
-  font-style: italic;
-  margin-bottom: 40px;
-  padding: 20px;
-}
-
-#content blockquote p {
-  font-size: 18px;
-}
-
-#archivecont{
-  border: 1px solid #ccc;
-  border-width: 1px 0;
-  background: #dcdcdc;
-  border-bottom: 0;
-  margin: 0px -40px 0 -200px;
-  padding: 20px 40px 20px 200px;
-}
-
-#archive p {
-  font-size: 14px;
-}
-
-#archive {
-  max-width:750px;
-}
-
-#posts time,
-#posts h3 {
-  display: inline;
-}
-
-#content pre {
-  margin-bottom: 40px;
-}
-
-#content p code{
-  font-size: 18px;
-  color: #5FBCD3;
-}
-
-.highlight code {
-  font-size: 14px;
-}
-
-#header {
-  width: 70px;
-  position: fixed;
-  padding: 5px;
-  padding-right: 15px;
-  left:0;
-  margin: 0px 0px 0px 100px;
-}
-
-#links li {
-  display: inline;
-  margin: 0 5px;
-}
-
-#links a {
-  background: transparent;
-  display: inline-block;
-  margin-bottom: 20px;
-  text-align: center;
-  color: #1f1f1f;
-  font-size: 14px;
-  text-decoration: none;
-}
-
-#links a:hover {
-  color: #5FBCD3
-}
-
-#links .twitter a {
-  background-image: url(/images/twitter.svg);
-}
-
-#links .rss a {
-  background-image: url(/images/rss.svg);
-}
-
-#links .info a {
-  background-image: url(/images/info.svg);
-}
-
-#move a {
-  text-decoration: none;
-}
-
-#tagline {
-  font-size: 10pt;
-  /*text-align: center;*/
-  margin: 50px 0 10px 0px;
-}
-
-.bar {
-	background:#AFDDE9; 
-	height:14px; 
-	margin-top:4px; 
-	float:right; 
-	cursor:default;
-}
-.bar:hover {
-	background:#5FBCD3;
-}
-
-.tooltip {
-  font-weight:600;
-  font-size:12px;
-}
-
-@media all and (max-width: 800px) {
-  body {
-    font:18px "Fjord One", "Helvetica Neue", Helvetica, Arial, sans-serif;
-    padding-top: 80px;
-    line-height:1.75;
-  }
-  
-  header ul {
-    display:none;
-  }
-  
-   #header {
-    background: #fff;
-    border: 0;
-    border-bottom: 1px solid #ddd;
-    top: 0;
-    margin: 0;
-    padding: 0px 0px;
-    width: 100%;
-    z-index: 999;
-  }
-  
-  #links {
-    display: inline-block;
-    list-style-type: none;
-    margin: 5px 0px 5px 5px;
-  }
-  
-  #content {
-    text-align: left;
-    margin: 0;
-    padding: 10px;
-  }
-  
-  #archivecont{
-    margin: 0 -10px -10px -10px;
-    padding: 10px;
-  }
-  
-  .bar{
-    display: none;
-  }
+  margin-top: 10px;
 }
