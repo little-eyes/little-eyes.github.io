@@ -141,3 +141,7 @@ th, td {
   padding-left: 25px;
   padding-right: 25px;
 }
+
+.infograph iframe {
+  width: 100%;
+}
