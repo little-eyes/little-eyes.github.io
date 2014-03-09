@@ -64,13 +64,13 @@
 }
 
 body, html{
-  font: 18px "AvenirLT-Roman", sans-serif;
+  font: 16px/1.5em "Helvetica Neue", Helvetica, sans-serif;
   height: 100%;
   width: 100%;
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: "AvenirLT-Black", sans-serif;
+  font-family: "Helvetica Neue", Helvetica, sans-serif;
   margin-bottom: 25px;
 }
 
@@ -79,24 +79,24 @@ p, ul, ol, table, dl, hr {
 }
 
 h1 {
-  font-size: 30px;
+  font-size: 28px;
   font-weight: bold;
   text-align: left;
   margin-bottom: 5px;
 }
 
 h2 {
-  font-size: 24px;
+  font-size: 22px;
   font-weight: bold;
   text-align: left;
 }
 
 h3 {
-	font-size:22px;
+	font-size:20px;
 }
 
 h4 {
-  font-size: 20px;
+  font-size: 18px;
 }
 
 img {
@@ -106,17 +106,18 @@ img {
 
 blockquote {
   border-left: 6px solid #6CD16C;
-  font-style: italic;
+  font-size: 16px;
+  font-family: 'AvenirLT-Roman';
 }
 
 #footer {
-  font-size: 14px;
+  font-size: 12px;
   text-align: center;
 }
 
 #navigation {
   margin-top: 30px;
-  font-size: 22px;
+  font-size: 16px/1.5em;
 }
 
 #content {
