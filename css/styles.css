@@ -64,13 +64,14 @@
 }
 
 body, html{
-  font: 16px/1.5em "Helvetica Neue", Helvetica, sans-serif;
+  font: 18px 'AvenirLT-Roman', "Helvetica Neue", Helvetica, sans-serif;
   height: 100%;
   width: 100%;
+  max-width: 100%;
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: "Helvetica Neue", Helvetica, sans-serif;
+  font-family: 'AvenirLT-Heavy', "Helvetica Neue", Helvetica, sans-serif;
   margin-bottom: 25px;
 }
 
@@ -110,18 +111,100 @@ blockquote {
   font-family: 'AvenirLT-Roman';
 }
 
-#footer {
-  font-size: 12px;
-  text-align: center;
+.main {
+  display: table;
+  width: 100%;
+  height: 100%;
 }
 
-#navigation {
-  margin-top: 30px;
-  font-size: 16px/1.5em;
+.xrow {
+  display: table-row;
+  width: 100%;
+  height: 100%;
 }
 
-#content {
+.sidebar {
+  display: table-cell;
+  max-width: 400px;
+  min-width: 150px;
+  width: 25%;
+  background-color: #24c0ab;
+}
+
+.blog {
+  display: table-cell;
+  width: 75%;
+  max-width: 700px;
+}
+
+.picture {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  background-image: url(https://1.gravatar.com/avatar/f0f9e304a6338bc568926ae913148c86?d=https%3A%2F%2Fidenticons.github.com%2Fbdbc6d1fe1e488858dbb497dae6fbe55.png&r=x&s=460);
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  margin-left: 50px;
+  margin-right: auto;
+  margin-top: 100px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, .8);
+  -webkit-box-shadow: 0 0 8px rgba(0, 0, 0, .8);
+  -moz-box-shadow: 0 0 8px rgba(0, 0, 0, .8);
+}
+
+.info {
+  width: 80px;
+  margin-top: 40px;
+  margin-left: 50px;
+  margin-right: auto;
+  text-align: left;
+  font-family: 'AvenirLT-Roman';
+  font-size: 18px;
+}
+
+.info a {
+  color: #ffffff;
+}
+
+.info div {
+    margin-bottom: 10px;
+}
+
+.keywords {
+  width: 60%;
+  font-family: 'AvenirLT-Roman';
+  font-size: 18px;
+  color: #a7f4ef;
+  margin-bottom: 40px;
+  margin-left: 50px;
+  margin-right: auto;
   margin-top: 10px;
+  text-align: left;
+}
+
+.footer {
+  position: absolute;
+  bottom: 5px;
+  width: 100%;
+  height: auto;
+  margin-left: 50px;
+  margin-right: auto;
+  text-align: left;
+  font-family: 'AvenirLT-Roman';
+  font-size: 12px;
+  color: #a7f4ef;
+}
+
+.footer p {
+  
+}
+
+.article {
+  margin-left: 50px;
+  width: 100%;
+  max-width: 700px;
 }
 
 table {
@@ -145,9 +228,4 @@ th, td {
 
 .infograph iframe {
   width: 100%;
-}
-
-#main {
-  margin-left: auto;
-  margin-right: auto;
 }

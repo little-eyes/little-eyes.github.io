@@ -6,7 +6,6 @@
     <meta charset="utf-8">
     <meta name="description" content="Jilong Liao's rambles on computer science in blog form." />
     <meta name="author" content="Jilong Liao">
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="/css/styles.css">
@@ -25,24 +24,28 @@
   </head>
 
   <body>
-    <div class="container-fluid">
-      <div class="row">
-          <div id="navigation" class="col-lg-1 col-lg-offset-3 col-xs-2">
-            <ul class="nav nav-pills nav-stacked">
-              <li id="home"><a href="/index.html">Home</a></li>
-              <li id="about"><a href="/about.html">About</a></li>
-              <li id="research"><a href="/research.html">Research</a></li>
-              <li id="tags"><a href="/tags.html">Tags</a></li>
-              <li id="rss"><a href="/atom.xml">RSS</a></li>
-            </ul>
-          </div>
-          <div id="content" class="col-lg-5 col-xs-10">
-            {{ content }}
-            <div id="footer">
-              <p>&copy; 2014 Jilong Liao. The opinions in this blog represent my personal opinions not my employer or any other organizations and institutes.</p>
+    <div class="main">
+      <div class="xrow">
+        <div class="sidebar">
+            <div class="picture"></div>
+            <div class="keywords">Software Engineer, Machine Learning, Research and Coffee</div>
+            <div class="info">
+              <div><a href="/index.html">Home</a></div>
+              <div><a href="/about.html">About</a></div>
+              <div><a href="/research.html">Research</a></div>
+              <div><a href="/tags.html">Tags</a></div>
+              <div><a href="/atom.xml">RSS</a></div>
             </div>
-          </div>
+            <div class="footer">
+              <p>&copy; 2014 Jilong Liao.</p>
+            </div>
+        </div>
+        <div class="blog">
+            {{ content }}
+        </div>
       </div>
     </div>
   </body>
 </html>
+
+
