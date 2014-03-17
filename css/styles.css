@@ -64,14 +64,14 @@
 }
 
 body, html{
-  font: 18px 'AvenirLT-Roman', "Helvetica Neue", Helvetica, sans-serif;
+  font: 18px 'AvenirLT-Roman', sans-serif, "Helvetica Neue", Helvetica;
   height: 100%;
   width: 100%;
   max-width: 100%;
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: 'AvenirLT-Heavy', "Helvetica Neue", Helvetica, sans-serif;
+  font-family: 'AvenirLT-Heavy', sans-serif, "Helvetica Neue", Helvetica;
   margin-bottom: 25px;
 }
 
@@ -102,14 +102,17 @@ h4 {
 
 img {
     border:none;
-    width: 100%;
-    text-align: center;
+    width: auto;
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
 }
 
 blockquote {
   border-left: 6px solid #6CD16C;
   font-size: 16px;
-  font-family: 'AvenirLT-Roman';
+  font-family: 'AvenirLT-Roman', sans-serif;
 }
 
 .main {
@@ -162,7 +165,7 @@ blockquote {
   margin-left: 50px;
   margin-right: auto;
   text-align: left;
-  font-family: 'AvenirLT-Roman';
+  font-family: 'AvenirLT-Roman', sans-serif;
   font-size: 18px;
 }
 
@@ -176,7 +179,7 @@ blockquote {
 
 .keywords {
   width: 60%;
-  font-family: 'AvenirLT-Roman';
+  font-family: 'AvenirLT-Roman', sans-serif;
   font-size: 18px;
   color: #a7f4ef;
   margin-bottom: 40px;
@@ -194,7 +197,7 @@ blockquote {
   margin-left: 50px;
   margin-right: auto;
   text-align: left;
-  font-family: 'AvenirLT-Roman';
+  font-family: 'AvenirLT-Roman', sans-serif;
   font-size: 12px;
   color: #a7f4ef;
 }
