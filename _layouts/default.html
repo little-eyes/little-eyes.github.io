@@ -105,6 +105,11 @@ blockquote {
   -moz-box-shadow: 0 0 8px rgba(0, 0, 0, .8);
 }
 
+.picture img {
+  opacity: 0;
+  filter: alpha(opacity=0);
+}
+
 .info {
   width: 80px;
   margin-top: 40px;
@@ -221,7 +226,7 @@ th, td {
     <div class="main">
       <div class="xrow">
         <div class="sidebar">
-            <div class="picture"></div>
+            <div class="picture"><img src="/images/logo.png" /></div>
             <div class="keywords">Software Engineer, Machine Learning, Research and Coffee</div>
             <div class="info">
               <div><a href="/index.html">Home</a></div>
