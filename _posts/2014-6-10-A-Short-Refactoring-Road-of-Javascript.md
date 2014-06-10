@@ -92,8 +92,8 @@ A simple solution is to make a copy of the context to a variable so that the con
 
 This looks like a good solution and it works well. But the only thing I don't like is the duplicaltion. I have to make a copy of the context almost everywhere when I meet a callback function. Moreover, if you have multiple layer nested callback, this make life even worse. Thanks to the post, *[Understanding Scope and Context in Javascript][3]*, I could use an even better way which is referred as `call and apply`. See the following code as an example.
 
-	if(!('bind' in Function.prototype)){
-	    Function.prototype.bind = function(){
+	if(!('bind' in MapServiceHelper.prototype)){
+	    MapServiceHelper.prototype.bind = function(){
 	        var fn = this, context = arguments[0], args = Array.prototype.slice.call(arguments, 1);
 	        return function(){
 	            return fn.apply(context, args.concat(Array.prototype.slice.call(arguments)));
