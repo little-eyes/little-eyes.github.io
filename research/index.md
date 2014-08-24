@@ -43,4 +43,4 @@ Mobile computing, machine learning, distributed system, big data.
 [6]: http://lanterns.eecs.utk.edu/publications/mass_2013_coverage.pdf
 [7]: http://lanterns.eecs.utk.edu/publications/cscn_2012_smartdiary.pdf
 [8]: http://lanterns.eecs.utk.edu/Papers/sensys_demo_uno.pdf
-[9]: #
+[9]: http://ieeexplore.ieee.org/xpl/articleDetails.jsp?arnumber=6861972
