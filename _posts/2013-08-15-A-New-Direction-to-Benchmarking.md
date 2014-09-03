@@ -2,6 +2,7 @@
 title: "Introducing ReCapture - A New Direction to Benchmark Smartphones"
 layout: post
 tags: android, benchmark, smartphone
+category: technology
 ---
 
 `Benchmarking` has been studying for a long period of time, but most of the concentration has been put in PC field. People want to have a sense of the performance level of a PC or server from the benchmark results, so multiple different type of benchmarking method has been developed, such as [SPEC][1]. Some classic program to push the CPU performance is super-pi, which is to solve the value of pi as accurate as possible.

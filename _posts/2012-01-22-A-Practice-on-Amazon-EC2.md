@@ -2,6 +2,7 @@
 title: "A Practice on Amazon EC2 (Ubuntu 11.10 Server) with LAMP Server and SVN Server"
 layout: post
 tags: Amazon EC2, LAMP, Linux, SVN
+category: technology
 ---
 
 Amazon EC2 provides a decent solution to highly scalable server and large data set processing. This little blog talks about the very beginning steps to make an Amazon EC2 server instance running with LAMP and SVN services. I will make it concise and expressive.

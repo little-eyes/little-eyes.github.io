@@ -2,6 +2,7 @@
 title: "Be an Early Bird towards Job Hunting"
 layout: post
 tags: job, software engineer
+category: technology
 ---
 
 Recently, some friends ask me about how to prepare for the job hunting. Due to their early stage down to their career seeking path, I feel many of my personal experience may help them, and the readers as well. Of course, this article is suitable for those who are looking for _software engineer_ related work.

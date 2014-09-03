@@ -2,6 +2,7 @@
 title: "Clustering Data Set Greater than Your Memory Using Mahout"
 layout: post
 tags: clustering, data mining, big data, mahout, hadoop, map/reduce, MySQL
+category: technology
 ---
 
 > I thought I would never touch data size larger than my workstation's memory. But I was wrong!

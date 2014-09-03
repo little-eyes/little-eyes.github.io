@@ -2,6 +2,7 @@
 title: "A Short Refactoring Road of Javascript"
 layout: post
 tags: javascript, design pattern
+category: technology
 ---
 
 > Seek and find.

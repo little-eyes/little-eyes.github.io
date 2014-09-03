@@ -1,7 +1,8 @@
----
+﻿---
 title: "Some Tips to Make Your Code Looks Professional"
 layout: post
 tags: job, software engineer
+category: technology
 ---
 
 A few months ago, I was preparing my internship interview for some companies. With my friend's help, I improved a lot before I started my interview. Then I spent a whole summer writting program and integrating into a large code base. After the internship process, I have some feelings about my previous bad (or school-like) coding style and I hope my experience in this article can help you improve yourself.

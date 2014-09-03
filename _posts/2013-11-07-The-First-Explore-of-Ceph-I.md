@@ -2,6 +2,7 @@
 title: "The First Explore of Ceph - I"
 layout: post
 tags: big data, object storage, distributed system
+category: technology
 ---
 
 > What if we do not use HDFS ...

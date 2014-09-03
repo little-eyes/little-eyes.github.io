@@ -2,6 +2,7 @@
 title: "How Do We Access a Sensor?"
 layout: post
 tags: html, javascript, mobile app, sensor
+category: technology
 ---
 
 I am thinking of writing this blog just because I was thinking of this question last night.

@@ -2,6 +2,7 @@
 title: "Restudy C++ and C++11"
 layout: post
 tags: programming, c++
+category: technology
 ---
 
 > Oh! C++ ... Yes! C++ ...

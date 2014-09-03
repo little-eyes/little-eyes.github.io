@@ -2,6 +2,7 @@
 title: "In Love with Big Data Analysis - A Toolchain Summary"
 layout: post
 tags: big data
+category: technology
 ---
 
 > One must have good tools to do good jobs

@@ -2,6 +2,7 @@
 title: "A Memo to Deploy Hadoop Cluster in Hydra Lab"
 layout: post
 tags: hadoop, deployment, big data
+category: technology
 ---
 
 > This is an article for the UTK EECS students who want to use Hydra lab (or similar school-operated lab) to set up a Hadoop cluster and process big data.

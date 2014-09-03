@@ -2,6 +2,7 @@
 title: "A Reading List for Windows Modern Apps Development"
 layout: post
 tags: windows, smart phone, apps
+category: technology
 ---
 
 Recently I have been working on some investigation of modern apps development on Windows platform, so I think it might be necessary to have a reading list for the new developers to start their journey. 

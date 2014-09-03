@@ -2,6 +2,7 @@
 title: "How About the 911 Calls in Seattle"
 layout: post
 tags: data analysis
+category: technology
 ---
 
 > Many of us would like to understand a city through its culture, business, people, and history. But here, I would like see a city that I am living through a new angle by looking at the 911 calls in seattle area. 
