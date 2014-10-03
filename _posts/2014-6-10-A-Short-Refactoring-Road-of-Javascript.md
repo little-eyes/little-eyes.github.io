@@ -104,7 +104,7 @@ This looks like a good solution and it works well. But the only thing I don't li
 
 In this way, I can use any callback funtion with a suffix `.bind(this)` to force the context to the one I need. Finally, I change it to the following style.
 
- 	getCurrentLocation: function () {
+	getCurrentLocation: function () {
 		if (navigator.geolocation) {
 			navigator.geolocation.getCurrentPosition(this.callbackGetCurrentLocation.bind(this));
 		} else {

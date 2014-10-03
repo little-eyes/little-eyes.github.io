@@ -6,11 +6,13 @@
     <meta name="description" content="Jilong Liao's rambles on computer science in blog form." />
     <meta name="author" content="Jilong Liao">
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/monokai_sublime.css">
     <style>
         @import url(/images/logo.png);
+        @import url(http://fonts.googleapis.com/css?family=Roboto:300,300italic);
 
         body, html {
-            font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+            font-family: "Roboto", "Book Antiqua", Palatino, serif;
             font-size: 13pt;
             height: 100%;
             width: 100%;
@@ -217,25 +219,13 @@
             background-color: yellow;
         }
     </style>
-
-    <script type="text/javascript">
-        var _gaq = _gaq || [];
-        _gaq.push(['_setAccount', 'UA-32402817-1']);
-        _gaq.push(['_trackPageview']);
-
-        (function () {
-            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-        })();
-    </script>
 </head>
 
 <body>
     <div class="main">
         <div class="xrow">
             <div class="sidebar">
-                <div class="picture"><img src="/images/logo.png" /></div>
+                <div class="picture"><a href="/index.html"><img src="/images/logo.png" /></a></div>
                 <div class="name">Jilong Liao</div>
                 <div class="keywords">Software Engineer, Machine Learning, Research and Coffee</div>
                 <div class="info">
@@ -254,5 +244,20 @@
             </div>
         </div>
     </div>
+
+    <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-32402817-1']);
+        _gaq.push(['_trackPageview']);
+
+        (function () {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/highlight.min.js"></script>
+    <script type="text/javascript">hljs.initHighlightingOnLoad();</script>
 </body>
 </html>
