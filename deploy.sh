@@ -28,4 +28,4 @@ echo 'Switch to source branch ...'
 git checkout source
 
 echo 'Delete master branch ...'
-git branch -D msater 
+git branch -D master 
