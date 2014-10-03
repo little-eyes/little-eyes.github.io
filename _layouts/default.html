@@ -1,0 +1,263 @@
+﻿<!doctype html>
+<html>
+<head>
+    <title>{{ page.title }}</title>
+    <meta charset="utf-8">
+    <meta name="description" content="Jilong Liao's rambles on computer science in blog form." />
+    <meta name="author" content="Jilong Liao">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/monokai_sublime.css">
+    <style>
+        @import url(/images/logo.png);
+        @import url(http://fonts.googleapis.com/css?family=Roboto:300,300italic);
+
+        body, html {
+            font-family: "Roboto", "Book Antiqua", Palatino, serif;
+            font-size: 13pt;
+            height: 100%;
+            width: 100%;
+            max-width: 100%;
+            background: #fcfcfa;
+        }
+
+        p, ul, ol, table, dl, hr {
+            margin-bottom: 25px;
+        }
+
+        h1 {
+            font-size: 26pt;
+            font-weight: bold;
+            text-align: left;
+            margin-bottom: 15px;
+        }
+
+        h2 {
+            font-size: 20pt;
+            font-weight: bold;
+            text-align: left;
+            margin-bottom: 15px;
+        }
+
+        h3 {
+            font-size: 18pt;
+        }
+
+        h4 {
+            font-size: 16pt;
+        }
+
+        img {
+            border: none;
+            width: auto;
+            max-width: 100%;
+            margin-left: auto;
+            margin-right: auto;
+            display: block;
+        }
+
+        blockquote {
+            border-left: 6px solid #6CD16C;
+            font-size: 13pt;
+            font-style: italic;
+        }
+
+        .main {
+            width: 100%;
+            height: 100%;
+        }
+
+        .xrow {
+            width: 100%;
+            height: 100%;
+        }
+
+        .sidebar {
+            max-width: 400px;
+            min-width: 150px;
+            width: 25%;
+            height: 100%;
+            background-color: #24c0ab;
+            float: left;
+            position: fixed;
+            bottom: 0;
+        }
+
+        .blog {
+            width: 75%;
+            max-width: 700px;
+            margin-left: 25%;
+        }
+
+        .picture {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            -webkit-border-radius: 50%;
+            -moz-border-radius: 50%;
+            background-image: url(/images/logo.png);
+            background-position: 50% 50%;
+            background-repeat: no-repeat;
+            margin-left: 50px;
+            margin-right: auto;
+            margin-top: 100px;
+            box-shadow: 0 0 8px rgba(0, 0, 0, .8);
+            -webkit-box-shadow: 0 0 8px rgba(0, 0, 0, .8);
+            -moz-box-shadow: 0 0 8px rgba(0, 0, 0, .8);
+        }
+
+            .picture img {
+                opacity: 0;
+                filter: alpha(opacity=0);
+            }
+
+        .info {
+            width: 80px;
+            margin-top: 40px;
+            margin-left: 50px;
+            margin-right: auto;
+            text-align: left;
+            font-size: 12pt;
+        }
+
+            .info a {
+                color: #ffffff;
+            }
+
+            .info div {
+                margin-bottom: 10px;
+            }
+
+        .keywords {
+            width: 60%;
+            font-size: 12pt;
+            color: #a7f4ef;
+            margin-bottom: 40px;
+            margin-left: 50px;
+            margin-right: auto;
+            margin-top: 10px;
+            text-align: left;
+        }
+
+        .name {
+            font-size: 18pt;
+            color: #ffffff;
+            margin-bottom: 20px;
+            margin-top: 20px;
+            margin-left: 50px;
+            margin-right: auto;
+            text-align: left;
+        }
+
+        .footer {
+            position: absolute;
+            bottom: 5px;
+            width: 100%;
+            height: auto;
+            margin-left: 50px;
+            margin-right: auto;
+            text-align: left;
+            font-size: 10pt;
+            color: #a7f4ef;
+        }
+
+        .article {
+            margin-left: 50px;
+            width: 100%;
+            max-width: 700px;
+        }
+
+        table {
+            border-top: 3px solid #000;
+            border-bottom: 3px solid #000;
+        }
+
+        thead {
+            border-bottom: 2px solid #000;
+        }
+
+        tr, th, td {
+            padding-top: 2px;
+            padding-bottom: 2px;
+        }
+
+        th, td {
+            padding-left: 25px;
+            padding-right: 25px;
+        }
+
+        .infograph iframe {
+            width: 100%;
+        }
+
+        .about {
+            margin-left: 50px;
+        }
+
+        .research {
+            margin-left: 50px;
+        }
+
+        .tags {
+            margin-left: 50px;
+        }
+
+        .charts {
+            margin-left: auto;
+            margin-right: auto;
+            width: 100%;
+        }
+
+        .separator {
+            margin-top: 40px;
+            margin-bottom: 40px;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+        }
+
+        ::selection {
+            background-color: yellow;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main">
+        <div class="xrow">
+            <div class="sidebar">
+                <div class="picture"><a href="/index.html"><img src="/images/logo.png" /></a></div>
+                <div class="name">Jilong Liao</div>
+                <div class="keywords">Software Engineer, Machine Learning, Research and Coffee</div>
+                <div class="info">
+                    <div><a href="/index.html">Home</a></div>
+                    <div><a href="/about">About</a></div>
+                    <div><a href="/research">Research</a></div>
+                    <div><a href="/journey">Journey</a></div>
+                    <div><a href="/atom.xml">RSS</a></div>
+                </div>
+                <div class="footer">
+                    <p>&copy; 2014 Jilong Liao.</p>
+                </div>
+            </div>
+            <div class="blog">
+                {{ content }}
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-32402817-1']);
+        _gaq.push(['_trackPageview']);
+
+        (function () {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/highlight.min.js"></script>
+    <script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+</body>
+</html>

@@ -1,0 +1,6 @@
+{% assign time = content | strip_html | number_of_words | divided_by:120 | rounded%}
+{% if time < 2 %}
+	1 minute read
+{% else %}
+	{{ time }} minutes read
+{% endif %}
