@@ -1,7 +1,7 @@
 echo 'Start deploying ...'
 
 echo 'Clean up remote/master branch ...'
-git branch -D master
+git push origin :master
 
 echo 'Create local/master branch ...'
 git branch master
