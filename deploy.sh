@@ -28,4 +28,7 @@ echo 'Switch to source branch ...'
 git checkout source
 
 echo 'Delete master branch ...'
-git branch -D master 
+git branch -D master
+
+echo 'Pull and merge remote/source branch ...'
+git pull origin source 
