@@ -1,34 +1,34 @@
-echo 'Start deploying ...'
+echo -e '\e[1;32mStart deploying ...\e[0m'
 
-echo 'Clean up remote/master branch ...'
+echo -e '\e[1;32mClean up remote/master branch ...\e[0m'
 git push origin :master
 
-echo 'Create local/master branch ...'
+echo -e '\e[1;32mCreate local/master branch ...\e[0m'
 git branch master
 
-echo 'Switch to master branch ...'
+echo -e '\e[1;32mSwitch to master branch ...\e[0m'
 git checkout master
 
-echo 'Build the site ...'
+echo -e '\e[1;32mBuild the site ...\e[0m'
 jekyll build
 
-echo 'Re-map site directory to the root ...'
+echo -e '\e[1;32mRe-map site directory to the root ...\e[0m'
 git filter-branch --subdirectory-filter _site -- --all
 mv _site/* .
 rm -r _site
 
-echo 'Commit changes to Git ...'
+echo -e '\e[1;32mCommit changes to Git ...\e[0m'
 git add *
 git commit -am "deploy"
 
-echo 'Push to Github and deploy ...'
+echo -e '\e[1;32mPush to Github and deploy ...\e[0m'
 git push origin master
 
-echo 'Switch to source branch ...'
+echo -e '\e[1;32mSwitch to source branch ...\e[0m'
 git checkout source
 
-echo 'Delete master branch ...'
+echo -e '\e[1;32mDelete master branch ...\e[0m'
 git branch -D master
 
-echo 'Pull and merge remote/source branch ...'
+echo -e '\e[1;32mPull and merge remote/source branch ...\e[0m'
 git pull origin source 
