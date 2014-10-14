@@ -3,7 +3,7 @@ layout: default
 ---
 <div class="article">
     <h1>{{ page.title }}</h1>
-    <span class="glyphicon glyphicon-calendar"></span><time>{{ page.date | date: "%b %d, %Y" }}</time>&nbsp;&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-book"></span>{% include word_count.html %}
+    <span class="ion-android-calendar icon"></span><span class="time">{{ page.date | date: "%b %d, %Y" }}</span><span class="ion-android-stopwatch icon"></span><span class="count">{% include word_count.html %}</span>
     <hr />
     {{ content }}
 
