@@ -1,4 +1,0 @@
-Sitemap: http://little-eyes.github.com/sitemap.xml
-
-User-agent: *
-Disallow: /images/
