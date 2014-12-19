@@ -14,6 +14,8 @@ Last month I was busy to test one of my idea that help people plan their daily t
 
 As a guy always trying to cook better data, I started a simple refactoring three days ago. Since I am a classic layman of Javascript design pattern, I decide to read a little bit about the design pattern in Javascript. This book, *[Learning Javascript Design Patterns][2]*, is a very good source to quickly grasp the key concept and start your refactoring road. Something called `prototype pattern` comes to my mind. Sounds interesting, let's have a look at what it does.
 
+<!-- more -->
+
 Previously, a piece of my code looks like the following block.
 
 ```

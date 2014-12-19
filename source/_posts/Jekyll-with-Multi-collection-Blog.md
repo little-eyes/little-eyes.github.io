@@ -16,6 +16,8 @@ When we host our blogs on Github, I guess most of us use Jekyll. Before I realiz
 
 I searched the web for a little while and figure out this could be easily solved, but also a little challenging when handle some tricky cases with Github policies (we will get there later). Jekyll does a very good job for you to make your blog multi-categories. Simply put a new directory under your Jekyll site root directory would work. Inside that directory it needs to contains an `index.html` file and `_posts` folder. The `_posts` folder is the place you can put all your post belonging to this category in the future. After that, you will have a directory structure like the following.
 
+<!-- more -->
+
 ```
 + MySite
   - index.html

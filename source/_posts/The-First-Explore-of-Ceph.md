@@ -15,6 +15,8 @@ Recently I was working on a data placement project related to high performance c
 
 The way we investigate the Ceph is to deploy a testbed on Amazon AWS environment. This process is not easy at all, it involves many tricky points during the initial deployment. This article intends to make it easy for you to deploy Ceph inside AWS environment.
 
+<!-- more -->
+
 ## Testbed Pre-deployment
 
 Before we jump into the exact steps, the node types of Ceph worth our attention. Admin-node, MDS, MON, and OSD are the four types of nodes in Ceph. Admin-node is the place you initiate all the deployment commands; and MDS is short for metadata containing all the metadata of the objects; and MON is short for monitor which tracks the system; and OSD is the object storage device which contains the physical data objects. If you are not familiar with Ceph, I would suggest you to read through the following articles.

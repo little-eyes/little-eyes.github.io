@@ -17,6 +17,8 @@ Hydra lab is one of the most frequent use lab in the EECS department. The comput
 
 Besides the hardware details, several operating system (Ubuntu 12.04 LTS) deployment is very useful to help us quickly deploy a Hadoop cluster.
 
+<!-- more -->
+
 * First, the */home/netid* directory is actually a networked file system directory. In other words, if you copy a file to /home/netid/ directory via Hydra2 machine, then every other machine can access the data from the *same* directory path.
 
 * Second, the /home/netid directory has quota limitation that the maximum storage is 2GB per user. So your home directory is not enough to support a Hadoop cluster which may contain data in terrabyte size. However, */local_scratch* is the per-machine directory that you can use as much as you want. Apparently, this directory is shared with others, but you can reach 500GB disk size if necessary.
