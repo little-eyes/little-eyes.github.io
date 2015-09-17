@@ -65,6 +65,10 @@ pagination_dir: page
 ## Themes: http://hexo.io/themes/
 theme: next
 
+since: 2010
+
+disqus_shortname: littleeyes
+
 # avatar
 avatar: /images/me.jpg
 

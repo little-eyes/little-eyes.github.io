@@ -11,6 +11,7 @@ I graduated from University of Tennessee. I think, I research, I code, I analyze
 Mobile computing, machine learning, distributed system, big data.
 
 ## Recent Publications
+* Y. Yao, S. Xiong, J. Liao, M. Berry, H. Qi, and Q. Cao. Identifying Frequent Flows in Large Datasets through Probabilistic Bloom Filters, _IEEE/ACM IWQoS_, 2015, to appear. ([PDF][12])
 
 * J. Liao, Z. Wang, Q. Cao, and H. Qi. Smart Diary: A Smartphone-based Framework for Inference and Prediction of Users, _IEEE Sensors Journal_, 2014, accepted. ([PDF][9])
 
@@ -50,3 +51,4 @@ Mobile computing, machine learning, distributed system, big data.
 [9]: http://ieeexplore.ieee.org/xpl/articleDetails.jsp?arnumber=6861972
 [10]: https://github.com/little-eyes
 [11]: /images/about.png
+[12]: #

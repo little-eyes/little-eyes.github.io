@@ -87,5 +87,5 @@ angular.module("myApp")
 }]);
 ```
 
-###P.S
-If you put controller `A` and `B` in different files, you need to understand the difference of the code a little: `angular.module("myApp", [])` creates an app module while `angular.module("myApp")` refers to the existing app module.
+#P.S
+> If you put controller `A` and `B` in different files, you need to understand the difference of the code a little: `angular.module("myApp", [])` creates an app module while `angular.module("myApp")` refers to the existing app module.
