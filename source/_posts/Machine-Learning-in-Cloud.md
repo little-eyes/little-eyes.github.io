@@ -1,4 +1,4 @@
-title: "Weekend fun with Azure Machine Learning"
+title: "Weekend Fun with Azure Machine Learning"
 layout: post
 tags:
 - machine learning
