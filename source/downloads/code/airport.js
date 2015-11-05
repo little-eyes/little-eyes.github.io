@@ -46,10 +46,7 @@ $(document).ready(function () {
         categories: departurePopularity.data.map(function (d) { return d.ORIGIN; })
       },
       yAxis: {
-        min: 0,
-        title: {
-          text: 'Total fruit consumption'
-        }
+        min: 0
       },
       legend: {
         reversed: true
@@ -83,6 +80,16 @@ $(document).ready(function () {
   });
 
   $.when(ajax3, ajax4).done(function () {
+    // data merge.
+    var dataset = {}, i;
+    for (i = 0; i < departureDelay.data.length; i++) {
+      dataset[departureDelay.data[i].ORIGIN] = dataset[departureDelay.data[i].ORIGIN] || {};
+      dataset[arrivalDelay.data[i].DEST] = dataset[arrivalDelay.data[i].DEST] || {};
+
+      dataset[departureDelay.data[i].ORIGIN].departure = departureDelay.data[i];
+      dataset[arrivalDelay.data[i].DEST].arrival = arrivalDelay.data[i];
+    }
+
     new Highcharts.Chart({
       chart: {
         type: 'bar',
@@ -92,13 +99,10 @@ $(document).ready(function () {
         text: 'Top 15 Departure and Arrival Airports\'s Delay Ratio'
       },
       xAxis: {
-        categories: departureDelay.data.map(function (d) { return d.ORIGIN; })
+        categories: Object.keys(dataset)
       },
       yAxis: {
-        min: 0,
-        title: {
-          text: 'Total fruit consumption'
-        }
+        min: 0
       },
       legend: {
         reversed: true
@@ -110,10 +114,10 @@ $(document).ready(function () {
       },
       series: [{
         name: 'Departure Delay Ratio',
-        data: departureDelay.data.map(function (d) { return Number(d.Ratio); })
+        data: Object.keys(dataset).map(function (d) { return Number(dataset[d].departure.Ratio); })
       }, {
         name: 'Arrival Delay Ratio',
-        data: arrivalDelay.data.map(function (d) { return Number(d.Ratio); })
+        data: Object.keys(dataset).map(function (d) { return Number(dataset[d].arrival.Ratio); })
       }]
     });
 
@@ -126,7 +130,7 @@ $(document).ready(function () {
         text: 'Airport Departure Delay Breakdown'
       },
       xAxis: {
-        categories: departureDelay.data.map(function (d) { return d.ORIGIN; })
+        categories: Object.keys(dataset)
       },
       yAxis: {
         min: 0,
@@ -145,16 +149,16 @@ $(document).ready(function () {
       },
       series: [{
         name: 'Weather',
-        data: departureDelay.data.map(function (d) { return Number(d.WeatherDelayRatio); })
+        data: Object.keys(dataset).map(function (d) { return Number(dataset[d].departure.WeatherDelayRatio); })
       }, {
         name: 'NAS',
-        data: departureDelay.data.map(function (d) { return Number(d.NasDelayRatio); })
+        data: Object.keys(dataset).map(function (d) { return Number(dataset[d].departure.NasDelayRatio); })
       }, {
         name: 'Security',
-        data: departureDelay.data.map(function (d) { return Number(d.SecurityDelayRatio); })
+        data: Object.keys(dataset).map(function (d) { return Number(dataset[d].departure.SecurityDelayRatio); })
       }, {
         name: 'Late Aircraft',
-        data: departureDelay.data.map(function (d) { return Number(d.LateAircraftDelayRatio); })
+        data: Object.keys(dataset).map(function (d) { return Number(dataset[d].departure.LateAircraftDelayRatio); })
       }]
     });
 
@@ -167,7 +171,7 @@ $(document).ready(function () {
         text: 'Airport Arrival Delay Breakdown'
       },
       xAxis: {
-        categories: arrivalDelay.data.map(function (d) { return d.DEST; })
+        categories: Object.keys(dataset)
       },
       yAxis: {
         min: 0,
@@ -186,49 +190,19 @@ $(document).ready(function () {
       },
       series: [{
         name: 'Weather',
-        data: arrivalDelay.data.map(function (d) { return Number(d.WeatherDelayRatio); })
+        data: Object.keys(dataset).map(function (d) { return Number(dataset[d].arrival.WeatherDelayRatio); })
       }, {
         name: 'NAS',
-        data: arrivalDelay.data.map(function (d) { return Number(d.NasDelayRatio); })
+        data: Object.keys(dataset).map(function (d) { return Number(dataset[d].arrival.NasDelayRatio); })
       }, {
         name: 'Security',
-        data: arrivalDelay.data.map(function (d) { return Number(d.SecurityDelayRatio); })
+        data: Object.keys(dataset).map(function (d) { return Number(dataset[d].arrival.SecurityDelayRatio); })
       }, {
         name: 'Late Aircraft',
-        data: arrivalDelay.data.map(function (d) { return Number(d.LateAircraftDelayRatio); })
+        data: Object.keys(dataset).map(function (d) { return Number(dataset[d].arrival.LateAircraftDelayRatio); })
       }]
     });
   });
-
-  $('#airportDelayTimeline').bind('mousemove touchmove', function (e) {
-    var chart,
-    point,
-    i;
-
-    for (i = 0; i < Highcharts.charts.length; i = i + 1) {
-      chart = Highcharts.charts[i];
-      e = chart.pointer.normalize(e); // Find coordinates within the chart
-      point = chart.series[0].searchPoint(e, true); // Get the hovered point
-
-      if (point) {
-        point.onMouseOver(); // Show the hover marker
-        chart.tooltip.refresh(point); // Show the tooltip
-        chart.xAxis[0].drawCrosshair(e, point); // Show the crosshair
-      }
-    }
-  });
-
-  function syncExtremes(e) {
-    var thisChart = this.chart;
-
-    Highcharts.each(Highcharts.charts, function (chart) {
-      if (chart !== thisChart) {
-        if (chart.xAxis[0].setExtremes) { // It is null while updating
-          chart.xAxis[0].setExtremes(e.min, e.max);
-        }
-      }
-    });
-  };
 
   var monthlyAirportDepDelay, monthlyAirportArrDelay;
   var ajax5 = $.ajax({
