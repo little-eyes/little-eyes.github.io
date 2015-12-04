@@ -85,3 +85,9 @@ deploy:
   repo: https://github.com/little-eyes/little-eyes.github.io.git
   branch: master
   message: "normal deployment"
+
+tag_generator:
+  per_page: 10
+
+category_generator:
+  per_page: 10
