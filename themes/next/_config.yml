@@ -5,7 +5,7 @@ menu:
   about: /about
   archives: /archives
   tags: /tags
-  #commonweal: /404.html
+  zh: /zh
 
 
 # Enable/Disable menu icons.
@@ -21,7 +21,7 @@ menu_icons:
   categories: th
   tags: tags
   archives: archive
-  commonweal: heartbeat
+  zh: heartbeat
 
 
 # Place your favicon.ico to /source directory.
