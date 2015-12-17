@@ -37,6 +37,8 @@
             </time>
           </span>
 
+          <span class="post-count">&nbsp; | &nbsp;{{ wordcount(post.content) }}&nbsp;words</span>
+
           {% if post.categories and post.categories.length %}
             <span class="post-category" >
               &nbsp; | &nbsp; {{ __('post.in') }}

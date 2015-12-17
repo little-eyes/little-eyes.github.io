@@ -1,8 +1,3 @@
----
-layout: page
-title: About me
----
-
 I graduated from University of Tennessee. I think, I research, I code, I analyze data and I love coffee. Most of my project has been published on my [Github][10]. Since Jan 2014, I work at Microsoft as a Software Engineer in Windows & Devices Group's core data science team.
 
 ![][11]
