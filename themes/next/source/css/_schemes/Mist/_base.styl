@@ -1,14 +1,39 @@
+@import url(https://fonts.googleapis.com/css?family=Raleway:300,400,900);
+
 // Tags
 // --------------------------------------------------
-h1, h2, h3, h4, h5, h6 { margin: 20px 0 10px; }
+h1, h2, h3, h4, h5, h6 {
+  margin: 20px 0 10px;
+  font-weight: 400;
+}
 
-p { margin: 0 0 25px 0; }
+body {
+  font-weight: 300;
+}
+
+strong {
+  font-weight: 400;
+}
+
+.posts-expand .post-header .post-title {
+  font-weight: 900;
+}
+
+p { margin: 0 0 20px 0; }
 
 a { border-bottom-color: $grey-light; }
 
 hr {
-  margin: 20px 0;
+  margin: 15px 0;
   height: 2px;
 }
 
 ul li { list-style: circle; }
+
+.post code {
+  padding: 2px 4px;
+  font-size: 85%;
+  color: #c7254e;
+  background-color: #f9f2f4;
+  border-radius: 4px;
+}
