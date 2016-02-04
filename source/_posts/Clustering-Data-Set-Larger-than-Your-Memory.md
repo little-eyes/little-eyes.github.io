@@ -77,7 +77,7 @@ In order to solve this problem, I wrote a dedicated translation program to conve
 
 If you original store your raw data in the MySQL database (just like what I did), you have to involve an extra step to export data from your database to a raw csv file. If possible, try the following command:
 
-```
+```sql
 select * from [your table] into outfile [your csv file]
 fields terminated by "," line terminated by "\n";
 ```
@@ -88,13 +88,13 @@ Once you have the sequence file in your local disk, you can run Mahout's k-means
 
 Suppose you have the sequence file called raw.seq, and you have your Hadoop cluster running. You can create a directory store your output clustering result:
 
-```
+```sh
 $ hadoop dfs -mkdir /user/hduser/kmeans-results
 ```
 
 An interesting thing is that the input file can be locally stored! You don't need to push your input sequence file into HDFS. So you just calling the kmeans clustering through command line:
 
-```
+```sh
 $ mahout kmeans -i raw.seq -o /user/hduser/kmeans-results/output
 -c /user/hduser/initial-clusters
 -dm org.apache.mahout.common.distance.CosineDistanceMeasure
@@ -103,7 +103,7 @@ $ mahout kmeans -i raw.seq -o /user/hduser/kmeans-results/output
 
 If you want to know the full set of command of k-means, you can just type:
 
-```
+```sh
 $ mahout kmeans -h
 ```
 

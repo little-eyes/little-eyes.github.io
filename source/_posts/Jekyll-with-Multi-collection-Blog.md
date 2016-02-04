@@ -34,7 +34,7 @@ I searched the web for a little while and figure out this could be easily solved
 
 This would make your site's URL functioning well, however, it lacks of the ability to filter your blogs. To address this issue, I use the `category` keyword as the collection separator inside the markdown file. So you might want to add the category information in each of your blog. For instance,
 
-```
+```markdown
 ---
 title: "Jekyll with Multi-collections"
 layout: post
@@ -45,7 +45,7 @@ category: technology
 
 To filter out the different category, you can write whatever ruby code you feel comfortable. I found [Adam's code][1] is very clean and well designed, which I could borrow for this purpose in my site. For convenience purpose, I put the code as bellow. You save this code to your `_plugins` folder.
 
-```
+```ruby
 module Jekyll
   class WithinCategoryPostNavigation < Generator
     def generate(site)
@@ -74,7 +74,7 @@ end
 
 Use this Jekyll plugin is very simple, because it makes all the blog a dictionary which indexed by the `category`. As an example, the code is blow.
 
-```
+```javascript
 <script language="javascript">
 window.location.href = "{ { site.categories['technology'].first.url } }"
 </script>
@@ -84,7 +84,7 @@ After you finish this, you can test it perfectly locally. However when you publi
 
 An interesting compromise Github provides is that you can push your `_site` directly to the `master` branch where you can play any plugins as you want. So instead of maintain the code in the `master` branch, I switch it to `source` branch but use `master` branch to push `_site`. This is a little complicated because you need to manipulate the repository between remote and local back-and-forth. So I prepare a bash script that could easily do this job.
 
-```
+```sh
 cleanup() {
   echo -e '\e[1;32mSwitch to source branch ...\e[0m'
   git checkout source

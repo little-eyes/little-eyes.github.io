@@ -22,7 +22,7 @@ Of course! Sign up those whole bunch of services like Amazon EC2, S3...Well, you
 
 When your instance is ready to use, we will use SSH to login. Since the design choice requires the key is kept not so public that you'd better to change rights for the key file. In Ubuntu, try the following command in your Terminal:
 
-```
+```sh
 $ sudo chmod 400 amazon-ec2.pem
 ```
 
@@ -30,7 +30,7 @@ After you get it done, you can login to your Amazon EC2 instance via the public 
 
 Then you can login the instance with your key.
 
-```
+```sh
 $ ssh -i amazon-ec2.pem ubuntu@ec2-192-168-10-90.compute-1.amazonaws.com
 ```
 
@@ -40,7 +40,7 @@ Basically, you should use `ubuntu` as the user name when login.
 
 Once you login, things become easy as you do your local Ubuntu Server. Apparently, you need the following software.
 
-```
+```sh
 $ sudo apt-get install lamp-server^
 $ sudo apt-get install phpmyadmin
 ```

@@ -18,7 +18,7 @@ As a guy always trying to cook better data, I started a simple refactoring three
 
 Previously, a piece of my code looks like the following block.
 
-```
+```javascript
 function getCurrentLocation() {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(centerMapByPosition);
@@ -52,7 +52,7 @@ function getCurrentLocation() {
 
 This kind of code is a typical guy who learned Javascript for an hour could write. But why it does not a good code? Simply for two reason: 1) it does not look pretty; 2) it is not modulized which causes a lot of trouble to unit test. So how does this `prototype pattern` could help? Let's see what we could do to change the above code into a prototype pattern code.
 
-```
+```javascript
 var MapServiceHelper = function () {
   var map = null;
   var geocoder = null;
@@ -80,7 +80,7 @@ MapServiceHelper.prototype = {
 
 Thereafter, we can use the MapServiceHelper in the following way.
 
-```
+```javascript
 $(doucument).ready(function () {
   var mapServiceHelper = new MapServiceHelper();
   mapServiceHelper.getCurrentLocation();
@@ -94,7 +94,7 @@ Unfortunately, you cannot althougth I thought so and used that way. The key issu
 
 A simple solution is to make a copy of the context to a variable so that the context can be exposed to the callback function.
 
-```
+```javascript
 function A () {
   this.y = 100;
   var context = this;
@@ -106,7 +106,7 @@ function A () {
 
 This looks like a good solution and it works well. But the only thing I don't like is the duplicaltion. I have to make a copy of the context almost everywhere when I meet a callback function. Moreover, if you have multiple layer nested callback, this make life even worse. Thanks to the post, *[Understanding Scope and Context in Javascript][3]*, I could use an even better way which is referred as `call and apply`. See the following code as an example.
 
-```
+```javascript
 if(!('bind' in MapServiceHelper.prototype)){
   MapServiceHelper.prototype.bind = function(){
     var fn = this, context = arguments[0], args = Array.prototype.slice.call(arguments, 1);
@@ -119,7 +119,7 @@ if(!('bind' in MapServiceHelper.prototype)){
 
 In this way, I can use any callback funtion with a suffix `.bind(this)` to force the context to the one I need. Finally, I change it to the following style.
 
-```
+```javascript
 getCurrentLocation: function () {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(this.callbackGetCurrentLocation.bind(this));

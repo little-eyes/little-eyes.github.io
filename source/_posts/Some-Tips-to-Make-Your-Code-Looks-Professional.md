@@ -14,7 +14,7 @@ A few months ago, I was preparing my internship interview for some companies. Wi
 
 So here is the first deal: **Variable Names**. I was exteremely bad at giving variable names, and I owe this to my ACM-ICPC experience where the code I wrote is only readable for me and my teammates (because they write the same style of code). We like to use a single character to represent a variable. For instance, look at the following block of code.
 
-```
+```c++
 ...
 for (int i = 0; i <　n; i++)
 {
@@ -25,7 +25,7 @@ for (int i = 0; i <　n; i++)
 
 Frankly speaking, I know what I am trying to do, but do you know? Look, all the variables are single character which confuses not only your teammates but yourself some time as well. So, if you are not in a hurry, why not give a meaningful name for variables, functions or classes? Perhaps, we can rewrite the above code block in this way.
 
-```
+```c++
 ...
 for (int index = 0; index < NumberOfData; index++)
 {
@@ -48,7 +48,7 @@ Really? I would ask why there are so many things to consider, which at least dou
 
 So, the question _how_? Well, I think the first step you should consider is the have a systematic error code. For example, in Windows COM program, **HRESULT** is a typical and standard error code. Now, look at the following code.
 
-```
+```c++
 ...
 void function1 (int parameter)
 {
@@ -64,7 +64,7 @@ string function2 (int parameter)
 
 If we think carefully, we can easily find that there is no way to tell whether the two functions are success or failed. So when you call these two functions, and they failed, you could spend an hour to figure our this line via a step-by-step watch. However, if you change the way to the following code, things will be easier.
 
-```
+```c++
 ...
 HRESULT function1 (int parameter)
 {
@@ -82,7 +82,7 @@ HRESULT function2 (int parameter, string &results)
 
 When you call these functions, you can check the return code and reflect the error message. Look at the following code block.
 
-```
+```c++
 ...
 if (function1(parameter) != S_OK)
 {

@@ -43,13 +43,13 @@ You may download the Hadoop package into your /home/netid directory and I would 
 
 The `hadoop-env.sh` file contains the Hadoop environment parameters, among which the most important parameter is the *JAVA_HOME* parameter. So edit the `./conf/hadoop-env.sh` file by adding the following information.
 
-```
+```sh
 export JAVA_HOME=/usr/lib/jvm/java-6-openjdk
 ```
 
 Besides this parameter, where to store the log file should also be in consideration. Hadoop will generate lots of logs, but our /home/netid directory has quota limitation. So we have to relocate the log files into the /local_scratch/. Add the following line into the hadoop-env.sh will change it.
 
-```
+```sh
 export HADOOP_LOG_DIR=/local_scratch/netid/hadoop/logs
 ```
 
@@ -57,7 +57,7 @@ export HADOOP_LOG_DIR=/local_scratch/netid/hadoop/logs
 
 The core site defines some important parameters related to the whole system's work. For instance the `hadoop.tmp.dir` and the `fs.default.name`, which defines the temporary directory and master or namenode for the whole system. The core site configuration file is the `./conf/core-site.xml`, and you can use the following XML block.
 
-```
+```xml
 <configuration>
   <property>
     <name>hadoop.tmp.dir</name>
@@ -82,7 +82,7 @@ As to the HDFS, three very important parameters need to be set in order to make 
 
 The HDFS site configuration is via the `./conf/hdfs-site.xml` file. So add the following XML block will apply the changes.
 
-```
+```xml
 <configuration>
   <property>
     <name>dfs.replication</name>
@@ -103,7 +103,7 @@ The HDFS site configuration is via the `./conf/hdfs-site.xml` file. So add the f
 
 The MapReduce Site information is mainly about the job tracker and its TCP port. So the configuration is simply edit the `./conf/mapred-site.xml` through the following XML block.
 
-```
+```xml
 <configuration>
   <property>
     <name>mapred.job.tracker</name>
@@ -134,13 +134,13 @@ After finsihing the above five steps, your Hadoop cluster in Hydra lab is ready 
 
 If you are using the cluster for the first time, you will need to format the namenode by the following command.
 
-```
+```sh
 $ ./bin/hadoop namenode -format
 ```
 
 Two steps should be followed to start the cluster. The first one is to start DFS through the following command.
 
-```
+```sh
 $ ./bin/start-dfs.sh
 ```
 
@@ -148,7 +148,7 @@ Then you will see your terminal screen keeps popping message to write log into y
 
 Then, you need to start the Map Reduce framework by execute the following command.
 
-```
+```sh
 $ ./bin/start-mapred.sh
 ```
 
@@ -173,7 +173,7 @@ By default, Hadoop-1.2.1 provides a jar package which contains some default exam
 
 In this example, we use *randomwrite*, which write 10GB data into the HDFS via Map/Reduce framework. You can simply execute the following command to initiate the task.
 
-```
+```sh
 $ ./bin/hadoop jar hadoop-examples-1.2.1.jar randomwrite /data/out
 ```
 
@@ -213,7 +213,7 @@ Some of the errors comes from the SSH access permission problem. Specifically, y
 
 If this issue happens, you may need to create an `SSH public key` without encrpted phrases from any Hydra machine, say hydra1, and copy this public key to any other machine. Note that, your /home/netid directory is in networked file system, so this one time key copy resolve all the issues between any two machines inside the department's infrastructure. The following commands should help.
 
-```
+```sh
 $ ssh-keygen -t rsa -C ""
 ```
 
@@ -221,7 +221,7 @@ When it asks for the filename to save the key, you can either use the default on
 
 Next, you copy key to any other Hydra machine, say hydra7.eecs.utk.edu. Use the following commands.
 
-```
+```sh
 $ ssh-copy-id -i /home/netid/.ssh/id_rsa.pub hydra7.eecs.utk.edu
 ```
 

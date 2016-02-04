@@ -18,7 +18,7 @@ So here is the scenario that I need to tackle.
 
 My first solution is to have a `Service` hold the shared data `x` and use `$watch` to monitor this variable in both controllers. The code is like the following:
 
-```{javascript}
+```javascript
 // service
 angular.module("myApp", [])
 .service("SharedDataService", function() {
@@ -54,7 +54,7 @@ This code looks perfect for me at the beginning because you can always catch the
 
 After reading some stack overflow posts, I understand three other things: `$rootScope`, `$broadcast` and `$on`. So the idea becomes more straight forward that use `$rootScope` to notify while listen events inside each controller. Performance-wise this is a cheaper notification as well because you just broadcast a simple message but the updated data is always stored in the service. Therefore, with a little tweak on the code above, we can easily make the cross controller communication happen.
 
-```{javascript}
+```javascript
 // service
 angular.module("myApp", [])
 .service("SharedDataService", ["$rootScope", function($rootScope) {

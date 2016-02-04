@@ -18,7 +18,7 @@ Apparently not. Github only play with static files and Jekyll. Fortunately, Hexo
 
 There are a couple of benefits you could get from Hexo for free: `deployment` and `theme`. I like the deployment story of Hexo because it is just three commands to deploy your Github pages. So I don't have to write my own script to manipulate Git and push to the `master` branch. By the way, it also support other service like: `Heroku`, `Rsync`, `OpenShift` and `Generic Git`. These covers the major blog hosting services and also provides you to host on any machine or cloud service using Git.
 
-```
+```sh
 $ hexo clean
 $ hexo generate
 $ hexo deploy
@@ -26,7 +26,7 @@ $ hexo deploy
 
 When I use Jekyll, I cook my themes by myself which could be good or bad. I can easily create a blog with minimal design and make it looks not bad. So I spent a little more time than expected working on the themes and make it pretty. This is something I really don't want to see because I believe I should contribute content when I write my blog not the UX. Using Hexo, things become much easy. You can take a look at different themes in the [official website][3], then pick one with a simple Git clone command like the following.
 
-```
+```sh
 $ git clone git://github.com/heroicyang/hexo-theme-modernist.git themes/modernist
 ```
 

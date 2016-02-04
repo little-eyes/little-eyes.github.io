@@ -17,6 +17,8 @@ There are four major reasons for the flight delays: **weather, carrier, late air
 
 ![Alt text](/images/delay_factors.png)
 
+<!-- more -->
+
 A linear model is applied here to figure out the blue line in the curve which exhibits a regressed relationship between the factor and the total delays. Note that both x-Axis and y-Axis are normalized minute, so that all four factors will be on the same scale (mean value = 0 and standard deviation = 1). Therefore, if weather delays increase 1 normalized minute, it will bring roughly 0.22 normalized minute into the total delays.
 
 Similarly, carrier contributes 0.6 normalized minute, late aircraft contributes 0.625 normalized minute, and NAS adds 0.25 normalized minute to the total delays when each of them add one normalized minute. So now you know the late aircraft and carrier becomes two major issues.
