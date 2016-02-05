@@ -4,7 +4,7 @@ tags:
 - infrastructure
 category:
 - technology
-date: 2016/2/14
+date: 2016/2/4
 ---
 
 With continuous integration we have an automated pipeline from writing code to deployment. This helps developer to improve the efficiency and productivity. However, there is another case that we might meet: what if I want to preview my feature? Intuitive answer to this is that you can open another environment for this and redirect the traffic to your preview site.
@@ -31,7 +31,7 @@ That's the above picture shows. We can setup a Git hook for `preview/*` branches
 
 Therefore, any updates from preview branches, will gets continuous integrated into a virutal app in IIS. For instance, Alice has a feature `a` which she puts into `preview/alice/a` branch. Once Alice push the preview feature branch to Visual Studio Online or other CI services, her preview feature will be mapped to a virtual app `http://preview.xxx.com/alice_a`. In the meantime, Bob could work on something else and preview at the same server or container with `http://preview.xxx.com/bob_b`. Both features are co-exist in the server, but they are isolated by virtual apps.
 
-In the scenario of Platform-as-a-Service (PaaS), you will heavily use container based apps. Therefore deployment slot concept makes more sense than IIS virtual apps. An idea here is to share the same name between feature name, deployment slot name and DNS name. For instance, you have a preview feature branch `preview/Ted/t`, will be deployed to slot `Ted-t` which can be accessed by `http://preview-ted-t.xxx.com`. 
+In the scenario of Platform-as-a-Service (PaaS), you will heavily use container based apps. Therefore deployment slot concept makes more sense than IIS virtual apps. An idea here is to share the same name between feature name, deployment slot name and DNS name. For instance, you have a preview feature branch `preview/Ted/t`, will be deployed to slot `Ted-t` which can be accessed by `http://preview-ted-t.xxx.com`.
 
 Finally, some small PowerShell scripts to help you understand the setup and teardown process.
 
