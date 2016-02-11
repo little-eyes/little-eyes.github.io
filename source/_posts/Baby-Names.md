@@ -9,21 +9,7 @@ category:
 date: 2016/2/10
 ---
 
-<style>
-  .chart-container {
-    width: 100%;
-    height: 300px;
-  }
-  .chart-container.tall {
-    height: 500px;
-  }
-</style>
-
-<script src="http://code.jquery.com/jquery-1.12.0.min.js"></script>
-<script src="/downloads/code/papaparse.min.js"></script>
-<script src="http://code.highcharts.com/stock/highstock.js"></script>
-<script src="http://code.highcharts.com/highcharts-more.js"></script>
-<script src="/downloads/code/babynames.js"></script>
+{% fullimage /images/name.jpg %}
 
 > There are many language choices and tools for data analysis such as R, SQL, Python, etc. This time I tried out a combination between `Python` and `Pandas`.
 
@@ -97,3 +83,19 @@ Since there are so many names exist in history, one question to ask is that new 
 > In the end, I feel Python's `pandas` library is a good tool for manipulating data with great performance. It could be a great combination with `scikit-learn` if you are looking for python based machine learn/data science toolset.
 
 [1]: https://www.kaggle.com/kaggle/us-baby-names
+
+<style>
+  .chart-container {
+    width: 100%;
+    height: 300px;
+  }
+  .chart-container.tall {
+    height: 500px;
+  }
+</style>
+
+<script src="http://code.jquery.com/jquery-1.12.0.min.js"></script>
+<script src="/downloads/code/papaparse.min.js"></script>
+<script src="http://code.highcharts.com/stock/highstock.js"></script>
+<script src="http://code.highcharts.com/highcharts-more.js"></script>
+<script src="/downloads/code/babynames.js"></script>
