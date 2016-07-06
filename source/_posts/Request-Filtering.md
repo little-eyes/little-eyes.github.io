@@ -11,6 +11,8 @@ In a web service like the [OData][1] or other web API services, you might encoun
 
 Alternatively, you can do a filtering against either the request or response. This article wants to elaborate the request filtering approach in a ASP.NET stack.
 
+<!-- more -->
+
 ## Customized Http Module
 
 To begin with the solution, we need to understand the concept of `http module` in ASP.NET stack. By searching the keyword, you will see a lot of good resources online. So I will focus on how to create a customized http module.
