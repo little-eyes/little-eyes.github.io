@@ -5,7 +5,7 @@ tags:
   - testing
 category:
   - technology
-date: 2016/8/16
+date: 2016/8/3
 ---
 
 For many of you work in the web UX development, the testing part is one of the biggest challenges you need to address in order to ship your feature good and efficient.
