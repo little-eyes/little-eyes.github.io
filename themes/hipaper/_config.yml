@@ -44,7 +44,7 @@ fancybox: true
 # Sidebar
 sidebar: right
 widgets:
-- search
+#- search
 - social
 - recent_posts
 - tagcloud
