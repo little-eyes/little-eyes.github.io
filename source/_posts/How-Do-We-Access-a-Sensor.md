@@ -18,6 +18,7 @@ So how many ways can we access a sensor, for example the gyroscope, on our smart
 
 * You can even hack into the system level code and manipulate anything you like.
 
+<!-- more -->
 ......
 
 However, do we feel something not consistent here? Let's suppose we use a bunch of sensor API to build an app for our smarphone. But...which platform do you choose? iOS, Android or... It matters, right? It means a developer should spend extra time to transplant their code from one platform to another.

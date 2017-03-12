@@ -8,8 +8,7 @@ category:
 - technology
 date: 2016/2/10
 ---
-
-{% fullimage /images/name.jpg %}
+![name](/images/name.jpg)
 
 > There are many language choices and tools for data analysis such as R, SQL, Python, etc. This time I tried out a combination between `Python` and `Pandas`.
 

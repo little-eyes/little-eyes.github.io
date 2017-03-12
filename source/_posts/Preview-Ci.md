@@ -1,4 +1,4 @@
-title: "Feature Preview in the Context of Continuous Integration"
+title: "Engineering System: Feature Preview and Continuous Integration"
 layout: post
 tags:
 - infrastructure

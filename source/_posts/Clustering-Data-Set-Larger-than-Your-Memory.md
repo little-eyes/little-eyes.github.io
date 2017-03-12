@@ -77,7 +77,7 @@ In order to solve this problem, I wrote a dedicated translation program to conve
 
 If you original store your raw data in the MySQL database (just like what I did), you have to involve an extra step to export data from your database to a raw csv file. If possible, try the following command:
 
-```sql
+```SQL
 select * from [your table] into outfile [your csv file]
 fields terminated by "," line terminated by "\n";
 ```

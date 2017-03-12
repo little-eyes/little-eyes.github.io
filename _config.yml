@@ -4,8 +4,8 @@
 
 # Site
 title: The Little's Place
-subtitle: Seek the truth, <br/>and the truth will set you free.
-description: A data geek's blog.
+subtitle: 
+description: Seek the truth, and the truth will set you free.
 author: Jilong Liao
 language: en
 timezone:
@@ -63,7 +63,7 @@ pagination_dir: page
 # Extensions
 ## Plugins: http://hexo.io/plugins/
 ## Themes: http://hexo.io/themes/
-theme: next
+theme: hipaper
 
 since: 2010
 
@@ -91,3 +91,22 @@ tag_generator:
 
 category_generator:
   per_page: 10
+
+jsonContent:
+  meta: false
+  pages: false
+  posts:
+    title: true
+    date: true
+    path: true
+    text: true
+    raw: false
+    content: false
+    slug: false
+    updated: false
+    comments: false
+    link: false
+    permalink: false
+    excerpt: false
+    categories: false
+    tags: false

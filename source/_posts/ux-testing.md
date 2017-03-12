@@ -1,4 +1,4 @@
-title: "Selenium Web Driver, CasperJS, PhantomJS and the web UX testing"
+title: "Web UX Testing: Selenium Web Driver, CasperJS, PhantomJS"
 layout: post
 tags:
   - javascript

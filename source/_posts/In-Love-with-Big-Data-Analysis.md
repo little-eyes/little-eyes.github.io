@@ -13,6 +13,8 @@ For a long time we handle data within our single desktop or workstation, but the
 
 Later, people start to notice the existence of _big data_ and it is everywhere. Then a huge number of researchers delve into the area and try to solve the huge amount of issues. Fortunately, we have come up with a series of good methodology and tools to help us handle the big data. Here, the use of big data is mainly about data mining, machine learning, realtime service, etc.
 
+<!-- more -->
+
 Among those tools, I would like to organize them into the following categorizes and discuss them in the rest of the blog.
 
 * Programming Models and Infrastructures

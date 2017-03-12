@@ -1,12 +1,15 @@
-I graduated from University of Tennessee. I think, I research, I code, I analyze data and I love coffee. Most of my project has been published on my [Github][10]. Since Jan 2014, I work at Microsoft as a Software Engineer in Windows & Devices Group's core data science team.
+title: About
+---
 
-![][11]
+> Hello, 
+>
+> Welcome to my site. I am a software engineer passionate about many things like machine learning, distributed system, frontend development, engineering system, etc. I currently work at a data team in Microsoft. Living in Seattle WA, I love coffee but not the rain. Hope you enjoy the reading in this site.
 
-## Topics
-Mobile computing, machine learning, distributed system, big data.
+## My Favorite Topics
+Machine learning, distributed system, frontend development, best practice of software engineering, data visualization.
 
 ## Recent Publications
-* Y. Yao, S. Xiong, J. Liao, M. Berry, H. Qi, and Q. Cao. Identifying Frequent Flows in Large Datasets through Probabilistic Bloom Filters, _IEEE/ACM IWQoS_, 2015, to appear. ([PDF][12])
+* Y. Yao, S. Xiong, J. Liao, M. Berry, H. Qi, and Q. Cao. Identifying Frequent Flows in Large Datasets through Probabilistic Bloom Filters, _IEEE/ACM IWQoS_, 2015, to appear. ([PDF][11])
 
 * J. Liao, Z. Wang, Q. Cao, and H. Qi. Smart Diary: A Smartphone-based Framework for Inference and Prediction of Users, _IEEE Sensors Journal_, 2014, accepted. ([PDF][9])
 
@@ -45,5 +48,4 @@ Mobile computing, machine learning, distributed system, big data.
 [8]: http://lanterns.eecs.utk.edu/Papers/sensys_demo_uno.pdf
 [9]: http://ieeexplore.ieee.org/xpl/articleDetails.jsp?arnumber=6861972
 [10]: https://github.com/little-eyes
-[11]: /images/about.png
-[12]: #
+[11]: #
