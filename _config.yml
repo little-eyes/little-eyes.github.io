@@ -63,7 +63,7 @@ pagination_dir: page
 # Extensions
 ## Plugins: http://hexo.io/plugins/
 ## Themes: http://hexo.io/themes/
-theme: hipaper
+theme: next
 
 since: 2010
 
@@ -108,5 +108,5 @@ jsonContent:
     link: false
     permalink: false
     excerpt: false
-    categories: false
-    tags: false
+    categories: true
+    tags: true
