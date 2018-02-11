@@ -110,3 +110,9 @@ jsonContent:
     excerpt: false
     categories: true
     tags: true
+
+symbols_count_time:
+  symbols: true
+  time: true
+  total_symbols: false
+  total_time: false
