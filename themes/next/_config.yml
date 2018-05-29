@@ -205,7 +205,7 @@ toc:
 
 sidebar:
   # Sidebar Position, available value: left | right (only for Pisces | Gemini).
-  position: right
+  position: left
   #position: right
 
   # Sidebar Display, available value (only for Muse | Mist):
