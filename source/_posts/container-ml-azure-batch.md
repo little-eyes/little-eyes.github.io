@@ -15,6 +15,8 @@ Certainly, I could use a managed services like [Azure Databricks][1] to help me.
 
 Azure Batch is a very useful service that you can manage VMs and run tasks among the VMs. It fits into my need naturally. To avoid the dependencies of running some Python training code, I notice docker container is another natural tool to help -- build all the dependencies and external service connections into the container and let Azure Batch to run container task in the VM. In this way, the VM managed by Azure Batch does not need to worry about the version of OS, dependencies etc. All we need to ensure is the docker container can be run correctly on the VM, which is a very simple step for Ubuntu or other Linux system. The same training container could accept different parameters and run as much as we want.
 
+<!-- more -->
+
 ![](/images/ml-azure-batch.png)
 
 We could also use external Azure Services such as Blob Storage to ensure a extremely fast data transfer speed. With Azure Blob Storage API, you could achieve transferring 25GB training dataset into docker container within 2 minutes. Note the `max_connection` parameter is critical to speed up the transferring.
