@@ -12,6 +12,8 @@ In my [previous blog][1], I proposed a way to easily run large scale machine lea
 
 Use open source tools such as scikit-learn, nltk etc. will bring additional dependencies into the container image. For example, some of us may use [mini conda][2], but it can easily introduce a few hundred MBs into the docker container image. The Ubuntu 16.04 base image is about 120MB, then very quickly I start seeing my container image size go beyond 1GB, then 3GB after install some other tools.
 
+<!-- more -->
+
 ```dockerfile
 FROM ubuntu:16.04
 
