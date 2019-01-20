@@ -56,9 +56,13 @@ When I test it on Spark with 4 `Standard_DS3_v2` (14GB memory, 4 Cores) workers,
 
 The root issue here is that I have a very large categorical mappings (about 700kb) and the above code basically copy and move this 700kb tiny bookmark table for every single row in the dataset which is more than 3 million times. In total, we are moving and playing a 2.1TB dataset rather than a 1GB dataset. That's why the performance is terrible.
 
-I consulted a Spark expert in my team and he suggests me to look at [Spark Broadcast Variables][2]. So I am not the first guy encounters into this problem and people have a solution already. Very cool! You will also find the similar concept such as `boradcast join` in a MapReduce-like system to achieve better performance.
+I consulted a Spark expert in my team and he suggests me to look at [Spark Broadcast Variables][2]. So I am not the first guy encounters into this problem and people have a solution already. Very cool! You will also find the similar concept such as `boradcast join` in a MapReduce-like system to achieve better performance. Below is a picture to show you the concept.
 
-So I use the broadcast variables to update my implementation a little bit like below. First, I broadcast the mapping dictionary and store it in a variable, then the UDF just need to accept the name of the mapping and retrieve the actual map from the worker directly. This tiny map dictionary is only moved to 4 workers once, so we are still dealing with a 1GB dataset.
+![Broadcasting a value to executors](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/images/sparkcontext-broadcast-executors.png)
+
+So I use the broadcast variables to update my implementation a little bit like below. First, I broadcast the mapping dictionary and store it in a variable, then the UDF just need to accept the name of the mapping and retrieve the actual map from the worker directly. This tiny map dictionary is only moved to 4 workers once, so we are still dealing with a 1GB dataset. The programming management concept shows in below.
+
+![SparkContext broadcast using BoradcastManager and ContextCleaner](https://jaceklaskowski.gitbooks.io/mastering-apache-spark/images/sparkcontext-broadcastmanager-contextcleaner.png)
 
 ```python
 boradcast_variables["example_variable"] = spark_context.broadcast(example_map)
