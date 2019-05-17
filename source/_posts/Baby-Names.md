@@ -93,8 +93,8 @@ Since there are so many names exist in history, one question to ask is that new 
   }
 </style>
 
-<script src="http://code.jquery.com/jquery-1.12.0.min.js"></script>
+<script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
 <script src="/downloads/code/papaparse.min.js"></script>
-<script src="http://code.highcharts.com/stock/highstock.js"></script>
-<script src="http://code.highcharts.com/highcharts-more.js"></script>
+<script src="https://code.highcharts.com/stock/highstock.js"></script>
+<script src="https://code.highcharts.com/highcharts-more.js"></script>
 <script src="/downloads/code/babynames.js"></script>
