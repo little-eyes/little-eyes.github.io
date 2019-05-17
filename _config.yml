@@ -82,7 +82,7 @@ google_analytics: UA-32402817-1
 ## Docs: http://hexo.io/docs/deployment.html
 deploy:
   type: git
-  repo: https://github.com/little-eyes/little-eyes.github.io.git
+  repo: git@github.com:little-eyes/little-eyes.github.io.git
   branch: master
   message: "normal deployment"
 
