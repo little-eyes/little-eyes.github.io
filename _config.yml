@@ -5,7 +5,7 @@
 # Site
 title: The Little's Place
 subtitle: And you will know the truth, and the truth will set you free. -- John 8:32
-description: Full stack / Scalability / Containers / k8s / Machine Learning
+description: Machine Learning Engineering / Scalability / k8s / Full Stack
 author: Jilong Liao
 language: en
 timezone:
@@ -63,7 +63,7 @@ pagination_dir: page
 # Extensions
 ## Plugins: http://hexo.io/plugins/
 ## Themes: http://hexo.io/themes/
-theme: next
+theme: cactus
 
 since: 2010
 
