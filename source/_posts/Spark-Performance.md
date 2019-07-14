@@ -21,6 +21,8 @@ Spark's default shuffle repartition is 200 which does not work for data bigger t
 
 The largest shuffle stage target size should be less than **200MB**. So the partition count calculate as total size in MB divide 200.
 
+$$paritions = \frac{data size}{200MB}$$
+
 > Note: your cluster size matters as well. If your number of cores in your cluster is smaller than the partitions calculated above, you should use the number of cores. The reason is that you don't want to waste cores during the second round of shuffle though you slightly increase the parition file size. However, if your cores are bigger than partition count from above, you might want to reduce your cluster size so that other people can benefit from it. You can also bump the partitions up to make it even faster.
 
 To change the shuffle partition size, use the code below.
