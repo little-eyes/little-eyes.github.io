@@ -30,7 +30,7 @@ social_links:
   github: https://github.com/little-eyes
   # twitter: /
   # facebook: /
-  # linkedin: /
+  linkedin: https://www.linkedin.com/in/jilong-liao-2b25a330
   # mail: mailto:jliao2@vols.utk.edu
 
 # Customize the overview with displaying a tagcloud on the index page.
@@ -44,7 +44,7 @@ tags_overview: false
 #   - sort_updated: sort posts by last modification date instead of creation date.
 posts_overview:
   show_all_posts: false
-  post_count: 5
+  post_count: 7
   sort_updated: false
 
 # Customize the archive view.
