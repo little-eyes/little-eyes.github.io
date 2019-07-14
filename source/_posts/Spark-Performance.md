@@ -6,7 +6,7 @@ tags:
   - machine learning
 category:
 - technology
-date: 2019/7/14
+date: 2019/7/15
 ---
 
 At Spark+AI conference this year, Daniel Tomes from Databricks gave a deep-dive talk on Spark performance optimizations. After watching it, I feel it's super useful, so I decide to write down some important notes which address the most common performance issues from his talk.
@@ -20,8 +20,6 @@ We often encounter into situations that partition is not optimal at different st
 Spark's default shuffle repartition is 200 which does not work for data bigger than 20GB. So from Daniel's talk, there is a golden equation to calculate the partition count for the best of performance.
 
 The largest shuffle stage target size should be less than **200MB**. So the partition count calculate as total size in MB divide 200.
-
-$$paritions = \frac{data size}{200MB}$$
 
 > Note: your cluster size matters as well. If your number of cores in your cluster is smaller than the partitions calculated above, you should use the number of cores. The reason is that you don't want to waste cores during the second round of shuffle though you slightly increase the parition file size. However, if your cores are bigger than partition count from above, you might want to reduce your cluster size so that other people can benefit from it. You can also bump the partitions up to make it even faster.
 
