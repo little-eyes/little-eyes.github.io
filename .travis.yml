@@ -1,0 +1,42 @@
+language: node_js
+
+node_js: stable
+
+before_install:
+  - echo installs the hexo environment...
+
+install:
+  - npm install -g hexo-cli
+  - npm install
+
+script:
+  - echo is emptying the cache static file...
+  - hexo clean
+  - echo is generating static files...
+  - hexo generate
+  - cd public
+  - ls -al
+
+# script:
+#   - echo started deploying...
+#   - git init
+#   - git config -- global user.name "${GH_user name}"
+#   - git config -- global user.email "${GH_user email}"
+#   - git add ./
+#   - git commit -m "update site"
+#   - git push --force --quiet "https://${GH_TOKEN}@${GH_REF}" master:master
+
+after_script:
+  - echo deployment completed!
+
+branches:
+  only:
+    - master
+
+# deploy:
+#   provider: pages
+#   skip_cleanup: true
+#   github_token: $GITHUB_TOKEN  # Set in the settings page of your repository, as a secure variable
+#   keep_history: true
+#   on:
+#     branch: master
