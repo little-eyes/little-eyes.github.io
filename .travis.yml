@@ -21,6 +21,6 @@ script:
 after_script:
   - echo deployment completed!
 
-branches:
-  only:
-    - hexo-platform
+# branches:
+#   only:
+#     - hexo-platform
