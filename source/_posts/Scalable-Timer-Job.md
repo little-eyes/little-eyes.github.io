@@ -24,9 +24,9 @@ Normally this does not happen until a few weeks ago.
 
 # A Simple Idea
 
-Azure support team suggests us to split the jobs into multiple job hosts so we can divide and conquer. In a weekly developer meeting, [a colleague](https://www.linkedin.com/in/chandan-jyoti-sharma-98711231/) and I had an idea to scale out timer-based job with or without splitting the code into multiple job hosts. The idea is as simple as below.
+Azure support team suggests us to split the jobs into multiple job hosts so we can divide and conquer. In a weekly developer meeting, [my colleague Chandan](https://www.linkedin.com/in/chandan-jyoti-sharma-98711231/) and I had an idea to scale out timer-based job with or without splitting the code into multiple job hosts. The idea is as simple as below.
 
-> Azure WebJobs also provide `ServiceBusTrigger` to invoke a job in addition to `TimerTrigger` and it can run across all instances on the same App Service. It is very well load balanced. Therefore, we can create two jobs -- one is the timer trigger to enqueue a service bus message and the other one is a service bus trigger job that does the actual work.
+> Azure WebJobs also provide `ServiceBusTrigger` to invoke a job in addition to `TimerTrigger`, and it can run across all instances on the same App Service. It is very well load balanced. Therefore, we can create two jobs -- one is the timer trigger to enqueue a service bus message, and the other one is a service bus trigger job that does the actual work.
 
 ![Service Bus WebJob](/images/webjob-servicebus.png)
 
@@ -53,7 +53,7 @@ public async Task PushMetadataJobAsync([ServiceBusTrigger("jobs", "PushMetadataJ
 }
 ```
 
-Note that the listener property in the service bus message create a filter that only listener=PushMetadataJobAsync would trigger the service bus job. We design this way to avoid creating lots of topic queues.
+Note that the listener property in the service bus message create a filter that only _listener=PushMetadataJobAsync_ would trigger the service bus job. We design this way to avoid creating lots of topic queues.
 
 # Developer Experience
 
@@ -70,6 +70,31 @@ public async Task PushMetadataJobAsync()
 ```
 
 To achieve the goal above, we need some code to dynamically register a new timer job when job host starts as well as a service bus job. The service bus job need to execute the same code in the above function.
+
+The first piece is to programmatically register the service bus subscriptions and its associated rules. In our design, we use the same topic queue, but with different subscriptions and each subscription use a SQL filter to filter the message it is going to receive. The code below shows how to register such a subscription in service bus. Note that `$Default` rule has a default SQL filter `1=1` which does not filter anything. Therefore, we need to delete it at creation time.
+
+```csharp
+public async void RegisterJob(string jobName)
+{
+    managementClient = new ManagementClient(ServiceBusConnectionString);
+    await managementClient.CreateSubscriptionAsync(new Microsoft.Azure.ServiceBus.Management.SubscriptionDescription(topic, jobName));
+    var rules = await managementClient.GetRulesAsync(topic, jobName);
+
+    if (rules.Any(r => r.Name == "$Default"))
+    {
+        await managementClient.DeleteRuleAsync(topic, jobName, "$Default");
+    }
+
+    if (!rules.Any(r => r.Name == jobName))
+    {
+        await managementClient.CreateRuleAsync(topic, jobName, new Microsoft.Azure.ServiceBus.RuleDescription
+        {
+            Filter = new Microsoft.Azure.ServiceBus.SqlFilter($"(Listener='{jobName}')"),
+            Name = jobName
+        });
+    }
+}
+```
 
 Unfortunately, Azure WebJobs does not allow us to dynamically register new timer triggered jobs once the job host starts. After the code `app.UseTimer()`, all the timer jobs are permanently fixed. We were surprised by this design so we have to find an alternative way to register the job before `app.UseTimer()` gets called.
 
@@ -127,7 +152,7 @@ To ensure the C# file gets generated before the build, a new build target needs 
 
 A caveat we discovered here is that you need the following DLLs in a folder as assembly reference path to `TextTransformer.exe`. This is because `.tt` file relies on _Rosyln_ to parse all the job files.
 
-* `Microsoft.CodeAnalysis.CSharp`
-* `Microsoft.CodeAnalysis.CSharp.Syntax`
+* `Microsoft.CodeAnalysis.CSharp.dll`
+* `Microsoft.CodeAnalysis.CSharp.Syntax.dll`
 
 At this point, the design should give us enough scalability on our jobs. If we ever seen instances out of memory or running excessively heavy again, we can just simply add new instances to the App Service. 
