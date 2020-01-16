@@ -16,7 +16,7 @@ before_script:
 script:
   - echo is emptying the cache static file...
   - npm run build
-  - npm run deploy
+  # - npm run deploy
 
 after_script:
   - echo deployment completed!
