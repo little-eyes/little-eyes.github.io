@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="Many of us would like to understand a city through its culture, business, people, and history. But here, I would like see a city that I am living through a new angle by looking at the 911 calls in se">
+<meta property="og:type" content="article">
+<meta property="og:title" content="How About the 911 Calls in Seattle">
+<meta property="og:url" content="http://jilongliao.com/2014/07/04/How-About-the-911-Calls-in-Seattle/index.html">
+<meta property="og:site_name" content="The Little&#39;s Place">
+<meta property="og:description" content="Many of us would like to understand a city through its culture, business, people, and history. But here, I would like see a city that I am living through a new angle by looking at the 911 calls in se">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2014-07-04T00:00:00.000Z">
+<meta property="article:modified_time" content="2020-01-16T04:24:31.484Z">
+<meta property="article:author" content="Jilong Liao">
+<meta property="article:tag" content="data analysis">
+<meta name="twitter:card" content="summary">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>How About the 911 Calls in Seattle</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+      
+<link rel="stylesheet" href="/css/rtl.css">
+
+    
+    <!-- rss -->
+    
+    
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/tags/">Tags</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/little-eyes" target="_blank" rel="noopener">Projects</a></li>
+         
+          <li><a href="/search/">Search</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2014/10/12/Jekyll-with-Multi-collection-Blog/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="/2014/06/10/A-Short-Refactoring-Road-of-Javascript/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://jilongliao.com/2014/07/04/How-About-the-911-Calls-in-Seattle/" target="_blank" rel="noopener"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://jilongliao.com/2014/07/04/How-About-the-911-Calls-in-Seattle/&text=How About the 911 Calls in Seattle" target="_blank" rel="noopener"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://jilongliao.com/2014/07/04/How-About-the-911-Calls-in-Seattle/&title=How About the 911 Calls in Seattle" target="_blank" rel="noopener"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://jilongliao.com/2014/07/04/How-About-the-911-Calls-in-Seattle/&is_video=false&description=How About the 911 Calls in Seattle" target="_blank" rel="noopener"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=How About the 911 Calls in Seattle&body=Check out this article: http://jilongliao.com/2014/07/04/How-About-the-911-Calls-in-Seattle/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://jilongliao.com/2014/07/04/How-About-the-911-Calls-in-Seattle/&title=How About the 911 Calls in Seattle" target="_blank" rel="noopener"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://jilongliao.com/2014/07/04/How-About-the-911-Calls-in-Seattle/&title=How About the 911 Calls in Seattle" target="_blank" rel="noopener"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://jilongliao.com/2014/07/04/How-About-the-911-Calls-in-Seattle/&title=How About the 911 Calls in Seattle" target="_blank" rel="noopener"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://jilongliao.com/2014/07/04/How-About-the-911-Calls-in-Seattle/&title=How About the 911 Calls in Seattle" target="_blank" rel="noopener"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://jilongliao.com/2014/07/04/How-About-the-911-Calls-in-Seattle/&name=How About the 911 Calls in Seattle&description=&lt;blockquote&gt;
+&lt;p&gt;Many of us would like to understand a city through its culture, business, people, and history. But here, I would like see a city that I am living through a new angle by looking at the 911 calls in seattle area.&lt;/p&gt;
+&lt;/blockquote&gt;"><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        How About the 911 Calls in Seattle
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">The Little's Place</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2014-07-04T00:00:00.000Z" itemprop="datePublished">2014-07-04</time>
+        
+      
+    </div>
+
+
+      
+    <div class="article-category">
+        <i class="fas fa-archive"></i>
+        <a class="category-link" href="/categories/technology/">technology</a>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link" href="/tags/data-analysis/" rel="tag">data analysis</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <blockquote>
+<p>Many of us would like to understand a city through its culture, business, people, and history. But here, I would like see a city that I am living through a new angle by looking at the 911 calls in seattle area.</p>
+</blockquote>
+<a id="more"></a>
+
+<p>Very fortunately I have a chance to look at the <code>911 call</code> data (both fire and police department) in the city of Seattle. The <a href="https://data.seattle.gov" target="_blank" rel="noopener">data.seattle.gov</a> provides developers and scientists a complete access to their public data source. Among my current explore, I find the 911 call data is a very interesting angle to observe the city. The data I explored is roughly from 2011 till now and it has two parts: fire and police. In each of the data set, they record every event’s reason, time and location point.</p>
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<script type="text/javascript" src="/downloads/code/911calls.js"></script>
+
+<p>The first one I am interested in is the distribution of the categories classified by the fire and police department. If we look at the fire department’s call analysis, we can clearly see the majority of the call dispatch is <code>Aid Response</code> and <code>Medic Response</code>. It shows a very good long-tail distribution that the top 7 or 8 categories covers more than 90% of the total response.</p>
+<div class="charts" id="categorybarchart"></div>
+
+<p>On the other hand, if we look at the police department’s data, we can see the top one is <code>suspicious circumstances</code> which makes me believe people living in Seattle is very cautious and sensitive to around. Then, the <code>tranffic related call</code> just remind me the bad traffic every afternoon on I-405, and that’s one of the major reason I choose to take buses so that I can spend the one hour per day trip on my reading. Thereafter, <code>Parking Violation</code> and <code>Liquor Violation</code> are the next top two which is pretty interesting. I know people like drinking but parking violation seems to be new to me. In general, the police department’s call data distribution is more gradually decreased than the fire department, which gives a sense of the diversity of the different kind of violations and criminal situations.</p>
+<div class="charts" id="categorybarchartpolice"></div>
+
+<p>More interestingly, if we look at the call interval (the time between two consequent calls) distribution, we can see the more than 90% of the 911 call dials in within 10 minutes after the previous one finish. Hm.. This sound a little bit frequent. If we break down the call in different month, we can have a even better idea. As we can see from November to June next year, the most frequent interval is 2 minutes. However, July, August, September and October just jump up to every single minute. What happens during these 4 months? Maybe I will have the answer after I live here for a full year.</p>
+<div class="charts" id="intervallinechart"></div>
+
+<p>Additionally, I extract the top 6 categories in the fire department’s call. Clearly, the top categories’ pattern fit into the July to October patterns, because the 1 minute call interval is the most frequent one. So can we guess these top 6 categories play an important role to boost the call interval from July to October? I don’t have the answer right now, but I will dig out more information validate this.</p>
+<div class="charts" id="intervallinechartcategory"></div>
+
+<p>The other part of the story is that I use the same strategy to break down the police department’s data. The call interval of police department’s data shows great consistent pattern that surprises me a lot. No jitters at any given month which infers a stable police related environment in Seattle. However, we need to know that 90% of the call is made within 6 minutes after the previous call was made, comparing to the 8 minutes in the fire department’s data.</p>
+<div class="charts" id="intervallinepolicechart"></div>
+
+<p>Although we think the big picture of the police related environment is pretty stable, unfortunately, there are categories seems to be more frequent than any other categories: <code>Parking Violation</code> and <code>Liquor Violation</code>. These two categories are not the top 2 (only half quantity of the top 2) so that it tells us these two types of violations are more aggregated when it happens. In other words, you usually receive multiple calls in a short time or the similar situation happens simultaneously around Seattle area.</p>
+<div class="charts" id="intervallinechartcategorypolice"></div>
+
+
+  </div>
+</article>
+
+    <div class="blog-post-comments">
+        <div id="disqus_thread">
+            <noscript>Please enable JavaScript to view the comments.</noscript>
+        </div>
+    </div>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/tags/">Tags</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/little-eyes" target="_blank" rel="noopener">Projects</a></li>
+         
+          <li><a href="/search/">Search</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://jilongliao.com/2014/07/04/How-About-the-911-Calls-in-Seattle/" target="_blank" rel="noopener"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://jilongliao.com/2014/07/04/How-About-the-911-Calls-in-Seattle/&text=How About the 911 Calls in Seattle" target="_blank" rel="noopener"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://jilongliao.com/2014/07/04/How-About-the-911-Calls-in-Seattle/&title=How About the 911 Calls in Seattle" target="_blank" rel="noopener"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://jilongliao.com/2014/07/04/How-About-the-911-Calls-in-Seattle/&is_video=false&description=How About the 911 Calls in Seattle" target="_blank" rel="noopener"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=How About the 911 Calls in Seattle&body=Check out this article: http://jilongliao.com/2014/07/04/How-About-the-911-Calls-in-Seattle/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://jilongliao.com/2014/07/04/How-About-the-911-Calls-in-Seattle/&title=How About the 911 Calls in Seattle" target="_blank" rel="noopener"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://jilongliao.com/2014/07/04/How-About-the-911-Calls-in-Seattle/&title=How About the 911 Calls in Seattle" target="_blank" rel="noopener"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://jilongliao.com/2014/07/04/How-About-the-911-Calls-in-Seattle/&title=How About the 911 Calls in Seattle" target="_blank" rel="noopener"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://jilongliao.com/2014/07/04/How-About-the-911-Calls-in-Seattle/&title=How About the 911 Calls in Seattle" target="_blank" rel="noopener"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://jilongliao.com/2014/07/04/How-About-the-911-Calls-in-Seattle/&name=How About the 911 Calls in Seattle&description=&lt;blockquote&gt;
+&lt;p&gt;Many of us would like to understand a city through its culture, business, people, and history. But here, I would like see a city that I am living through a new angle by looking at the 911 calls in seattle area.&lt;/p&gt;
+&lt;/blockquote&gt;"><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2020 Jilong Liao
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/tags/">Tags</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/little-eyes" target="_blank" rel="noopener">Projects</a></li>
+         
+          <li><a href="/search/">Search</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+
+    <!-- jquery -->
+
+<script src="/lib/jquery/jquery.min.js"></script>
+
+
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Google Analytics -->
+
+    <script type="text/javascript">
+        (function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-32402817-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+    <script type="text/javascript">
+        var disqus_shortname = 'littleeyes';
+
+        (function(){
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        }());
+    </script>
+
+
+</body>
+</html>

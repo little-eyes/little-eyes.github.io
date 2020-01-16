@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="At Spark+AI conference this year, Daniel Tomes from Databricks gave a deep-dive talk on Spark performance optimizations. After watching it, I feel it’s super useful, so I decide to write down some imp">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Spark Performance Optimization">
+<meta property="og:url" content="http://jilongliao.com/2019/07/15/Spark-Performance/index.html">
+<meta property="og:site_name" content="The Little&#39;s Place">
+<meta property="og:description" content="At Spark+AI conference this year, Daniel Tomes from Databricks gave a deep-dive talk on Spark performance optimizations. After watching it, I feel it’s super useful, so I decide to write down some imp">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://henningkropponlinede.files.wordpress.com/2016/12/spark-broadcast.png">
+<meta property="article:published_time" content="2019-07-15T00:00:00.000Z">
+<meta property="article:modified_time" content="2020-01-16T04:24:31.484Z">
+<meta property="article:author" content="Jilong Liao">
+<meta property="article:tag" content="machine learning">
+<meta property="article:tag" content="spark">
+<meta property="article:tag" content="pyspark">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://henningkropponlinede.files.wordpress.com/2016/12/spark-broadcast.png">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>Spark Performance Optimization</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+      
+<link rel="stylesheet" href="/css/rtl.css">
+
+    
+    <!-- rss -->
+    
+    
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/tags/">Tags</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/little-eyes" target="_blank" rel="noopener">Projects</a></li>
+         
+          <li><a href="/search/">Search</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2019/09/03/Split-A-Monolithic-Service/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="/2019/01/18/spark-broadcast/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://jilongliao.com/2019/07/15/Spark-Performance/" target="_blank" rel="noopener"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://jilongliao.com/2019/07/15/Spark-Performance/&text=Spark Performance Optimization" target="_blank" rel="noopener"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://jilongliao.com/2019/07/15/Spark-Performance/&title=Spark Performance Optimization" target="_blank" rel="noopener"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://jilongliao.com/2019/07/15/Spark-Performance/&is_video=false&description=Spark Performance Optimization" target="_blank" rel="noopener"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Spark Performance Optimization&body=Check out this article: http://jilongliao.com/2019/07/15/Spark-Performance/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://jilongliao.com/2019/07/15/Spark-Performance/&title=Spark Performance Optimization" target="_blank" rel="noopener"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://jilongliao.com/2019/07/15/Spark-Performance/&title=Spark Performance Optimization" target="_blank" rel="noopener"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://jilongliao.com/2019/07/15/Spark-Performance/&title=Spark Performance Optimization" target="_blank" rel="noopener"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://jilongliao.com/2019/07/15/Spark-Performance/&title=Spark Performance Optimization" target="_blank" rel="noopener"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://jilongliao.com/2019/07/15/Spark-Performance/&name=Spark Performance Optimization&description=" target="_blank" rel="noopener"><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Paritions"><span class="toc-number">1.</span> <span class="toc-text">Paritions</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Control-Max-Record-Per-File"><span class="toc-number">1.0.1.</span> <span class="toc-text">Control Max Record Per File</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Coalesce"><span class="toc-number">1.0.2.</span> <span class="toc-text">Coalesce</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Repartition"><span class="toc-number">1.0.3.</span> <span class="toc-text">Repartition</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Persisting"><span class="toc-number"></span> <span class="toc-text">Persisting</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Join-Optimization"><span class="toc-number"></span> <span class="toc-text">Join Optimization</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Handling-Skew"><span class="toc-number"></span> <span class="toc-text">Handling Skew</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Avoid-Expensive-Operations"><span class="toc-number"></span> <span class="toc-text">Avoid Expensive Operations</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#UDF-Penalties"><span class="toc-number"></span> <span class="toc-text">UDF Penalties</span></a>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        Spark Performance Optimization
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">The Little's Place</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2019-07-15T00:00:00.000Z" itemprop="datePublished">2019-07-15</time>
+        
+      
+    </div>
+
+
+      
+    <div class="article-category">
+        <i class="fas fa-archive"></i>
+        <a class="category-link" href="/categories/technology/">technology</a>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link" href="/tags/machine-learning/" rel="tag">machine learning</a>, <a class="tag-link" href="/tags/pyspark/" rel="tag">pyspark</a>, <a class="tag-link" href="/tags/spark/" rel="tag">spark</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <p>At Spark+AI conference this year, Daniel Tomes from Databricks gave a deep-dive talk on Spark performance optimizations. After watching it, I feel it’s super useful, so I decide to write down some important notes which address the most common performance issues from his talk.</p>
+<p>Here is the YouTube video just in case if you are interested. <a href="https://www.youtube.com/watch?v=daXEp4HmS-E" target="_blank" rel="noopener">https://www.youtube.com/watch?v=daXEp4HmS-E</a></p>
+<h2 id="Paritions"><a href="#Paritions" class="headerlink" title="Paritions"></a>Paritions</h2><p>We often encounter into situations that partition is not optimal at different stages of our workflow, so it slows down the entire job siganificantly. For example, six month ago I tried to analyze some telemetry data exported from Application Insights, but there are way to many JSON files (&gt; 100,000 files) and each file is small (&lt; 1MB each). This makes a <code>groupBy</code> stage takes an hour to finish on 8 machines. If this is a one-time workflow, I’m okay to not optimize it. But it’s not.</p>
+<p>Spark’s default shuffle repartition is 200 which does not work for data bigger than 20GB. So from Daniel’s talk, there is a golden equation to calculate the partition count for the best of performance.</p>
+<p>The largest shuffle stage target size should be less than <strong>200MB</strong>. So the partition count calculate as total size in MB divide 200.</p>
+<blockquote>
+<p>Note: your cluster size matters as well. If your number of cores in your cluster is smaller than the partitions calculated above, you should use the number of cores. The reason is that you don’t want to waste cores during the second round of shuffle though you slightly increase the parition file size. However, if your cores are bigger than partition count from above, you might want to reduce your cluster size so that other people can benefit from it. You can also bump the partitions up to make it even faster.</p>
+</blockquote>
+<p>To change the shuffle partition size, use the code below.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">spark.conf.set(<span class="string">"spark.sql.shuffle.partitions"</span>, <span class="number">1600</span>)</span><br></pre></td></tr></table></figure>
+
+<p>Spark partition file size is another factor you need to pay attention. The default size is 128MB per file. When you output a DataFrame to <code>dbfs</code> or other storage systems, you will need to consider the size as well. So the rule of thumbs given by Daniel is the following.</p>
+<p>Use spark default 128MB max partition bytes unless:</p>
+<ul>
+<li>You need to increase parallelism</li>
+<li>You have heavily nested / repetitive data</li>
+<li>You have data generation such as <code>explode()</code> function.</li>
+<li>The source structure is not optimal.</li>
+<li>When you use UDF functions.</li>
+</ul>
+<p>To change the max partition bytes, use the code below.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">spark.conf.set(<span class="string">"spark.sql.files.maxPartitionBytes"</span>, <span class="number">16777216</span>)</span><br></pre></td></tr></table></figure>
+
+<p>When you output files, there are many options provided by Spark, but you need to know what you are doing.</p>
+<h4 id="Control-Max-Record-Per-File"><a href="#Control-Max-Record-Per-File" class="headerlink" title="Control Max Record Per File"></a>Control Max Record Per File</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.write.option(<span class="string">"maxRecordsPerFile"</span>, n)</span><br></pre></td></tr></table></figure>
+<p>This is useful to control partitions by the records per file.</p>
+<h4 id="Coalesce"><a href="#Coalesce" class="headerlink" title="Coalesce"></a>Coalesce</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.coalesce(n).write(...)</span><br></pre></td></tr></table></figure>
+<p>This is useful to size down the partitions. For example, the 100,000 files down to 16 files.</p>
+<h4 id="Repartition"><a href="#Repartition" class="headerlink" title="Repartition"></a>Repartition</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.repartition(n).write(...)</span><br></pre></td></tr></table></figure>
+<p>This is very expensive, do not use it until you really need to.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.repartition(n, [colA, ...]).write(...)</span><br></pre></td></tr></table></figure>
+<p>This is required when you have a <code>groupBy</code> or <code>join</code> etc. later in your workflow. This will boost the performance a lot.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.localCheckpoint(...).repartition(n).write(...)</span><br></pre></td></tr></table></figure>
+<p>This is very helpful as it breaks the stage barrier so the parallel workflow later that uses the same DataFrame do not need to re-process the current DataFrame. Remember Spark is lazy execute, <code>localCheckpoint()</code> will trigger execution to materialize the DataFrame.</p>
+<blockquote>
+<p>Finding imbalancing is one of the most important thing in parallel processing.</p>
+</blockquote>
+<h1 id="Persisting"><a href="#Persisting" class="headerlink" title="Persisting"></a>Persisting</h1><p>If you have repetitions from your SQL plan, you can persist the DataFrame so the subsequent processing could use a materialized data. You can either use <code>df.cache()</code> and <code>df.persist(level)</code>. They are doing the same thing, it’s just different levels. When the workflow finished, remember to clean up by calling <code>df.unpersist()</code>. Spark is not smart enough to automatically clean up the data for you.</p>
+<h1 id="Join-Optimization"><a href="#Join-Optimization" class="headerlink" title="Join Optimization"></a>Join Optimization</h1><p>Boradcast join if possible, but do not over use it. Broadcast join is a good technique to speed up the join. The following diagram shows you how it works.</p>
+<p><img src="https://henningkropponlinede.files.wordpress.com/2016/12/spark-broadcast.png" alt="Broadcast Join"></p>
+<p>A few things you need to pay attention when use broadcast join.</p>
+<ul>
+<li>DataFrame is bigger than the driver node’s available working memory.</li>
+<li>DataFrame is bigger than <code>spark.driver.maxResultSize</code>.</li>
+<li>DataFrame is bigger than executor’s available working memory.</li>
+</ul>
+<h1 id="Handling-Skew"><a href="#Handling-Skew" class="headerlink" title="Handling Skew"></a>Handling Skew</h1><p>Assume you have a DataFrame that is skewed towards certain city and state. If we need aggregate some data, we need might expect long tail execution.</p>
+<figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.groupBy(<span class="string">"city"</span>, <span class="string">"state"</span>).agg(&lt;f(x)&gt;).orderBy(col.desc)</span><br></pre></td></tr></table></figure>
+
+<p>Databricks has an internal solution to skewed data join. </p>
+<p>Spark community solution is the following to add a salt to be a random value between 0 and <code>spark.sql.shuffle.partitions - 1</code>, then run the <code>groupBy</code> and aggregation.</p>
+<figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> saltVal = random(<span class="number">0</span>, spark.conf.get(<span class="string">"org...shuffle.partitions"</span>) - <span class="number">1</span>)</span><br><span class="line">df</span><br><span class="line">    .withColumn(<span class="string">"salt"</span>, lit(saltVal))</span><br><span class="line">    .groupBy(<span class="string">"city"</span>, <span class="string">"state"</span>, <span class="string">"salt"</span>)</span><br><span class="line">    .agg(&lt;f(x)&gt;)</span><br><span class="line">    .drop(<span class="string">"salt"</span>)</span><br><span class="line">    .orderBy(col.desc)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>Use the Apache namespace random function as it’s a vectorized random function.</p>
+</blockquote>
+<h1 id="Avoid-Expensive-Operations"><a href="#Avoid-Expensive-Operations" class="headerlink" title="Avoid Expensive Operations"></a>Avoid Expensive Operations</h1><p>Try to avoid the following expensive operations:</p>
+<ul>
+<li><code>repartition()</code>. Use <code>coalesce()</code> or shuffle partition count instead.</li>
+<li><code>count()</code>. Do not call it unless you need.</li>
+<li><code>distinctCount()</code>. Use <code>approxCountDistinct()</code> instead if you can tolerate 5% error.</li>
+<li>If distincts are required, put them in the right place.</li>
+<li><ul>
+<li>Use <code>dropDuplicates()</code> and use it before join and groupBy.</li>
+</ul>
+</li>
+</ul>
+<h1 id="UDF-Penalties"><a href="#UDF-Penalties" class="headerlink" title="UDF Penalties"></a>UDF Penalties</h1><p>Traditional UDFs cannot use project <a href="https://databricks.com/blog/2015/04/28/project-tungsten-bringing-spark-closer-to-bare-metal.html" target="_blank" rel="noopener">Tungsten</a> to improve the efficiency of Spark executions. Instead, you can choose the following options.</p>
+<ul>
+<li>Use <code>spark.sql.functions</code> standard functions to solve your problem.</li>
+<li>Use Pandas UDF which utilizes Apache Arrow.</li>
+<li>Use SparkR UDF.</li>
+</ul>
+<blockquote>
+<p>Rule of thumbs is to use vectorized UDFs.</p>
+</blockquote>
+
+  </div>
+</article>
+
+    <div class="blog-post-comments">
+        <div id="disqus_thread">
+            <noscript>Please enable JavaScript to view the comments.</noscript>
+        </div>
+    </div>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/tags/">Tags</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/little-eyes" target="_blank" rel="noopener">Projects</a></li>
+         
+          <li><a href="/search/">Search</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Paritions"><span class="toc-number">1.</span> <span class="toc-text">Paritions</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Control-Max-Record-Per-File"><span class="toc-number">1.0.1.</span> <span class="toc-text">Control Max Record Per File</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Coalesce"><span class="toc-number">1.0.2.</span> <span class="toc-text">Coalesce</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Repartition"><span class="toc-number">1.0.3.</span> <span class="toc-text">Repartition</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Persisting"><span class="toc-number"></span> <span class="toc-text">Persisting</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Join-Optimization"><span class="toc-number"></span> <span class="toc-text">Join Optimization</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Handling-Skew"><span class="toc-number"></span> <span class="toc-text">Handling Skew</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Avoid-Expensive-Operations"><span class="toc-number"></span> <span class="toc-text">Avoid Expensive Operations</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#UDF-Penalties"><span class="toc-number"></span> <span class="toc-text">UDF Penalties</span></a>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://jilongliao.com/2019/07/15/Spark-Performance/" target="_blank" rel="noopener"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://jilongliao.com/2019/07/15/Spark-Performance/&text=Spark Performance Optimization" target="_blank" rel="noopener"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://jilongliao.com/2019/07/15/Spark-Performance/&title=Spark Performance Optimization" target="_blank" rel="noopener"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://jilongliao.com/2019/07/15/Spark-Performance/&is_video=false&description=Spark Performance Optimization" target="_blank" rel="noopener"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Spark Performance Optimization&body=Check out this article: http://jilongliao.com/2019/07/15/Spark-Performance/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://jilongliao.com/2019/07/15/Spark-Performance/&title=Spark Performance Optimization" target="_blank" rel="noopener"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://jilongliao.com/2019/07/15/Spark-Performance/&title=Spark Performance Optimization" target="_blank" rel="noopener"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://jilongliao.com/2019/07/15/Spark-Performance/&title=Spark Performance Optimization" target="_blank" rel="noopener"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://jilongliao.com/2019/07/15/Spark-Performance/&title=Spark Performance Optimization" target="_blank" rel="noopener"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://jilongliao.com/2019/07/15/Spark-Performance/&name=Spark Performance Optimization&description=" target="_blank" rel="noopener"><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2020 Jilong Liao
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/tags/">Tags</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/little-eyes" target="_blank" rel="noopener">Projects</a></li>
+         
+          <li><a href="/search/">Search</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+
+    <!-- jquery -->
+
+<script src="/lib/jquery/jquery.min.js"></script>
+
+
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Google Analytics -->
+
+    <script type="text/javascript">
+        (function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-32402817-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+    <script type="text/javascript">
+        var disqus_shortname = 'littleeyes';
+
+        (function(){
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        }());
+    </script>
+
+
+</body>
+</html>

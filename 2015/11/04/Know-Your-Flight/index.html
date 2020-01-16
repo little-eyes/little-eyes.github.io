@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="#circle circle {   fill: none;   pointer-events: all; }  .group path {   fill-opacity: .3; }  svg {   font: 10px sans-serif; }  .axis path, .axis line {   fill: none;   stroke: #000;   shape">
+<meta property="og:type" content="article">
+<meta property="og:title" content="You Need to Know About Your Flight">
+<meta property="og:url" content="http://jilongliao.com/2015/11/04/Know-Your-Flight/index.html">
+<meta property="og:site_name" content="The Little&#39;s Place">
+<meta property="og:description" content="#circle circle {   fill: none;   pointer-events: all; }  .group path {   fill-opacity: .3; }  svg {   font: 10px sans-serif; }  .axis path, .axis line {   fill: none;   stroke: #000;   shape">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://jilongliao.com/images/delays.png">
+<meta property="article:published_time" content="2015-11-04T00:00:00.000Z">
+<meta property="article:modified_time" content="2020-01-16T04:24:31.484Z">
+<meta property="article:author" content="Jilong Liao">
+<meta property="article:tag" content="machine learning">
+<meta property="article:tag" content="data science">
+<meta property="article:tag" content="azure ml">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://jilongliao.com/images/delays.png">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>You Need to Know About Your Flight</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+      
+<link rel="stylesheet" href="/css/rtl.css">
+
+    
+    <!-- rss -->
+    
+    
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/tags/">Tags</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/little-eyes" target="_blank" rel="noopener">Projects</a></li>
+         
+          <li><a href="/search/">Search</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2015/11/21/PaaS-And-Continuous-Integration/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="/2015/10/17/Machine-Learning-in-Cloud/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://jilongliao.com/2015/11/04/Know-Your-Flight/" target="_blank" rel="noopener"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://jilongliao.com/2015/11/04/Know-Your-Flight/&text=You Need to Know About Your Flight" target="_blank" rel="noopener"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://jilongliao.com/2015/11/04/Know-Your-Flight/&title=You Need to Know About Your Flight" target="_blank" rel="noopener"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://jilongliao.com/2015/11/04/Know-Your-Flight/&is_video=false&description=You Need to Know About Your Flight" target="_blank" rel="noopener"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=You Need to Know About Your Flight&body=Check out this article: http://jilongliao.com/2015/11/04/Know-Your-Flight/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://jilongliao.com/2015/11/04/Know-Your-Flight/&title=You Need to Know About Your Flight" target="_blank" rel="noopener"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://jilongliao.com/2015/11/04/Know-Your-Flight/&title=You Need to Know About Your Flight" target="_blank" rel="noopener"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://jilongliao.com/2015/11/04/Know-Your-Flight/&title=You Need to Know About Your Flight" target="_blank" rel="noopener"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://jilongliao.com/2015/11/04/Know-Your-Flight/&title=You Need to Know About Your Flight" target="_blank" rel="noopener"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://jilongliao.com/2015/11/04/Know-Your-Flight/&name=You Need to Know About Your Flight&description=&lt;p&gt;&lt;img src=&#34;/images/delays.png&#34; alt=&#34;Alt text&#34;&gt;&lt;/p&gt;
+&lt;script src=&#34;https://code.jquery.com/jquery-1.11.3.min.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;/downloads/code/papaparse.min.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;http://code.highcharts.com/stock/highstock.src.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;//d3js.org/d3.v3.min.js&#34; charset=&#34;utf-8&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;/downloads/code/airport.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;/downloads/code/airline.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;/downloads/code/route.js&#34;&gt;&lt;/script&gt;
+
+&lt;style&gt;
+#circle circle {
+  fill: none;
+  pointer-events: all;
+}
+
+.group path {
+  fill-opacity: .3;
+}
+
+svg {
+  font: 10px sans-serif;
+}
+
+.axis path, .axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+sup, sub {
+  line-height: 0;
+}
+
+path.chord {
+  stroke: #000;
+  stroke-width: .25px;
+}
+
+#circle:hover path.fade {
+  display: none;
+}
+&lt;/style&gt;
+
+
+&lt;blockquote&gt;
+&lt;p&gt;Due to some interactive visualization graphs, we strongly recommend you to use a computer’s browser to read this article.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;For many times, I get delayed for my flight due to multiple reasons: weather, carrier, security, etc. I never thought of why and what exactly happened for the flights and airports across the United States until I go through the flight data for the past years. I feel there is a strong need to visualize and discuss the insights for the delays that every one of us encountered before.&lt;/p&gt;
+&lt;p&gt;Department of Transportation’s flight data starts from a while ago, but I am not planning to use all of them. Instead, I choose the data from 2011 which is the first year I came to United States. Let’s first take a look at some facts throughout these years.&lt;/p&gt;"><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Airport-Delays-over-the-5-years"><span class="toc-number">1.</span> <span class="toc-text">Airport Delays over the 5 years</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Airlines-Delays-over-the-5-years"><span class="toc-number">2.</span> <span class="toc-text">Airlines Delays over the 5 years</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Route-Delays-over-the-5-years"><span class="toc-number">3.</span> <span class="toc-text">Route Delays over the 5 years</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#The-End"><span class="toc-number">4.</span> <span class="toc-text">The End</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        You Need to Know About Your Flight
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">The Little's Place</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2015-11-04T00:00:00.000Z" itemprop="datePublished">2015-11-04</time>
+        
+      
+    </div>
+
+
+      
+    <div class="article-category">
+        <i class="fas fa-archive"></i>
+        <a class="category-link" href="/categories/technology/">technology</a>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link" href="/tags/azure-ml/" rel="tag">azure ml</a>, <a class="tag-link" href="/tags/data-science/" rel="tag">data science</a>, <a class="tag-link" href="/tags/machine-learning/" rel="tag">machine learning</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <p><img src="/images/delays.png" alt="Alt text"></p>
+<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+<script src="/downloads/code/papaparse.min.js"></script>
+<script src="http://code.highcharts.com/stock/highstock.src.js"></script>
+<script src="//d3js.org/d3.v3.min.js" charset="utf-8"></script>
+<script src="/downloads/code/airport.js"></script>
+<script src="/downloads/code/airline.js"></script>
+<script src="/downloads/code/route.js"></script>
+
+<style>
+#circle circle {
+  fill: none;
+  pointer-events: all;
+}
+
+.group path {
+  fill-opacity: .3;
+}
+
+svg {
+  font: 10px sans-serif;
+}
+
+.axis path, .axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+sup, sub {
+  line-height: 0;
+}
+
+path.chord {
+  stroke: #000;
+  stroke-width: .25px;
+}
+
+#circle:hover path.fade {
+  display: none;
+}
+</style>
+
+
+<blockquote>
+<p>Due to some interactive visualization graphs, we strongly recommend you to use a computer’s browser to read this article.</p>
+</blockquote>
+<p>For many times, I get delayed for my flight due to multiple reasons: weather, carrier, security, etc. I never thought of why and what exactly happened for the flights and airports across the United States until I go through the flight data for the past years. I feel there is a strong need to visualize and discuss the insights for the delays that every one of us encountered before.</p>
+<p>Department of Transportation’s flight data starts from a while ago, but I am not planning to use all of them. Instead, I choose the data from 2011 which is the first year I came to United States. Let’s first take a look at some facts throughout these years.</p>
+<a id="more"></a>
+
+<h3 id="Airport-Delays-over-the-5-years"><a href="#Airport-Delays-over-the-5-years" class="headerlink" title="Airport Delays over the 5 years"></a>Airport Delays over the 5 years</h3><p>The first thing come to my mind is the most busy airport in US. To be more specific, I split it into two parts: departure and arrival. To be honest, it is quite surprising to realize that Atlanta GA is the busiest airport for the past five years though Chicago IL is understandable. Another interesting phenomenon is the departure and arrival popularity is not identical for those big airports. That raise a flag that there might be something interesting about the asymmetry.</p>
+<div id="airportPopularity"></div>
+
+<p>Next, you might wonder the worst delay should happen in either Atlanta or Chicago. If we consider the <code>Delay Ratio</code> as the number of flights delayed divide the total number of flights, then neither of them are the the worst airport in the US. In contrast, Atlanta airport is pretty efficient with only around 35% delay ratio comparing to Denvor’s 48%. But it worth knowing that Denvor and Las Vegas might get you delayed in a roughly 1 out of 2 flights.</p>
+<div id="airportDelay"></div>
+
+<p>To breakdown the delays, interesting stuffs start coming onto the surface. We used to hear from the airlines that we are delayed or canceled because of the weather. However, the data below tell you a different story. The biggest cause for delay (including departure and arrival) is <code>Late Aircraft</code>. That means the plane is late coming here. So we might think why it is late? Does it come late because of the weather over there? I doubt this to be true because all those airports share the same pattern without being affected by the weather. The second cause is the <code>NAS</code> which I really doubt the efficiency of the system to handle so many planes in the air or need to be in the air.</p>
+<div id="airportDepDelayBreakdown"></div>
+<div id="airportArrDelayBreakdown"></div>
+
+<p>Lastly, we aggregate the delays to display the average monthly delay for airports during the last five years for each airport. The following interactive graph may give you a sense of how the delay ratio changes within a year. You may already noticed that the ratio dynamics are very different from airport to airport, though a general pattern is Christmas and summer time (both are good time to travel). But there should be a lot of conclusions you can draw from the chart. We do notice some interesting points as well which we will put in the next few blogs in details.</p>
+<div id="airportDelayRatioTimeline" style="min-width: 900px;"></div>
+
+<h3 id="Airlines-Delays-over-the-5-years"><a href="#Airlines-Delays-over-the-5-years" class="headerlink" title="Airlines Delays over the 5 years"></a>Airlines Delays over the 5 years</h3><p>Airport is one of the important factors of your flight’s delay, but airlines could play more in the role. So we use the same approach to look into the top 10 busiest airlines in the United States for the past 5 years which we believe are your choices for most of your flights.</p>
+<div id="airlinePopularity"></div>
+
+<p>For those of you not familiar with the airline code, you can either google it or simply try <a href="https://en.wikipedia.org/wiki/List_of_airline_codes" target="_blank" rel="noopener">this link</a> from Wikipedia. Surprisingly, Southwest Airline is the busiest one in United States. I am not very familiar with the details of the current competitions among airlines, but I have never tried Southwest before. Maybe I should try it.</p>
+<div id="airlineDelay"></div>
+
+<p>The airline delay ratios roughly have the same pattern as airports. The departure delay and arrival delay are very close to each other. Southwest and United Airlines have roughly 50% delay ratio which is way too high. Comparing to Alaska Airlines, these two will make me crazy if my flight get delayed every other time.</p>
+<div id="airlineDepDelayBreakdown"></div>
+<div id="airlineArrDelayBreakdown"></div>
+
+<p>If we breakdown the delays, weather seems to be a bigger factor comparing to airport’s issue. Essentially, data comes from the same source but with different grouping method, so I am thinking of what this grouping changed? Maybe some airlines cover mostly better weather airports or so. However, NAS and late aircraft are always the two big issues. Thus my next blog should be on the analysis of why those two factors always.</p>
+<p>Finally is the interactive visualization of each airline’s delay over the past five years. We aggregate the data monthly and there are some interesting dynamics in the visualization you can discover as well.</p>
+<div id="airlineDelayRatioTimeline" style="min-width: 900px;"></div>
+
+<h3 id="Route-Delays-over-the-5-years"><a href="#Route-Delays-over-the-5-years" class="headerlink" title="Route Delays over the 5 years"></a>Route Delays over the 5 years</h3><p>To visually display the top frequent air route in the United States, we have a chord diagram below which connects the most frequent routes. From the diagram, one thing you can easily observe is that Los Angles is an interesting place because it is the hub of 5 most frequent air routes. What a busy city, isn’t it? In addition, Phoenix, AZ is one of the origins and destinations as well, but I never make a stop there excepting driving through. Maybe you have more thinkings of this.</p>
+<div id="routeChord"></div>
+
+<p>Air route delays definitely show a different pattern. Late aircraft is no longer <strong>the</strong> biggest reason. However, NAS becomes a more substantial factor. One idea I do have right now is that those frequent routes connect ciities usually being a start or end city, which means there is no need to wait for the aircraft because it is the first one. Plus, most of them have direct flights which make things easier again.</p>
+<div id="routeDelay"></div>
+<div id="routeDepDelayBreakdown"></div>
+<div id="routeArrDelayBreakdown"></div>
+
+<p>In the end, we also provide the monthly route delay ratio curves so that you can play with it and find more interesting insights into it.</p>
+<div id="routeDelayRatioTimeline" style="min-width: 900px;"></div>
+
+<h3 id="The-End"><a href="#The-End" class="headerlink" title="The End"></a>The End</h3><p>As you may have seen, there are so many insights and questions about our flights and why we have delays. Apparently, we could not cover all of the analysis in this single article. Nevertheless, we will continue providing our insights through the data and build models to explain the delays, which hopefully will make some constructive suggestions to the airports and the public to think about our air traffic.</p>
+<p><em>Feel free to comment below and join the discussion.</em></p>
+
+  </div>
+</article>
+
+    <div class="blog-post-comments">
+        <div id="disqus_thread">
+            <noscript>Please enable JavaScript to view the comments.</noscript>
+        </div>
+    </div>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/tags/">Tags</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/little-eyes" target="_blank" rel="noopener">Projects</a></li>
+         
+          <li><a href="/search/">Search</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Airport-Delays-over-the-5-years"><span class="toc-number">1.</span> <span class="toc-text">Airport Delays over the 5 years</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Airlines-Delays-over-the-5-years"><span class="toc-number">2.</span> <span class="toc-text">Airlines Delays over the 5 years</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Route-Delays-over-the-5-years"><span class="toc-number">3.</span> <span class="toc-text">Route Delays over the 5 years</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#The-End"><span class="toc-number">4.</span> <span class="toc-text">The End</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://jilongliao.com/2015/11/04/Know-Your-Flight/" target="_blank" rel="noopener"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://jilongliao.com/2015/11/04/Know-Your-Flight/&text=You Need to Know About Your Flight" target="_blank" rel="noopener"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://jilongliao.com/2015/11/04/Know-Your-Flight/&title=You Need to Know About Your Flight" target="_blank" rel="noopener"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://jilongliao.com/2015/11/04/Know-Your-Flight/&is_video=false&description=You Need to Know About Your Flight" target="_blank" rel="noopener"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=You Need to Know About Your Flight&body=Check out this article: http://jilongliao.com/2015/11/04/Know-Your-Flight/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://jilongliao.com/2015/11/04/Know-Your-Flight/&title=You Need to Know About Your Flight" target="_blank" rel="noopener"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://jilongliao.com/2015/11/04/Know-Your-Flight/&title=You Need to Know About Your Flight" target="_blank" rel="noopener"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://jilongliao.com/2015/11/04/Know-Your-Flight/&title=You Need to Know About Your Flight" target="_blank" rel="noopener"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://jilongliao.com/2015/11/04/Know-Your-Flight/&title=You Need to Know About Your Flight" target="_blank" rel="noopener"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://jilongliao.com/2015/11/04/Know-Your-Flight/&name=You Need to Know About Your Flight&description=&lt;p&gt;&lt;img src=&#34;/images/delays.png&#34; alt=&#34;Alt text&#34;&gt;&lt;/p&gt;
+&lt;script src=&#34;https://code.jquery.com/jquery-1.11.3.min.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;/downloads/code/papaparse.min.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;http://code.highcharts.com/stock/highstock.src.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;//d3js.org/d3.v3.min.js&#34; charset=&#34;utf-8&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;/downloads/code/airport.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;/downloads/code/airline.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;/downloads/code/route.js&#34;&gt;&lt;/script&gt;
+
+&lt;style&gt;
+#circle circle {
+  fill: none;
+  pointer-events: all;
+}
+
+.group path {
+  fill-opacity: .3;
+}
+
+svg {
+  font: 10px sans-serif;
+}
+
+.axis path, .axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+sup, sub {
+  line-height: 0;
+}
+
+path.chord {
+  stroke: #000;
+  stroke-width: .25px;
+}
+
+#circle:hover path.fade {
+  display: none;
+}
+&lt;/style&gt;
+
+
+&lt;blockquote&gt;
+&lt;p&gt;Due to some interactive visualization graphs, we strongly recommend you to use a computer’s browser to read this article.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;For many times, I get delayed for my flight due to multiple reasons: weather, carrier, security, etc. I never thought of why and what exactly happened for the flights and airports across the United States until I go through the flight data for the past years. I feel there is a strong need to visualize and discuss the insights for the delays that every one of us encountered before.&lt;/p&gt;
+&lt;p&gt;Department of Transportation’s flight data starts from a while ago, but I am not planning to use all of them. Instead, I choose the data from 2011 which is the first year I came to United States. Let’s first take a look at some facts throughout these years.&lt;/p&gt;"><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2020 Jilong Liao
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/tags/">Tags</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/little-eyes" target="_blank" rel="noopener">Projects</a></li>
+         
+          <li><a href="/search/">Search</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+
+    <!-- jquery -->
+
+<script src="/lib/jquery/jquery.min.js"></script>
+
+
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Google Analytics -->
+
+    <script type="text/javascript">
+        (function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-32402817-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+    <script type="text/javascript">
+        var disqus_shortname = 'littleeyes';
+
+        (function(){
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        }());
+    </script>
+
+
+</body>
+</html>

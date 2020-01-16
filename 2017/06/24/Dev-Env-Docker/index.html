@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="Many of us may have encountered into the situation of configuring your development environment, especially if you work on something at enterprise level. Environment variables, service configurations s">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Beyond Dev Environment Setup - Docker">
+<meta property="og:url" content="http://jilongliao.com/2017/06/24/Dev-Env-Docker/index.html">
+<meta property="og:site_name" content="The Little&#39;s Place">
+<meta property="og:description" content="Many of us may have encountered into the situation of configuring your development environment, especially if you work on something at enterprise level. Environment variables, service configurations s">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://jilongliao.com/images/docker.png">
+<meta property="og:image" content="http://jilongliao.com/images/docker-web.png">
+<meta property="article:published_time" content="2017-06-24T00:00:00.000Z">
+<meta property="article:modified_time" content="2020-01-16T04:24:31.484Z">
+<meta property="article:author" content="Jilong Liao">
+<meta property="article:tag" content="Docker">
+<meta property="article:tag" content="Infrastructure">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://jilongliao.com/images/docker.png">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>Beyond Dev Environment Setup - Docker</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+      
+<link rel="stylesheet" href="/css/rtl.css">
+
+    
+    <!-- rss -->
+    
+    
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/tags/">Tags</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/little-eyes" target="_blank" rel="noopener">Projects</a></li>
+         
+          <li><a href="/search/">Search</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2017/09/04/Chrome-Devtools-Protocol/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="/2017/03/26/Preview-Ci-Aspnet-Core/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://jilongliao.com/2017/06/24/Dev-Env-Docker/" target="_blank" rel="noopener"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://jilongliao.com/2017/06/24/Dev-Env-Docker/&text=Beyond Dev Environment Setup - Docker" target="_blank" rel="noopener"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://jilongliao.com/2017/06/24/Dev-Env-Docker/&title=Beyond Dev Environment Setup - Docker" target="_blank" rel="noopener"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://jilongliao.com/2017/06/24/Dev-Env-Docker/&is_video=false&description=Beyond Dev Environment Setup - Docker" target="_blank" rel="noopener"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Beyond Dev Environment Setup - Docker&body=Check out this article: http://jilongliao.com/2017/06/24/Dev-Env-Docker/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://jilongliao.com/2017/06/24/Dev-Env-Docker/&title=Beyond Dev Environment Setup - Docker" target="_blank" rel="noopener"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://jilongliao.com/2017/06/24/Dev-Env-Docker/&title=Beyond Dev Environment Setup - Docker" target="_blank" rel="noopener"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://jilongliao.com/2017/06/24/Dev-Env-Docker/&title=Beyond Dev Environment Setup - Docker" target="_blank" rel="noopener"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://jilongliao.com/2017/06/24/Dev-Env-Docker/&title=Beyond Dev Environment Setup - Docker" target="_blank" rel="noopener"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://jilongliao.com/2017/06/24/Dev-Env-Docker/&name=Beyond Dev Environment Setup - Docker&description=&lt;p&gt;Many of us may have encountered into the situation of configuring your development environment, especially if you work on something at enterprise level. &lt;code&gt;Environment variables&lt;/code&gt;, &lt;code&gt;service configurations&lt;/code&gt; such as IIS, &lt;code&gt;shell enviornment&lt;/code&gt; setup, &lt;code&gt;certificates&lt;/code&gt; and &lt;code&gt;passwords&lt;/code&gt; or &lt;code&gt;secrets&lt;/code&gt; are very common settings for an enterprise project. Whenever a person join the team, there is always a headache to setup everything he/she needs to begin working. Documentation is one of the common ways to write down the instructions. However, we all encountered into the situations that the setup is still incorrect after we follow the instruction. Then we spend time debugging and adding what we find into the documentation and hope the next person will fine. Or you might receive emails asking for dev environment passwords/secrets every few weeks when someone new join your team.&lt;/p&gt;
+&lt;p&gt;In other cases, we might need to work with multiple repositories in order to ship a large feature. Each repository has its own settings, sometimes even conflict with each other. One exmaple I encountered is the IIS app pool’s identity settings, two repositories need different identity and both services need to run in IIS. It took me some time to setup correctly. &lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/images/docker.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;"><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Using-Docker-as-the-Dev-Environment"><span class="toc-number">1.</span> <span class="toc-text">Using Docker as the Dev Environment</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Publish-Your-Docker-Image-for-Your-Team"><span class="toc-number">2.</span> <span class="toc-text">Publish Your Docker Image for Your Team</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Debugging-Experience"><span class="toc-number">3.</span> <span class="toc-text">Debugging Experience</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        Beyond Dev Environment Setup - Docker
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">The Little's Place</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2017-06-24T00:00:00.000Z" itemprop="datePublished">2017-06-24</time>
+        
+      
+    </div>
+
+
+      
+    <div class="article-category">
+        <i class="fas fa-archive"></i>
+        <a class="category-link" href="/categories/technology/">technology</a>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link" href="/tags/Docker/" rel="tag">Docker</a>, <a class="tag-link" href="/tags/Infrastructure/" rel="tag">Infrastructure</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <p>Many of us may have encountered into the situation of configuring your development environment, especially if you work on something at enterprise level. <code>Environment variables</code>, <code>service configurations</code> such as IIS, <code>shell enviornment</code> setup, <code>certificates</code> and <code>passwords</code> or <code>secrets</code> are very common settings for an enterprise project. Whenever a person join the team, there is always a headache to setup everything he/she needs to begin working. Documentation is one of the common ways to write down the instructions. However, we all encountered into the situations that the setup is still incorrect after we follow the instruction. Then we spend time debugging and adding what we find into the documentation and hope the next person will fine. Or you might receive emails asking for dev environment passwords/secrets every few weeks when someone new join your team.</p>
+<p>In other cases, we might need to work with multiple repositories in order to ship a large feature. Each repository has its own settings, sometimes even conflict with each other. One exmaple I encountered is the IIS app pool’s identity settings, two repositories need different identity and both services need to run in IIS. It took me some time to setup correctly. </p>
+<p><img src="/images/docker.png" alt=""></p>
+<a id="more"></a>
+
+<p>A great tool <code>Docker</code> may change the game. The fundamental concept is to run or debug your application or service inside a docker container, while you still develop in your local machine with your favoriate tool you like. Once you finished your code change, you can quickly build up a new image and run or debug it.</p>
+<p>As an exmaple, I will use a ASP.NET Core web application as an example. We have one of our major service running in this environment. I hope you could get some ideas from this simple examples.</p>
+<h2 id="Using-Docker-as-the-Dev-Environment"><a href="#Using-Docker-as-the-Dev-Environment" class="headerlink" title="Using Docker as the Dev Environment"></a>Using Docker as the Dev Environment</h2><p>First of all, you need to install docker. If you haven’t, the docker official website provides great tutorials on how to do it on any operating system. Now I assume we have docker installed and running well.</p>
+<p>I created a ASP.NET Core application from commandline like the following.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mkdir dockerexample</span><br><span class="line"><span class="built_in">cd</span> dockerexample</span><br><span class="line">dotnet new mvc .</span><br></pre></td></tr></table></figure>
+
+<p>Within the current directory, if you build and run the application, you should be able to see the website from <code>https://localhost:5000</code>.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">dotnet restore</span><br><span class="line">dotnet build</span><br><span class="line">dotnet run</span><br></pre></td></tr></table></figure>
+
+<p>Next step is to create a file named <code>Dockerfile</code> in the directory to tell docker how to build the image and what needs to run within the image. Microsoft provides the ASP.NET Core image <a href="https://hub.docker.com/r/microsoft/aspnetcore/" target="_blank" rel="noopener">[1]</a>.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">FROM microsoft/dotnet:latest</span><br><span class="line">COPY . /app</span><br><span class="line">WORKDIR /app</span><br><span class="line"> </span><br><span class="line">RUN [<span class="string">"dotnet"</span>, <span class="string">"restore"</span>]</span><br><span class="line">RUN [<span class="string">"dotnet"</span>, <span class="string">"build"</span>]</span><br><span class="line"> </span><br><span class="line">EXPOSE 5000/tcp</span><br><span class="line">ENV ASPNETCORE_URLS http://*:5000</span><br><span class="line"> </span><br><span class="line">ENTRYPOINT [<span class="string">"dotnet"</span>, <span class="string">"run"</span>, <span class="string">"watch"</span>]</span><br></pre></td></tr></table></figure>
+
+<p>The above example Dockerfile is to pull the latest Microsoft ASP.NET Core image, then add the application code from the current directory. At entry point, the image will run the ASP.NET Core application at port 5000 which is exposed from the image.</p>
+<p>Now, you can build the image with the following command:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker build -t example:demo .</span><br></pre></td></tr></table></figure>
+
+<p>To run the docker image, using the following command:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -p 8080:5000 -t example:demo</span><br></pre></td></tr></table></figure>
+
+<p>If you run <code>docker ps</code>, you should be able to see your container is running.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ docker ps</span><br><span class="line">CONTAINER ID        IMAGE                   COMMAND             CREATED             STATUS              PORTS                    NAMES</span><br><span class="line">d201d7eb9a21        example:demo   <span class="string">"bash"</span>              26 seconds ago      Up 24 seconds       0.0.0.0:8080-&gt;5000/tcp   blissful_morse</span><br></pre></td></tr></table></figure>
+
+<p>Open the browser and go to <code>https://localhost:8080</code>, you will see the website is running perfectly. Note that the port number has changed to 8080 because we mapped the port between localhost and the container. The app will run at port 5000 inside container, but mapped to port 8080 from localhost.</p>
+<p><img src="/images/docker-web.png" alt=""></p>
+<h2 id="Publish-Your-Docker-Image-for-Your-Team"><a href="#Publish-Your-Docker-Image-for-Your-Team" class="headerlink" title="Publish Your Docker Image for Your Team"></a>Publish Your Docker Image for Your Team</h2><p>Nowadays, most of teams should use cloud to provide their services. <a href="https://azure.microsoft.com/en-us/services/container-service/" target="_blank" rel="noopener">Azure Container Service</a> or <a href="https://aws.amazon.com/ecs/?nc1=h_ls" target="_blank" rel="noopener">AWS EC2 Container Service</a> are good places to publish and share your images with your team. From those documentations you will see how easy it is to publish, update and deploy your images. Whenever development environment changes, the whole team just need to do a simple pull from the registry to get the most updated image to develop their code.</p>
+<h2 id="Debugging-Experience"><a href="#Debugging-Experience" class="headerlink" title="Debugging Experience"></a>Debugging Experience</h2><p>If you are using Windows and Visual Studio 2017, you can easily debug your code in Visual Studio while running your code in the docker image. <a href="https://wannabeegeek.com/2016/12/16/debugging-asp-net-core-apps-running-in-docker-containers-using-vs-2017/" target="_blank" rel="noopener">WANNABEEGEEEK</a> provides a great post on how to setup debug ASP.NET Core from a container. Basically, there is no difference when debug in localhost and in a container. So enjoy the free tool Visual Studio 2017 provides. Or if you are running node.js application, and you can also easily debug through Visual Studio Code like <a href="https://alexanderzeitler.com/articles/debugging-a-nodejs-es6-application-in-a-docker-container-using-visual-studio-code/" target="_blank" rel="noopener">this post</a> describes.</p>
+<p>As we can see, it is not difficult to migrate run a container and use it. I think the most tricky thing is to migrate all your settings into an image for the first time. Once someone on the team is done, it will be a huge benefits for the entire team. </p>
+<blockquote>
+<p>No more concerns about dev environment changes, it’s just a pull and develop! You can develop as fast as your native localhost machine.</p>
+</blockquote>
+
+  </div>
+</article>
+
+    <div class="blog-post-comments">
+        <div id="disqus_thread">
+            <noscript>Please enable JavaScript to view the comments.</noscript>
+        </div>
+    </div>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/tags/">Tags</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/little-eyes" target="_blank" rel="noopener">Projects</a></li>
+         
+          <li><a href="/search/">Search</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Using-Docker-as-the-Dev-Environment"><span class="toc-number">1.</span> <span class="toc-text">Using Docker as the Dev Environment</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Publish-Your-Docker-Image-for-Your-Team"><span class="toc-number">2.</span> <span class="toc-text">Publish Your Docker Image for Your Team</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Debugging-Experience"><span class="toc-number">3.</span> <span class="toc-text">Debugging Experience</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://jilongliao.com/2017/06/24/Dev-Env-Docker/" target="_blank" rel="noopener"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://jilongliao.com/2017/06/24/Dev-Env-Docker/&text=Beyond Dev Environment Setup - Docker" target="_blank" rel="noopener"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://jilongliao.com/2017/06/24/Dev-Env-Docker/&title=Beyond Dev Environment Setup - Docker" target="_blank" rel="noopener"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://jilongliao.com/2017/06/24/Dev-Env-Docker/&is_video=false&description=Beyond Dev Environment Setup - Docker" target="_blank" rel="noopener"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Beyond Dev Environment Setup - Docker&body=Check out this article: http://jilongliao.com/2017/06/24/Dev-Env-Docker/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://jilongliao.com/2017/06/24/Dev-Env-Docker/&title=Beyond Dev Environment Setup - Docker" target="_blank" rel="noopener"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://jilongliao.com/2017/06/24/Dev-Env-Docker/&title=Beyond Dev Environment Setup - Docker" target="_blank" rel="noopener"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://jilongliao.com/2017/06/24/Dev-Env-Docker/&title=Beyond Dev Environment Setup - Docker" target="_blank" rel="noopener"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://jilongliao.com/2017/06/24/Dev-Env-Docker/&title=Beyond Dev Environment Setup - Docker" target="_blank" rel="noopener"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://jilongliao.com/2017/06/24/Dev-Env-Docker/&name=Beyond Dev Environment Setup - Docker&description=&lt;p&gt;Many of us may have encountered into the situation of configuring your development environment, especially if you work on something at enterprise level. &lt;code&gt;Environment variables&lt;/code&gt;, &lt;code&gt;service configurations&lt;/code&gt; such as IIS, &lt;code&gt;shell enviornment&lt;/code&gt; setup, &lt;code&gt;certificates&lt;/code&gt; and &lt;code&gt;passwords&lt;/code&gt; or &lt;code&gt;secrets&lt;/code&gt; are very common settings for an enterprise project. Whenever a person join the team, there is always a headache to setup everything he/she needs to begin working. Documentation is one of the common ways to write down the instructions. However, we all encountered into the situations that the setup is still incorrect after we follow the instruction. Then we spend time debugging and adding what we find into the documentation and hope the next person will fine. Or you might receive emails asking for dev environment passwords/secrets every few weeks when someone new join your team.&lt;/p&gt;
+&lt;p&gt;In other cases, we might need to work with multiple repositories in order to ship a large feature. Each repository has its own settings, sometimes even conflict with each other. One exmaple I encountered is the IIS app pool’s identity settings, two repositories need different identity and both services need to run in IIS. It took me some time to setup correctly. &lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;/images/docker.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;"><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2020 Jilong Liao
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/tags/">Tags</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/little-eyes" target="_blank" rel="noopener">Projects</a></li>
+         
+          <li><a href="/search/">Search</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+
+    <!-- jquery -->
+
+<script src="/lib/jquery/jquery.min.js"></script>
+
+
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Google Analytics -->
+
+    <script type="text/javascript">
+        (function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-32402817-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+    <script type="text/javascript">
+        var disqus_shortname = 'littleeyes';
+
+        (function(){
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        }());
+    </script>
+
+
+</body>
+</html>

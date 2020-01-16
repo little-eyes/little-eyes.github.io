@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="One must have good tools to do good jobs  For a long time we handle data within our single desktop or workstation, but the data explodes so quickly recently. The first situation of big data, meaningf">
+<meta property="og:type" content="article">
+<meta property="og:title" content="In Love With Big Data Analysis - a Toolchain Summary">
+<meta property="og:url" content="http://jilongliao.com/2013/04/05/In-Love-with-Big-Data-Analysis/index.html">
+<meta property="og:site_name" content="The Little&#39;s Place">
+<meta property="og:description" content="One must have good tools to do good jobs  For a long time we handle data within our single desktop or workstation, but the data explodes so quickly recently. The first situation of big data, meaningf">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2013-04-05T00:00:00.000Z">
+<meta property="article:modified_time" content="2020-01-16T04:24:31.484Z">
+<meta property="article:author" content="Jilong Liao">
+<meta property="article:tag" content="big data">
+<meta name="twitter:card" content="summary">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>In Love With Big Data Analysis - a Toolchain Summary</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+      
+<link rel="stylesheet" href="/css/rtl.css">
+
+    
+    <!-- rss -->
+    
+    
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/tags/">Tags</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/little-eyes" target="_blank" rel="noopener">Projects</a></li>
+         
+          <li><a href="/search/">Search</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2013/08/15/A-New-Direction-to-Benchmarking/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="/2013/03/10/Restudy-C++-and-C++11/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://jilongliao.com/2013/04/05/In-Love-with-Big-Data-Analysis/" target="_blank" rel="noopener"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://jilongliao.com/2013/04/05/In-Love-with-Big-Data-Analysis/&text=In Love With Big Data Analysis - a Toolchain Summary" target="_blank" rel="noopener"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://jilongliao.com/2013/04/05/In-Love-with-Big-Data-Analysis/&title=In Love With Big Data Analysis - a Toolchain Summary" target="_blank" rel="noopener"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://jilongliao.com/2013/04/05/In-Love-with-Big-Data-Analysis/&is_video=false&description=In Love With Big Data Analysis - a Toolchain Summary" target="_blank" rel="noopener"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=In Love With Big Data Analysis - a Toolchain Summary&body=Check out this article: http://jilongliao.com/2013/04/05/In-Love-with-Big-Data-Analysis/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://jilongliao.com/2013/04/05/In-Love-with-Big-Data-Analysis/&title=In Love With Big Data Analysis - a Toolchain Summary" target="_blank" rel="noopener"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://jilongliao.com/2013/04/05/In-Love-with-Big-Data-Analysis/&title=In Love With Big Data Analysis - a Toolchain Summary" target="_blank" rel="noopener"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://jilongliao.com/2013/04/05/In-Love-with-Big-Data-Analysis/&title=In Love With Big Data Analysis - a Toolchain Summary" target="_blank" rel="noopener"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://jilongliao.com/2013/04/05/In-Love-with-Big-Data-Analysis/&title=In Love With Big Data Analysis - a Toolchain Summary" target="_blank" rel="noopener"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://jilongliao.com/2013/04/05/In-Love-with-Big-Data-Analysis/&name=In Love With Big Data Analysis - a Toolchain Summary&description=&lt;blockquote&gt;
+&lt;p&gt;One must have good tools to do good jobs&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;For a long time we handle data within our single desktop or workstation, but the data explodes so quickly recently. The first situation of &lt;code&gt;big data&lt;/code&gt;, meaningful to the public, appears when we want to search the whole Internet and the search should be realtime. Perhaps you want to handle the whole Internet with a super computer, but how much expensive it is? How many company or research institution can afford it? How can you guarantee it works? How long can it stand in the current Internet explosion? One of the cheap solutions is to use thousands of commercial machines such as your desktop.&lt;/p&gt;
+&lt;p&gt;Later, people start to notice the existence of &lt;em&gt;big data&lt;/em&gt; and it is everywhere. Then a huge number of researchers delve into the area and try to solve the huge amount of issues. Fortunately, we have come up with a series of good methodology and tools to help us handle the big data. Here, the use of big data is mainly about data mining, machine learning, realtime service, etc.&lt;/p&gt;"><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Programming-Models-and-Infrastructures"><span class="toc-number">1.</span> <span class="toc-text">Programming Models and Infrastructures</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Hadoop-the-open-source-GFS-MapReduce"><span class="toc-number">1.1.</span> <span class="toc-text">Hadoop: the open source GFS&#x2F;MapReduce</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ZooKeeper-a-service-to-be-tough"><span class="toc-number">1.2.</span> <span class="toc-text">ZooKeeper: a service to be tough</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Storm-the-realtime-framework"><span class="toc-number">1.3.</span> <span class="toc-text">Storm: the realtime framework</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#PowerGraph-special-for-natural-social-graph"><span class="toc-number">1.4.</span> <span class="toc-text">PowerGraph: special for natural (social) graph</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Databases-and-Interfaces"><span class="toc-number">2.</span> <span class="toc-text">Databases and Interfaces</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#HBase-the-Bigtable-way"><span class="toc-number">2.1.</span> <span class="toc-text">HBase: the Bigtable way</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Hive-and-Pig-the-bridges"><span class="toc-number">2.2.</span> <span class="toc-text">Hive and Pig: the bridges</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#NoSQLs-make-things-even-faster"><span class="toc-number">2.3.</span> <span class="toc-text">NoSQLs: make things even faster</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#DynamoDB"><span class="toc-number">2.3.1.</span> <span class="toc-text">DynamoDB</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#MongoDB"><span class="toc-number">2.3.2.</span> <span class="toc-text">MongoDB</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#CouchDB"><span class="toc-number">2.3.3.</span> <span class="toc-text">CouchDB</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#ElephantDB"><span class="toc-number">2.3.4.</span> <span class="toc-text">ElephantDB</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Cassandra"><span class="toc-number">2.3.5.</span> <span class="toc-text">Cassandra</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#In-memory-Stores"><span class="toc-number">3.</span> <span class="toc-text">In-memory Stores</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Memcached"><span class="toc-number">3.1.</span> <span class="toc-text">Memcached</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Redis"><span class="toc-number">3.2.</span> <span class="toc-text">Redis</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#RabbitMQ"><span class="toc-number">3.3.</span> <span class="toc-text">RabbitMQ</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Cross-platform-language-Data-Exchanges"><span class="toc-number">4.</span> <span class="toc-text">Cross-platform&#x2F;language Data Exchanges</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Avro-Apache’s"><span class="toc-number">4.1.</span> <span class="toc-text">Avro Apache’s</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Thrift"><span class="toc-number">4.2.</span> <span class="toc-text">Thrift</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Protocol-Buffer"><span class="toc-number">4.3.</span> <span class="toc-text">Protocol Buffer</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Machine-Learning-Library-Apache-Mahout"><span class="toc-number">5.</span> <span class="toc-text">Machine Learning Library: Apache Mahout</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        In Love With Big Data Analysis - a Toolchain Summary
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">The Little's Place</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2013-04-05T00:00:00.000Z" itemprop="datePublished">2013-04-05</time>
+        
+      
+    </div>
+
+
+      
+    <div class="article-category">
+        <i class="fas fa-archive"></i>
+        <a class="category-link" href="/categories/technology/">technology</a>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link" href="/tags/big-data/" rel="tag">big data</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <blockquote>
+<p>One must have good tools to do good jobs</p>
+</blockquote>
+<p>For a long time we handle data within our single desktop or workstation, but the data explodes so quickly recently. The first situation of <code>big data</code>, meaningful to the public, appears when we want to search the whole Internet and the search should be realtime. Perhaps you want to handle the whole Internet with a super computer, but how much expensive it is? How many company or research institution can afford it? How can you guarantee it works? How long can it stand in the current Internet explosion? One of the cheap solutions is to use thousands of commercial machines such as your desktop.</p>
+<p>Later, people start to notice the existence of <em>big data</em> and it is everywhere. Then a huge number of researchers delve into the area and try to solve the huge amount of issues. Fortunately, we have come up with a series of good methodology and tools to help us handle the big data. Here, the use of big data is mainly about data mining, machine learning, realtime service, etc.</p>
+<a id="more"></a>
+
+<p>Among those tools, I would like to organize them into the following categorizes and discuss them in the rest of the blog.</p>
+<ul>
+<li>Programming Models and Infrastructures</li>
+<li>Databases and Interfaces</li>
+<li>In-memory Store</li>
+<li>Cross-platform/language Data Exchanges</li>
+<li>Machine Learning Library</li>
+</ul>
+<h2 id="Programming-Models-and-Infrastructures"><a href="#Programming-Models-and-Infrastructures" class="headerlink" title="Programming Models and Infrastructures"></a>Programming Models and Infrastructures</h2><p>An essential question: <em>why programming model matters?</em></p>
+<p>Before we talk about the reason, let us look at an example. You are asked to write a program to extract the unique English word used in all Wikipedia document. What you should do? Here are some solutions.</p>
+<p>Solution #1: Write a short Python program. Basically, you go through all the documents and record the word in a dict. It takes more than 10 hours from my machine. Of course, you cannot tolerate such a slow speed.</p>
+<p>Solution #2: Write a distributed or parallel program. Well, this time is much better, but you may spend a huge amount of time writing MPI code and debug your program. It can runs faster but MPI may not be able to use in other cases.</p>
+<p>So, what about others? Yes, a team of engineers from Google solve this problem very well by proposing such a successful programming framework called <code>MapReduce</code>, which is supported by <code>Google File System</code>. Thereafter, people shortly understand the importance of this framework: the two systems can store the whole internet and can make index of it within an hour. What a huge jump, isn’t it?</p>
+<h3 id="Hadoop-the-open-source-GFS-MapReduce"><a href="#Hadoop-the-open-source-GFS-MapReduce" class="headerlink" title="Hadoop: the open source GFS/MapReduce"></a>Hadoop: the open source GFS/MapReduce</h3><p>Apache Software Foundation rewrite the two system from Google’s paper in OSDI 2006. Now the project is called <code>Hadoop</code>. It contains two parts: <code>HDFS</code> and <code>MapReduce core</code>. We are not going into details of Hadoop’s architecture in this article because it worth another complete post. People use Hadoop in almost every big company who has big data. Hadoop is almost becomes the industry standards!</p>
+<p>Hadoop is written in Java but it support C++, Java and Python as its MapReduce programming language. It works exactly the same as Google File System and its Map/Reduce. Some important terminologies are: <code>namenode</code>, <code>secondarynamenode</code>, <code>datanode</code>, <code>jobtracker</code>. The most important concept in Hadoop is the <code>job</code>, which means you ask a cluster of machines to work on a single job you want them to do. Obviously, this is a batch process.</p>
+<h3 id="ZooKeeper-a-service-to-be-tough"><a href="#ZooKeeper-a-service-to-be-tough" class="headerlink" title="ZooKeeper: a service to be tough"></a>ZooKeeper: a service to be tough</h3><p>The Apache ZooKeeper is designed to help us handle the complicated issues in the distributed system design. One of the tough issues is the synchronization. We may spend tons of time to deal with this issue if we are not familiar with the topic and even the researchers are working hard to overcome many new coming synchronization issues.</p>
+<p>The ZooKeeper isolates the distributed services as an independent layer. Based on its APIs, we can easily build up robust distributed system. An example is the HBase system, which is the Google Bigtable implementation (we will talk about the details later). Some examples: <a href="http://zookeeper.apache.org/doc/trunk/javaExample.html" target="_blank" rel="noopener">a simple Java one</a>, <a href="http://zookeeper.apache.org/doc/trunk/zookeeperTutorial.html" target="_blank" rel="noopener">barrier and queue</a>.</p>
+<h3 id="Storm-the-realtime-framework"><a href="#Storm-the-realtime-framework" class="headerlink" title="Storm: the realtime framework"></a>Storm: the <strong>realtime</strong> framework</h3><p>Even though Hadoop does an excellent job to handle a huge amount of data at a time, but it usually takes hours to finish a job on petabyte level data. Unfortunately, people are not satisfied with Hadoop because it cannot make things happen in real time. Twitter, for example, wants a system to analyze people’s every single tweet, but Hadoop cannot finish the job within a second or even less time. Therefore, they invent a <a href="http://storm-project.net/" target="_blank" rel="noopener">Storm</a>.</p>
+<p>If you want to compute realtime, you have to let some machines running all the time. Therefore, Storm uses the idea of <code>topology</code> instead of <code>job</code>. Similar to Hadoop, a developer just need to specify a topology to handle a forever going work in a couple of lines of code. Then the workers will always work on the task until the developer decides to kill it.</p>
+<p>Note that Storm is not a scratch-up project, it is on top of HDFS. This distributed file system is very useful in many cases so that people loves it everywhere. For Storm’s application, I suggest you read Edwin Chen’s <a href="http://blog.echen.me/2013/01/08/improving-twitter-search-with-real-time-human-computation/" target="_blank" rel="noopener">blog</a>.</p>
+<h3 id="PowerGraph-special-for-natural-social-graph"><a href="#PowerGraph-special-for-natural-social-graph" class="headerlink" title="PowerGraph: special for natural (social) graph"></a>PowerGraph: special for natural (social) graph</h3><p>A special case in our current research, especially the social network research area, we have to analyze the social graph. The social graph fits well into <a href="http://en.wikipedia.org/wiki/PageRank" target="_blank" rel="noopener">Power Law&lt;</a>, so a large number of nodes have very small number of edges. If we want to calculate the reputation of a person in the social graph, we needs to handle billions of nodes and billions of edges in the graph. Of course, a distributed system is necessary.</p>
+<p>The fundamental idea is very simple that splits the graph by edges and lets one machine run a node’s work. Cool idea, isn’t? Oh, this idea can be implemented in Hadoop. For example, we can use the <a href="http://en.wikipedia.org/wiki/PageRank" target="_blank" rel="noopener">PageRank</a> to represent the social importance and PageRank’s Hadoop implementation is well known. But the message exchanges among the machines are exploding which dramatically increase the computation time.</p>
+<p>A group of people from CMU proposes a clever idea to split the nodes instead of edges. So each node can be split into several sectors and each sector handles the computation locally, then shuffles the aggregated results. <a href="https://www.usenix.org/conference/osdi12/167-powergraph-distributed-graph-parallel-computation-natural-graphs" target="_blank" rel="noopener">PowerGraph</a>, therefore, defines three programming interfaces: <code>gather()</code>, <code>apply()</code>, <code>scatter()</code>. The three simple APIs works perfectly with many social graph cases based on their benchmarks.</p>
+<h2 id="Databases-and-Interfaces"><a href="#Databases-and-Interfaces" class="headerlink" title="Databases and Interfaces"></a>Databases and Interfaces</h2><p>Both small data and big data needs data management. Rational database system is one of the good solutions. But what if the column is so big to be handle at a time? Do you worry about the too large data stored in a single database? OK, distributed! and column-oriented!</p>
+<h3 id="HBase-the-Bigtable-way"><a href="#HBase-the-Bigtable-way" class="headerlink" title="HBase: the Bigtable way"></a>HBase: the Bigtable way</h3><p>Apache HBase is an open source implementation of Google’s Bigtable, the database that handles most of the structure data in Google. An essential question is the data consistency and version. HBase is not a “eventually consistent” database, it is a strong consistent one. Therefore, it handles the issue very carefully. Technically, HBase relies on ZooKeeper to help manage the synchronization among replication copies.</p>
+<p>Note that not all cases are suitable for HBase. If you have only a few millions of rows or less, please do <strong>not</strong> use it. HBase has traded a lot of advantages of RDBMS (such as secondary index) for the “big”. So you have no reason to use it until your data is really big.</p>
+<h3 id="Hive-and-Pig-the-bridges"><a href="#Hive-and-Pig-the-bridges" class="headerlink" title="Hive and Pig: the bridges"></a>Hive and Pig: the bridges</h3><p>As I have talked a lot about the tools, do you feel about the learning curve? Many of our analysts are not good programmers to handle the Map/Reduce stuff. They like SQL and always like. Therefore, a gap lies between the infrastructures and analysts.</p>
+<p>Nevertheless, we have the solution: <a href="http://hive.apache.org/" target="_blank" rel="noopener">Hive</a> and <a href="http://pig.apache.org/" target="_blank" rel="noopener">Pig</a>. Hive, in my opinion, is a SQL to Map/Reduce translator. When you write a SQL like query, the query is actually executed in the Map/Reduce framework. If you interested in the whole framework, I recommend you to write a couple of SQL queries and implement its Map/Reduce executions by yourself. Pig, on the other hand, is more like a higher layer abstract programming language which enables us to analyze big data in a feasible. The analysts only need to focus on the application or programs semantics instead of executions. The execution efficiency has been guaranteed by Hadoop framework.</p>
+<h3 id="NoSQLs-make-things-even-faster"><a href="#NoSQLs-make-things-even-faster" class="headerlink" title="NoSQLs: make things even faster"></a>NoSQLs: make things even faster</h3><p>If you look at the data we are using, either structured and unstructured data. They can all be represented as <code>key-value</code> model. The pure key-value model can help speed up the query during runtime by using NoSQL style. In case that I do not have much experience in NoSQL field, I just list some possibility following. If you are more interested in NoSQL issues, <a href="http://highscalability.com/blog/2011/6/20/35-use-cases-for-choosing-your-next-nosql-database.html" target="_blank" rel="noopener">here</a> is a good place to start the journey. And also <a href="http://highscalability.com/blog/2010/12/6/what-the-heck-are-you-actually-using-nosql-for.html" target="_blank" rel="noopener">this one</a>.</p>
+<h4 id="DynamoDB"><a href="#DynamoDB" class="headerlink" title="DynamoDB"></a><a href="http://aws.amazon.com/dynamodb/" target="_blank" rel="noopener">DynamoDB</a></h4><p>Instead of handle the big database in a master/slave way, Dynamo uses a fully distributed approach. The key-value store provides only two simple interfaces for major operations: <code>put()</code> and <code>get()</code>. In addition, Dynamo’s replication ring has influenced many other NoSQL databases (check out the <a href="http://www.allthingsdistributed.com/2007/10/amazons_dynamo.html" target="_blank" rel="noopener">full paper</a>).</p>
+<h4 id="MongoDB"><a href="#MongoDB" class="headerlink" title="MongoDB"></a><a href="http://www.mongodb.org/" target="_blank" rel="noopener">MongoDB</a></h4><p>As one of the most common use NoSQL databases, MongoDB is good at its low learning comparing to others like Cassandra. Written in C++ makes MongoDB very fast but it is document oriented. Data stores in JSON format with full index support. Besides, many of the data operation can be done with MapReduce.</p>
+<h4 id="CouchDB"><a href="#CouchDB" class="headerlink" title="CouchDB"></a><a href="http://couchdb.apache.org/" target="_blank" rel="noopener">CouchDB</a></h4><p>Similar to MongoDB, CouchDB is also document oriented but it has JavaScript support for MapReduce. This feature may attract some developer working with Node.js and so on.</p>
+<h4 id="ElephantDB"><a href="#ElephantDB" class="headerlink" title="ElephantDB"></a><a href="https://github.com/nathanmarz/elephantdb" target="_blank" rel="noopener">ElephantDB</a></h4><p>The specialized database for exporting key-values data from Hadoop. We may have a lot of files on HDFS, ElephantDB helps you export key/value data from those files. This database comes with twitter’s Storm which emphasizes the realtime analysis. Note that it supports random read but only batch write. This <a href="http://www.slideshare.net/nathanmarz/elephantdb" target="_blank" rel="noopener">slide</a> tells more.</p>
+<h4 id="Cassandra"><a href="#Cassandra" class="headerlink" title="Cassandra"></a><a href="http://cassandra.apache.org/" target="_blank" rel="noopener">Cassandra</a></h4><p>Facebook initiates Cassandra but not widely used currently. It combines Bigtable and Dynamo’s technologies. Different from MongoDB and CouchDB, Cassandra is a structured key-value store. The above databases are different from each other in many ways, such as interface, replication model, data model (key/value or document), etc. Please read <a href="http://highscalability.com/blog/2011/6/20/35-use-cases-for-choosing-your-next-nosql-database.html" target="_blank" rel="noopener">this article</a> for a better vision.</p>
+<h2 id="In-memory-Stores"><a href="#In-memory-Stores" class="headerlink" title="In-memory Stores"></a>In-memory Stores</h2><p>Well, in-memory stores are used to handle faster data which can fit into your memory. It brings very good realtime issue performs for applications such as Youtube, Flickr, etc. However, this in-memory store seems not very related to the “analysis” part, so I just keep it as concise as possible.</p>
+<h3 id="Memcached"><a href="#Memcached" class="headerlink" title="Memcached"></a>Memcached</h3><p>Basically, <a href="http://memcached.org/" target="_blank" rel="noopener">memcached</a> allows you to combine the memory from many machines to build a huge memory pool. For example, if you have 32 machines, each of which has 16GB memory, then memcached enables a 512GB memory pool for you. In such a pool, you can almost do anything you want. Therefore, <code>sharing</code> is one of the most important concept for memcached.</p>
+<h3 id="Redis"><a href="#Redis" class="headerlink" title="Redis"></a>Redis</h3><p><a href="http://redis.io/" target="_blank" rel="noopener">Redis</a> has more features that memcached does not integrated. One of the most interesting one should be Pub/Sub feature. It allows you to publish something in the memory, any other consumers need the data can automatically receive the data. So it is very easy to build a push/notification services. For example, if you tweet a post, all your followers can receives this notification almost immediately.</p>
+<h3 id="RabbitMQ"><a href="#RabbitMQ" class="headerlink" title="RabbitMQ"></a>RabbitMQ</h3><p><a href="http://www.rabbitmq.com/" target="_blank" rel="noopener">RabbitMQ</a> is more like a message service. Basically, it can form the following message topologies: work queue, pub/sub, routing, topics, and RPC. RabbitMQ is more reliable than Redis even though their functionality is similar. Especially when using <a href="http://celeryproject.org/" target="_blank" rel="noopener">celery distributed queue</a>, Redis may have some event loss.</p>
+<h2 id="Cross-platform-language-Data-Exchanges"><a href="#Cross-platform-language-Data-Exchanges" class="headerlink" title="Cross-platform/language Data Exchanges"></a>Cross-platform/language Data Exchanges</h2><p>When dealing with distributed system, a more low-level problem is to make sure the object always has the same format in different machines. Some machines may have different operating system, such 64-bit and 32-bit. Even in the data center, they cannot have the exact same type of machines. So data transfer among those machines may crash the object. So a <em>protocol</em> is necessary for the case. Again, this is too low-level, so we just describe some high-level things here.</p>
+<h3 id="Avro-Apache’s"><a href="#Avro-Apache’s" class="headerlink" title="Avro Apache’s"></a>Avro Apache’s</h3><p><a href="http://avro.apache.org/" target="_blank" rel="noopener">Avro</a> is a typical data serialization system which provides rich data structure, compact-fast-binary data format, RPC and simple integration with dynamic languages. It relies on <code>schema</code> which is defined in JSON format. Comparing with other systems like Thrift and Google Protocol Buffer, it differentiate itself in dynamic tying, untagged data and no manually-assigned field IDs.</p>
+<h3 id="Thrift"><a href="#Thrift" class="headerlink" title="Thrift"></a>Thrift</h3><p>Another project from Apache Software Foundation is <a href="http://thrift.apache.org/" target="_blank" rel="noopener">Thrift</a>, specific for cross-language development. The modern big data analysis system usually does not write in a single language because it need multiple languages’ advantages together to achieve a good performance. Thus, Thrift appears as a compiler. The white paper from Facebook is <a href="http://thrift.apache.org/static/files/thrift-20070401.pdf" target="_blank" rel="noopener">here</a>.</p>
+<h3 id="Protocol-Buffer"><a href="#Protocol-Buffer" class="headerlink" title="Protocol Buffer"></a>Protocol Buffer</h3><p><a href="http://code.google.com/p/protobuf/" target="_blank" rel="noopener">Protocol Buffer</a> was born in Google which handles most of Google’s internal system. It is a flexible, efficient and automated mechanism for serializing structured data. Instead of simply using XML or JSON for object serialization, Protocol Buffer is smaller, faster and easier to use programmatically.</p>
+<h2 id="Machine-Learning-Library-Apache-Mahout"><a href="#Machine-Learning-Library-Apache-Mahout" class="headerlink" title="Machine Learning Library: Apache Mahout"></a>Machine Learning Library: Apache Mahout</h2><p>Now we have talked about a huge number of open source project regarding the big data infrastructure, but we have not touched the machine learning yet. The major service of the infrastructure is to provide a scalable environment for machine learning or data mining tasks.</p>
+<p>Unfortunately, we also notice the tough learning curve on the infrastructure. Just image how hard it is to implement a <em>k-means</em> algorithm for 1TB data if you have no idea of MapReduce. You need to know how to implement it in a Map/Reduce style and write the code carefully.</p>
+<p>The good thing is we have come up with a solution by writing a library for you. <a href="http://mahout.apache.org/" target="_blank" rel="noopener">Apache Mahout</a>. This library is dedicated to implemented many machine learning algorithms in a scalabe way. Those algorithms include categorizes in <code>classification</code>, <code>clustering</code>, <code>pattern mining</code>, <code>regression</code>, <code>dimension reduction</code>, <code>evolutionary algorithms</code>, <code>recommendation and collaborative filtering</code>, and <code>vector similarity</code>. For a complete review of the algorithms, please look at the <a href="https://cwiki.apache.org/confluence/display/MAHOUT/Algorithms" target="_blank" rel="noopener">official post</a>.</p>
+<p>Now, if you want to run an data analysis for about 1TB, the process becomes very clear. The following is an example to analyze the <a href="http://scialli.utk.edu/sensors-and-smarts-qing-cao/" target="_blank" rel="noopener">Friendbook</a> data set. In this data set, we collected several people’s motion activity recordings from sensors such as accelerometer, gyroscope and geo-location. The total number of data points is about 1 billion. And we use <em>k-means</em> to extract their different motion behaviors.</p>
+<p>The first step is to move the collected data into HDFS, and we serialize the data from CSV format to binary. Then we just simply run the following command: (inside the mahout home directory)</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ mahout kmeans -<span class="selector-tag">i</span> /user/data/friendbook_training.<span class="keyword">in</span></span><br><span class="line">-o /user/data/friendbook_training.out</span><br><span class="line">-c /user/data/cluster<span class="selector-class">.initial</span> -k <span class="number">15</span></span><br></pre></td></tr></table></figure>
+
+<p>After about 50 minutes, we have the results in the /user/data/friendbook_training.out directory. Honestly, Mahout has help us a lot to analyze many big data set with various machine learning algorithms.</p>
+<blockquote>
+<p>Well, finally we reach the end. I hope you have a better idea of what big data analyze means and its tool chain. It usually takes a while to get familiar with them. One good thing is that you can deploy any side of your cluster very easily buy using Amazon EC2. So why not try it out?</p>
+</blockquote>
+
+  </div>
+</article>
+
+    <div class="blog-post-comments">
+        <div id="disqus_thread">
+            <noscript>Please enable JavaScript to view the comments.</noscript>
+        </div>
+    </div>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/tags/">Tags</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/little-eyes" target="_blank" rel="noopener">Projects</a></li>
+         
+          <li><a href="/search/">Search</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Programming-Models-and-Infrastructures"><span class="toc-number">1.</span> <span class="toc-text">Programming Models and Infrastructures</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Hadoop-the-open-source-GFS-MapReduce"><span class="toc-number">1.1.</span> <span class="toc-text">Hadoop: the open source GFS&#x2F;MapReduce</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ZooKeeper-a-service-to-be-tough"><span class="toc-number">1.2.</span> <span class="toc-text">ZooKeeper: a service to be tough</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Storm-the-realtime-framework"><span class="toc-number">1.3.</span> <span class="toc-text">Storm: the realtime framework</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#PowerGraph-special-for-natural-social-graph"><span class="toc-number">1.4.</span> <span class="toc-text">PowerGraph: special for natural (social) graph</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Databases-and-Interfaces"><span class="toc-number">2.</span> <span class="toc-text">Databases and Interfaces</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#HBase-the-Bigtable-way"><span class="toc-number">2.1.</span> <span class="toc-text">HBase: the Bigtable way</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Hive-and-Pig-the-bridges"><span class="toc-number">2.2.</span> <span class="toc-text">Hive and Pig: the bridges</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#NoSQLs-make-things-even-faster"><span class="toc-number">2.3.</span> <span class="toc-text">NoSQLs: make things even faster</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#DynamoDB"><span class="toc-number">2.3.1.</span> <span class="toc-text">DynamoDB</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#MongoDB"><span class="toc-number">2.3.2.</span> <span class="toc-text">MongoDB</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#CouchDB"><span class="toc-number">2.3.3.</span> <span class="toc-text">CouchDB</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#ElephantDB"><span class="toc-number">2.3.4.</span> <span class="toc-text">ElephantDB</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Cassandra"><span class="toc-number">2.3.5.</span> <span class="toc-text">Cassandra</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#In-memory-Stores"><span class="toc-number">3.</span> <span class="toc-text">In-memory Stores</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Memcached"><span class="toc-number">3.1.</span> <span class="toc-text">Memcached</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Redis"><span class="toc-number">3.2.</span> <span class="toc-text">Redis</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#RabbitMQ"><span class="toc-number">3.3.</span> <span class="toc-text">RabbitMQ</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Cross-platform-language-Data-Exchanges"><span class="toc-number">4.</span> <span class="toc-text">Cross-platform&#x2F;language Data Exchanges</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Avro-Apache’s"><span class="toc-number">4.1.</span> <span class="toc-text">Avro Apache’s</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Thrift"><span class="toc-number">4.2.</span> <span class="toc-text">Thrift</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Protocol-Buffer"><span class="toc-number">4.3.</span> <span class="toc-text">Protocol Buffer</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Machine-Learning-Library-Apache-Mahout"><span class="toc-number">5.</span> <span class="toc-text">Machine Learning Library: Apache Mahout</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://jilongliao.com/2013/04/05/In-Love-with-Big-Data-Analysis/" target="_blank" rel="noopener"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://jilongliao.com/2013/04/05/In-Love-with-Big-Data-Analysis/&text=In Love With Big Data Analysis - a Toolchain Summary" target="_blank" rel="noopener"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://jilongliao.com/2013/04/05/In-Love-with-Big-Data-Analysis/&title=In Love With Big Data Analysis - a Toolchain Summary" target="_blank" rel="noopener"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://jilongliao.com/2013/04/05/In-Love-with-Big-Data-Analysis/&is_video=false&description=In Love With Big Data Analysis - a Toolchain Summary" target="_blank" rel="noopener"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=In Love With Big Data Analysis - a Toolchain Summary&body=Check out this article: http://jilongliao.com/2013/04/05/In-Love-with-Big-Data-Analysis/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://jilongliao.com/2013/04/05/In-Love-with-Big-Data-Analysis/&title=In Love With Big Data Analysis - a Toolchain Summary" target="_blank" rel="noopener"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://jilongliao.com/2013/04/05/In-Love-with-Big-Data-Analysis/&title=In Love With Big Data Analysis - a Toolchain Summary" target="_blank" rel="noopener"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://jilongliao.com/2013/04/05/In-Love-with-Big-Data-Analysis/&title=In Love With Big Data Analysis - a Toolchain Summary" target="_blank" rel="noopener"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://jilongliao.com/2013/04/05/In-Love-with-Big-Data-Analysis/&title=In Love With Big Data Analysis - a Toolchain Summary" target="_blank" rel="noopener"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://jilongliao.com/2013/04/05/In-Love-with-Big-Data-Analysis/&name=In Love With Big Data Analysis - a Toolchain Summary&description=&lt;blockquote&gt;
+&lt;p&gt;One must have good tools to do good jobs&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;For a long time we handle data within our single desktop or workstation, but the data explodes so quickly recently. The first situation of &lt;code&gt;big data&lt;/code&gt;, meaningful to the public, appears when we want to search the whole Internet and the search should be realtime. Perhaps you want to handle the whole Internet with a super computer, but how much expensive it is? How many company or research institution can afford it? How can you guarantee it works? How long can it stand in the current Internet explosion? One of the cheap solutions is to use thousands of commercial machines such as your desktop.&lt;/p&gt;
+&lt;p&gt;Later, people start to notice the existence of &lt;em&gt;big data&lt;/em&gt; and it is everywhere. Then a huge number of researchers delve into the area and try to solve the huge amount of issues. Fortunately, we have come up with a series of good methodology and tools to help us handle the big data. Here, the use of big data is mainly about data mining, machine learning, realtime service, etc.&lt;/p&gt;"><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2020 Jilong Liao
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/tags/">Tags</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/little-eyes" target="_blank" rel="noopener">Projects</a></li>
+         
+          <li><a href="/search/">Search</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+
+    <!-- jquery -->
+
+<script src="/lib/jquery/jquery.min.js"></script>
+
+
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Google Analytics -->
+
+    <script type="text/javascript">
+        (function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-32402817-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+    <script type="text/javascript">
+        var disqus_shortname = 'littleeyes';
+
+        (function(){
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        }());
+    </script>
+
+
+</body>
+</html>

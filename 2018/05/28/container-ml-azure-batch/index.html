@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="I often encounter into a situation that I need a big virtual machine to run some Python script to train a machine learning model because the training dataset is bigger than my machine’s memory. Most o">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Azure Batch, Containers and Machine Learning">
+<meta property="og:url" content="http://jilongliao.com/2018/05/28/container-ml-azure-batch/index.html">
+<meta property="og:site_name" content="The Little&#39;s Place">
+<meta property="og:description" content="I often encounter into a situation that I need a big virtual machine to run some Python script to train a machine learning model because the training dataset is bigger than my machine’s memory. Most o">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://jilongliao.com/images/ml-azure-batch.png">
+<meta property="article:published_time" content="2018-05-28T00:00:00.000Z">
+<meta property="article:modified_time" content="2020-01-16T04:24:31.484Z">
+<meta property="article:author" content="Jilong Liao">
+<meta property="article:tag" content="Docker">
+<meta property="article:tag" content="Machine Learning">
+<meta property="article:tag" content="Azure">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://jilongliao.com/images/ml-azure-batch.png">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>Azure Batch, Containers and Machine Learning</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+      
+<link rel="stylesheet" href="/css/rtl.css">
+
+    
+    <!-- rss -->
+    
+    
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/tags/">Tags</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/little-eyes" target="_blank" rel="noopener">Projects</a></li>
+         
+          <li><a href="/search/">Search</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2018/08/09/Reduce-Docker-Image-Size/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="/2018/02/22/Fun-At-Work-Short-Name-Service/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://jilongliao.com/2018/05/28/container-ml-azure-batch/" target="_blank" rel="noopener"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://jilongliao.com/2018/05/28/container-ml-azure-batch/&text=Azure Batch, Containers and Machine Learning" target="_blank" rel="noopener"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://jilongliao.com/2018/05/28/container-ml-azure-batch/&title=Azure Batch, Containers and Machine Learning" target="_blank" rel="noopener"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://jilongliao.com/2018/05/28/container-ml-azure-batch/&is_video=false&description=Azure Batch, Containers and Machine Learning" target="_blank" rel="noopener"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Azure Batch, Containers and Machine Learning&body=Check out this article: http://jilongliao.com/2018/05/28/container-ml-azure-batch/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://jilongliao.com/2018/05/28/container-ml-azure-batch/&title=Azure Batch, Containers and Machine Learning" target="_blank" rel="noopener"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://jilongliao.com/2018/05/28/container-ml-azure-batch/&title=Azure Batch, Containers and Machine Learning" target="_blank" rel="noopener"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://jilongliao.com/2018/05/28/container-ml-azure-batch/&title=Azure Batch, Containers and Machine Learning" target="_blank" rel="noopener"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://jilongliao.com/2018/05/28/container-ml-azure-batch/&title=Azure Batch, Containers and Machine Learning" target="_blank" rel="noopener"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://jilongliao.com/2018/05/28/container-ml-azure-batch/&name=Azure Batch, Containers and Machine Learning&description=&lt;p&gt;I often encounter into a situation that I need a big virtual machine to run some Python script to train a machine learning model because the training dataset is bigger than my machine’s memory. Most of time, I would go to Azure portal, create a big VM, run it and tear it down because it is too expensive to leave the big VM running always. It is just too much overhead for the whole process and it become very costly if I want to run multiple experiment. &lt;/p&gt;
+&lt;p&gt;Certainly, I could use a managed services like &lt;a href=&#34;https://azure.microsoft.com/en-us/services/databricks/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Azure Databricks&lt;/a&gt; to help me. However, not every algorithms are able to run on Azure Databricks with PySpark or Scala. In my scenario, I need to train the model on a single machine (due to the algorithm is not Spark ready), and export the model to client prediction use. Therefore, I was searching for something else and able to use some existing Azure services to build up an easy-to-use workflow for me.&lt;/p&gt;
+&lt;p&gt;Azure Batch is a very useful service that you can manage VMs and run tasks among the VMs. It fits into my need naturally. To avoid the dependencies of running some Python training code, I notice docker container is another natural tool to help – build all the dependencies and external service connections into the container and let Azure Batch to run container task in the VM. In this way, the VM managed by Azure Batch does not need to worry about the version of OS, dependencies etc. All we need to ensure is the docker container can be run correctly on the VM, which is a very simple step for Ubuntu or other Linux system. The same training container could accept different parameters and run as much as we want.&lt;/p&gt;"><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#P-S"><span class="toc-number">1.</span> <span class="toc-text">P.S</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        Azure Batch, Containers and Machine Learning
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">The Little's Place</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2018-05-28T00:00:00.000Z" itemprop="datePublished">2018-05-28</time>
+        
+      
+    </div>
+
+
+      
+    <div class="article-category">
+        <i class="fas fa-archive"></i>
+        <a class="category-link" href="/categories/technology/">technology</a>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link" href="/tags/Azure/" rel="tag">Azure</a>, <a class="tag-link" href="/tags/Docker/" rel="tag">Docker</a>, <a class="tag-link" href="/tags/Machine-Learning/" rel="tag">Machine Learning</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <p>I often encounter into a situation that I need a big virtual machine to run some Python script to train a machine learning model because the training dataset is bigger than my machine’s memory. Most of time, I would go to Azure portal, create a big VM, run it and tear it down because it is too expensive to leave the big VM running always. It is just too much overhead for the whole process and it become very costly if I want to run multiple experiment. </p>
+<p>Certainly, I could use a managed services like <a href="https://azure.microsoft.com/en-us/services/databricks/" target="_blank" rel="noopener">Azure Databricks</a> to help me. However, not every algorithms are able to run on Azure Databricks with PySpark or Scala. In my scenario, I need to train the model on a single machine (due to the algorithm is not Spark ready), and export the model to client prediction use. Therefore, I was searching for something else and able to use some existing Azure services to build up an easy-to-use workflow for me.</p>
+<p>Azure Batch is a very useful service that you can manage VMs and run tasks among the VMs. It fits into my need naturally. To avoid the dependencies of running some Python training code, I notice docker container is another natural tool to help – build all the dependencies and external service connections into the container and let Azure Batch to run container task in the VM. In this way, the VM managed by Azure Batch does not need to worry about the version of OS, dependencies etc. All we need to ensure is the docker container can be run correctly on the VM, which is a very simple step for Ubuntu or other Linux system. The same training container could accept different parameters and run as much as we want.</p>
+<a id="more"></a>
+
+<p><img src="/images/ml-azure-batch.png" alt=""></p>
+<p>We could also use external Azure Services such as Blob Storage to ensure a extremely fast data transfer speed. With Azure Blob Storage API, you could achieve transferring 25GB training dataset into docker container within 2 minutes. Note the <code>max_connection</code> parameter is critical to speed up the transferring.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">blob_service = BlockBlobService(account_name=account_name, account_key=account_key)</span><br><span class="line">ata_blob = blob_service.get_blob_to_text(container_name, self.training_configuration.data_uri, max_connections=<span class="number">16</span>)</span><br><span class="line">data = pd.read_csv(StringIO(data_blob.content), sep=<span class="string">"\t"</span>)</span><br></pre></td></tr></table></figure>
+
+<p>For the training code, I created a <code>Dockerfile</code> to put all the requried dependencies and code into a Ubuntu container. You can also see that external Azure Blob Storage service’s connection info (AZURE_BLOB_KEY) can be built into the container as well. You just need to make sure you do not mistakenly check in the key into your Git repo.</p>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">FROM</span> ubuntu:<span class="number">16.04</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">RUN</span><span class="bash"> apt-get update &amp;&amp; \</span></span><br><span class="line"><span class="bash">    apt-get install -y cmake build-essential gcc g++ git wget libgl1-mesa-glx</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">RUN</span><span class="bash"> <span class="built_in">echo</span> <span class="string">"ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true"</span> | debconf-set-selections</span></span><br><span class="line"><span class="keyword">RUN</span><span class="bash"> apt-get install -y --no-install-recommends msttcorefonts</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># python-package</span></span><br><span class="line"><span class="comment"># miniconda</span></span><br><span class="line"><span class="keyword">RUN</span><span class="bash"> wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh &amp;&amp; \</span></span><br><span class="line"><span class="bash">    /bin/bash Miniconda3-latest-Linux-x86_64.sh -f -b -p /opt/conda &amp;&amp; \</span></span><br><span class="line"><span class="bash">    <span class="built_in">export</span> PATH=<span class="string">"/opt/conda/bin:<span class="variable">$PATH</span>"</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">ENV</span> PATH /opt/conda/bin:$PATH</span><br><span class="line"></span><br><span class="line"><span class="keyword">RUN</span><span class="bash"> conda install -y numpy scipy scikit-learn pandas matplotlib</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># azure storage</span></span><br><span class="line"><span class="keyword">RUN</span><span class="bash"> pip install azure azure-storage</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># clean</span></span><br><span class="line"><span class="keyword">RUN</span><span class="bash"> apt-get autoremove -y &amp;&amp; apt-get clean &amp;&amp; \</span></span><br><span class="line"><span class="bash">    conda clean -i -l -t -y &amp;&amp; \</span></span><br><span class="line"><span class="bash">    rm -rf /usr/<span class="built_in">local</span>/src/*</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># copy resource files</span></span><br><span class="line"><span class="keyword">COPY</span><span class="bash"> . .</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">ENV</span> AZURE_BLOB_KEY=<span class="string">"[AZURE_BLOB_KEY]"</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">ENTRYPOINT</span><span class="bash"> [ <span class="string">"python"</span>, <span class="string">"train.py"</span> ]</span></span><br></pre></td></tr></table></figure>
+
+<p><a href="https://docs.microsoft.com/en-us/azure/batch/batch-python-tutorial" target="_blank" rel="noopener">Azure Batch Python SDK</a> provides enough resource for you to start and use the SDK, but I have to honestly say the Python SDK document is not maintained as good as the C# one. I have to find the corresponding C# documentation to understand the concept, then use the Python SDK to implement it.</p>
+<p>To create a pool of VM, and pull your container, you can see the following snippet. At the start task, you will install docker in the Ubuntu machine, and pull the latest docker container. You also need to specify how many, and how big do you desire the VMs for. Azure Batch documentation claims they have docker ready VM images, but I failed to find it when I call the API and in Azure Portal. Therefore, I have to install docker community edition by myself below. For Windows container, there is a container ready Windows Server image to use.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">batch_client = batch.BatchServiceClient(</span><br><span class="line">    credentials,</span><br><span class="line">    base_url=batch_service_url)</span><br><span class="line"></span><br><span class="line">sku_to_use, image_ref_to_use = select_latest_verified_vm_image_with_node_agent_sku(</span><br><span class="line">        batch_client, <span class="string">'Canonical'</span>, <span class="string">'UbuntuServer'</span>, <span class="string">'16.04-LTS'</span>)</span><br><span class="line"></span><br><span class="line">vm_configuration = batchmodels.VirtualMachineConfiguration(</span><br><span class="line">    image_reference=image_ref_to_use,</span><br><span class="line">    node_agent_sku_id=sku_to_use)</span><br><span class="line"></span><br><span class="line">start_tasks = [</span><br><span class="line">    <span class="string">"sudo apt-get update"</span>,</span><br><span class="line">    <span class="string">"sudo apt-get -y install apt-transport-https ca-certificates curl software-properties-common"</span>,</span><br><span class="line">    <span class="string">"curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -"</span>,</span><br><span class="line">    <span class="string">"sudo apt-key fingerprint 0EBFCD88"</span>,</span><br><span class="line">    <span class="string">"sudo add-apt-repository \"deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable\""</span>,</span><br><span class="line">    <span class="string">"sudo apt-get update"</span>,</span><br><span class="line">    <span class="string">"sudo apt-get -y install docker-ce"</span>,</span><br><span class="line">    <span class="string">"sudo docker login &#123;&#125; -u &#123;&#125; -p &#123;&#125;"</span>.format(registry_server, registry_user_name, registry_password),</span><br><span class="line">    <span class="string">"sudo docker pull myregistry.azurecr.io/ml/example:0.0.1"</span>]</span><br><span class="line">tsks = batchmodels.StartTask(</span><br><span class="line">    command_line=wrap_commands_in_shell(<span class="string">"linux"</span>, start_tasks), </span><br><span class="line">    user_identity=batchmodels.UserIdentity(</span><br><span class="line">        auto_user=batchmodels.AutoUserSpecification(</span><br><span class="line">            scope=batchmodels.AutoUserScope.task, </span><br><span class="line">            elevation_level=batchmodels.ElevationLevel.admin)), </span><br><span class="line">    wait_for_success=<span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line">pool_id = <span class="string">"pool_&#123;&#125;"</span>.format(instance_id)</span><br><span class="line">new_pool = batchmodels.PoolAddParameter(</span><br><span class="line">    id=pool_id, </span><br><span class="line">    virtual_machine_configuration=vm_configuration,</span><br><span class="line">    vm_size=<span class="string">"Standard_E32_v3"</span>,</span><br><span class="line">    target_dedicated_nodes=<span class="number">1</span>, </span><br><span class="line">    start_task=tsks)</span><br><span class="line"></span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    batch_client.pool.add(new_pool)</span><br><span class="line"><span class="keyword">except</span> batchmodels.batch_error.BatchErrorException <span class="keyword">as</span> err:</span><br><span class="line">    print_batch_exception(err)</span><br></pre></td></tr></table></figure>
+
+<p>To run the container task in Azure Batch, you can run the <code>Cloud Task</code>. You can also upload any logs or files to Azure Blob Storage as well with <code>output_files</code> being set. Once the task starts executing, you can go to Azure portal and check the running state of the task and pool. It depends on your training algorithm and dataset size to determine how long will you wait for the task to finish.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">job_tasks = [<span class="string">"sudo docker run -t myregistry.azurecr.io/ml/example:0.0.1 &#123;&#125; &#123;&#125;"</span>.format(guid, training_id)]</span><br><span class="line">log_container_url = get_log_container_sas_url()</span><br><span class="line"></span><br><span class="line">task_id = <span class="string">"task_&#123;&#125;"</span>.format(instance_id)</span><br><span class="line">new_task = batchmodels.TaskAddParameter(</span><br><span class="line">    id=task_id,</span><br><span class="line">    command_line=wrap_commands_in_shell(<span class="string">"linux"</span>, job_tasks),</span><br><span class="line">    output_files=[</span><br><span class="line">        batchmodels.OutputFile(</span><br><span class="line">            <span class="string">"../std*.txt"</span>, </span><br><span class="line">            batchmodels.OutputFileDestination(container=batchmodels.OutputFileBlobContainerDestination(log_container_url, path=task_id)),</span><br><span class="line">            batchmodels.OutputFileUploadOptions(batchmodels.OutputFileUploadCondition.task_completion))],</span><br><span class="line">    user_identity=batchmodels.UserIdentity(</span><br><span class="line">        auto_user=batchmodels.AutoUserSpecification(</span><br><span class="line">            scope=batchmodels.AutoUserScope.task, </span><br><span class="line">            elevation_level=batchmodels.ElevationLevel.admin)))</span><br><span class="line"></span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    batch_client.task.add(job_id=job_id, task=new_task)</span><br><span class="line"><span class="keyword">except</span> batchmodels.batch_error.BatchErrorException <span class="keyword">as</span> err:</span><br><span class="line">    print_batch_exception(err)</span><br><span class="line"></span><br><span class="line"><span class="comment"># wait for task to finish.</span></span><br><span class="line">wait_for_tasks_to_complete(batch_client, job_id, datetime.timedelta(hours=<span class="number">6</span>))</span><br></pre></td></tr></table></figure>
+
+<p>By the end of the training task, you can tear down the VMs and clean up everything so you will not be charged further more. Once you have the submit.py script ready, you will be able to submit your training job with multiple parameters in parallel in Azure.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">batch_client.job.disable(job_id, <span class="string">"terminate"</span>)</span><br><span class="line">batch_client.pool.delete(pool_id)</span><br></pre></td></tr></table></figure>
+
+<h3 id="P-S"><a href="#P-S" class="headerlink" title="P.S"></a>P.S</h3><blockquote>
+<p>Azure Batch service has a limit on the total cores to be used in the VM pools. So if you are running a big VM with mutliple parallel training, you will reach the cores limit. You need to contact Azure support team to increase the cores limit, so it could sustain your training capacity.</p>
+</blockquote>
+
+  </div>
+</article>
+
+    <div class="blog-post-comments">
+        <div id="disqus_thread">
+            <noscript>Please enable JavaScript to view the comments.</noscript>
+        </div>
+    </div>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/tags/">Tags</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/little-eyes" target="_blank" rel="noopener">Projects</a></li>
+         
+          <li><a href="/search/">Search</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#P-S"><span class="toc-number">1.</span> <span class="toc-text">P.S</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://jilongliao.com/2018/05/28/container-ml-azure-batch/" target="_blank" rel="noopener"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://jilongliao.com/2018/05/28/container-ml-azure-batch/&text=Azure Batch, Containers and Machine Learning" target="_blank" rel="noopener"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://jilongliao.com/2018/05/28/container-ml-azure-batch/&title=Azure Batch, Containers and Machine Learning" target="_blank" rel="noopener"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://jilongliao.com/2018/05/28/container-ml-azure-batch/&is_video=false&description=Azure Batch, Containers and Machine Learning" target="_blank" rel="noopener"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Azure Batch, Containers and Machine Learning&body=Check out this article: http://jilongliao.com/2018/05/28/container-ml-azure-batch/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://jilongliao.com/2018/05/28/container-ml-azure-batch/&title=Azure Batch, Containers and Machine Learning" target="_blank" rel="noopener"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://jilongliao.com/2018/05/28/container-ml-azure-batch/&title=Azure Batch, Containers and Machine Learning" target="_blank" rel="noopener"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://jilongliao.com/2018/05/28/container-ml-azure-batch/&title=Azure Batch, Containers and Machine Learning" target="_blank" rel="noopener"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://jilongliao.com/2018/05/28/container-ml-azure-batch/&title=Azure Batch, Containers and Machine Learning" target="_blank" rel="noopener"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://jilongliao.com/2018/05/28/container-ml-azure-batch/&name=Azure Batch, Containers and Machine Learning&description=&lt;p&gt;I often encounter into a situation that I need a big virtual machine to run some Python script to train a machine learning model because the training dataset is bigger than my machine’s memory. Most of time, I would go to Azure portal, create a big VM, run it and tear it down because it is too expensive to leave the big VM running always. It is just too much overhead for the whole process and it become very costly if I want to run multiple experiment. &lt;/p&gt;
+&lt;p&gt;Certainly, I could use a managed services like &lt;a href=&#34;https://azure.microsoft.com/en-us/services/databricks/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Azure Databricks&lt;/a&gt; to help me. However, not every algorithms are able to run on Azure Databricks with PySpark or Scala. In my scenario, I need to train the model on a single machine (due to the algorithm is not Spark ready), and export the model to client prediction use. Therefore, I was searching for something else and able to use some existing Azure services to build up an easy-to-use workflow for me.&lt;/p&gt;
+&lt;p&gt;Azure Batch is a very useful service that you can manage VMs and run tasks among the VMs. It fits into my need naturally. To avoid the dependencies of running some Python training code, I notice docker container is another natural tool to help – build all the dependencies and external service connections into the container and let Azure Batch to run container task in the VM. In this way, the VM managed by Azure Batch does not need to worry about the version of OS, dependencies etc. All we need to ensure is the docker container can be run correctly on the VM, which is a very simple step for Ubuntu or other Linux system. The same training container could accept different parameters and run as much as we want.&lt;/p&gt;"><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2020 Jilong Liao
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/tags/">Tags</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/little-eyes" target="_blank" rel="noopener">Projects</a></li>
+         
+          <li><a href="/search/">Search</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+
+    <!-- jquery -->
+
+<script src="/lib/jquery/jquery.min.js"></script>
+
+
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Google Analytics -->
+
+    <script type="text/javascript">
+        (function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-32402817-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+    <script type="text/javascript">
+        var disqus_shortname = 'littleeyes';
+
+        (function(){
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        }());
+    </script>
+
+
+</body>
+</html>

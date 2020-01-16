@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="Seek and find.  Last month I was busy to test one of my idea that help people plan their daily trips easier, then I created a site called quickloop. However, curious friends may find the source code">
+<meta property="og:type" content="article">
+<meta property="og:title" content="A Short Refactoring Road of Javascript">
+<meta property="og:url" content="http://jilongliao.com/2014/06/10/A-Short-Refactoring-Road-of-Javascript/index.html">
+<meta property="og:site_name" content="The Little&#39;s Place">
+<meta property="og:description" content="Seek and find.  Last month I was busy to test one of my idea that help people plan their daily trips easier, then I created a site called quickloop. However, curious friends may find the source code">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2014-06-10T00:00:00.000Z">
+<meta property="article:modified_time" content="2020-01-16T04:24:31.484Z">
+<meta property="article:author" content="Jilong Liao">
+<meta property="article:tag" content="javascript">
+<meta property="article:tag" content="design pattern">
+<meta name="twitter:card" content="summary">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>A Short Refactoring Road of Javascript</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+      
+<link rel="stylesheet" href="/css/rtl.css">
+
+    
+    <!-- rss -->
+    
+    
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/tags/">Tags</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/little-eyes" target="_blank" rel="noopener">Projects</a></li>
+         
+          <li><a href="/search/">Search</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2014/07/04/How-About-the-911-Calls-in-Seattle/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="/2014/03/16/The-Post-School-Life/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://jilongliao.com/2014/06/10/A-Short-Refactoring-Road-of-Javascript/" target="_blank" rel="noopener"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://jilongliao.com/2014/06/10/A-Short-Refactoring-Road-of-Javascript/&text=A Short Refactoring Road of Javascript" target="_blank" rel="noopener"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://jilongliao.com/2014/06/10/A-Short-Refactoring-Road-of-Javascript/&title=A Short Refactoring Road of Javascript" target="_blank" rel="noopener"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://jilongliao.com/2014/06/10/A-Short-Refactoring-Road-of-Javascript/&is_video=false&description=A Short Refactoring Road of Javascript" target="_blank" rel="noopener"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=A Short Refactoring Road of Javascript&body=Check out this article: http://jilongliao.com/2014/06/10/A-Short-Refactoring-Road-of-Javascript/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://jilongliao.com/2014/06/10/A-Short-Refactoring-Road-of-Javascript/&title=A Short Refactoring Road of Javascript" target="_blank" rel="noopener"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://jilongliao.com/2014/06/10/A-Short-Refactoring-Road-of-Javascript/&title=A Short Refactoring Road of Javascript" target="_blank" rel="noopener"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://jilongliao.com/2014/06/10/A-Short-Refactoring-Road-of-Javascript/&title=A Short Refactoring Road of Javascript" target="_blank" rel="noopener"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://jilongliao.com/2014/06/10/A-Short-Refactoring-Road-of-Javascript/&title=A Short Refactoring Road of Javascript" target="_blank" rel="noopener"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://jilongliao.com/2014/06/10/A-Short-Refactoring-Road-of-Javascript/&name=A Short Refactoring Road of Javascript&description=&lt;blockquote&gt;
+&lt;p&gt;Seek and find.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Last month I was busy to test one of my idea that help people plan their daily trips easier, then I created a site called &lt;a href=&#34;http://jilongliao.com/quickloop&#34;&gt;quickloop&lt;/a&gt;. However, curious friends may find the source code looks so ugly, definitely not object oriented nor unit testable. YES, that’s what we called &lt;code&gt;prototype&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;As a guy always trying to cook better data, I started a simple refactoring three days ago. Since I am a classic layman of Javascript design pattern, I decide to read a little bit about the design pattern in Javascript. This book, &lt;em&gt;&lt;a href=&#34;http://addyosmani.com/resources/essentialjsdesignpatterns/book/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Learning Javascript Design Patterns&lt;/a&gt;&lt;/em&gt;, is a very good source to quickly grasp the key concept and start your refactoring road. Something called &lt;code&gt;prototype pattern&lt;/code&gt; comes to my mind. Sounds interesting, let’s have a look at what it does.&lt;/p&gt;"><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        A Short Refactoring Road of Javascript
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">The Little's Place</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2014-06-10T00:00:00.000Z" itemprop="datePublished">2014-06-10</time>
+        
+      
+    </div>
+
+
+      
+    <div class="article-category">
+        <i class="fas fa-archive"></i>
+        <a class="category-link" href="/categories/technology/">technology</a>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link" href="/tags/design-pattern/" rel="tag">design pattern</a>, <a class="tag-link" href="/tags/javascript/" rel="tag">javascript</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <blockquote>
+<p>Seek and find.</p>
+</blockquote>
+<p>Last month I was busy to test one of my idea that help people plan their daily trips easier, then I created a site called <a href="http://jilongliao.com/quickloop">quickloop</a>. However, curious friends may find the source code looks so ugly, definitely not object oriented nor unit testable. YES, that’s what we called <code>prototype</code>.</p>
+<p>As a guy always trying to cook better data, I started a simple refactoring three days ago. Since I am a classic layman of Javascript design pattern, I decide to read a little bit about the design pattern in Javascript. This book, <em><a href="http://addyosmani.com/resources/essentialjsdesignpatterns/book/" target="_blank" rel="noopener">Learning Javascript Design Patterns</a></em>, is a very good source to quickly grasp the key concept and start your refactoring road. Something called <code>prototype pattern</code> comes to my mind. Sounds interesting, let’s have a look at what it does.</p>
+<a id="more"></a>
+
+<p>Previously, a piece of my code looks like the following block.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getCurrentLocation</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (navigator.geolocation) &#123;</span><br><span class="line">    navigator.geolocation.getCurrentPosition(centerMapByPosition);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      alert(<span class="string">"Geolocation is not supported by this browser!"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">centerMapByPosition</span>(<span class="params">position</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> center = <span class="keyword">new</span> google.maps.LatLng(position.coords.latitude, position.coords.longitude);</span><br><span class="line">    map.setCenter(center);</span><br><span class="line">    map.setZoom(<span class="number">12</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">centerMapByCoordinates</span>(<span class="params">lat, lng</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> center = <span class="keyword">new</span> google.maps.LatLng(lat, lng);</span><br><span class="line">    map.panTo(center);</span><br><span class="line">    map.setZoom(<span class="number">12</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  Plus, I have tons <span class="keyword">of</span> global variables list below.</span><br><span class="line"></span><br><span class="line">  <span class="keyword">var</span> map = <span class="literal">null</span>;</span><br><span class="line">  <span class="keyword">var</span> geocoder = <span class="literal">null</span>;</span><br><span class="line">  <span class="keyword">var</span> infowindow = <span class="literal">null</span>;</span><br><span class="line">  <span class="keyword">var</span> autocomplete = <span class="literal">null</span>;</span><br><span class="line">  <span class="keyword">var</span> distanceMatrix = <span class="literal">null</span>;</span><br><span class="line">  <span class="keyword">var</span> directionsDisplay = <span class="literal">null</span>;</span><br><span class="line">  <span class="keyword">var</span> directionsService = <span class="literal">null</span>;</span><br></pre></td></tr></table></figure>
+
+<p>This kind of code is a typical guy who learned Javascript for an hour could write. But why it does not a good code? Simply for two reason: 1) it does not look pretty; 2) it is not modulized which causes a lot of trouble to unit test. So how does this <code>prototype pattern</code> could help? Let’s see what we could do to change the above code into a prototype pattern code.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> MapServiceHelper = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> map = <span class="literal">null</span>;</span><br><span class="line">  <span class="keyword">var</span> geocoder = <span class="literal">null</span>;</span><br><span class="line">  <span class="keyword">var</span> infowindow = <span class="literal">null</span>;</span><br><span class="line">  <span class="keyword">var</span> autocomplete = <span class="literal">null</span>;</span><br><span class="line">  <span class="keyword">var</span> distanceMatrix = <span class="literal">null</span>;</span><br><span class="line">  <span class="keyword">var</span> directionsDisplay = <span class="literal">null</span>;</span><br><span class="line">  <span class="keyword">var</span> directionsService = <span class="literal">null</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">MapServiceHelper.prototype = &#123;</span><br><span class="line">  getCurrentLocation: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    ...</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  centerMapByPosition: <span class="function"><span class="keyword">function</span> (<span class="params">position</span>) </span>&#123;</span><br><span class="line">    ...</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  centerMapByCoordinates: <span class="function"><span class="keyword">function</span> (<span class="params">lat, lng</span>) </span>&#123;</span><br><span class="line">    ...</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Thereafter, we can use the MapServiceHelper in the following way.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$(doucument).ready(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> mapServiceHelper = <span class="keyword">new</span> MapServiceHelper();</span><br><span class="line">  mapServiceHelper.getCurrentLocation();</span><br><span class="line">    ...</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>Now do you feel the code becomes more clear to understand and maintain? At least I do. However, if you look at the <code>getCurrentLocation()</code> function, you will find the <code>centerMapByPosition()</code> is actually a callback from Google Maps API. So can I just use <code>this.centermapByPosition</code> as my callback?</p>
+<p>Unfortunately, you cannot althougth I thought so and used that way. The key issue here is Javascript’s context. If you define a variable inside a Javascript function and this variable is visible from the callback function. In contrast, <code>this</code> points to a different context when the execution jumps to the callback function.</p>
+<p>A simple solution is to make a copy of the context to a variable so that the context can be exposed to the callback function.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">A</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.y = <span class="number">100</span>;</span><br><span class="line">  <span class="keyword">var</span> context = <span class="keyword">this</span>;</span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">B</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> x = context.y; <span class="comment">// here x = 100;</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>This looks like a good solution and it works well. But the only thing I don’t like is the duplicaltion. I have to make a copy of the context almost everywhere when I meet a callback function. Moreover, if you have multiple layer nested callback, this make life even worse. Thanks to the post, <em><a href="http://ryanmorr.com/understanding-scope-and-context-in-javascript/" target="_blank" rel="noopener">Understanding Scope and Context in Javascript</a></em>, I could use an even better way which is referred as <code>call and apply</code>. See the following code as an example.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(!(<span class="string">'bind'</span> <span class="keyword">in</span> MapServiceHelper.prototype))&#123;</span><br><span class="line">  MapServiceHelper.prototype.bind = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> fn = <span class="keyword">this</span>, context = <span class="built_in">arguments</span>[<span class="number">0</span>], args = <span class="built_in">Array</span>.prototype.slice.call(<span class="built_in">arguments</span>, <span class="number">1</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">      <span class="keyword">return</span> fn.apply(context, args.concat(<span class="built_in">Array</span>.prototype.slice.call(<span class="built_in">arguments</span>)));</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>In this way, I can use any callback funtion with a suffix <code>.bind(this)</code> to force the context to the one I need. Finally, I change it to the following style.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">getCurrentLocation: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (navigator.geolocation) &#123;</span><br><span class="line">    navigator.geolocation.getCurrentPosition(<span class="keyword">this</span>.callbackGetCurrentLocation.bind(<span class="keyword">this</span>));</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    alert(<span class="string">"Geolocation is not supported by this browser!"</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;,</span><br><span class="line"></span><br><span class="line">callbackGetCurrentLocation: <span class="function"><span class="keyword">function</span> (<span class="params">position</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> center = <span class="keyword">new</span> google.maps.LatLng(position.coords.latitude, position.coords.longitude);</span><br><span class="line">  <span class="keyword">this</span>.Map.setCenter(center);</span><br><span class="line">  <span class="keyword">this</span>.Map.setZoom(<span class="number">12</span>);</span><br><span class="line">&#125;,</span><br><span class="line"></span><br><span class="line">setMapCenterByCoordinates: <span class="function"><span class="keyword">function</span> (<span class="params">lat, lng</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> center = <span class="keyword">new</span> google.maps.LatLng(lat, lng);</span><br><span class="line">  <span class="keyword">this</span>.Map.panTo(center);</span><br><span class="line">  <span class="keyword">this</span>.Map.setZoom(<span class="number">12</span>);</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+
+<p>Till now, a short refactoring with the prototype pattern has been done and the code looks better. More importantly, it helps me quickly locate a bug that I could spend a long time to notice.</p>
+
+  </div>
+</article>
+
+    <div class="blog-post-comments">
+        <div id="disqus_thread">
+            <noscript>Please enable JavaScript to view the comments.</noscript>
+        </div>
+    </div>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/tags/">Tags</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/little-eyes" target="_blank" rel="noopener">Projects</a></li>
+         
+          <li><a href="/search/">Search</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://jilongliao.com/2014/06/10/A-Short-Refactoring-Road-of-Javascript/" target="_blank" rel="noopener"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://jilongliao.com/2014/06/10/A-Short-Refactoring-Road-of-Javascript/&text=A Short Refactoring Road of Javascript" target="_blank" rel="noopener"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://jilongliao.com/2014/06/10/A-Short-Refactoring-Road-of-Javascript/&title=A Short Refactoring Road of Javascript" target="_blank" rel="noopener"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://jilongliao.com/2014/06/10/A-Short-Refactoring-Road-of-Javascript/&is_video=false&description=A Short Refactoring Road of Javascript" target="_blank" rel="noopener"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=A Short Refactoring Road of Javascript&body=Check out this article: http://jilongliao.com/2014/06/10/A-Short-Refactoring-Road-of-Javascript/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://jilongliao.com/2014/06/10/A-Short-Refactoring-Road-of-Javascript/&title=A Short Refactoring Road of Javascript" target="_blank" rel="noopener"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://jilongliao.com/2014/06/10/A-Short-Refactoring-Road-of-Javascript/&title=A Short Refactoring Road of Javascript" target="_blank" rel="noopener"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://jilongliao.com/2014/06/10/A-Short-Refactoring-Road-of-Javascript/&title=A Short Refactoring Road of Javascript" target="_blank" rel="noopener"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://jilongliao.com/2014/06/10/A-Short-Refactoring-Road-of-Javascript/&title=A Short Refactoring Road of Javascript" target="_blank" rel="noopener"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://jilongliao.com/2014/06/10/A-Short-Refactoring-Road-of-Javascript/&name=A Short Refactoring Road of Javascript&description=&lt;blockquote&gt;
+&lt;p&gt;Seek and find.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Last month I was busy to test one of my idea that help people plan their daily trips easier, then I created a site called &lt;a href=&#34;http://jilongliao.com/quickloop&#34;&gt;quickloop&lt;/a&gt;. However, curious friends may find the source code looks so ugly, definitely not object oriented nor unit testable. YES, that’s what we called &lt;code&gt;prototype&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;As a guy always trying to cook better data, I started a simple refactoring three days ago. Since I am a classic layman of Javascript design pattern, I decide to read a little bit about the design pattern in Javascript. This book, &lt;em&gt;&lt;a href=&#34;http://addyosmani.com/resources/essentialjsdesignpatterns/book/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Learning Javascript Design Patterns&lt;/a&gt;&lt;/em&gt;, is a very good source to quickly grasp the key concept and start your refactoring road. Something called &lt;code&gt;prototype pattern&lt;/code&gt; comes to my mind. Sounds interesting, let’s have a look at what it does.&lt;/p&gt;"><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2020 Jilong Liao
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/tags/">Tags</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/little-eyes" target="_blank" rel="noopener">Projects</a></li>
+         
+          <li><a href="/search/">Search</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+
+    <!-- jquery -->
+
+<script src="/lib/jquery/jquery.min.js"></script>
+
+
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Google Analytics -->
+
+    <script type="text/javascript">
+        (function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-32402817-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+    <script type="text/javascript">
+        var disqus_shortname = 'littleeyes';
+
+        (function(){
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        }());
+    </script>
+
+
+</body>
+</html>

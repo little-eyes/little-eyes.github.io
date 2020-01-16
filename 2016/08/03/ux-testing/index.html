@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="For many of you work in the web UX development, the testing part is one of the biggest challenges you need to address in order to ship your feature good and efficient. Selenium WebdriverAmong the many">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Web UX Testing: Selenium Web Driver, CasperJS, PhantomJS">
+<meta property="og:url" content="http://jilongliao.com/2016/08/03/ux-testing/index.html">
+<meta property="og:site_name" content="The Little&#39;s Place">
+<meta property="og:description" content="For many of you work in the web UX development, the testing part is one of the biggest challenges you need to address in order to ship your feature good and efficient. Selenium WebdriverAmong the many">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2016-08-03T00:00:00.000Z">
+<meta property="article:modified_time" content="2020-01-16T04:24:31.484Z">
+<meta property="article:author" content="Jilong Liao">
+<meta property="article:tag" content="javascript">
+<meta property="article:tag" content="testing">
+<meta name="twitter:card" content="summary">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>Web UX Testing: Selenium Web Driver, CasperJS, PhantomJS</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+      
+<link rel="stylesheet" href="/css/rtl.css">
+
+    
+    <!-- rss -->
+    
+    
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/tags/">Tags</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/little-eyes" target="_blank" rel="noopener">Projects</a></li>
+         
+          <li><a href="/search/">Search</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2017/03/26/Preview-Ci-Aspnet-Core/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="/2016/07/06/Request-Filtering/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://jilongliao.com/2016/08/03/ux-testing/" target="_blank" rel="noopener"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://jilongliao.com/2016/08/03/ux-testing/&text=Web UX Testing: Selenium Web Driver, CasperJS, PhantomJS" target="_blank" rel="noopener"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://jilongliao.com/2016/08/03/ux-testing/&title=Web UX Testing: Selenium Web Driver, CasperJS, PhantomJS" target="_blank" rel="noopener"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://jilongliao.com/2016/08/03/ux-testing/&is_video=false&description=Web UX Testing: Selenium Web Driver, CasperJS, PhantomJS" target="_blank" rel="noopener"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Web UX Testing: Selenium Web Driver, CasperJS, PhantomJS&body=Check out this article: http://jilongliao.com/2016/08/03/ux-testing/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://jilongliao.com/2016/08/03/ux-testing/&title=Web UX Testing: Selenium Web Driver, CasperJS, PhantomJS" target="_blank" rel="noopener"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://jilongliao.com/2016/08/03/ux-testing/&title=Web UX Testing: Selenium Web Driver, CasperJS, PhantomJS" target="_blank" rel="noopener"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://jilongliao.com/2016/08/03/ux-testing/&title=Web UX Testing: Selenium Web Driver, CasperJS, PhantomJS" target="_blank" rel="noopener"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://jilongliao.com/2016/08/03/ux-testing/&title=Web UX Testing: Selenium Web Driver, CasperJS, PhantomJS" target="_blank" rel="noopener"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://jilongliao.com/2016/08/03/ux-testing/&name=Web UX Testing: Selenium Web Driver, CasperJS, PhantomJS&description=&lt;p&gt;For many of you work in the web UX development, the testing part is one of the biggest challenges you need to address in order to ship your feature good and efficient.&lt;/p&gt;
+&lt;h2 id=&#34;Selenium-Webdriver&#34;&gt;&lt;a href=&#34;#Selenium-Webdriver&#34; class=&#34;headerlink&#34; title=&#34;Selenium Webdriver&#34;&gt;&lt;/a&gt;Selenium Webdriver&lt;/h2&gt;&lt;p&gt;Among the many ways of testing, &lt;code&gt;Selenium Webdriver&lt;/code&gt; becomes one of the most popular methods to drive the web testing. For those who are not familiar with the &lt;code&gt;Webdriver&lt;/code&gt; concept, checkout the &lt;a href=&#34;http://www.seleniumhq.org/projects/webdriver/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Selenium office website&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;The webdriver concept is very straightforward that you write some script to driver the browser’s behavior like a monkey. You can mimic a user’s behavior like click buttons, scroll down. You can check certain DOMs exist or not. &lt;/p&gt;"><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Selenium-Webdriver"><span class="toc-number">1.</span> <span class="toc-text">Selenium Webdriver</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#PhantomJS-Headless-Rendering"><span class="toc-number">2.</span> <span class="toc-text">PhantomJS Headless Rendering</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CasperJS-Testing-Framework"><span class="toc-number">3.</span> <span class="toc-text">CasperJS Testing Framework</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        Web UX Testing: Selenium Web Driver, CasperJS, PhantomJS
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">The Little's Place</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2016-08-03T00:00:00.000Z" itemprop="datePublished">2016-08-03</time>
+        
+      
+    </div>
+
+
+      
+    <div class="article-category">
+        <i class="fas fa-archive"></i>
+        <a class="category-link" href="/categories/technology/">technology</a>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link" href="/tags/javascript/" rel="tag">javascript</a>, <a class="tag-link" href="/tags/testing/" rel="tag">testing</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <p>For many of you work in the web UX development, the testing part is one of the biggest challenges you need to address in order to ship your feature good and efficient.</p>
+<h2 id="Selenium-Webdriver"><a href="#Selenium-Webdriver" class="headerlink" title="Selenium Webdriver"></a>Selenium Webdriver</h2><p>Among the many ways of testing, <code>Selenium Webdriver</code> becomes one of the most popular methods to drive the web testing. For those who are not familiar with the <code>Webdriver</code> concept, checkout the <a href="http://www.seleniumhq.org/projects/webdriver/" target="_blank" rel="noopener">Selenium office website</a>.</p>
+<p>The webdriver concept is very straightforward that you write some script to driver the browser’s behavior like a monkey. You can mimic a user’s behavior like click buttons, scroll down. You can check certain DOMs exist or not. </p>
+<a id="more"></a>
+
+<p>In case you need multiple web browser testing, webdriver provides many browser’s driver like Chrome, Firefox and Safari etc. You can use one script to test on as many web browsers as possible. The reality, however, is that the same code may not always work due to different browser’s tricky parts.</p>
+<p>So far, Selenium webdriver support many different languages: Java, C#, Python, Ruby, PHP, Perl and Javascript. This benefits pretty much covers all of the mainstream web development language. For those whose primary languages are pretty much C# and Javascript, the simple example could be as the following.</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> OpenQA.Selenium;</span><br><span class="line"><span class="keyword">using</span> OpenQA.Selenium.Firefox;</span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> OpenQA.Selenium.Support.UI;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title">GoogleSuggest</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"><span class="keyword">string</span>[] args</span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        <span class="keyword">using</span> (IWebDriver driver = <span class="keyword">new</span> FirefoxDriver())</span><br><span class="line">        &#123;</span><br><span class="line">            driver.Navigate().GoToUrl(<span class="string">"http://www.google.com/"</span>);</span><br><span class="line">            IWebElement query = driver.FindElement(By.Name(<span class="string">"q"</span>));</span><br><span class="line">            query.SendKeys(<span class="string">"Cheese"</span>);</span><br><span class="line">            query.Submit();</span><br><span class="line"></span><br><span class="line">            <span class="keyword">var</span> wait = <span class="keyword">new</span> WebDriverWait(driver, TimeSpan.FromSeconds(<span class="number">10</span>));</span><br><span class="line">            wait.Until(d =&gt; d.Title.StartsWith(<span class="string">"cheese"</span>, StringComparison.OrdinalIgnoreCase));</span><br><span class="line">            Console.WriteLine(<span class="string">"Page title is: "</span> + driver.Title);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>The integration with Visual Studio and Visual Studio Online is very good as well. So you can easily bring this UX testing into the your testing workflow before you ship your feature.</p>
+<h2 id="PhantomJS-Headless-Rendering"><a href="#PhantomJS-Headless-Rendering" class="headerlink" title="PhantomJS Headless Rendering"></a>PhantomJS Headless Rendering</h2><p>Option No.2 takes the UX testing steps even further. A headless browser does not require a foreground browser to show up. All the rendering is done in the background process. In other words, I usually treat it as the <code>F12 developer window</code>. So you write Javascript to operate the page tough you do not see it.</p>
+<p>That means, if the page you are navigating has jQuery, then you can use it. The concept looks exactly like your F12 window. However, PhantomJS does provide ways to inject any JS library if you need it.</p>
+<p>To operate on PhantomJS, you need to know a little of Node.js as well, especially the <code>require</code>, <code>fs</code>, etc. PhantomJS uses <code>WebKit</code> to render the page, so it might be a little different from real browsers. But 99% should be the same as usual.</p>
+<p>A simple evaluate on Google’s page title is the following.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> page = <span class="built_in">require</span>(<span class="string">'webpage'</span>).create();</span><br><span class="line"><span class="keyword">var</span> url = <span class="string">"https://www.google.com"</span>;</span><br><span class="line">page.open(url, <span class="function"><span class="keyword">function</span>(<span class="params">status</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> title = page.evaluate(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">document</span>.title;</span><br><span class="line">  &#125;);</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'Page title is '</span> + title);</span><br><span class="line">  phantom.exit();</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h2 id="CasperJS-Testing-Framework"><a href="#CasperJS-Testing-Framework" class="headerlink" title="CasperJS Testing Framework"></a>CasperJS Testing Framework</h2><p>There are many headless testing framework as you can see it from <a href="http://phantomjs.org/headless-testing.html" target="_blank" rel="noopener">here</a>. <code>CasperJS</code> is one of the them I feel it works pretty well with PhantomJS.</p>
+<p>CasperJS provides a good pattern for you to explore your testing step-by-step. <code>Promise.then()</code> is the approach CasperJS takes. In addition, CasperJS wraps some common usage APIs like <code>assertExist()</code>, <code>assertTitle()</code>, <code>waitForSelector()</code>, etc. for you so you do not need to worry too much. </p>
+<p>As a result, you can quickly experience CasperJS via the following code snippet. </p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> casper = <span class="built_in">require</span>(<span class="string">'casper'</span>).create();</span><br><span class="line"></span><br><span class="line">casper.start(<span class="string">'http://casperjs.org/'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.echo(<span class="keyword">this</span>.getTitle());</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">casper.thenOpen(<span class="string">'http://phantomjs.org'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.echo(<span class="keyword">this</span>.getTitle());</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">casper.run();</span><br></pre></td></tr></table></figure>
+
+<p>Since CasperJS/PhantomJS is headless rendering it does not require you to install Chrome or Firefox on your computer. This opens a big door for continuous integration. CI services like <code>TravisCI</code> and <code>Visual Studio Online</code> can run CasperJS without a problem. Selenium is different, you need the existance of certain browser in order to test on the page. </p>
+<blockquote>
+<p>Final words, choose your best tool to help you!</p>
+</blockquote>
+
+  </div>
+</article>
+
+    <div class="blog-post-comments">
+        <div id="disqus_thread">
+            <noscript>Please enable JavaScript to view the comments.</noscript>
+        </div>
+    </div>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/tags/">Tags</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/little-eyes" target="_blank" rel="noopener">Projects</a></li>
+         
+          <li><a href="/search/">Search</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Selenium-Webdriver"><span class="toc-number">1.</span> <span class="toc-text">Selenium Webdriver</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#PhantomJS-Headless-Rendering"><span class="toc-number">2.</span> <span class="toc-text">PhantomJS Headless Rendering</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CasperJS-Testing-Framework"><span class="toc-number">3.</span> <span class="toc-text">CasperJS Testing Framework</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://jilongliao.com/2016/08/03/ux-testing/" target="_blank" rel="noopener"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://jilongliao.com/2016/08/03/ux-testing/&text=Web UX Testing: Selenium Web Driver, CasperJS, PhantomJS" target="_blank" rel="noopener"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://jilongliao.com/2016/08/03/ux-testing/&title=Web UX Testing: Selenium Web Driver, CasperJS, PhantomJS" target="_blank" rel="noopener"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://jilongliao.com/2016/08/03/ux-testing/&is_video=false&description=Web UX Testing: Selenium Web Driver, CasperJS, PhantomJS" target="_blank" rel="noopener"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Web UX Testing: Selenium Web Driver, CasperJS, PhantomJS&body=Check out this article: http://jilongliao.com/2016/08/03/ux-testing/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://jilongliao.com/2016/08/03/ux-testing/&title=Web UX Testing: Selenium Web Driver, CasperJS, PhantomJS" target="_blank" rel="noopener"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://jilongliao.com/2016/08/03/ux-testing/&title=Web UX Testing: Selenium Web Driver, CasperJS, PhantomJS" target="_blank" rel="noopener"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://jilongliao.com/2016/08/03/ux-testing/&title=Web UX Testing: Selenium Web Driver, CasperJS, PhantomJS" target="_blank" rel="noopener"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://jilongliao.com/2016/08/03/ux-testing/&title=Web UX Testing: Selenium Web Driver, CasperJS, PhantomJS" target="_blank" rel="noopener"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://jilongliao.com/2016/08/03/ux-testing/&name=Web UX Testing: Selenium Web Driver, CasperJS, PhantomJS&description=&lt;p&gt;For many of you work in the web UX development, the testing part is one of the biggest challenges you need to address in order to ship your feature good and efficient.&lt;/p&gt;
+&lt;h2 id=&#34;Selenium-Webdriver&#34;&gt;&lt;a href=&#34;#Selenium-Webdriver&#34; class=&#34;headerlink&#34; title=&#34;Selenium Webdriver&#34;&gt;&lt;/a&gt;Selenium Webdriver&lt;/h2&gt;&lt;p&gt;Among the many ways of testing, &lt;code&gt;Selenium Webdriver&lt;/code&gt; becomes one of the most popular methods to drive the web testing. For those who are not familiar with the &lt;code&gt;Webdriver&lt;/code&gt; concept, checkout the &lt;a href=&#34;http://www.seleniumhq.org/projects/webdriver/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Selenium office website&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;The webdriver concept is very straightforward that you write some script to driver the browser’s behavior like a monkey. You can mimic a user’s behavior like click buttons, scroll down. You can check certain DOMs exist or not. &lt;/p&gt;"><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2020 Jilong Liao
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/tags/">Tags</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/little-eyes" target="_blank" rel="noopener">Projects</a></li>
+         
+          <li><a href="/search/">Search</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+
+    <!-- jquery -->
+
+<script src="/lib/jquery/jquery.min.js"></script>
+
+
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Google Analytics -->
+
+    <script type="text/javascript">
+        (function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-32402817-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+    <script type="text/javascript">
+        var disqus_shortname = 'littleeyes';
+
+        (function(){
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        }());
+    </script>
+
+
+</body>
+</html>

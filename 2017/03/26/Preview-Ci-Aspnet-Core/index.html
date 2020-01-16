@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="Another recent challenge at work is to provide a easy-to-use feature preview system for our service layer. Simialr to the work we did in [1], we plan to provide developers a unique experience with the">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Engineering System: Feature Preview for Services">
+<meta property="og:url" content="http://jilongliao.com/2017/03/26/Preview-Ci-Aspnet-Core/index.html">
+<meta property="og:site_name" content="The Little&#39;s Place">
+<meta property="og:description" content="Another recent challenge at work is to provide a easy-to-use feature preview system for our service layer. Simialr to the work we did in [1], we plan to provide developers a unique experience with the">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://jilongliao.com/images/concept.png">
+<meta property="og:image" content="http://jilongliao.com/images/virtualdirectory.png">
+<meta property="article:published_time" content="2017-03-26T00:00:00.000Z">
+<meta property="article:modified_time" content="2020-01-16T04:24:31.484Z">
+<meta property="article:author" content="Jilong Liao">
+<meta property="article:tag" content="infrastructure">
+<meta property="article:tag" content="asp.net core">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://jilongliao.com/images/concept.png">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>Engineering System: Feature Preview for Services</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+      
+<link rel="stylesheet" href="/css/rtl.css">
+
+    
+    <!-- rss -->
+    
+    
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/tags/">Tags</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/little-eyes" target="_blank" rel="noopener">Projects</a></li>
+         
+          <li><a href="/search/">Search</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2017/06/24/Dev-Env-Docker/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="/2016/08/03/ux-testing/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://jilongliao.com/2017/03/26/Preview-Ci-Aspnet-Core/" target="_blank" rel="noopener"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://jilongliao.com/2017/03/26/Preview-Ci-Aspnet-Core/&text=Engineering System: Feature Preview for Services" target="_blank" rel="noopener"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://jilongliao.com/2017/03/26/Preview-Ci-Aspnet-Core/&title=Engineering System: Feature Preview for Services" target="_blank" rel="noopener"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://jilongliao.com/2017/03/26/Preview-Ci-Aspnet-Core/&is_video=false&description=Engineering System: Feature Preview for Services" target="_blank" rel="noopener"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Engineering System: Feature Preview for Services&body=Check out this article: http://jilongliao.com/2017/03/26/Preview-Ci-Aspnet-Core/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://jilongliao.com/2017/03/26/Preview-Ci-Aspnet-Core/&title=Engineering System: Feature Preview for Services" target="_blank" rel="noopener"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://jilongliao.com/2017/03/26/Preview-Ci-Aspnet-Core/&title=Engineering System: Feature Preview for Services" target="_blank" rel="noopener"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://jilongliao.com/2017/03/26/Preview-Ci-Aspnet-Core/&title=Engineering System: Feature Preview for Services" target="_blank" rel="noopener"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://jilongliao.com/2017/03/26/Preview-Ci-Aspnet-Core/&title=Engineering System: Feature Preview for Services" target="_blank" rel="noopener"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://jilongliao.com/2017/03/26/Preview-Ci-Aspnet-Core/&name=Engineering System: Feature Preview for Services&description=&lt;p&gt;Another recent challenge at work is to provide a easy-to-use feature preview system for our service layer. Simialr to the work we did in [&lt;a href=&#34;http://jilongliao.com/2016/02/04/Preview-Ci/&#34;&gt;1&lt;/a&gt;], we plan to provide developers a unique experience with their engineering system Git and automate the whole process as much as possible.&lt;/p&gt;
+&lt;h1 id=&#34;What-is-our-problem-here&#34;&gt;&lt;a href=&#34;#What-is-our-problem-here&#34; class=&#34;headerlink&#34; title=&#34;What is our problem here?&#34;&gt;&lt;/a&gt;What is our problem here?&lt;/h1&gt;&lt;p&gt;Our team is running a service that more than 15 developers are partying in the service everyday. Each developer is working on some features (both frontend and service layer). We all wants to publish our work somewhere temporaily for 1) demonstration in the UX side for bugbash, design discussion and proof of concept etc. 2) provide service dependency or testing for other developers (this usually happens in the service layer). So we need an awesome system to streamline our day-to-day job. In [&lt;a href=&#34;http://jilongliao.com/2016/02/04/Preview-Ci/&#34;&gt;1&lt;/a&gt;], we have tactiled the 1) very well in the UX side, so this article is for the second part of the story.&lt;/p&gt;"><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#What-is-our-problem-here"><span class="toc-number">1.</span> <span class="toc-text">What is our problem here?</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Simple-solution-why-it-works-and-why-it-does-not"><span class="toc-number">2.</span> <span class="toc-text">Simple solution - why it works and why it does not.</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ASP-NET-Core-and-IIS"><span class="toc-number">3.</span> <span class="toc-text">ASP.NET Core and IIS</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Actions"><span class="toc-number">4.</span> <span class="toc-text">Actions</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Feature-Preview-from-UX-to-Service-End-to-end"><span class="toc-number">5.</span> <span class="toc-text">Feature Preview from UX to Service End-to-end</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        Engineering System: Feature Preview for Services
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">The Little's Place</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2017-03-26T00:00:00.000Z" itemprop="datePublished">2017-03-26</time>
+        
+      
+    </div>
+
+
+      
+    <div class="article-category">
+        <i class="fas fa-archive"></i>
+        <a class="category-link" href="/categories/technology/">technology</a>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link" href="/tags/asp-net-core/" rel="tag">asp.net core</a>, <a class="tag-link" href="/tags/infrastructure/" rel="tag">infrastructure</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <p>Another recent challenge at work is to provide a easy-to-use feature preview system for our service layer. Simialr to the work we did in [<a href="http://jilongliao.com/2016/02/04/Preview-Ci/">1</a>], we plan to provide developers a unique experience with their engineering system Git and automate the whole process as much as possible.</p>
+<h1 id="What-is-our-problem-here"><a href="#What-is-our-problem-here" class="headerlink" title="What is our problem here?"></a>What is our problem here?</h1><p>Our team is running a service that more than 15 developers are partying in the service everyday. Each developer is working on some features (both frontend and service layer). We all wants to publish our work somewhere temporaily for 1) demonstration in the UX side for bugbash, design discussion and proof of concept etc. 2) provide service dependency or testing for other developers (this usually happens in the service layer). So we need an awesome system to streamline our day-to-day job. In [<a href="http://jilongliao.com/2016/02/04/Preview-Ci/">1</a>], we have tactiled the 1) very well in the UX side, so this article is for the second part of the story.</p>
+<a id="more"></a>
+
+<h1 id="Simple-solution-why-it-works-and-why-it-does-not"><a href="#Simple-solution-why-it-works-and-why-it-does-not" class="headerlink" title="Simple solution - why it works and why it does not."></a>Simple solution - why it works and why it does not.</h1><p>One simple idea is to give each developer an Azure App Service instance, so that they can deploy their service layer change from localhost. Honesly, this approach works just fine. We adopted this approach when we were delivering a big feature, but the problems come to more and more developers want to party in this approach so it’s not scalable. Now you have to replicate all the app settings (more than 10) from instance to another, and coordinate people when they try to use the same test instance. If you have OAuth authentication, you will have to keep adding new host URLs to your allowlist for users to be authenticated. It brings a lot of overhead to us. So we have to come up with a better solution.</p>
+<h1 id="ASP-NET-Core-and-IIS"><a href="#ASP-NET-Core-and-IIS" class="headerlink" title="ASP.NET Core and IIS"></a>ASP.NET Core and IIS</h1><p>We started to adopt <code>.Net Core</code> since the beginning of our service layer, therefore we take some time to deeply understand how ASP.Net Core and IIS works together. One big question for us is to understand the possiblities and limitations of the multiple ASP.Net Core application running on the same Azure App Service.</p>
+<p>The answer is <code>possible</code> and it just works. The virtual application concept still works fine for ASP.NET Core. In the picture below, we see a virtual application running at <code>https://projectx.net/alice:80</code> will be mapped to a ASP.NET Core application running at port <code>26243</code>. If you have another virtual application running at <code>https://projectx.net/bob:80</code>, the mapped ASP.NET Core application will be running at port <code>21537</code>. At the application layer, we do not even need to worry about the mapping because it happens seamlessly inside IIS.</p>
+<p><img src="/images/concept.png" alt=""></p>
+<p>Therefore, our preview system idea is that any developer can push their work to <code>preview/[alias]/[feature]</code> branch in Git, and every git push will be continuously integrated into a virtual application running in Azure App Service at <code>https://projectx.net/[alias]</code> via Visual Studio Online. Underneath of this virtual application is actually a ASP.NET Core application running at a random port.</p>
+<h1 id="Actions"><a href="#Actions" class="headerlink" title="Actions"></a>Actions</h1><p>In every ASP.NET Core project, we can add a <code>web.config</code> file to tell IIS what it should do to deal with the ASP.NET Core application. A typical file structure in the Azure App Service is the following.</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">wwwroot</span><br><span class="line">    +-- alice/</span><br><span class="line">        +-- ...</span><br><span class="line">        +-- web.config</span><br><span class="line">    +-- bob/</span><br><span class="line">        +-- ...</span><br><span class="line">        +-- web.config</span><br><span class="line">    +-- web.config</span><br></pre></td></tr></table></figure>
+
+<p>As we can see, each virtual application will be deployed to its own folder and each one should have a <code>web.config</code> file. There is also a root level <code>web.config</code> file. At the individual level, a web.config should be like the following.</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">system.webServer</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">aspNetCore</span> <span class="attr">processPath</span>=<span class="string">".\MissionControlAPI.Host.exe"</span> <span class="attr">arguments</span>=<span class="string">""</span> <span class="attr">stdoutLogEnabled</span>=<span class="string">"true"</span> <span class="attr">stdoutLogFile</span>=<span class="string">".\logs\stdout"</span> <span class="attr">forwardWindowsAuthToken</span>=<span class="string">"false"</span> /&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">system.webServer</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>At the root level, the web.config should specify where to find the ASP.NET Core application and launch it. For example, for <code>Alice</code>, we need to tell IIS the application is at <code>/alice</code>.</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">system.webServer</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">handlers</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">add</span> <span class="attr">name</span>=<span class="string">"aspNetCore_alice"</span> <span class="attr">path</span>=<span class="string">"alice/*"</span> <span class="attr">verb</span>=<span class="string">"*"</span> <span class="attr">modules</span>=<span class="string">"AspNetCoreModule"</span> <span class="attr">resourceType</span>=<span class="string">"Unspecified"</span> /&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">add</span> <span class="attr">name</span>=<span class="string">"aspNetCore_bob"</span> <span class="attr">path</span>=<span class="string">"bob/*"</span> <span class="attr">verb</span>=<span class="string">"*"</span> <span class="attr">modules</span>=<span class="string">"AspNetCoreModule"</span> <span class="attr">resourceType</span>=<span class="string">"Unspecified"</span> /&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">add</span> <span class="attr">name</span>=<span class="string">"aspNetCore_david"</span> <span class="attr">path</span>=<span class="string">"david/*"</span> <span class="attr">verb</span>=<span class="string">"*"</span> <span class="attr">modules</span>=<span class="string">"AspNetCoreModule"</span> <span class="attr">resourceType</span>=<span class="string">"Unspecified"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">handlers</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">system.webServer</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>In the Azure App Service’s app settings, we will need to tell the service that there is a virutal application running at certain location and the name of the virtual application like the following picture. Otherwise, the continuous integration system will get errors when deploying using <code>MSDeploy</code>.</p>
+<p><img src="/images/virtualdirectory.png" alt=""></p>
+<h1 id="Feature-Preview-from-UX-to-Service-End-to-end"><a href="#Feature-Preview-from-UX-to-Service-End-to-end" class="headerlink" title="Feature Preview from UX to Service End-to-end"></a>Feature Preview from UX to Service End-to-end</h1><p>To think a little bit further more, we will encounter into the situations that we need both our UX and service layer being in the preview system so that to demo something that could end-to-end. There are multiple ways to do this, for instance, you can always change the UX configuration to point to certain service layer and commit your change, and the same thing could be done in the service layer.</p>
+<p>Instead, I am thinking of more standard and generic way. One idea come to my mind is to manipulate the Git branch name. For example, we could ask the user to use <code>preview/alice/svc:david</code> as the branch name for the UX side, and <code>preview/david/db:test</code> for service side. In this example, when CI to deploy the commit, they will automatically transform the configuration to the correct preview service from UX, while the service will point to the correct database if necessary.</p>
+<p>Another idea is to allow each developer have a special transformation of their configuration files. For example, a developer could have a <code>web.alice.config</code> or <code>web.bob.config</code>, then the developer can change anything he wants in the configuration file. The CI will transform the <code>web.config</code> based one the branch name and the correct specialized <code>web.[alias].config</code> file. This approach will bring more flexibility for the developers but also difficulties to manage and maintain things.</p>
+
+  </div>
+</article>
+
+    <div class="blog-post-comments">
+        <div id="disqus_thread">
+            <noscript>Please enable JavaScript to view the comments.</noscript>
+        </div>
+    </div>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/tags/">Tags</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/little-eyes" target="_blank" rel="noopener">Projects</a></li>
+         
+          <li><a href="/search/">Search</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#What-is-our-problem-here"><span class="toc-number">1.</span> <span class="toc-text">What is our problem here?</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Simple-solution-why-it-works-and-why-it-does-not"><span class="toc-number">2.</span> <span class="toc-text">Simple solution - why it works and why it does not.</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ASP-NET-Core-and-IIS"><span class="toc-number">3.</span> <span class="toc-text">ASP.NET Core and IIS</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Actions"><span class="toc-number">4.</span> <span class="toc-text">Actions</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Feature-Preview-from-UX-to-Service-End-to-end"><span class="toc-number">5.</span> <span class="toc-text">Feature Preview from UX to Service End-to-end</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://jilongliao.com/2017/03/26/Preview-Ci-Aspnet-Core/" target="_blank" rel="noopener"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://jilongliao.com/2017/03/26/Preview-Ci-Aspnet-Core/&text=Engineering System: Feature Preview for Services" target="_blank" rel="noopener"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://jilongliao.com/2017/03/26/Preview-Ci-Aspnet-Core/&title=Engineering System: Feature Preview for Services" target="_blank" rel="noopener"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://jilongliao.com/2017/03/26/Preview-Ci-Aspnet-Core/&is_video=false&description=Engineering System: Feature Preview for Services" target="_blank" rel="noopener"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Engineering System: Feature Preview for Services&body=Check out this article: http://jilongliao.com/2017/03/26/Preview-Ci-Aspnet-Core/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://jilongliao.com/2017/03/26/Preview-Ci-Aspnet-Core/&title=Engineering System: Feature Preview for Services" target="_blank" rel="noopener"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://jilongliao.com/2017/03/26/Preview-Ci-Aspnet-Core/&title=Engineering System: Feature Preview for Services" target="_blank" rel="noopener"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://jilongliao.com/2017/03/26/Preview-Ci-Aspnet-Core/&title=Engineering System: Feature Preview for Services" target="_blank" rel="noopener"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://jilongliao.com/2017/03/26/Preview-Ci-Aspnet-Core/&title=Engineering System: Feature Preview for Services" target="_blank" rel="noopener"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://jilongliao.com/2017/03/26/Preview-Ci-Aspnet-Core/&name=Engineering System: Feature Preview for Services&description=&lt;p&gt;Another recent challenge at work is to provide a easy-to-use feature preview system for our service layer. Simialr to the work we did in [&lt;a href=&#34;http://jilongliao.com/2016/02/04/Preview-Ci/&#34;&gt;1&lt;/a&gt;], we plan to provide developers a unique experience with their engineering system Git and automate the whole process as much as possible.&lt;/p&gt;
+&lt;h1 id=&#34;What-is-our-problem-here&#34;&gt;&lt;a href=&#34;#What-is-our-problem-here&#34; class=&#34;headerlink&#34; title=&#34;What is our problem here?&#34;&gt;&lt;/a&gt;What is our problem here?&lt;/h1&gt;&lt;p&gt;Our team is running a service that more than 15 developers are partying in the service everyday. Each developer is working on some features (both frontend and service layer). We all wants to publish our work somewhere temporaily for 1) demonstration in the UX side for bugbash, design discussion and proof of concept etc. 2) provide service dependency or testing for other developers (this usually happens in the service layer). So we need an awesome system to streamline our day-to-day job. In [&lt;a href=&#34;http://jilongliao.com/2016/02/04/Preview-Ci/&#34;&gt;1&lt;/a&gt;], we have tactiled the 1) very well in the UX side, so this article is for the second part of the story.&lt;/p&gt;"><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2020 Jilong Liao
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/tags/">Tags</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/little-eyes" target="_blank" rel="noopener">Projects</a></li>
+         
+          <li><a href="/search/">Search</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+
+    <!-- jquery -->
+
+<script src="/lib/jquery/jquery.min.js"></script>
+
+
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Google Analytics -->
+
+    <script type="text/javascript">
+        (function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-32402817-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+    <script type="text/javascript">
+        var disqus_shortname = 'littleeyes';
+
+        (function(){
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        }());
+    </script>
+
+
+</body>
+</html>

@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="Our team operates a collection of services that heavily rely on Azure App Service. In addition, there are more than 60 periodical jobs running in the Azure App Services to do all kinds of tasks. For e">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Scale Azure Timer Triggered WebJob">
+<meta property="og:url" content="http://jilongliao.com/2020/01/12/Scalable-Timer-Job/index.html">
+<meta property="og:site_name" content="The Little&#39;s Place">
+<meta property="og:description" content="Our team operates a collection of services that heavily rely on Azure App Service. In addition, there are more than 60 periodical jobs running in the Azure App Services to do all kinds of tasks. For e">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://jilongliao.com/images/webjob-servicebus.png">
+<meta property="article:published_time" content="2020-01-12T00:00:00.000Z">
+<meta property="article:modified_time" content="2020-01-16T04:24:31.484Z">
+<meta property="article:author" content="Jilong Liao">
+<meta property="article:tag" content="azure">
+<meta property="article:tag" content="scalability">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://jilongliao.com/images/webjob-servicebus.png">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>Scale Azure Timer Triggered WebJob</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+      
+<link rel="stylesheet" href="/css/rtl.css">
+
+    
+    <!-- rss -->
+    
+    
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/tags/">Tags</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/little-eyes" target="_blank" rel="noopener">Projects</a></li>
+         
+          <li><a href="/search/">Search</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" href="/2019/09/03/Split-A-Monolithic-Service/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://jilongliao.com/2020/01/12/Scalable-Timer-Job/" target="_blank" rel="noopener"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://jilongliao.com/2020/01/12/Scalable-Timer-Job/&text=Scale Azure Timer Triggered WebJob" target="_blank" rel="noopener"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://jilongliao.com/2020/01/12/Scalable-Timer-Job/&title=Scale Azure Timer Triggered WebJob" target="_blank" rel="noopener"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://jilongliao.com/2020/01/12/Scalable-Timer-Job/&is_video=false&description=Scale Azure Timer Triggered WebJob" target="_blank" rel="noopener"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Scale Azure Timer Triggered WebJob&body=Check out this article: http://jilongliao.com/2020/01/12/Scalable-Timer-Job/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://jilongliao.com/2020/01/12/Scalable-Timer-Job/&title=Scale Azure Timer Triggered WebJob" target="_blank" rel="noopener"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://jilongliao.com/2020/01/12/Scalable-Timer-Job/&title=Scale Azure Timer Triggered WebJob" target="_blank" rel="noopener"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://jilongliao.com/2020/01/12/Scalable-Timer-Job/&title=Scale Azure Timer Triggered WebJob" target="_blank" rel="noopener"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://jilongliao.com/2020/01/12/Scalable-Timer-Job/&title=Scale Azure Timer Triggered WebJob" target="_blank" rel="noopener"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://jilongliao.com/2020/01/12/Scalable-Timer-Job/&name=Scale Azure Timer Triggered WebJob&description=" target="_blank" rel="noopener"><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#A-Simple-Idea"><span class="toc-number">1.</span> <span class="toc-text">A Simple Idea</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Developer-Experience"><span class="toc-number">2.</span> <span class="toc-text">Developer Experience</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        Scale Azure Timer Triggered WebJob
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">The Little's Place</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2020-01-12T00:00:00.000Z" itemprop="datePublished">2020-01-12</time>
+        
+      
+    </div>
+
+
+      
+    <div class="article-category">
+        <i class="fas fa-archive"></i>
+        <a class="category-link" href="/categories/technology/">technology</a>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link" href="/tags/azure/" rel="tag">azure</a>, <a class="tag-link" href="/tags/scalability/" rel="tag">scalability</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <p>Our team operates a collection of services that heavily rely on Azure App Service. In addition, there are more than 60 periodical jobs running in the Azure App Services to do all kinds of tasks. For example, a task to upload metadata documents in Parquet format to Azure Data Lake Storage that data pipeline needs to process data. Some jobs run faster and some are slower at each time, and some jobs are more frequent while others are not. We use Azure WebJob SDK to build those jobs and deploy it in the Azure App Service.</p>
+<p>It was a simple and elegant solution that Azure provides, until we encounter into a timer based job scalability issue. It turns out that Azure WebJob SDK’s timer-based trigger jobs (see a sample code below which runs every 10 minutes) are all running on a single instance. In other words, if you have 4 machines allocated to the Azure App Service to run your job, only one is active. If any one of the 60 jobs run longer than expected or consumes excessive memory, all other jobs will start failing. </p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[<span class="meta">Singleton</span>]</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">async</span> Task <span class="title">PushMetadataJobAsync</span>(<span class="params">[TimerTrigger(<span class="string">"00:10:00"</span></span>)]TimerInfo timer)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">// do some work here</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Normally this does not happen until a few weeks ago.</p>
+<h1 id="A-Simple-Idea"><a href="#A-Simple-Idea" class="headerlink" title="A Simple Idea"></a>A Simple Idea</h1><p>Azure support team suggests us to split the jobs into multiple job hosts so we can divide and conquer. In a weekly developer meeting, <a href="https://www.linkedin.com/in/chandan-jyoti-sharma-98711231/" target="_blank" rel="noopener">my colleague Chandan</a> and I had an idea to scale out timer-based job with or without splitting the code into multiple job hosts. The idea is as simple as below.</p>
+<blockquote>
+<p>Azure WebJobs also provide <code>ServiceBusTrigger</code> to invoke a job in addition to <code>TimerTrigger</code>, and it can run across all instances on the same App Service. It is very well load balanced. Therefore, we can create two jobs – one is the timer trigger to enqueue a service bus message, and the other one is a service bus trigger job that does the actual work.</p>
+</blockquote>
+<p><img src="/images/webjob-servicebus.png" alt="Service Bus WebJob"></p>
+<p>We created some dummy job and deployed to our CI environment. Our telemetry indicates that the <code>ServiceBusTrigger</code> job runs across all instances as expected. We can change the above <code>PushMetadataJobAsync</code> to the following code.</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">[<span class="meta">Singleton</span>]</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">async</span> Task <span class="title">PushMetadataTimerTriggerJobAsync</span>(<span class="params">[TimerTrigger(<span class="string">"00:10:00"</span></span>)]TimerInfo timer)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">using</span> (<span class="keyword">var</span> memoryStream = <span class="keyword">new</span> MemoryStream(</span><br><span class="line">        System.Text.Encoding.UTF8.GetBytes(</span><br><span class="line">            JsonConvert.SerializeObject(</span><br><span class="line">                <span class="keyword">new</span> JobInfo &#123; EnqueueTime = DateTimeOffset.Now.ToString()&#125;))))</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">var</span> reportMessage = <span class="keyword">new</span> BrokeredMessage(memoryStream);</span><br><span class="line">        reportMessage.Properties[<span class="string">"Listener"</span>] = <span class="string">"PushMetadataJobAsync"</span>;</span><br><span class="line">        <span class="keyword">await</span> topicClient.SendAsync(reportMessage);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">async</span> Task <span class="title">PushMetadataJobAsync</span>(<span class="params">[ServiceBusTrigger(<span class="string">"jobs"</span>, <span class="string">"PushMetadataJobAsync"</span></span>)] <span class="keyword">string</span> timer)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">// do real work here</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Note that the listener property in the service bus message create a filter that only <em>listener=PushMetadataJobAsync</em> would trigger the service bus job. We design this way to avoid creating lots of topic queues.</p>
+<h1 id="Developer-Experience"><a href="#Developer-Experience" class="headerlink" title="Developer Experience"></a>Developer Experience</h1><p>If we only have a few timer trigger jobs, we can manually edit it and we are done here. However, we have more than 60 jobs, and there will be more. Therefore, developer experience is very important here.</p>
+<p>Our desired experience is to provide an attribute on the function then the code behind the scene handles everything for you. A sample code looks like below. Then all the 60 jobs could have a simple switch by replacing the attribute on the function as well as the function signature. A developer can probably convert all the job in 10 minutes.</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[<span class="meta">ScalableTimerJob(Cron = <span class="meta-string">"* 10 * * * *"</span>)</span>]</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">async</span> Task <span class="title">PushMetadataJobAsync</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">// do work here</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>To achieve the goal above, we need some code to dynamically register a new timer job when job host starts as well as a service bus job. The service bus job need to execute the same code in the above function.</p>
+<p>The first piece is to programmatically register the service bus subscriptions and its associated rules. In our design, we use the same topic queue, but with different subscriptions and each subscription use a SQL filter to filter the message it is going to receive. The code below shows how to register such a subscription in service bus. Note that <code>$Default</code> rule has a default SQL filter <code>1=1</code> which does not filter anything. Therefore, we need to delete it at creation time.</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">async</span> <span class="keyword">void</span> <span class="title">RegisterJob</span>(<span class="params"><span class="keyword">string</span> jobName</span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    managementClient = <span class="keyword">new</span> ManagementClient(ServiceBusConnectionString);</span><br><span class="line">    <span class="keyword">await</span> managementClient.CreateSubscriptionAsync(<span class="keyword">new</span> Microsoft.Azure.ServiceBus.Management.SubscriptionDescription(topic, jobName));</span><br><span class="line">    <span class="keyword">var</span> rules = <span class="keyword">await</span> managementClient.GetRulesAsync(topic, jobName);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (rules.Any(r =&gt; r.Name == <span class="string">"$Default"</span>))</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">await</span> managementClient.DeleteRuleAsync(topic, jobName, <span class="string">"$Default"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (!rules.Any(r =&gt; r.Name == jobName))</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">await</span> managementClient.CreateRuleAsync(topic, jobName, <span class="keyword">new</span> Microsoft.Azure.ServiceBus.RuleDescription</span><br><span class="line">        &#123;</span><br><span class="line">            Filter = <span class="keyword">new</span> Microsoft.Azure.ServiceBus.SqlFilter(<span class="string">$"(Listener='<span class="subst">&#123;jobName&#125;</span>')"</span>),</span><br><span class="line">            Name = jobName</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Unfortunately, Azure WebJobs does not allow us to dynamically register new timer triggered jobs once the job host starts. After the code <code>app.UseTimer()</code>, all the timer jobs are permanently fixed. We were surprised by this design so we have to find an alternative way to register the job before <code>app.UseTimer()</code> gets called.</p>
+<p>We researched into this a little bit more and find out there is no other runtime based solution except for compile time code generation. In other words, we need to dynamically generate a timer trigger job and a service bus trigger job before the code build. Then <code>app.UseTimer()</code> will pick up those generated jobs at runtime.</p>
+<p>The solution is described below:</p>
+<ol>
+<li>Create a <code>.tt</code> text template file to generate the C# code.</li>
+<li><code>.tt</code> file has C# code to scan and parse all the job C# files in the project via <code>Rosyln</code>.</li>
+<li>The generated timer trigger job just sends a service bus message to a topic queue with a subscription value same as the full function name, e.g. <code>DummyJob.JobOneAsync</code>.</li>
+<li>The generated service bus trigger job will call the original job function to do the actual work. The original job function is instantiated via dependency injection. </li>
+<li>The <code>csproj</code> file needs to add a <code>PreCompile</code> task to call <code>TextTransform.exe</code> (provided by Visual Studio build tools) to generate the C# code.</li>
+<li>Project gets build by <code>msbuild</code> or <code>dotnet build</code> command. The DLLs should contain the two generated trigger jobs.</li>
+</ol>
+<p>One issue comes out of this design is that we lost the singleton property of the timer job. If a job is scheduled very frequently and one job is running late so there are multiple same jobs running at the same time. Classic WebJob will not let this happen because it’s a singleton running on single machine. </p>
+<p>Fortunately, service bus trigger function job will delete the message only if the job finished running, either success or failure. Therefore, we can use this nature as the distributed lock. So we can create a function to check if there is an existing job running like below.</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">async</span> Task&lt;<span class="keyword">bool</span>&gt; <span class="title">IsJobRunning</span>(<span class="params"><span class="keyword">string</span> subscription</span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> (<span class="keyword">await</span> managementClient.GetSubscriptionRuntimeInfoAsync(topic, subscription)).MessageCount &gt; <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Next, in the timer trigger job, we can use <code>IsJobRunning</code> to decide whether to send message to service bus.</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(!<span class="keyword">await</span> <span class="keyword">this</span>.scalableTimerConfiguration.IsJobRunning(<span class="string">"DummyJob.ExampleJob"</span>))</span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">using</span> (<span class="keyword">var</span> memoryStream = <span class="keyword">new</span> MemoryStream(</span><br><span class="line">        System.Text.Encoding.UTF8.GetBytes(</span><br><span class="line">            JsonConvert.SerializeObject(</span><br><span class="line">                <span class="keyword">new</span> JobInfo&#123; EnqueueTime = DateTimeOffset.Now.ToString()&#125;))))</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">var</span> reportMessage = <span class="keyword">new</span> BrokeredMessage(memoryStream);</span><br><span class="line">        reportMessage.Properties[<span class="string">"Listener"</span>] = <span class="string">"DummyJob.ExampleJob"</span>;</span><br><span class="line">		<span class="keyword">await</span> topicClient.SendAsync(reportMessage);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>To ensure the C# file gets generated before the build, a new build target needs to be added to the <code>csproj</code> file.</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">PropertyGroup</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">TextTransformExe</span> <span class="attr">Condition</span>=<span class="string">"Exists('C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\Common7\IDE\TextTransform.exe')"</span>&gt;</span>C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\Common7\IDE\TextTransform.exe<span class="tag">&lt;/<span class="name">TextTransformExe</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">TextTransformExe</span> <span class="attr">Condition</span>=<span class="string">"Exists('C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\Common7\IDE\TextTransform.exe')"</span>&gt;</span>C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\Common7\IDE\TextTransform.exe<span class="tag">&lt;/<span class="name">TextTransformExe</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">PropertyGroup</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">Target</span> <span class="attr">Name</span>=<span class="string">"TextTransform"</span> <span class="attr">BeforeTargets</span>=<span class="string">"BeforeCompile"</span> <span class="attr">Condition</span>=<span class="string">"'$(OS)' == 'Windows_NT'"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">Exec</span> <span class="attr">Command</span>=<span class="string">"echo.&amp;gt;Jobs\GeneratedTimerJob.cs"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">Exec</span> <span class="attr">Command</span>=<span class="string">"&amp;quot;$(TextTransformExe)&amp;quot; -out Jobs\GeneratedTimerJob.cs -I Jobs -P Resources Jobs\GeneratedTimerJob.tt"</span> <span class="attr">Condition</span>=<span class="string">"Exists($(TextTransformExe))"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">Target</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>A caveat we discovered here is that you need the following DLLs in a folder as assembly reference path to <code>TextTransformer.exe</code>. This is because <code>.tt</code> file relies on <em>Rosyln</em> to parse all the job files.</p>
+<ul>
+<li><code>Microsoft.CodeAnalysis.CSharp.dll</code></li>
+<li><code>Microsoft.CodeAnalysis.CSharp.Syntax.dll</code></li>
+</ul>
+<p>At this point, the design should give us enough scalability on our jobs. If we ever seen instances out of memory or running excessively heavy again, we can just simply add new instances to the App Service. </p>
+
+  </div>
+</article>
+
+    <div class="blog-post-comments">
+        <div id="disqus_thread">
+            <noscript>Please enable JavaScript to view the comments.</noscript>
+        </div>
+    </div>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/tags/">Tags</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/little-eyes" target="_blank" rel="noopener">Projects</a></li>
+         
+          <li><a href="/search/">Search</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#A-Simple-Idea"><span class="toc-number">1.</span> <span class="toc-text">A Simple Idea</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Developer-Experience"><span class="toc-number">2.</span> <span class="toc-text">Developer Experience</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://jilongliao.com/2020/01/12/Scalable-Timer-Job/" target="_blank" rel="noopener"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://jilongliao.com/2020/01/12/Scalable-Timer-Job/&text=Scale Azure Timer Triggered WebJob" target="_blank" rel="noopener"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://jilongliao.com/2020/01/12/Scalable-Timer-Job/&title=Scale Azure Timer Triggered WebJob" target="_blank" rel="noopener"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://jilongliao.com/2020/01/12/Scalable-Timer-Job/&is_video=false&description=Scale Azure Timer Triggered WebJob" target="_blank" rel="noopener"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Scale Azure Timer Triggered WebJob&body=Check out this article: http://jilongliao.com/2020/01/12/Scalable-Timer-Job/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://jilongliao.com/2020/01/12/Scalable-Timer-Job/&title=Scale Azure Timer Triggered WebJob" target="_blank" rel="noopener"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://jilongliao.com/2020/01/12/Scalable-Timer-Job/&title=Scale Azure Timer Triggered WebJob" target="_blank" rel="noopener"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://jilongliao.com/2020/01/12/Scalable-Timer-Job/&title=Scale Azure Timer Triggered WebJob" target="_blank" rel="noopener"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://jilongliao.com/2020/01/12/Scalable-Timer-Job/&title=Scale Azure Timer Triggered WebJob" target="_blank" rel="noopener"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://jilongliao.com/2020/01/12/Scalable-Timer-Job/&name=Scale Azure Timer Triggered WebJob&description=" target="_blank" rel="noopener"><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2020 Jilong Liao
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/about/">About</a></li>
+         
+          <li><a href="/tags/">Tags</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="https://github.com/little-eyes" target="_blank" rel="noopener">Projects</a></li>
+         
+          <li><a href="/search/">Search</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+
+    <!-- jquery -->
+
+<script src="/lib/jquery/jquery.min.js"></script>
+
+
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Google Analytics -->
+
+    <script type="text/javascript">
+        (function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-32402817-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+    <script type="text/javascript">
+        var disqus_shortname = 'littleeyes';
+
+        (function(){
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        }());
+    </script>
+
+
+</body>
+</html>
