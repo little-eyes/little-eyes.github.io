@@ -1,0 +1,26 @@
+language: node_js
+
+node_js: stable
+
+before_install:
+  - echo installs the hexo environment...
+
+install:
+  - npm install
+
+before_script:
+- git config --global user.name "Jilong Liao"
+- git config --global user.email "jliao2@vols.utk.edu"
+- sed -i "s/__GITHUB_TOKEN__/${__GITHUB_TOKEN__}/" _config.yml
+
+script:
+  - echo is emptying the cache static file...
+  - npm run build
+  - npm run deploy
+
+after_script:
+  - echo deployment completed!
+
+branches:
+  only:
+    - hexo-platform
