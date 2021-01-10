@@ -1,7 +1,7 @@
 title: About
 ---
 
-Welcome! I am an engineer passionate about many things like machine learning, scalability, k8s etc. I work at a data science engineering team in Microsoft. I write about those topics and hope you enjoy the readings.
+Welcome! I am an engineer passionate about many things like machine learning, scalability, k8s etc. I work at a data science engineering team in Microsoft and I write about those topics. Hope you enjoy the readings.
 
 ## My Favorite Topics
 Machine learning, scalability, k8s, data visualization.
