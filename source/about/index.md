@@ -1,14 +1,17 @@
 title: About
 ---
 
-> Hello, 
->
-> Welcome to my site. I am a software engineer passionate about many things like machine learning, distributed system, frontend development, engineering system, etc. I currently work at a data team in Microsoft. Living in Seattle WA, I love coffee but not the rain. Hope you enjoy the reading in this site.
+Welcome! I am an engineer passionate about many things like machine learning, scalability, k8s etc. I work at a data science engineering team in Microsoft. I write about those topics and hope you enjoy the readings.
 
 ## My Favorite Topics
-Machine learning, distributed system, frontend development, best practice of software engineering, data visualization.
+Machine learning, scalability, k8s, data visualization.
 
 ## Recent Publications
+
+* P. Li, X. Chai, F. Campbell, J. Liao, N. Aburu, M. Kang, I. Niculescu, G. Brake, S. Patel, J. Dooley, and B. Paddock. Evolving Software to be ML-Driven Utilizing Real-World A/B Testing: Experiences, Insights, Challenges. _ICSE_, 2021. to appear ([PDF][13])
+
+* P. Li, X. Chai, D. Wadsworth, J. Liao, and B. Paddock. Empirical Evaluation of Federated Learning with Local Privacy for Real-World Application, _IEEE Big Data_, 2020, to appear. ([PDF][12])
+
 * Y. Yao, S. Xiong, J. Liao, M. Berry, H. Qi, and Q. Cao. Identifying Frequent Flows in Large Datasets through Probabilistic Bloom Filters, _IEEE/ACM IWQoS_, 2015, to appear. ([PDF][11])
 
 * J. Liao, Z. Wang, Q. Cao, and H. Qi. Smart Diary: A Smartphone-based Framework for Inference and Prediction of Users, _IEEE Sensors Journal_, 2014, accepted. ([PDF][9])
@@ -48,4 +51,6 @@ Machine learning, distributed system, frontend development, best practice of sof
 [8]: http://lanterns.eecs.utk.edu/Papers/sensys_demo_uno.pdf
 [9]: http://ieeexplore.ieee.org/xpl/articleDetails.jsp?arnumber=6861972
 [10]: https://github.com/little-eyes
-[11]: #
+[11]: https://ieeexplore.ieee.org/abstract/document/7404747
+[12]: #
+[13]: #
