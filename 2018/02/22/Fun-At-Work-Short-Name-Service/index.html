@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
     <meta name="description" content="My team at work runs an online service that a user can query their data from multiple dimension values. For exmaple, the user wants to see a data visualization based on Dimension1&#x3D;A, Dimension2&#x3D;B and">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Fun at Work: Short Name Service">
@@ -15,7 +15,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://jilongliao.com/images/option-2.png">
 <meta property="article:published_time" content="2018-02-22T00:00:00.000Z">
-<meta property="article:modified_time" content="2021-01-10T05:51:39.889Z">
+<meta property="article:modified_time" content="2021-05-07T04:09:05.352Z">
 <meta property="article:author" content="Jilong Liao">
 <meta property="article:tag" content="DocumentDB">
 <meta property="article:tag" content="Javascript">
@@ -24,21 +24,21 @@
 <meta name="twitter:image" content="http://jilongliao.com/images/option-2.png">
     
     
+      
         
-          
-              <link rel="shortcut icon" href="/images/favicon.ico">
-          
+          <link rel="shortcut icon" href="/images/favicon.ico">
         
+      
+      
         
-          
-            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
-          
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
         
+      
+      
         
-          
-            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
-          
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
         
+      
     
     <!-- title -->
     <title>Fun at Work: Short Name Service</title>
@@ -48,21 +48,19 @@
 
     <!-- persian styles -->
     
-      
-<link rel="stylesheet" href="/css/rtl.css">
-
-    
     <!-- rss -->
     
     
-<meta name="generator" content="Hexo 4.2.1"></head>
+	<!-- mathjax -->
+	
+<meta name="generator" content="Hexo 5.4.0"></head>
 
 <body class="max-width mx-auto px3 ltr">
     
       <div id="header-post">
-  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
-  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
-  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" "Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
   <span id="menu">
     <span id="nav">
       <ul>
@@ -75,7 +73,7 @@
          
           <li><a href="/archives/">Writing</a></li>
          
-          <li><a href="https://github.com/little-eyes" target="_blank" rel="noopener">Projects</a></li>
+          <li><a target="_blank" rel="noopener" href="https://github.com/little-eyes">Projects</a></li>
          
           <li><a href="/search/">Search</a></li>
         
@@ -85,13 +83,13 @@
     <span id="actions">
       <ul>
         
-        <li><a class="icon" href="/2018/05/28/container-ml-azure-batch/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Previous post " href="/2018/05/28/container-ml-azure-batch/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
         
         
-        <li><a class="icon" href="/2017/11/30/Redis-Performance/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Next post " href="/2017/11/30/Redis-Performance/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
         
-        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
-        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+        <li><a class="icon" aria-label="Back to top " href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Share post " href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
       </ul>
       <span id="i-prev" class="info" style="display:none;">Previous post</span>
       <span id="i-next" class="info" style="display:none;">Next post</span>
@@ -101,22 +99,23 @@
     <br/>
     <div id="share" style="display: none">
       <ul>
-  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://jilongliao.com/2018/02/22/Fun-At-Work-Short-Name-Service/" target="_blank" rel="noopener"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://twitter.com/share?url=http://jilongliao.com/2018/02/22/Fun-At-Work-Short-Name-Service/&text=Fun at Work: Short Name Service" target="_blank" rel="noopener"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://jilongliao.com/2018/02/22/Fun-At-Work-Short-Name-Service/&title=Fun at Work: Short Name Service" target="_blank" rel="noopener"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://jilongliao.com/2018/02/22/Fun-At-Work-Short-Name-Service/&is_video=false&description=Fun at Work: Short Name Service" target="_blank" rel="noopener"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://jilongliao.com/2018/02/22/Fun-At-Work-Short-Name-Service/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://jilongliao.com/2018/02/22/Fun-At-Work-Short-Name-Service/&text=Fun at Work: Short Name Service"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://jilongliao.com/2018/02/22/Fun-At-Work-Short-Name-Service/&title=Fun at Work: Short Name Service"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://jilongliao.com/2018/02/22/Fun-At-Work-Short-Name-Service/&is_video=false&description=Fun at Work: Short Name Service"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
   <li><a class="icon" href="mailto:?subject=Fun at Work: Short Name Service&body=Check out this article: http://jilongliao.com/2018/02/22/Fun-At-Work-Short-Name-Service/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://getpocket.com/save?url=http://jilongliao.com/2018/02/22/Fun-At-Work-Short-Name-Service/&title=Fun at Work: Short Name Service" target="_blank" rel="noopener"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://reddit.com/submit?url=http://jilongliao.com/2018/02/22/Fun-At-Work-Short-Name-Service/&title=Fun at Work: Short Name Service" target="_blank" rel="noopener"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://jilongliao.com/2018/02/22/Fun-At-Work-Short-Name-Service/&title=Fun at Work: Short Name Service" target="_blank" rel="noopener"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://digg.com/submit?url=http://jilongliao.com/2018/02/22/Fun-At-Work-Short-Name-Service/&title=Fun at Work: Short Name Service" target="_blank" rel="noopener"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://jilongliao.com/2018/02/22/Fun-At-Work-Short-Name-Service/&name=Fun at Work: Short Name Service&description=&lt;p&gt;My team at work runs an online service that a user can query their data from multiple dimension values. For exmaple, the user wants to see a data visualization based on &lt;code&gt;Dimension1=A&lt;/code&gt;, &lt;code&gt;Dimension2=B&lt;/code&gt; and so on. We used to have a fixed 10 to 20 dimensions so we put them in the URL hash when the user come to the page to visualize their data. &lt;/p&gt;
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://jilongliao.com/2018/02/22/Fun-At-Work-Short-Name-Service/&title=Fun at Work: Short Name Service"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://jilongliao.com/2018/02/22/Fun-At-Work-Short-Name-Service/&title=Fun at Work: Short Name Service"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://jilongliao.com/2018/02/22/Fun-At-Work-Short-Name-Service/&title=Fun at Work: Short Name Service"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://jilongliao.com/2018/02/22/Fun-At-Work-Short-Name-Service/&title=Fun at Work: Short Name Service"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://jilongliao.com/2018/02/22/Fun-At-Work-Short-Name-Service/&name=Fun at Work: Short Name Service&description=&lt;p&gt;My team at work runs an online service that a user can query their data from multiple dimension values. For exmaple, the user wants to see a data visualization based on &lt;code&gt;Dimension1=A&lt;/code&gt;, &lt;code&gt;Dimension2=B&lt;/code&gt; and so on. We used to have a fixed 10 to 20 dimensions so we put them in the URL hash when the user come to the page to visualize their data. &lt;/p&gt;
 &lt;p&gt;Usually, you will see a URL like this: &lt;/p&gt;
 &lt;p&gt;&lt;code&gt;https://myservice.com/myview#dimension1=A&amp;amp;dimension2=B&amp;amp;dimension3=C&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;But the situation changed when we introduced a dynamic/custom dimensions into our system. In other words, the user can specify their own dimensions and values, and we will visualize them. Immediately we see a problem that the URL hash system is out of control because the custom dimensions and values could be anything (including URL not compatible characters) and the URL could easily get too long.&lt;/p&gt;
 &lt;p&gt;Since we cannot get rid of the URL hash due to the need of showing the same view when copy-and-paste URL, we choose a way to short the URL hash like this: &lt;/p&gt;
 &lt;p&gt;&lt;code&gt;https://myservice.com/myview#dimensionSet=7syf4uUJhSD5TsMjrAWh63w93s1rgrmNvWJxEpWjq1XT&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;The &lt;code&gt;dimensionSet&lt;/code&gt; is not human readable but it is parsable within the system. Therefore, we can still showing the same view when we copy-and-paste the URL.&lt;/p&gt;"><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://jilongliao.com/2018/02/22/Fun-At-Work-Short-Name-Service/&t=Fun at Work: Short Name Service"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
@@ -140,7 +139,7 @@
 
     <div class="meta">
       <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
-        <span itemprop="name">The Little's Place</span>
+        <span itemprop="name">Jilong Liao</span>
       </span>
       
     <div class="postdate">
@@ -161,7 +160,7 @@
       
     <div class="article-tag">
         <i class="fas fa-tag"></i>
-        <a class="tag-link" href="/tags/DocumentDB/" rel="tag">DocumentDB</a>, <a class="tag-link" href="/tags/Javascript/" rel="tag">Javascript</a>, <a class="tag-link" href="/tags/System/" rel="tag">System</a>
+        <a class="tag-link-link" href="/tags/DocumentDB/" rel="tag">DocumentDB</a>, <a class="tag-link-link" href="/tags/Javascript/" rel="tag">Javascript</a>, <a class="tag-link-link" href="/tags/System/" rel="tag">System</a>
     </div>
 
 
@@ -177,24 +176,24 @@
 <p>Since we cannot get rid of the URL hash due to the need of showing the same view when copy-and-paste URL, we choose a way to short the URL hash like this: </p>
 <p><code>https://myservice.com/myview#dimensionSet=7syf4uUJhSD5TsMjrAWh63w93s1rgrmNvWJxEpWjq1XT</code></p>
 <p>The <code>dimensionSet</code> is not human readable but it is parsable within the system. Therefore, we can still showing the same view when we copy-and-paste the URL.</p>
-<a id="more"></a>
+<span id="more"></span>
 
 <p>Multiple solutions are here but we considered the follow two options for performance, URL length, and storage perspectives.</p>
-<h3 id="Option-1"><a href="#Option-1" class="headerlink" title="Option 1"></a>Option 1</h3><p>The basic idea of option 1 is to use hashing algorithms. For each URL hash, it is equivalent to an JSON object (let’s call it <code>original</code>). So if we do a <code>MD5(original)</code>, we actually map the object to a 128-byte space. The MD5 value is the key of the table and value is the original JSON object. Though MD5 is not cryptographically secure, we just need a digest of the original object to be a key. The probability of collision exists, but in our service’s scenario, the probability is very low. To be URL compatible, we can use a <a href="https://en.wikipedia.org/wiki/Base58" target="_blank" rel="noopener">base-58 encoding</a> like bitcoin addresses or IPFS hashes. So the final key for the original object is <code>Base58(MD5(original))</code>.</p>
-<p>NoSQL based database is a perfect fit for high performant and scalable read/write. We use <a href="https://azure.microsoft.com/en-us/services/cosmos-db/?v=17.45b" target="_blank" rel="noopener">Azure Document DB</a> to power up our storage for this service. Due to the dimension values are sliding and changing, we can avoid storage over use by setting a TTL for each key-value pair. Good news is Azure Document DB supports it natively by adding a <code>_ttl</code> field in the document. An example document model is defined below.</p>
-<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Include a property that serializes to "ttl" in JSON</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">ShortNameDocument</span></span><br><span class="line">&#123;</span><br><span class="line">    [<span class="meta">JsonProperty(PropertyName = <span class="meta-string">"id"</span>)</span>]</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">string</span> Id &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line"></span><br><span class="line">    [<span class="meta">JsonProperty(PropertyName=<span class="meta-string">"value"</span>)</span>]</span><br><span class="line">    <span class="keyword">public</span> JToken Value &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// used to set expiration policy</span></span><br><span class="line">    [<span class="meta">JsonProperty(PropertyName = <span class="meta-string">"ttl"</span>, NullValueHandling = NullValueHandling.Ignore)</span>]</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span>? TimeToLive &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Option-1"><a href="#Option-1" class="headerlink" title="Option 1"></a>Option 1</h3><p>The basic idea of option 1 is to use hashing algorithms. For each URL hash, it is equivalent to an JSON object (let’s call it <code>original</code>). So if we do a <code>MD5(original)</code>, we actually map the object to a 128-byte space. The MD5 value is the key of the table and value is the original JSON object. Though MD5 is not cryptographically secure, we just need a digest of the original object to be a key. The probability of collision exists, but in our service’s scenario, the probability is very low. To be URL compatible, we can use a <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Base58">base-58 encoding</a> like bitcoin addresses or IPFS hashes. So the final key for the original object is <code>Base58(MD5(original))</code>.</p>
+<p>NoSQL based database is a perfect fit for high performant and scalable read/write. We use <a target="_blank" rel="noopener" href="https://azure.microsoft.com/en-us/services/cosmos-db/?v=17.45b">Azure Document DB</a> to power up our storage for this service. Due to the dimension values are sliding and changing, we can avoid storage over use by setting a TTL for each key-value pair. Good news is Azure Document DB supports it natively by adding a <code>_ttl</code> field in the document. An example document model is defined below.</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Include a property that serializes to &quot;ttl&quot; in JSON</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">ShortNameDocument</span></span><br><span class="line">&#123;</span><br><span class="line">    [<span class="meta">JsonProperty(PropertyName = <span class="meta-string">&quot;id&quot;</span>)</span>]</span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">string</span> Id &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line"></span><br><span class="line">    [<span class="meta">JsonProperty(PropertyName=<span class="meta-string">&quot;value&quot;</span>)</span>]</span><br><span class="line">    <span class="keyword">public</span> JToken Value &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// used to set expiration policy</span></span><br><span class="line">    [<span class="meta">JsonProperty(PropertyName = <span class="meta-string">&quot;ttl&quot;</span>, NullValueHandling = NullValueHandling.Ignore)</span>]</span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">int</span>? TimeToLive &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h3 id="Option-2"><a href="#Option-2" class="headerlink" title="Option 2"></a>Option 2</h3><p>Option 2 takes the first idea further by restricting the length of the short name to be 6-character such that the URL looks like this: </p>
 <p><code>https://myservice.com/myview#dimensionSet=7sUf4Z</code></p>
-<p>At certain scenarios such as <a href="https://bitly.com/" target="_blank" rel="noopener">bit.ly</a> you will need it. So using a 128-byte MD5 string is much longer than 6-character. We have to consider something else. A base-10 long integer is a good candidate for this. If we take the base-10 integer and convert it to a base-62 integer, it will be 6-character. The capacity of a 6-character base-62 encoded string can hold <strong>56 billion</strong> URLs, which is a lot of URLs we could shorten and store in the system. </p>
+<p>At certain scenarios such as <a target="_blank" rel="noopener" href="https://bitly.com/">bit.ly</a> you will need it. So using a 128-byte MD5 string is much longer than 6-character. We have to consider something else. A base-10 long integer is a good candidate for this. If we take the base-10 integer and convert it to a base-62 integer, it will be 6-character. The capacity of a 6-character base-62 encoded string can hold <strong>56 billion</strong> URLs, which is a lot of URLs we could shorten and store in the system. </p>
 <p><img src="/images/option-2.png" alt="Alt text"></p>
 <p>This approach needs to maintain an index of the table because it is the hash key. Given the size of the table could be billion rows, we will have to shard the table which makes makes tracking the index tricky. You can use an easy and thread-safe key-value store like Redis cache to store it. To avoid heavy load on the server for both insert and query, we can utilize browser’s local storage to build a local key-value cache. Whenever a shorten dimension set has been applied, we can store it in the local storage because it is highly possible the user will come back and query the same dimension set again.</p>
-<h3 id="Option-3"><a href="#Option-3" class="headerlink" title="Option 3"></a>Option 3</h3><p>If we do not have a strict short URL length restriction of only a few characters, we could even improve the system’s performance more. For example, if the max URL length we can tolerate is 256-character, we can then use a hybrid approach of both browser side and server side. First, we take a base-58 encoding of the JSON dimension set. If the encoded string length is less than 256 characters, we directly apply this to the URL hash. So even if you copy the URL to other people, the base-58 algorithms can decode the encoded the URL hash and get the dimension set. However, if the encoded length is bigger than 256 characters, we are use the hash digest and store to the server side. To find the best max URL length for the system, we dig into our <a href="https://azure.microsoft.com/en-us/services/application-insights/" target="_blank" rel="noopener">Application Insights</a> log and find the 95th percentile is about 512 length, so we choose 512 characters instead.</p>
+<h3 id="Option-3"><a href="#Option-3" class="headerlink" title="Option 3"></a>Option 3</h3><p>If we do not have a strict short URL length restriction of only a few characters, we could even improve the system’s performance more. For example, if the max URL length we can tolerate is 256-character, we can then use a hybrid approach of both browser side and server side. First, we take a base-58 encoding of the JSON dimension set. If the encoded string length is less than 256 characters, we directly apply this to the URL hash. So even if you copy the URL to other people, the base-58 algorithms can decode the encoded the URL hash and get the dimension set. However, if the encoded length is bigger than 256 characters, we are use the hash digest and store to the server side. To find the best max URL length for the system, we dig into our <a target="_blank" rel="noopener" href="https://azure.microsoft.com/en-us/services/application-insights/">Application Insights</a> log and find the 95th percentile is about 512 length, so we choose 512 characters instead.</p>
 <p>At the client side, the browser natively support some hash digest algorithms like <code>SHA-1</code> by using <code>window.SubtleCrypto</code>. Major browsers have supported this, so you should be okay to use it. </p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> crypto = <span class="built_in">window</span>.SubtleCrypto;</span><br><span class="line"><span class="keyword">var</span> hash = crypto.subtle.digest(algo, buffer);</span><br></pre></td></tr></table></figure>
 
-<p>To enable base-58 encoding you can use <a href="https://github.com/cryptocoinjs/base-x" target="_blank" rel="noopener">base-x</a> like below.</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> BASE58 = <span class="string">'123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz'</span></span><br><span class="line"><span class="keyword">var</span> bs58 = <span class="built_in">require</span>(<span class="string">'base-x'</span>)(BASE58)</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> decoded = bs58.decode(<span class="string">'5Kd3NBUAdUnhyzenEwVLy9pBKxSwXvE9FMPyR4UKZvpe6E3AgLr'</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(decoded)</span><br><span class="line"><span class="comment">// =&gt; &lt;Buffer 80 ed db dc 11 68 f1 da ea db d3 e4 4c 1e 3f 8f 5a 28 4c 20 29 f7 8a d2 6a f9 85 83 a4 99 de 5b 19&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(bs58.encode(decoded))</span><br><span class="line"><span class="comment">// =&gt; 5Kd3NBUAdUnhyzenEwVLy9pBKxSwXvE9FMPyR4UKZvpe6E3AgLr</span></span><br></pre></td></tr></table></figure>
+<p>To enable base-58 encoding you can use <a target="_blank" rel="noopener" href="https://github.com/cryptocoinjs/base-x">base-x</a> like below.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> BASE58 = <span class="string">&#x27;123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz&#x27;</span></span><br><span class="line"><span class="keyword">var</span> bs58 = <span class="built_in">require</span>(<span class="string">&#x27;base-x&#x27;</span>)(BASE58)</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> decoded = bs58.decode(<span class="string">&#x27;5Kd3NBUAdUnhyzenEwVLy9pBKxSwXvE9FMPyR4UKZvpe6E3AgLr&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(decoded)</span><br><span class="line"><span class="comment">// =&gt; &lt;Buffer 80 ed db dc 11 68 f1 da ea db d3 e4 4c 1e 3f 8f 5a 28 4c 20 29 f7 8a d2 6a f9 85 83 a4 99 de 5b 19&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(bs58.encode(decoded))</span><br><span class="line"><span class="comment">// =&gt; 5Kd3NBUAdUnhyzenEwVLy9pBKxSwXvE9FMPyR4UKZvpe6E3AgLr</span></span><br></pre></td></tr></table></figure>
 
 
 
@@ -224,7 +223,7 @@
          
           <li><a href="/archives/">Writing</a></li>
          
-          <li><a href="https://github.com/little-eyes" target="_blank" rel="noopener">Projects</a></li>
+          <li><a target="_blank" rel="noopener" href="https://github.com/little-eyes">Projects</a></li>
          
           <li><a href="/search/">Search</a></li>
         
@@ -237,22 +236,23 @@
 
     <div id="share-footer" style="display: none">
       <ul>
-  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://jilongliao.com/2018/02/22/Fun-At-Work-Short-Name-Service/" target="_blank" rel="noopener"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://twitter.com/share?url=http://jilongliao.com/2018/02/22/Fun-At-Work-Short-Name-Service/&text=Fun at Work: Short Name Service" target="_blank" rel="noopener"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://jilongliao.com/2018/02/22/Fun-At-Work-Short-Name-Service/&title=Fun at Work: Short Name Service" target="_blank" rel="noopener"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://jilongliao.com/2018/02/22/Fun-At-Work-Short-Name-Service/&is_video=false&description=Fun at Work: Short Name Service" target="_blank" rel="noopener"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://jilongliao.com/2018/02/22/Fun-At-Work-Short-Name-Service/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://jilongliao.com/2018/02/22/Fun-At-Work-Short-Name-Service/&text=Fun at Work: Short Name Service"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://jilongliao.com/2018/02/22/Fun-At-Work-Short-Name-Service/&title=Fun at Work: Short Name Service"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://jilongliao.com/2018/02/22/Fun-At-Work-Short-Name-Service/&is_video=false&description=Fun at Work: Short Name Service"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
   <li><a class="icon" href="mailto:?subject=Fun at Work: Short Name Service&body=Check out this article: http://jilongliao.com/2018/02/22/Fun-At-Work-Short-Name-Service/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://getpocket.com/save?url=http://jilongliao.com/2018/02/22/Fun-At-Work-Short-Name-Service/&title=Fun at Work: Short Name Service" target="_blank" rel="noopener"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://reddit.com/submit?url=http://jilongliao.com/2018/02/22/Fun-At-Work-Short-Name-Service/&title=Fun at Work: Short Name Service" target="_blank" rel="noopener"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://jilongliao.com/2018/02/22/Fun-At-Work-Short-Name-Service/&title=Fun at Work: Short Name Service" target="_blank" rel="noopener"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://digg.com/submit?url=http://jilongliao.com/2018/02/22/Fun-At-Work-Short-Name-Service/&title=Fun at Work: Short Name Service" target="_blank" rel="noopener"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://jilongliao.com/2018/02/22/Fun-At-Work-Short-Name-Service/&name=Fun at Work: Short Name Service&description=&lt;p&gt;My team at work runs an online service that a user can query their data from multiple dimension values. For exmaple, the user wants to see a data visualization based on &lt;code&gt;Dimension1=A&lt;/code&gt;, &lt;code&gt;Dimension2=B&lt;/code&gt; and so on. We used to have a fixed 10 to 20 dimensions so we put them in the URL hash when the user come to the page to visualize their data. &lt;/p&gt;
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://jilongliao.com/2018/02/22/Fun-At-Work-Short-Name-Service/&title=Fun at Work: Short Name Service"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://jilongliao.com/2018/02/22/Fun-At-Work-Short-Name-Service/&title=Fun at Work: Short Name Service"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://jilongliao.com/2018/02/22/Fun-At-Work-Short-Name-Service/&title=Fun at Work: Short Name Service"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://jilongliao.com/2018/02/22/Fun-At-Work-Short-Name-Service/&title=Fun at Work: Short Name Service"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://jilongliao.com/2018/02/22/Fun-At-Work-Short-Name-Service/&name=Fun at Work: Short Name Service&description=&lt;p&gt;My team at work runs an online service that a user can query their data from multiple dimension values. For exmaple, the user wants to see a data visualization based on &lt;code&gt;Dimension1=A&lt;/code&gt;, &lt;code&gt;Dimension2=B&lt;/code&gt; and so on. We used to have a fixed 10 to 20 dimensions so we put them in the URL hash when the user come to the page to visualize their data. &lt;/p&gt;
 &lt;p&gt;Usually, you will see a URL like this: &lt;/p&gt;
 &lt;p&gt;&lt;code&gt;https://myservice.com/myview#dimension1=A&amp;amp;dimension2=B&amp;amp;dimension3=C&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;But the situation changed when we introduced a dynamic/custom dimensions into our system. In other words, the user can specify their own dimensions and values, and we will visualize them. Immediately we see a problem that the URL hash system is out of control because the custom dimensions and values could be anything (including URL not compatible characters) and the URL could easily get too long.&lt;/p&gt;
 &lt;p&gt;Since we cannot get rid of the URL hash due to the need of showing the same view when copy-and-paste URL, we choose a way to short the URL hash like this: &lt;/p&gt;
 &lt;p&gt;&lt;code&gt;https://myservice.com/myview#dimensionSet=7syf4uUJhSD5TsMjrAWh63w93s1rgrmNvWJxEpWjq1XT&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;The &lt;code&gt;dimensionSet&lt;/code&gt; is not human readable but it is parsable within the system. Therefore, we can still showing the same view when we copy-and-paste the URL.&lt;/p&gt;"><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://jilongliao.com/2018/02/22/Fun-At-Work-Short-Name-Service/&t=Fun at Work: Short Name Service"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
@@ -270,7 +270,11 @@
         
         <footer id="footer">
   <div class="footer-left">
-    Copyright &copy; 2021 Jilong Liao
+    Copyright &copy;
+    
+    
+    2010-2021
+    Jilong Liao
   </div>
   <div class="footer-right">
     <nav>
@@ -284,7 +288,7 @@
          
           <li><a href="/archives/">Writing</a></li>
          
-          <li><a href="https://github.com/little-eyes" target="_blank" rel="noopener">Projects</a></li>
+          <li><a target="_blank" rel="noopener" href="https://github.com/little-eyes">Projects</a></li>
          
           <li><a href="/search/">Search</a></li>
         
@@ -296,18 +300,42 @@
     </div>
     <!-- styles -->
 
-<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
 
 
-<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
 
 
     <!-- jquery -->
+ 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script> 
 
-<script src="/lib/jquery/jquery.min.js"></script>
 
 
-<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script> 
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
 
 
 <script src="/js/main.js"></script>
@@ -316,16 +344,19 @@
 
 <!-- Google Analytics -->
 
-    <script type="text/javascript">
-        (function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
-        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-        ga('create', 'UA-32402817-1', 'auto');
-        ga('send', 'pageview');
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-32402817-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-32402817-1');
     </script>
 
 <!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Umami Analytics -->
 
 <!-- Disqus Comments -->
 

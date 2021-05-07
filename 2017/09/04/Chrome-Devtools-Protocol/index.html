@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
     <meta name="description" content="Starting from Chrome 59 (60 in Windows), there are two things really shine Chrome in the field of UX automation and testing – Headless and the devtools protocol. I was worked on a project to bring th">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Chrome Devtools Protocol - UX Automation and More">
@@ -18,28 +18,28 @@
 <meta property="og:image" content="http://jilongliao.com/images/cdp-tech.png">
 <meta property="og:image" content="http://jilongliao.com/images/cdp-cluster.png">
 <meta property="article:published_time" content="2017-09-04T00:00:00.000Z">
-<meta property="article:modified_time" content="2021-01-10T05:51:39.889Z">
+<meta property="article:modified_time" content="2021-05-07T04:09:05.352Z">
 <meta property="article:author" content="Jilong Liao">
 <meta property="article:tag" content="infrastructure">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://jilongliao.com/images/cdp-chrome.png">
     
     
+      
         
-          
-              <link rel="shortcut icon" href="/images/favicon.ico">
-          
+          <link rel="shortcut icon" href="/images/favicon.ico">
         
+      
+      
         
-          
-            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
-          
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
         
+      
+      
         
-          
-            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
-          
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
         
+      
     
     <!-- title -->
     <title>Chrome Devtools Protocol - UX Automation and More</title>
@@ -49,21 +49,19 @@
 
     <!-- persian styles -->
     
-      
-<link rel="stylesheet" href="/css/rtl.css">
-
-    
     <!-- rss -->
     
     
-<meta name="generator" content="Hexo 4.2.1"></head>
+	<!-- mathjax -->
+	
+<meta name="generator" content="Hexo 5.4.0"></head>
 
 <body class="max-width mx-auto px3 ltr">
     
       <div id="header-post">
-  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
-  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
-  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" "Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
   <span id="menu">
     <span id="nav">
       <ul>
@@ -76,7 +74,7 @@
          
           <li><a href="/archives/">Writing</a></li>
          
-          <li><a href="https://github.com/little-eyes" target="_blank" rel="noopener">Projects</a></li>
+          <li><a target="_blank" rel="noopener" href="https://github.com/little-eyes">Projects</a></li>
          
           <li><a href="/search/">Search</a></li>
         
@@ -86,13 +84,13 @@
     <span id="actions">
       <ul>
         
-        <li><a class="icon" href="/2017/11/30/Redis-Performance/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Previous post " href="/2017/11/30/Redis-Performance/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
         
         
-        <li><a class="icon" href="/2017/06/24/Dev-Env-Docker/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Next post " href="/2017/06/24/Dev-Env-Docker/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
         
-        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
-        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+        <li><a class="icon" aria-label="Back to top " href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Share post " href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
       </ul>
       <span id="i-prev" class="info" style="display:none;">Previous post</span>
       <span id="i-next" class="info" style="display:none;">Next post</span>
@@ -102,17 +100,18 @@
     <br/>
     <div id="share" style="display: none">
       <ul>
-  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://jilongliao.com/2017/09/04/Chrome-Devtools-Protocol/" target="_blank" rel="noopener"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://twitter.com/share?url=http://jilongliao.com/2017/09/04/Chrome-Devtools-Protocol/&text=Chrome Devtools Protocol - UX Automation and More" target="_blank" rel="noopener"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://jilongliao.com/2017/09/04/Chrome-Devtools-Protocol/&title=Chrome Devtools Protocol - UX Automation and More" target="_blank" rel="noopener"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://jilongliao.com/2017/09/04/Chrome-Devtools-Protocol/&is_video=false&description=Chrome Devtools Protocol - UX Automation and More" target="_blank" rel="noopener"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://jilongliao.com/2017/09/04/Chrome-Devtools-Protocol/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://jilongliao.com/2017/09/04/Chrome-Devtools-Protocol/&text=Chrome Devtools Protocol - UX Automation and More"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://jilongliao.com/2017/09/04/Chrome-Devtools-Protocol/&title=Chrome Devtools Protocol - UX Automation and More"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://jilongliao.com/2017/09/04/Chrome-Devtools-Protocol/&is_video=false&description=Chrome Devtools Protocol - UX Automation and More"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
   <li><a class="icon" href="mailto:?subject=Chrome Devtools Protocol - UX Automation and More&body=Check out this article: http://jilongliao.com/2017/09/04/Chrome-Devtools-Protocol/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://getpocket.com/save?url=http://jilongliao.com/2017/09/04/Chrome-Devtools-Protocol/&title=Chrome Devtools Protocol - UX Automation and More" target="_blank" rel="noopener"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://reddit.com/submit?url=http://jilongliao.com/2017/09/04/Chrome-Devtools-Protocol/&title=Chrome Devtools Protocol - UX Automation and More" target="_blank" rel="noopener"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://jilongliao.com/2017/09/04/Chrome-Devtools-Protocol/&title=Chrome Devtools Protocol - UX Automation and More" target="_blank" rel="noopener"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://digg.com/submit?url=http://jilongliao.com/2017/09/04/Chrome-Devtools-Protocol/&title=Chrome Devtools Protocol - UX Automation and More" target="_blank" rel="noopener"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://jilongliao.com/2017/09/04/Chrome-Devtools-Protocol/&name=Chrome Devtools Protocol - UX Automation and More&description=&lt;p&gt;&lt;img src=&#34;/images/cdp-chrome.png&#34; alt=&#34;Alt text&#34;&gt;&lt;/p&gt;
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://jilongliao.com/2017/09/04/Chrome-Devtools-Protocol/&title=Chrome Devtools Protocol - UX Automation and More"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://jilongliao.com/2017/09/04/Chrome-Devtools-Protocol/&title=Chrome Devtools Protocol - UX Automation and More"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://jilongliao.com/2017/09/04/Chrome-Devtools-Protocol/&title=Chrome Devtools Protocol - UX Automation and More"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://jilongliao.com/2017/09/04/Chrome-Devtools-Protocol/&title=Chrome Devtools Protocol - UX Automation and More"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://jilongliao.com/2017/09/04/Chrome-Devtools-Protocol/&name=Chrome Devtools Protocol - UX Automation and More&description=&lt;p&gt;&lt;img src=&#34;/images/cdp-chrome.png&#34; alt=&#34;Alt text&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Starting from Chrome 59 (60 in Windows), there are two things really shine Chrome in the field of UX automation and testing – &lt;code&gt;Headless&lt;/code&gt; and &lt;code&gt;the devtools protocol&lt;/code&gt;. I was worked on a project to bring the UX automation and integration test for my team’s web service. We started with &lt;code&gt;PhantomJS&lt;/code&gt; which is a widely adopted tool to execute and render web pages in a headless mode. It provides lots of good features like execute Javascript, take screenshot, and navigate from page to page. This technology becomes our first version of UX testing tool. &lt;code&gt;CasperJS&lt;/code&gt; is a good wrapper tool on top of PhantomJS which provides good interface for testing.&lt;/p&gt;"><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://jilongliao.com/2017/09/04/Chrome-Devtools-Protocol/&t=Chrome Devtools Protocol - UX Automation and More"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
@@ -136,7 +135,7 @@
 
     <div class="meta">
       <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
-        <span itemprop="name">The Little's Place</span>
+        <span itemprop="name">Jilong Liao</span>
       </span>
       
     <div class="postdate">
@@ -157,7 +156,7 @@
       
     <div class="article-tag">
         <i class="fas fa-tag"></i>
-        <a class="tag-link" href="/tags/infrastructure/" rel="tag">infrastructure</a>
+        <a class="tag-link-link" href="/tags/infrastructure/" rel="tag">infrastructure</a>
     </div>
 
 
@@ -168,7 +167,7 @@
   <div class="content" itemprop="articleBody">
     <p><img src="/images/cdp-chrome.png" alt="Alt text"></p>
 <p>Starting from Chrome 59 (60 in Windows), there are two things really shine Chrome in the field of UX automation and testing – <code>Headless</code> and <code>the devtools protocol</code>. I was worked on a project to bring the UX automation and integration test for my team’s web service. We started with <code>PhantomJS</code> which is a widely adopted tool to execute and render web pages in a headless mode. It provides lots of good features like execute Javascript, take screenshot, and navigate from page to page. This technology becomes our first version of UX testing tool. <code>CasperJS</code> is a good wrapper tool on top of PhantomJS which provides good interface for testing.</p>
-<a id="more"></a>
+<span id="more"></span>
 
 <p>As we evolve our UI technologies, PhantomJS starts showing compatiblity issues with new features of Javascript. You always see rendering failure or console errors from PhantomJS but renders completely fine on Chrome or Edge browser. So we improved the tool to use <code>Selenium</code>, another widely adopted tool. Selenium can drive different kind of browsers, from IE to Chrome. It relief us for a few weeks until the performance and reliablity issues keep hitting us. So we have to move on to a better solution.</p>
 <p>Then we learned Chrome already supports headless mode, which means you don’t need anything else to render a web apge in the background process and it runs as fast as Chrome headful mode. Our needs for fast rendering is cirtical. We have a bunch of developers are actively contributing to the web service, everyday the code base is changing. So we want to run our integration test in browser every single time a developer check in a change. We cannot tolerate a slow render engine to finish the work because it slows down our agility. We also need to use the same technology to periodicaly check our pages so that we are aware of live site issues earlier than our customers. So we run some rendering checks against our production service as well, and we want to hear the results as fast as possible.</p>
@@ -189,20 +188,20 @@
 <p>The port 9222 is open for devtools connection. <code>http://localhost:9222/json</code> is your management place. </p>
 <p>At localhost, you will see the chrome window get activated and navigated to different pages. You can create multiple tabs to run your pages in parallel and close them all later. The corresponding commands are the following.</p>
 <ul>
-<li>New tab: <a href="http://localhost:9222/json/new" target="_blank" rel="noopener">http://localhost:9222/json/new</a></li>
-<li>Close tab: <a href="http://localhost:9222/json/close/" target="_blank" rel="noopener">http://localhost:9222/json/close/</a><guid></li>
+<li>New tab: <a target="_blank" rel="noopener" href="http://localhost:9222/json/new">http://localhost:9222/json/new</a></li>
+<li>Close tab: <a target="_blank" rel="noopener" href="http://localhost:9222/json/close/">http://localhost:9222/json/close/</a><guid></li>
 </ul>
-<p>At non-localhost environment, we still need a place with chrome installed and exposed. With the headless mode, we can use a very lightweight docker container that only runs Google Chrome inside. To easily scale out this service, we will need multiple chrome containers and use <a href="https://kubernetes.io/" target="_blank" rel="noopener">Kubernetes</a> to manage it.</p>
+<p>At non-localhost environment, we still need a place with chrome installed and exposed. With the headless mode, we can use a very lightweight docker container that only runs Google Chrome inside. To easily scale out this service, we will need multiple chrome containers and use <a target="_blank" rel="noopener" href="https://kubernetes.io/">Kubernetes</a> to manage it.</p>
 <p><img src="/images/cdp-tech.png" alt="Alt text"></p>
 <p>So the new architecture becomes like the below graph. You may have multiple web service instance and a cluster of containers to run chrome headless. Both web service and container cluster can be scaled independently and very easily.</p>
 <p><img src="/images/cdp-cluster.png" alt="Alt text"></p>
-<h3 id="Chrome-Devtools-Protocl"><a href="#Chrome-Devtools-Protocl" class="headerlink" title="Chrome Devtools Protocl"></a>Chrome Devtools Protocl</h3><p>In order to send protocol commands to chrome, you probably need to use a package for <a href="https://github.com/cyrus-and/chrome-remote-interface" target="_blank" rel="noopener">Node.js</a> or <a href="https://github.com/BaristaLabs/chrome-dev-tools-runtime" target="_blank" rel="noopener">C#</a>.</p>
-<h4 id="A-Node-js-example"><a href="#A-Node-js-example" class="headerlink" title="A Node.js example"></a>A Node.js example</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> CDP = <span class="built_in">require</span>(<span class="string">'chrome-remote-interface'</span>);</span><br><span class="line"></span><br><span class="line">CDP(<span class="function">(<span class="params">client</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// extract domains</span></span><br><span class="line">    <span class="keyword">const</span> &#123;Network, Page&#125; = client;</span><br><span class="line">    <span class="comment">// setup handlers</span></span><br><span class="line">    Network.requestWillBeSent(<span class="function">(<span class="params">params</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(params.request.url);</span><br><span class="line">    &#125;);</span><br><span class="line">    Page.loadEventFired(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">        client.close();</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="comment">// enable events then start!</span></span><br><span class="line">    <span class="built_in">Promise</span>.all([</span><br><span class="line">        Network.enable(),</span><br><span class="line">        Page.enable()</span><br><span class="line">    ]).then(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> Page.navigate(&#123;<span class="attr">url</span>: <span class="string">'https://github.com'</span>&#125;);</span><br><span class="line">    &#125;).catch(<span class="function">(<span class="params">err</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="built_in">console</span>.error(err);</span><br><span class="line">        client.close();</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;).on(<span class="string">'error'</span>, (err) =&gt; &#123;</span><br><span class="line">    <span class="comment">// cannot connect to the remote endpoint</span></span><br><span class="line">    <span class="built_in">console</span>.error(err);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h3 id="Chrome-Devtools-Protocl"><a href="#Chrome-Devtools-Protocl" class="headerlink" title="Chrome Devtools Protocl"></a>Chrome Devtools Protocl</h3><p>In order to send protocol commands to chrome, you probably need to use a package for <a target="_blank" rel="noopener" href="https://github.com/cyrus-and/chrome-remote-interface">Node.js</a> or <a target="_blank" rel="noopener" href="https://github.com/BaristaLabs/chrome-dev-tools-runtime">C#</a>.</p>
+<h4 id="A-Node-js-example"><a href="#A-Node-js-example" class="headerlink" title="A Node.js example"></a>A Node.js example</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> CDP = <span class="built_in">require</span>(<span class="string">&#x27;chrome-remote-interface&#x27;</span>);</span><br><span class="line"></span><br><span class="line">CDP(<span class="function">(<span class="params">client</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// extract domains</span></span><br><span class="line">    <span class="keyword">const</span> &#123;Network, Page&#125; = client;</span><br><span class="line">    <span class="comment">// setup handlers</span></span><br><span class="line">    Network.requestWillBeSent(<span class="function">(<span class="params">params</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(params.request.url);</span><br><span class="line">    &#125;);</span><br><span class="line">    Page.loadEventFired(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">        client.close();</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="comment">// enable events then start!</span></span><br><span class="line">    <span class="built_in">Promise</span>.all([</span><br><span class="line">        Network.enable(),</span><br><span class="line">        Page.enable()</span><br><span class="line">    ]).then(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> Page.navigate(&#123;<span class="attr">url</span>: <span class="string">&#x27;https://github.com&#x27;</span>&#125;);</span><br><span class="line">    &#125;).catch(<span class="function">(<span class="params">err</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="built_in">console</span>.error(err);</span><br><span class="line">        client.close();</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;).on(<span class="string">&#x27;error&#x27;</span>, <span class="function">(<span class="params">err</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// cannot connect to the remote endpoint</span></span><br><span class="line">    <span class="built_in">console</span>.error(err);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 
-<h4 id="A-dotnet-core-example"><a href="#A-dotnet-core-example" class="headerlink" title="A dotnet core example"></a>A dotnet core example</h4><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> (<span class="keyword">var</span> session = <span class="keyword">new</span> ChromeSession(<span class="string">"ws://..."</span>)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">var</span> shouldCancel = <span class="keyword">new</span> CancellationTokenSource();</span><br><span class="line">    <span class="keyword">await</span> session.Page.Navigate(<span class="keyword">new</span> Page.NavigateCommand</span><br><span class="line">    &#123;</span><br><span class="line">        Url = <span class="string">"http://www.winamp.com"</span></span><br><span class="line">    &#125;, millisecondsTimeout: <span class="number">60000</span>, cancellationToken: shouldCancel);</span><br><span class="line">    </span><br><span class="line">    shouldCancel.Cancel();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="A-dotnet-core-example"><a href="#A-dotnet-core-example" class="headerlink" title="A dotnet core example"></a>A dotnet core example</h4><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> (<span class="keyword">var</span> session = <span class="keyword">new</span> ChromeSession(<span class="string">&quot;ws://...&quot;</span>)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">var</span> shouldCancel = <span class="keyword">new</span> CancellationTokenSource();</span><br><span class="line">    <span class="keyword">await</span> session.Page.Navigate(<span class="keyword">new</span> Page.NavigateCommand</span><br><span class="line">    &#123;</span><br><span class="line">        Url = <span class="string">&quot;http://www.winamp.com&quot;</span></span><br><span class="line">    &#125;, millisecondsTimeout: <span class="number">60000</span>, cancellationToken: shouldCancel);</span><br><span class="line">    </span><br><span class="line">    shouldCancel.Cancel();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h3 id="Authentication-and-Distributed-locking"><a href="#Authentication-and-Distributed-locking" class="headerlink" title="Authentication and Distributed locking"></a>Authentication and Distributed locking</h3><p>If authentication is enabled on your page and you are using OAuth based autentication mechanism, you will need to be a little bit more careful because these authentication needs to access browser’s localstorage for authentication token and a each container’s multiple tab share the same local storage. </p>
-<p>It’s possible that multiple requests will ask for the execution of the same page on the same container, and you will need to inject authentication token for each page. Since the local storage is shared within the container, you may undermined other page’s execution when a page is trying to flush the local storage for authentication. Therefore, a distributed locking is preferred here to lock those local storage resources. You can easily use some distributed locking system such as <a href="https://redis.io/topics/distlock" target="_blank" rel="noopener">Redlock</a> to accomplish this goal.</p>
+<p>It’s possible that multiple requests will ask for the execution of the same page on the same container, and you will need to inject authentication token for each page. Since the local storage is shared within the container, you may undermined other page’s execution when a page is trying to flush the local storage for authentication. Therefore, a distributed locking is preferred here to lock those local storage resources. You can easily use some distributed locking system such as <a target="_blank" rel="noopener" href="https://redis.io/topics/distlock">Redlock</a> to accomplish this goal.</p>
 
   </div>
 </article>
@@ -230,7 +229,7 @@
          
           <li><a href="/archives/">Writing</a></li>
          
-          <li><a href="https://github.com/little-eyes" target="_blank" rel="noopener">Projects</a></li>
+          <li><a target="_blank" rel="noopener" href="https://github.com/little-eyes">Projects</a></li>
          
           <li><a href="/search/">Search</a></li>
         
@@ -243,17 +242,18 @@
 
     <div id="share-footer" style="display: none">
       <ul>
-  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://jilongliao.com/2017/09/04/Chrome-Devtools-Protocol/" target="_blank" rel="noopener"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://twitter.com/share?url=http://jilongliao.com/2017/09/04/Chrome-Devtools-Protocol/&text=Chrome Devtools Protocol - UX Automation and More" target="_blank" rel="noopener"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://jilongliao.com/2017/09/04/Chrome-Devtools-Protocol/&title=Chrome Devtools Protocol - UX Automation and More" target="_blank" rel="noopener"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://jilongliao.com/2017/09/04/Chrome-Devtools-Protocol/&is_video=false&description=Chrome Devtools Protocol - UX Automation and More" target="_blank" rel="noopener"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://jilongliao.com/2017/09/04/Chrome-Devtools-Protocol/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://jilongliao.com/2017/09/04/Chrome-Devtools-Protocol/&text=Chrome Devtools Protocol - UX Automation and More"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://jilongliao.com/2017/09/04/Chrome-Devtools-Protocol/&title=Chrome Devtools Protocol - UX Automation and More"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://jilongliao.com/2017/09/04/Chrome-Devtools-Protocol/&is_video=false&description=Chrome Devtools Protocol - UX Automation and More"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
   <li><a class="icon" href="mailto:?subject=Chrome Devtools Protocol - UX Automation and More&body=Check out this article: http://jilongliao.com/2017/09/04/Chrome-Devtools-Protocol/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://getpocket.com/save?url=http://jilongliao.com/2017/09/04/Chrome-Devtools-Protocol/&title=Chrome Devtools Protocol - UX Automation and More" target="_blank" rel="noopener"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://reddit.com/submit?url=http://jilongliao.com/2017/09/04/Chrome-Devtools-Protocol/&title=Chrome Devtools Protocol - UX Automation and More" target="_blank" rel="noopener"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://jilongliao.com/2017/09/04/Chrome-Devtools-Protocol/&title=Chrome Devtools Protocol - UX Automation and More" target="_blank" rel="noopener"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://digg.com/submit?url=http://jilongliao.com/2017/09/04/Chrome-Devtools-Protocol/&title=Chrome Devtools Protocol - UX Automation and More" target="_blank" rel="noopener"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://jilongliao.com/2017/09/04/Chrome-Devtools-Protocol/&name=Chrome Devtools Protocol - UX Automation and More&description=&lt;p&gt;&lt;img src=&#34;/images/cdp-chrome.png&#34; alt=&#34;Alt text&#34;&gt;&lt;/p&gt;
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://jilongliao.com/2017/09/04/Chrome-Devtools-Protocol/&title=Chrome Devtools Protocol - UX Automation and More"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://jilongliao.com/2017/09/04/Chrome-Devtools-Protocol/&title=Chrome Devtools Protocol - UX Automation and More"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://jilongliao.com/2017/09/04/Chrome-Devtools-Protocol/&title=Chrome Devtools Protocol - UX Automation and More"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://jilongliao.com/2017/09/04/Chrome-Devtools-Protocol/&title=Chrome Devtools Protocol - UX Automation and More"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://jilongliao.com/2017/09/04/Chrome-Devtools-Protocol/&name=Chrome Devtools Protocol - UX Automation and More&description=&lt;p&gt;&lt;img src=&#34;/images/cdp-chrome.png&#34; alt=&#34;Alt text&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Starting from Chrome 59 (60 in Windows), there are two things really shine Chrome in the field of UX automation and testing – &lt;code&gt;Headless&lt;/code&gt; and &lt;code&gt;the devtools protocol&lt;/code&gt;. I was worked on a project to bring the UX automation and integration test for my team’s web service. We started with &lt;code&gt;PhantomJS&lt;/code&gt; which is a widely adopted tool to execute and render web pages in a headless mode. It provides lots of good features like execute Javascript, take screenshot, and navigate from page to page. This technology becomes our first version of UX testing tool. &lt;code&gt;CasperJS&lt;/code&gt; is a good wrapper tool on top of PhantomJS which provides good interface for testing.&lt;/p&gt;"><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://jilongliao.com/2017/09/04/Chrome-Devtools-Protocol/&t=Chrome Devtools Protocol - UX Automation and More"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
@@ -271,7 +271,11 @@
         
         <footer id="footer">
   <div class="footer-left">
-    Copyright &copy; 2021 Jilong Liao
+    Copyright &copy;
+    
+    
+    2010-2021
+    Jilong Liao
   </div>
   <div class="footer-right">
     <nav>
@@ -285,7 +289,7 @@
          
           <li><a href="/archives/">Writing</a></li>
          
-          <li><a href="https://github.com/little-eyes" target="_blank" rel="noopener">Projects</a></li>
+          <li><a target="_blank" rel="noopener" href="https://github.com/little-eyes">Projects</a></li>
          
           <li><a href="/search/">Search</a></li>
         
@@ -297,18 +301,42 @@
     </div>
     <!-- styles -->
 
-<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
 
 
-<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
 
 
     <!-- jquery -->
+ 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script> 
 
-<script src="/lib/jquery/jquery.min.js"></script>
 
 
-<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script> 
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
 
 
 <script src="/js/main.js"></script>
@@ -317,16 +345,19 @@
 
 <!-- Google Analytics -->
 
-    <script type="text/javascript">
-        (function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
-        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-        ga('create', 'UA-32402817-1', 'auto');
-        ga('send', 'pageview');
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-32402817-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-32402817-1');
     </script>
 
 <!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Umami Analytics -->
 
 <!-- Disqus Comments -->
 

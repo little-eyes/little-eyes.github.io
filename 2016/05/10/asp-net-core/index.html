@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
     <meta name="description" content="My most recent work led me to an interesting technology stack ASP.NET Core, a newer, leaner and agiler version of ASP.NET. After two days immersion into this new stack, I kind of feel interested in th">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ASP.NET Core or Not?">
@@ -16,28 +16,28 @@
 <meta property="og:image" content="http://jilongliao.com/images/dnx-project.png">
 <meta property="og:image" content="http://jilongliao.com/images/project-json.png">
 <meta property="article:published_time" content="2016-05-10T00:00:00.000Z">
-<meta property="article:modified_time" content="2021-01-10T05:51:39.893Z">
+<meta property="article:modified_time" content="2021-05-07T04:09:05.356Z">
 <meta property="article:author" content="Jilong Liao">
 <meta property="article:tag" content="web stack">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://jilongliao.com/images/dnx-project.png">
     
     
+      
         
-          
-              <link rel="shortcut icon" href="/images/favicon.ico">
-          
+          <link rel="shortcut icon" href="/images/favicon.ico">
         
+      
+      
         
-          
-            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
-          
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
         
+      
+      
         
-          
-            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
-          
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
         
+      
     
     <!-- title -->
     <title>ASP.NET Core or Not?</title>
@@ -47,21 +47,19 @@
 
     <!-- persian styles -->
     
-      
-<link rel="stylesheet" href="/css/rtl.css">
-
-    
     <!-- rss -->
     
     
-<meta name="generator" content="Hexo 4.2.1"></head>
+	<!-- mathjax -->
+	
+<meta name="generator" content="Hexo 5.4.0"></head>
 
 <body class="max-width mx-auto px3 ltr">
     
       <div id="header-post">
-  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
-  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
-  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" "Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
   <span id="menu">
     <span id="nav">
       <ul>
@@ -74,7 +72,7 @@
          
           <li><a href="/archives/">Writing</a></li>
          
-          <li><a href="https://github.com/little-eyes" target="_blank" rel="noopener">Projects</a></li>
+          <li><a target="_blank" rel="noopener" href="https://github.com/little-eyes">Projects</a></li>
          
           <li><a href="/search/">Search</a></li>
         
@@ -84,13 +82,13 @@
     <span id="actions">
       <ul>
         
-        <li><a class="icon" href="/2016/07/06/Request-Filtering/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Previous post " href="/2016/07/06/Request-Filtering/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
         
         
-        <li><a class="icon" href="/2016/02/10/Baby-Names/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Next post " href="/2016/02/10/Baby-Names/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
         
-        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
-        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+        <li><a class="icon" aria-label="Back to top " href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Share post " href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
       </ul>
       <span id="i-prev" class="info" style="display:none;">Previous post</span>
       <span id="i-next" class="info" style="display:none;">Next post</span>
@@ -100,17 +98,18 @@
     <br/>
     <div id="share" style="display: none">
       <ul>
-  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://jilongliao.com/2016/05/10/asp-net-core/" target="_blank" rel="noopener"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://twitter.com/share?url=http://jilongliao.com/2016/05/10/asp-net-core/&text=ASP.NET Core or Not?" target="_blank" rel="noopener"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://jilongliao.com/2016/05/10/asp-net-core/&title=ASP.NET Core or Not?" target="_blank" rel="noopener"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://jilongliao.com/2016/05/10/asp-net-core/&is_video=false&description=ASP.NET Core or Not?" target="_blank" rel="noopener"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://jilongliao.com/2016/05/10/asp-net-core/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://jilongliao.com/2016/05/10/asp-net-core/&text=ASP.NET Core or Not?"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://jilongliao.com/2016/05/10/asp-net-core/&title=ASP.NET Core or Not?"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://jilongliao.com/2016/05/10/asp-net-core/&is_video=false&description=ASP.NET Core or Not?"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
   <li><a class="icon" href="mailto:?subject=ASP.NET Core or Not?&body=Check out this article: http://jilongliao.com/2016/05/10/asp-net-core/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://getpocket.com/save?url=http://jilongliao.com/2016/05/10/asp-net-core/&title=ASP.NET Core or Not?" target="_blank" rel="noopener"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://reddit.com/submit?url=http://jilongliao.com/2016/05/10/asp-net-core/&title=ASP.NET Core or Not?" target="_blank" rel="noopener"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://jilongliao.com/2016/05/10/asp-net-core/&title=ASP.NET Core or Not?" target="_blank" rel="noopener"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://digg.com/submit?url=http://jilongliao.com/2016/05/10/asp-net-core/&title=ASP.NET Core or Not?" target="_blank" rel="noopener"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://jilongliao.com/2016/05/10/asp-net-core/&name=ASP.NET Core or Not?&description=&lt;p&gt;My most recent work led me to an interesting technology stack &lt;code&gt;ASP.NET Core&lt;/code&gt;, a newer, leaner and agiler version of &lt;code&gt;ASP.NET&lt;/code&gt;. After two days immersion into this new stack, I kind of feel interested in this technology.&lt;/p&gt;
-&lt;h2 id=&#34;More-than-just-cross-platform&#34;&gt;&lt;a href=&#34;#More-than-just-cross-platform&#34; class=&#34;headerlink&#34; title=&#34;More than just cross-platform&#34;&gt;&lt;/a&gt;More than just cross-platform&lt;/h2&gt;&lt;p&gt;Of course, we have other language based web stacks like Django for Python, Express in Node.js, Jekyll for Ruby etc. From the new ASP.NET Core, I feel like it’s more than just cross-platform. The most obvious thing you may realize once you start playing with it is that ASP.NET Core uses other technologies as well – &lt;code&gt;bower&lt;/code&gt;, &lt;code&gt;npm&lt;/code&gt;. I first do not understand why bother use these two things, but later I find the power of Grunt and Gulp. So it makes sense to reduce the overhead from ASP.NET, but embrace the popular community tool set. Therefore, it opens the door for multi technology within ASP.NET Core &lt;a href=&#34;http://docs.asp.net/en/latest/getting-started/index.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;[1]&lt;/a&gt;.&lt;/p&gt;"><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://jilongliao.com/2016/05/10/asp-net-core/&title=ASP.NET Core or Not?"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://jilongliao.com/2016/05/10/asp-net-core/&title=ASP.NET Core or Not?"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://jilongliao.com/2016/05/10/asp-net-core/&title=ASP.NET Core or Not?"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://jilongliao.com/2016/05/10/asp-net-core/&title=ASP.NET Core or Not?"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://jilongliao.com/2016/05/10/asp-net-core/&name=ASP.NET Core or Not?&description=&lt;p&gt;My most recent work led me to an interesting technology stack &lt;code&gt;ASP.NET Core&lt;/code&gt;, a newer, leaner and agiler version of &lt;code&gt;ASP.NET&lt;/code&gt;. After two days immersion into this new stack, I kind of feel interested in this technology.&lt;/p&gt;
+&lt;h2 id=&#34;More-than-just-cross-platform&#34;&gt;&lt;a href=&#34;#More-than-just-cross-platform&#34; class=&#34;headerlink&#34; title=&#34;More than just cross-platform&#34;&gt;&lt;/a&gt;More than just cross-platform&lt;/h2&gt;&lt;p&gt;Of course, we have other language based web stacks like Django for Python, Express in Node.js, Jekyll for Ruby etc. From the new ASP.NET Core, I feel like it’s more than just cross-platform. The most obvious thing you may realize once you start playing with it is that ASP.NET Core uses other technologies as well – &lt;code&gt;bower&lt;/code&gt;, &lt;code&gt;npm&lt;/code&gt;. I first do not understand why bother use these two things, but later I find the power of Grunt and Gulp. So it makes sense to reduce the overhead from ASP.NET, but embrace the popular community tool set. Therefore, it opens the door for multi technology within ASP.NET Core &lt;a href=&#34;http://docs.asp.net/en/latest/getting-started/index.html&#34;&gt;&lt;a href=&#34;http://docs.asp.net/en/latest/getting-started/index.html&#34;&gt;1&lt;/a&gt;&lt;/a&gt;.&lt;/p&gt;"><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://jilongliao.com/2016/05/10/asp-net-core/&t=ASP.NET Core or Not?"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
@@ -134,7 +133,7 @@
 
     <div class="meta">
       <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
-        <span itemprop="name">The Little's Place</span>
+        <span itemprop="name">Jilong Liao</span>
       </span>
       
     <div class="postdate">
@@ -155,7 +154,7 @@
       
     <div class="article-tag">
         <i class="fas fa-tag"></i>
-        <a class="tag-link" href="/tags/web-stack/" rel="tag">web stack</a>
+        <a class="tag-link-link" href="/tags/web-stack/" rel="tag">web stack</a>
     </div>
 
 
@@ -165,22 +164,22 @@
 
   <div class="content" itemprop="articleBody">
     <p>My most recent work led me to an interesting technology stack <code>ASP.NET Core</code>, a newer, leaner and agiler version of <code>ASP.NET</code>. After two days immersion into this new stack, I kind of feel interested in this technology.</p>
-<h2 id="More-than-just-cross-platform"><a href="#More-than-just-cross-platform" class="headerlink" title="More than just cross-platform"></a>More than just cross-platform</h2><p>Of course, we have other language based web stacks like Django for Python, Express in Node.js, Jekyll for Ruby etc. From the new ASP.NET Core, I feel like it’s more than just cross-platform. The most obvious thing you may realize once you start playing with it is that ASP.NET Core uses other technologies as well – <code>bower</code>, <code>npm</code>. I first do not understand why bother use these two things, but later I find the power of Grunt and Gulp. So it makes sense to reduce the overhead from ASP.NET, but embrace the popular community tool set. Therefore, it opens the door for multi technology within ASP.NET Core <a href="http://docs.asp.net/en/latest/getting-started/index.html" target="_blank" rel="noopener">[1]</a>.</p>
-<a id="more"></a>
+<h2 id="More-than-just-cross-platform"><a href="#More-than-just-cross-platform" class="headerlink" title="More than just cross-platform"></a>More than just cross-platform</h2><p>Of course, we have other language based web stacks like Django for Python, Express in Node.js, Jekyll for Ruby etc. From the new ASP.NET Core, I feel like it’s more than just cross-platform. The most obvious thing you may realize once you start playing with it is that ASP.NET Core uses other technologies as well – <code>bower</code>, <code>npm</code>. I first do not understand why bother use these two things, but later I find the power of Grunt and Gulp. So it makes sense to reduce the overhead from ASP.NET, but embrace the popular community tool set. Therefore, it opens the door for multi technology within ASP.NET Core <a target="_blank" rel="noopener" href="http://docs.asp.net/en/latest/getting-started/index.html"><a target="_blank" rel="noopener" href="http://docs.asp.net/en/latest/getting-started/index.html">1</a></a>.</p>
+<span id="more"></span>
 
-<p>To begin development with ASP.NET, you will surprisingly find Visual Studio is not the only way to start your project. Another popular community tool – <code>Yeoman</code> <a href="http://yeoman.io/" target="_blank" rel="noopener">[2]</a> can be used to create a ASP.NET Core project. No more <code>csproj</code> file exists, instead, you will see <code>project.json</code>. Therefore, a more lightweight and agile Visual Studio Code can be fully used during your development from edit to debug. </p>
+<p>To begin development with ASP.NET, you will surprisingly find Visual Studio is not the only way to start your project. Another popular community tool – <code>Yeoman</code> <a target="_blank" rel="noopener" href="http://yeoman.io/"><a target="_blank" rel="noopener" href="http://yeoman.io/">2</a></a> can be used to create a ASP.NET Core project. No more <code>csproj</code> file exists, instead, you will see <code>project.json</code>. Therefore, a more lightweight and agile Visual Studio Code can be fully used during your development from edit to debug. </p>
 <p>Just simply run a build command to build the project, or you can write a tasks.json for Visual Studio Code, then trigger build through <code>Ctrl-Shift-B</code>. We could save a lot of time to research and understand the complex commandline system in <code>msbuild</code>, such as <code>/p:Configuration</code>, <code>/p:DeployOnBuild</code>, <code>/p:BuildAsSinglePackage</code>, etc.</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> dnu.exe build .</span></span><br></pre></td></tr></table></figure>
 
-<p>Obviously you can run your project in other OS as well like a Mac. The platform management system is pretty decent as well. <code>DNX</code> <a href="http://docs.asp.net/en/latest/dnx/overview.html" target="_blank" rel="noopener">[3]</a> has a very good and easy to use version management system <code>DNVM</code>, so a few simple command can help you upgrade and downgrade your environment. From this point, I also see how <code>Docker</code> <a href="https://www.docker.com/" target="_blank" rel="noopener">[4]</a> will play in a typical development process. We used to have struggles with a complicated dev environment, especially at enterprise level. So a simple docker image could quick create and destroy certain environment and you could also development under a production config container as well.</p>
+<p>Obviously you can run your project in other OS as well like a Mac. The platform management system is pretty decent as well. <code>DNX</code> <a target="_blank" rel="noopener" href="http://docs.asp.net/en/latest/dnx/overview.html"><a target="_blank" rel="noopener" href="http://docs.asp.net/en/latest/dnx/overview.html">3</a></a> has a very good and easy to use version management system <code>DNVM</code>, so a few simple command can help you upgrade and downgrade your environment. From this point, I also see how <code>Docker</code> <a target="_blank" rel="noopener" href="https://www.docker.com/"><a target="_blank" rel="noopener" href="https://www.docker.com/">4</a></a> will play in a typical development process. We used to have struggles with a complicated dev environment, especially at enterprise level. So a simple docker image could quick create and destroy certain environment and you could also development under a production config container as well.</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> dnvm upgrade -r coreclr</span></span><br></pre></td></tr></table></figure>
 
 <h3 id="Separation-of-Static-and-Dynamic"><a href="#Separation-of-Static-and-Dynamic" class="headerlink" title="Separation of Static and Dynamic"></a>Separation of Static and Dynamic</h3><p>Unlike the structure of ASP.NET 4.6, this new toy has a new convention that everything under <code>wwwroot</code> will be hosted as static files. This includes Javascript, CSS, JSON, etc. If you use Typescript, the default compiled Javascript will be in the wwwroot directory. Other things MVC parts will organized as usual – Controllers, Models, Views, ViewModels, etc.</p>
 <p><img src="/images/dnx-project.png" alt="Alt text"></p>
-<h3 id="Multiple-Configurations"><a href="#Multiple-Configurations" class="headerlink" title="Multiple Configurations"></a>Multiple Configurations</h3><p>We always face the multiple configurations for our application. In ASP.NET Core, <code>Web.Config</code> is not the center of the dynamic configuration, but a <code>appsettings.json</code> file. The re-architect of the configuration can also bring <code>appsettings.{env.EnvrionmentName}.json</code> to adapt the app itself to many different application.</p>
+<h3 id="Multiple-Configurations"><a href="#Multiple-Configurations" class="headerlink" title="Multiple Configurations"></a>Multiple Configurations</h3><p>We always face the multiple configurations for our application. In ASP.NET Core, <code>Web.Config</code> is not the center of the dynamic configuration, but a <code>appsettings.json</code> file. The re-architect of the configuration can also bring <code>appsettings.&#123;env.EnvrionmentName&#125;.json</code> to adapt the app itself to many different application.</p>
 <h3 id="Nuget-Package"><a href="#Nuget-Package" class="headerlink" title="Nuget Package"></a>Nuget Package</h3><p>Looks like everything the ASP.NET Core app depends on are in the form of a Nuget Package. However, <code>package.json</code> will not be used any more, replaced by <code>project.json</code>. A <code>dependency</code> blob is there for adding more Nuget Packages. In ASP.NET 4.6, the Nuget packages are installed in the same level as solution, but in ASP.NET Core has a global place to store all the packages. The <code>project.lock.json</code> file is used to finalize the necessary package. However, no need to copy packages even if you have more than one solution. It’s all shared.</p>
 <p><img src="/images/project-json.png" alt="Alt text"></p>
-<p>In summary, I like the concept that ASP.NET Core provides here to make application lean. It also helps us to re-think our application architecture. Maybe we need to break down our giant applications into multiple <code>micro services</code> <a href="https://www.docker.com/" target="_blank" rel="noopener">[4]</a> that each can benefit from the simpleness and performance of this new stack or other equivalences.</p>
+<p>In summary, I like the concept that ASP.NET Core provides here to make application lean. It also helps us to re-think our application architecture. Maybe we need to break down our giant applications into multiple <code>micro services</code> <a target="_blank" rel="noopener" href="https://www.docker.com/"><a target="_blank" rel="noopener" href="https://www.docker.com/">4</a></a> that each can benefit from the simpleness and performance of this new stack or other equivalences.</p>
 
   </div>
 </article>
@@ -208,7 +207,7 @@
          
           <li><a href="/archives/">Writing</a></li>
          
-          <li><a href="https://github.com/little-eyes" target="_blank" rel="noopener">Projects</a></li>
+          <li><a target="_blank" rel="noopener" href="https://github.com/little-eyes">Projects</a></li>
          
           <li><a href="/search/">Search</a></li>
         
@@ -221,17 +220,18 @@
 
     <div id="share-footer" style="display: none">
       <ul>
-  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://jilongliao.com/2016/05/10/asp-net-core/" target="_blank" rel="noopener"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://twitter.com/share?url=http://jilongliao.com/2016/05/10/asp-net-core/&text=ASP.NET Core or Not?" target="_blank" rel="noopener"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://jilongliao.com/2016/05/10/asp-net-core/&title=ASP.NET Core or Not?" target="_blank" rel="noopener"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://jilongliao.com/2016/05/10/asp-net-core/&is_video=false&description=ASP.NET Core or Not?" target="_blank" rel="noopener"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://jilongliao.com/2016/05/10/asp-net-core/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://jilongliao.com/2016/05/10/asp-net-core/&text=ASP.NET Core or Not?"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://jilongliao.com/2016/05/10/asp-net-core/&title=ASP.NET Core or Not?"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://jilongliao.com/2016/05/10/asp-net-core/&is_video=false&description=ASP.NET Core or Not?"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
   <li><a class="icon" href="mailto:?subject=ASP.NET Core or Not?&body=Check out this article: http://jilongliao.com/2016/05/10/asp-net-core/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://getpocket.com/save?url=http://jilongliao.com/2016/05/10/asp-net-core/&title=ASP.NET Core or Not?" target="_blank" rel="noopener"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://reddit.com/submit?url=http://jilongliao.com/2016/05/10/asp-net-core/&title=ASP.NET Core or Not?" target="_blank" rel="noopener"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://jilongliao.com/2016/05/10/asp-net-core/&title=ASP.NET Core or Not?" target="_blank" rel="noopener"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://digg.com/submit?url=http://jilongliao.com/2016/05/10/asp-net-core/&title=ASP.NET Core or Not?" target="_blank" rel="noopener"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://jilongliao.com/2016/05/10/asp-net-core/&name=ASP.NET Core or Not?&description=&lt;p&gt;My most recent work led me to an interesting technology stack &lt;code&gt;ASP.NET Core&lt;/code&gt;, a newer, leaner and agiler version of &lt;code&gt;ASP.NET&lt;/code&gt;. After two days immersion into this new stack, I kind of feel interested in this technology.&lt;/p&gt;
-&lt;h2 id=&#34;More-than-just-cross-platform&#34;&gt;&lt;a href=&#34;#More-than-just-cross-platform&#34; class=&#34;headerlink&#34; title=&#34;More than just cross-platform&#34;&gt;&lt;/a&gt;More than just cross-platform&lt;/h2&gt;&lt;p&gt;Of course, we have other language based web stacks like Django for Python, Express in Node.js, Jekyll for Ruby etc. From the new ASP.NET Core, I feel like it’s more than just cross-platform. The most obvious thing you may realize once you start playing with it is that ASP.NET Core uses other technologies as well – &lt;code&gt;bower&lt;/code&gt;, &lt;code&gt;npm&lt;/code&gt;. I first do not understand why bother use these two things, but later I find the power of Grunt and Gulp. So it makes sense to reduce the overhead from ASP.NET, but embrace the popular community tool set. Therefore, it opens the door for multi technology within ASP.NET Core &lt;a href=&#34;http://docs.asp.net/en/latest/getting-started/index.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;[1]&lt;/a&gt;.&lt;/p&gt;"><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://jilongliao.com/2016/05/10/asp-net-core/&title=ASP.NET Core or Not?"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://jilongliao.com/2016/05/10/asp-net-core/&title=ASP.NET Core or Not?"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://jilongliao.com/2016/05/10/asp-net-core/&title=ASP.NET Core or Not?"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://jilongliao.com/2016/05/10/asp-net-core/&title=ASP.NET Core or Not?"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://jilongliao.com/2016/05/10/asp-net-core/&name=ASP.NET Core or Not?&description=&lt;p&gt;My most recent work led me to an interesting technology stack &lt;code&gt;ASP.NET Core&lt;/code&gt;, a newer, leaner and agiler version of &lt;code&gt;ASP.NET&lt;/code&gt;. After two days immersion into this new stack, I kind of feel interested in this technology.&lt;/p&gt;
+&lt;h2 id=&#34;More-than-just-cross-platform&#34;&gt;&lt;a href=&#34;#More-than-just-cross-platform&#34; class=&#34;headerlink&#34; title=&#34;More than just cross-platform&#34;&gt;&lt;/a&gt;More than just cross-platform&lt;/h2&gt;&lt;p&gt;Of course, we have other language based web stacks like Django for Python, Express in Node.js, Jekyll for Ruby etc. From the new ASP.NET Core, I feel like it’s more than just cross-platform. The most obvious thing you may realize once you start playing with it is that ASP.NET Core uses other technologies as well – &lt;code&gt;bower&lt;/code&gt;, &lt;code&gt;npm&lt;/code&gt;. I first do not understand why bother use these two things, but later I find the power of Grunt and Gulp. So it makes sense to reduce the overhead from ASP.NET, but embrace the popular community tool set. Therefore, it opens the door for multi technology within ASP.NET Core &lt;a href=&#34;http://docs.asp.net/en/latest/getting-started/index.html&#34;&gt;&lt;a href=&#34;http://docs.asp.net/en/latest/getting-started/index.html&#34;&gt;1&lt;/a&gt;&lt;/a&gt;.&lt;/p&gt;"><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://jilongliao.com/2016/05/10/asp-net-core/&t=ASP.NET Core or Not?"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
@@ -249,7 +249,11 @@
         
         <footer id="footer">
   <div class="footer-left">
-    Copyright &copy; 2021 Jilong Liao
+    Copyright &copy;
+    
+    
+    2010-2021
+    Jilong Liao
   </div>
   <div class="footer-right">
     <nav>
@@ -263,7 +267,7 @@
          
           <li><a href="/archives/">Writing</a></li>
          
-          <li><a href="https://github.com/little-eyes" target="_blank" rel="noopener">Projects</a></li>
+          <li><a target="_blank" rel="noopener" href="https://github.com/little-eyes">Projects</a></li>
          
           <li><a href="/search/">Search</a></li>
         
@@ -275,18 +279,42 @@
     </div>
     <!-- styles -->
 
-<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
 
 
-<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
 
 
     <!-- jquery -->
+ 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script> 
 
-<script src="/lib/jquery/jquery.min.js"></script>
 
 
-<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script> 
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
 
 
 <script src="/js/main.js"></script>
@@ -295,16 +323,19 @@
 
 <!-- Google Analytics -->
 
-    <script type="text/javascript">
-        (function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
-        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-        ga('create', 'UA-32402817-1', 'auto');
-        ga('send', 'pageview');
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-32402817-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-32402817-1');
     </script>
 
 <!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Umami Analytics -->
 
 <!-- Disqus Comments -->
 

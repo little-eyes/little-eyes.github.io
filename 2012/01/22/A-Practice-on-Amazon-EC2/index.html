@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
     <meta name="description" content="Amazon EC2 provides a decent solution to highly scalable server and large data set processing. This little blog talks about the very beginning steps to make an Amazon EC2 server instance running with">
 <meta property="og:type" content="article">
 <meta property="og:title" content="A Practice on Amazon EC2 (Ubuntu 11.10 Server) With LAMP Server and SVN Server">
@@ -14,7 +14,7 @@
 <meta property="og:description" content="Amazon EC2 provides a decent solution to highly scalable server and large data set processing. This little blog talks about the very beginning steps to make an Amazon EC2 server instance running with">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2012-01-22T00:00:00.000Z">
-<meta property="article:modified_time" content="2021-01-10T05:51:39.889Z">
+<meta property="article:modified_time" content="2021-05-07T04:09:05.352Z">
 <meta property="article:author" content="Jilong Liao">
 <meta property="article:tag" content="Amazon EC2">
 <meta property="article:tag" content="LAMP">
@@ -23,21 +23,21 @@
 <meta name="twitter:card" content="summary">
     
     
+      
         
-          
-              <link rel="shortcut icon" href="/images/favicon.ico">
-          
+          <link rel="shortcut icon" href="/images/favicon.ico">
         
+      
+      
         
-          
-            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
-          
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
         
+      
+      
         
-          
-            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
-          
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
         
+      
     
     <!-- title -->
     <title>A Practice on Amazon EC2 (Ubuntu 11.10 Server) With LAMP Server and SVN Server</title>
@@ -47,21 +47,19 @@
 
     <!-- persian styles -->
     
-      
-<link rel="stylesheet" href="/css/rtl.css">
-
-    
     <!-- rss -->
     
     
-<meta name="generator" content="Hexo 4.2.1"></head>
+	<!-- mathjax -->
+	
+<meta name="generator" content="Hexo 5.4.0"></head>
 
 <body class="max-width mx-auto px3 ltr">
     
       <div id="header-post">
-  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
-  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
-  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" "Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
   <span id="menu">
     <span id="nav">
       <ul>
@@ -74,7 +72,7 @@
          
           <li><a href="/archives/">Writing</a></li>
          
-          <li><a href="https://github.com/little-eyes" target="_blank" rel="noopener">Projects</a></li>
+          <li><a target="_blank" rel="noopener" href="https://github.com/little-eyes">Projects</a></li>
          
           <li><a href="/search/">Search</a></li>
         
@@ -84,11 +82,11 @@
     <span id="actions">
       <ul>
         
-        <li><a class="icon" href="/2012/02/25/Clustering-Data-Set-Larger-than-Your-Memory/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Previous post " href="/2012/02/25/Clustering-Data-Set-Larger-than-Your-Memory/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
         
         
-        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
-        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+        <li><a class="icon" aria-label="Back to top " href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Share post " href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
       </ul>
       <span id="i-prev" class="info" style="display:none;">Previous post</span>
       <span id="i-next" class="info" style="display:none;">Next post</span>
@@ -98,16 +96,17 @@
     <br/>
     <div id="share" style="display: none">
       <ul>
-  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://jilongliao.com/2012/01/22/A-Practice-on-Amazon-EC2/" target="_blank" rel="noopener"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://twitter.com/share?url=http://jilongliao.com/2012/01/22/A-Practice-on-Amazon-EC2/&text=A Practice on Amazon EC2 (Ubuntu 11.10 Server) With LAMP Server and SVN Server" target="_blank" rel="noopener"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://jilongliao.com/2012/01/22/A-Practice-on-Amazon-EC2/&title=A Practice on Amazon EC2 (Ubuntu 11.10 Server) With LAMP Server and SVN Server" target="_blank" rel="noopener"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://jilongliao.com/2012/01/22/A-Practice-on-Amazon-EC2/&is_video=false&description=A Practice on Amazon EC2 (Ubuntu 11.10 Server) With LAMP Server and SVN Server" target="_blank" rel="noopener"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://jilongliao.com/2012/01/22/A-Practice-on-Amazon-EC2/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://jilongliao.com/2012/01/22/A-Practice-on-Amazon-EC2/&text=A Practice on Amazon EC2 (Ubuntu 11.10 Server) With LAMP Server and SVN Server"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://jilongliao.com/2012/01/22/A-Practice-on-Amazon-EC2/&title=A Practice on Amazon EC2 (Ubuntu 11.10 Server) With LAMP Server and SVN Server"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://jilongliao.com/2012/01/22/A-Practice-on-Amazon-EC2/&is_video=false&description=A Practice on Amazon EC2 (Ubuntu 11.10 Server) With LAMP Server and SVN Server"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
   <li><a class="icon" href="mailto:?subject=A Practice on Amazon EC2 (Ubuntu 11.10 Server) With LAMP Server and SVN Server&body=Check out this article: http://jilongliao.com/2012/01/22/A-Practice-on-Amazon-EC2/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://getpocket.com/save?url=http://jilongliao.com/2012/01/22/A-Practice-on-Amazon-EC2/&title=A Practice on Amazon EC2 (Ubuntu 11.10 Server) With LAMP Server and SVN Server" target="_blank" rel="noopener"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://reddit.com/submit?url=http://jilongliao.com/2012/01/22/A-Practice-on-Amazon-EC2/&title=A Practice on Amazon EC2 (Ubuntu 11.10 Server) With LAMP Server and SVN Server" target="_blank" rel="noopener"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://jilongliao.com/2012/01/22/A-Practice-on-Amazon-EC2/&title=A Practice on Amazon EC2 (Ubuntu 11.10 Server) With LAMP Server and SVN Server" target="_blank" rel="noopener"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://digg.com/submit?url=http://jilongliao.com/2012/01/22/A-Practice-on-Amazon-EC2/&title=A Practice on Amazon EC2 (Ubuntu 11.10 Server) With LAMP Server and SVN Server" target="_blank" rel="noopener"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://jilongliao.com/2012/01/22/A-Practice-on-Amazon-EC2/&name=A Practice on Amazon EC2 (Ubuntu 11.10 Server) With LAMP Server and SVN Server&description=&lt;p&gt;Amazon EC2 provides a decent solution to highly scalable server and large data set processing. This little blog talks about the very beginning steps to make an Amazon EC2 server instance running with LAMP and SVN services. I will make it concise and expressive.&lt;/p&gt;" target="_blank" rel="noopener"><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://jilongliao.com/2012/01/22/A-Practice-on-Amazon-EC2/&title=A Practice on Amazon EC2 (Ubuntu 11.10 Server) With LAMP Server and SVN Server"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://jilongliao.com/2012/01/22/A-Practice-on-Amazon-EC2/&title=A Practice on Amazon EC2 (Ubuntu 11.10 Server) With LAMP Server and SVN Server"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://jilongliao.com/2012/01/22/A-Practice-on-Amazon-EC2/&title=A Practice on Amazon EC2 (Ubuntu 11.10 Server) With LAMP Server and SVN Server"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://jilongliao.com/2012/01/22/A-Practice-on-Amazon-EC2/&title=A Practice on Amazon EC2 (Ubuntu 11.10 Server) With LAMP Server and SVN Server"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://jilongliao.com/2012/01/22/A-Practice-on-Amazon-EC2/&name=A Practice on Amazon EC2 (Ubuntu 11.10 Server) With LAMP Server and SVN Server&description=&lt;p&gt;Amazon EC2 provides a decent solution to highly scalable server and large data set processing. This little blog talks about the very beginning steps to make an Amazon EC2 server instance running with LAMP and SVN services. I will make it concise and expressive.&lt;/p&gt;"><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://jilongliao.com/2012/01/22/A-Practice-on-Amazon-EC2/&t=A Practice on Amazon EC2 (Ubuntu 11.10 Server) With LAMP Server and SVN Server"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
@@ -131,7 +130,7 @@
 
     <div class="meta">
       <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
-        <span itemprop="name">The Little's Place</span>
+        <span itemprop="name">Jilong Liao</span>
       </span>
       
     <div class="postdate">
@@ -152,7 +151,7 @@
       
     <div class="article-tag">
         <i class="fas fa-tag"></i>
-        <a class="tag-link" href="/tags/Amazon-EC2/" rel="tag">Amazon EC2</a>, <a class="tag-link" href="/tags/LAMP/" rel="tag">LAMP</a>, <a class="tag-link" href="/tags/Linux/" rel="tag">Linux</a>, <a class="tag-link" href="/tags/SVN/" rel="tag">SVN</a>
+        <a class="tag-link-link" href="/tags/Amazon-EC2/" rel="tag">Amazon EC2</a>, <a class="tag-link-link" href="/tags/LAMP/" rel="tag">LAMP</a>, <a class="tag-link-link" href="/tags/Linux/" rel="tag">Linux</a>, <a class="tag-link-link" href="/tags/SVN/" rel="tag">SVN</a>
     </div>
 
 
@@ -162,9 +161,9 @@
 
   <div class="content" itemprop="articleBody">
     <p>Amazon EC2 provides a decent solution to highly scalable server and large data set processing. This little blog talks about the very beginning steps to make an Amazon EC2 server instance running with LAMP and SVN services. I will make it concise and expressive.</p>
-<a id="more"></a>
+<span id="more"></span>
 
-<h3 id="Step-1"><a href="#Step-1" class="headerlink" title="Step 1"></a>Step 1</h3><p>Of course! Sign up those whole bunch of services like Amazon EC2, S3…Well, you can definitely do it in <a href="http://aws.amazon.com" target="_blank" rel="noopener">this webpage</a>. Then, you need to create an instance. Here I choose Ubuntu 11.10 Server 32-bit edition (for image ID, please refer to <a href="http://cloud-images.ubuntu.com/releases/11.10/release/" target="_blank" rel="noopener">this page</a>). For <strong>HOWTO</strong> create an instance, you can either google it, pretty simple. But please remember to keep the key associated with the instance well.</p>
+<h3 id="Step-1"><a href="#Step-1" class="headerlink" title="Step 1"></a>Step 1</h3><p>Of course! Sign up those whole bunch of services like Amazon EC2, S3…Well, you can definitely do it in <a target="_blank" rel="noopener" href="http://aws.amazon.com/">this webpage</a>. Then, you need to create an instance. Here I choose Ubuntu 11.10 Server 32-bit edition (for image ID, please refer to <a target="_blank" rel="noopener" href="http://cloud-images.ubuntu.com/releases/11.10/release/">this page</a>). For <strong>HOWTO</strong> create an instance, you can either google it, pretty simple. But please remember to keep the key associated with the instance well.</p>
 <h3 id="Step-2"><a href="#Step-2" class="headerlink" title="Step 2"></a>Step 2</h3><p>When your instance is ready to use, we will use SSH to login. Since the design choice requires the key is kept not so public that you’d better to change rights for the key file. In Ubuntu, try the following command in your Terminal:</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo chmod 400 amazon-ec2.pem</span><br></pre></td></tr></table></figure>
 
@@ -176,15 +175,15 @@
 <h3 id="Step-3"><a href="#Step-3" class="headerlink" title="Step 3"></a>Step 3</h3><p>Once you login, things become easy as you do your local Ubuntu Server. Apparently, you need the following software.</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt-get install lamp-server^</span><br><span class="line">$ sudo apt-get install phpmyadmin</span><br></pre></td></tr></table></figure>
 
-<p>This two command line will guide you to setup your LAMP stack. Then try the URL: <em><a href="http://ec2-192-168-10-90.compute-1.amazonaws.com" target="_blank" rel="noopener">http://ec2-192-168-10-90.compute-1.amazonaws.com</a></em>, which will show “It Works!!”.</p>
+<p>This two command line will guide you to setup your LAMP stack. Then try the URL: <em><a target="_blank" rel="noopener" href="http://ec2-192-168-10-90.compute-1.amazonaws.com/">http://ec2-192-168-10-90.compute-1.amazonaws.com</a></em>, which will show “It Works!!”.</p>
 <p>However, this is not end for using phpmyadmin. You need a very small configuration to make it work, though sometime it works without doing anything. If you install those two packages, the Apache2 configuration file is in <strong>/etc/apache2/apache2.conf</strong>; the phpmyadmin configuration file is in <strong>/etc/phpmyadmin/apache.conf</strong>. So add the following line to Apache2 configuration file:</p>
-<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Include</span> <span class="regexp">/etc/</span>phpmyadmin<span class="regexp">/apache.conf</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Include</span> <span class="regexp">/etc/</span>phpmyadmin/apache.conf</span><br></pre></td></tr></table></figure>
 
-<p>Now the phpmyadmin should work correctly, you may verify via the URL: <em><a href="http://ec2-192-168-10-90.compute-1.amazonaws.com/phpmyadmin" target="_blank" rel="noopener">http://ec2-192-168-10-90.compute-1.amazonaws.com/phpmyadmin</a></em>. If you failed, you’d better to read <a href="https://help.ubuntu.com/community/phpMyAdmin" target="_blank" rel="noopener">this article</a>.</p>
+<p>Now the phpmyadmin should work correctly, you may verify via the URL: <em><a target="_blank" rel="noopener" href="http://ec2-192-168-10-90.compute-1.amazonaws.com/phpmyadmin">http://ec2-192-168-10-90.compute-1.amazonaws.com/phpmyadmin</a></em>. If you failed, you’d better to read <a target="_blank" rel="noopener" href="https://help.ubuntu.com/community/phpMyAdmin">this article</a>.</p>
 <h3 id="Step-4"><a href="#Step-4" class="headerlink" title="Step 4"></a>Step 4</h3><p>Install the Subversion.</p>
 <figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt-<span class="builtin-name">get</span> install subversion</span><br><span class="line">$ sudo apt-<span class="builtin-name">get</span> install libapache2-svn</span><br></pre></td></tr></table></figure>
 
-<h3 id="Step-5"><a href="#Step-5" class="headerlink" title="Step 5"></a>Step 5</h3><p>Config the SVN server. Suppose you want the following URL as your SVN repository: <em><a href="http://ec2-192-168-10-90.compute-1.amazonaws.com/repos/your-project-here" target="_blank" rel="noopener">http://ec2-192-168-10-90.compute-1.amazonaws.com/repos/your-project-here</a></em>.</p>
+<h3 id="Step-5"><a href="#Step-5" class="headerlink" title="Step 5"></a>Step 5</h3><p>Config the SVN server. Suppose you want the following URL as your SVN repository: <em><a target="_blank" rel="noopener" href="http://ec2-192-168-10-90.compute-1.amazonaws.com/repos/your-project-here">http://ec2-192-168-10-90.compute-1.amazonaws.com/repos/your-project-here</a></em>.</p>
 <p>First, you need two directories in the <strong>/var/www</strong>. One is <strong>/var/www/svn</strong> where you create your svn repository, the other is <strong>/var/www/svn-auth</strong> where stores users’ password. The /var/www/svn should belongs to <strong>www-data</strong> and have a more public rights. Run the command:</p>
 <figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo chown -<span class="type">R</span> www-<span class="class"><span class="keyword">data</span>.www-<span class="keyword">data</span> /var/www/svn</span></span><br></pre></td></tr></table></figure>
 
@@ -192,11 +191,11 @@
 <figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo vim <span class="regexp">/etc/</span>apache2<span class="regexp">/sites-available/</span><span class="keyword">default</span></span><br></pre></td></tr></table></figure>
 
 <p>Then add the following to the file:</p>
-<figure class="highlight dts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="params">&lt;Location /repos&gt;</span></span><br><span class="line">  DAV svn</span><br><span class="line">  SVNParentPath <span class="meta-keyword">/var/</span>www/svn</span><br><span class="line">  AuthType Basic</span><br><span class="line">  AuthName <span class="string">"Subversion"</span></span><br><span class="line">  AuthUserFile <span class="meta-keyword">/var/</span>www<span class="meta-keyword">/svn-auth/</span>passwd</span><br><span class="line">  Require valid-user</span><br><span class="line"><span class="params">&lt;/Location&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;Location /repos&gt;</span><br><span class="line">  DAV svn</span><br><span class="line">  SVNParentPath <span class="regexp">/var/</span>www/svn</span><br><span class="line">  AuthType Basic</span><br><span class="line">  AuthName <span class="string">&quot;Subversion&quot;</span></span><br><span class="line">  AuthUserFile <span class="regexp">/var/</span>www<span class="regexp">/svn-auth/</span>passwd</span><br><span class="line">  Require valid-user</span><br><span class="line">&lt;/Location&gt;</span><br></pre></td></tr></table></figure>
 
 <p><strong>ATTENTION: the red label part should be consistent, or you will be failed to find the correct URL.</strong></p>
 <p>Finally, restart the Apache server by using the following command:</p>
-<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo<span class="built_in"> service </span>apache2 restart</span><br></pre></td></tr></table></figure>
+<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$ </span>sudo service apache2 restart</span><br></pre></td></tr></table></figure>
 
 <p>Now the configuration should be OK!</p>
 <h3 id="Step-6"><a href="#Step-6" class="headerlink" title="Step 6"></a>Step 6</h3><p>Create user name and password. Use the following command:</p>
@@ -238,7 +237,7 @@
          
           <li><a href="/archives/">Writing</a></li>
          
-          <li><a href="https://github.com/little-eyes" target="_blank" rel="noopener">Projects</a></li>
+          <li><a target="_blank" rel="noopener" href="https://github.com/little-eyes">Projects</a></li>
          
           <li><a href="/search/">Search</a></li>
         
@@ -251,16 +250,17 @@
 
     <div id="share-footer" style="display: none">
       <ul>
-  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://jilongliao.com/2012/01/22/A-Practice-on-Amazon-EC2/" target="_blank" rel="noopener"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://twitter.com/share?url=http://jilongliao.com/2012/01/22/A-Practice-on-Amazon-EC2/&text=A Practice on Amazon EC2 (Ubuntu 11.10 Server) With LAMP Server and SVN Server" target="_blank" rel="noopener"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://jilongliao.com/2012/01/22/A-Practice-on-Amazon-EC2/&title=A Practice on Amazon EC2 (Ubuntu 11.10 Server) With LAMP Server and SVN Server" target="_blank" rel="noopener"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://jilongliao.com/2012/01/22/A-Practice-on-Amazon-EC2/&is_video=false&description=A Practice on Amazon EC2 (Ubuntu 11.10 Server) With LAMP Server and SVN Server" target="_blank" rel="noopener"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://jilongliao.com/2012/01/22/A-Practice-on-Amazon-EC2/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://jilongliao.com/2012/01/22/A-Practice-on-Amazon-EC2/&text=A Practice on Amazon EC2 (Ubuntu 11.10 Server) With LAMP Server and SVN Server"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://jilongliao.com/2012/01/22/A-Practice-on-Amazon-EC2/&title=A Practice on Amazon EC2 (Ubuntu 11.10 Server) With LAMP Server and SVN Server"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://jilongliao.com/2012/01/22/A-Practice-on-Amazon-EC2/&is_video=false&description=A Practice on Amazon EC2 (Ubuntu 11.10 Server) With LAMP Server and SVN Server"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
   <li><a class="icon" href="mailto:?subject=A Practice on Amazon EC2 (Ubuntu 11.10 Server) With LAMP Server and SVN Server&body=Check out this article: http://jilongliao.com/2012/01/22/A-Practice-on-Amazon-EC2/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://getpocket.com/save?url=http://jilongliao.com/2012/01/22/A-Practice-on-Amazon-EC2/&title=A Practice on Amazon EC2 (Ubuntu 11.10 Server) With LAMP Server and SVN Server" target="_blank" rel="noopener"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://reddit.com/submit?url=http://jilongliao.com/2012/01/22/A-Practice-on-Amazon-EC2/&title=A Practice on Amazon EC2 (Ubuntu 11.10 Server) With LAMP Server and SVN Server" target="_blank" rel="noopener"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://jilongliao.com/2012/01/22/A-Practice-on-Amazon-EC2/&title=A Practice on Amazon EC2 (Ubuntu 11.10 Server) With LAMP Server and SVN Server" target="_blank" rel="noopener"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://digg.com/submit?url=http://jilongliao.com/2012/01/22/A-Practice-on-Amazon-EC2/&title=A Practice on Amazon EC2 (Ubuntu 11.10 Server) With LAMP Server and SVN Server" target="_blank" rel="noopener"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://jilongliao.com/2012/01/22/A-Practice-on-Amazon-EC2/&name=A Practice on Amazon EC2 (Ubuntu 11.10 Server) With LAMP Server and SVN Server&description=&lt;p&gt;Amazon EC2 provides a decent solution to highly scalable server and large data set processing. This little blog talks about the very beginning steps to make an Amazon EC2 server instance running with LAMP and SVN services. I will make it concise and expressive.&lt;/p&gt;" target="_blank" rel="noopener"><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://jilongliao.com/2012/01/22/A-Practice-on-Amazon-EC2/&title=A Practice on Amazon EC2 (Ubuntu 11.10 Server) With LAMP Server and SVN Server"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://jilongliao.com/2012/01/22/A-Practice-on-Amazon-EC2/&title=A Practice on Amazon EC2 (Ubuntu 11.10 Server) With LAMP Server and SVN Server"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://jilongliao.com/2012/01/22/A-Practice-on-Amazon-EC2/&title=A Practice on Amazon EC2 (Ubuntu 11.10 Server) With LAMP Server and SVN Server"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://jilongliao.com/2012/01/22/A-Practice-on-Amazon-EC2/&title=A Practice on Amazon EC2 (Ubuntu 11.10 Server) With LAMP Server and SVN Server"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://jilongliao.com/2012/01/22/A-Practice-on-Amazon-EC2/&name=A Practice on Amazon EC2 (Ubuntu 11.10 Server) With LAMP Server and SVN Server&description=&lt;p&gt;Amazon EC2 provides a decent solution to highly scalable server and large data set processing. This little blog talks about the very beginning steps to make an Amazon EC2 server instance running with LAMP and SVN services. I will make it concise and expressive.&lt;/p&gt;"><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://jilongliao.com/2012/01/22/A-Practice-on-Amazon-EC2/&t=A Practice on Amazon EC2 (Ubuntu 11.10 Server) With LAMP Server and SVN Server"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
@@ -278,7 +278,11 @@
         
         <footer id="footer">
   <div class="footer-left">
-    Copyright &copy; 2021 Jilong Liao
+    Copyright &copy;
+    
+    
+    2010-2021
+    Jilong Liao
   </div>
   <div class="footer-right">
     <nav>
@@ -292,7 +296,7 @@
          
           <li><a href="/archives/">Writing</a></li>
          
-          <li><a href="https://github.com/little-eyes" target="_blank" rel="noopener">Projects</a></li>
+          <li><a target="_blank" rel="noopener" href="https://github.com/little-eyes">Projects</a></li>
          
           <li><a href="/search/">Search</a></li>
         
@@ -304,18 +308,42 @@
     </div>
     <!-- styles -->
 
-<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
 
 
-<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
 
 
     <!-- jquery -->
+ 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script> 
 
-<script src="/lib/jquery/jquery.min.js"></script>
 
 
-<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script> 
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
 
 
 <script src="/js/main.js"></script>
@@ -324,16 +352,19 @@
 
 <!-- Google Analytics -->
 
-    <script type="text/javascript">
-        (function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
-        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-        ga('create', 'UA-32402817-1', 'auto');
-        ga('send', 'pageview');
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-32402817-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-32402817-1');
     </script>
 
 <!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Umami Analytics -->
 
 <!-- Disqus Comments -->
 

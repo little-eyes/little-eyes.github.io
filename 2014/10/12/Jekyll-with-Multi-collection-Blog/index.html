@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
     <meta name="description" content="When we host our blogs on Github, I guess most of us use Jekyll. Before I realize I need a different collection of blogs, I always start with a single collection or category as everybody does. However">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Jekyll With Multi-Collection Blog">
@@ -14,28 +14,28 @@
 <meta property="og:description" content="When we host our blogs on Github, I guess most of us use Jekyll. Before I realize I need a different collection of blogs, I always start with a single collection or category as everybody does. However">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2014-10-12T00:00:00.000Z">
-<meta property="article:modified_time" content="2021-01-10T05:51:39.889Z">
+<meta property="article:modified_time" content="2021-05-07T04:09:05.356Z">
 <meta property="article:author" content="Jilong Liao">
 <meta property="article:tag" content="jekyll">
 <meta property="article:tag" content="git">
 <meta name="twitter:card" content="summary">
     
     
+      
         
-          
-              <link rel="shortcut icon" href="/images/favicon.ico">
-          
+          <link rel="shortcut icon" href="/images/favicon.ico">
         
+      
+      
         
-          
-            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
-          
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
         
+      
+      
         
-          
-            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
-          
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
         
+      
     
     <!-- title -->
     <title>Jekyll With Multi-Collection Blog</title>
@@ -45,21 +45,19 @@
 
     <!-- persian styles -->
     
-      
-<link rel="stylesheet" href="/css/rtl.css">
-
-    
     <!-- rss -->
     
     
-<meta name="generator" content="Hexo 4.2.1"></head>
+	<!-- mathjax -->
+	
+<meta name="generator" content="Hexo 5.4.0"></head>
 
 <body class="max-width mx-auto px3 ltr">
     
       <div id="header-post">
-  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
-  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
-  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" "Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
   <span id="menu">
     <span id="nav">
       <ul>
@@ -72,7 +70,7 @@
          
           <li><a href="/archives/">Writing</a></li>
          
-          <li><a href="https://github.com/little-eyes" target="_blank" rel="noopener">Projects</a></li>
+          <li><a target="_blank" rel="noopener" href="https://github.com/little-eyes">Projects</a></li>
          
           <li><a href="/search/">Search</a></li>
         
@@ -82,13 +80,13 @@
     <span id="actions">
       <ul>
         
-        <li><a class="icon" href="/2014/12/19/Switch-to-Hexo/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Previous post " href="/2014/12/19/Switch-to-Hexo/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
         
         
-        <li><a class="icon" href="/2014/07/04/How-About-the-911-Calls-in-Seattle/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Next post " href="/2014/07/04/How-About-the-911-Calls-in-Seattle/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
         
-        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
-        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+        <li><a class="icon" aria-label="Back to top " href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Share post " href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
       </ul>
       <span id="i-prev" class="info" style="display:none;">Previous post</span>
       <span id="i-next" class="info" style="display:none;">Next post</span>
@@ -98,16 +96,16 @@
     <br/>
     <div id="share" style="display: none">
       <ul>
-  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://jilongliao.com/2014/10/12/Jekyll-with-Multi-collection-Blog/" target="_blank" rel="noopener"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://twitter.com/share?url=http://jilongliao.com/2014/10/12/Jekyll-with-Multi-collection-Blog/&text=Jekyll With Multi-Collection Blog" target="_blank" rel="noopener"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://jilongliao.com/2014/10/12/Jekyll-with-Multi-collection-Blog/&title=Jekyll With Multi-Collection Blog" target="_blank" rel="noopener"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://jilongliao.com/2014/10/12/Jekyll-with-Multi-collection-Blog/&is_video=false&description=Jekyll With Multi-Collection Blog" target="_blank" rel="noopener"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://jilongliao.com/2014/10/12/Jekyll-with-Multi-collection-Blog/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://jilongliao.com/2014/10/12/Jekyll-with-Multi-collection-Blog/&text=Jekyll With Multi-Collection Blog"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://jilongliao.com/2014/10/12/Jekyll-with-Multi-collection-Blog/&title=Jekyll With Multi-Collection Blog"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://jilongliao.com/2014/10/12/Jekyll-with-Multi-collection-Blog/&is_video=false&description=Jekyll With Multi-Collection Blog"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
   <li><a class="icon" href="mailto:?subject=Jekyll With Multi-Collection Blog&body=Check out this article: http://jilongliao.com/2014/10/12/Jekyll-with-Multi-collection-Blog/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://getpocket.com/save?url=http://jilongliao.com/2014/10/12/Jekyll-with-Multi-collection-Blog/&title=Jekyll With Multi-Collection Blog" target="_blank" rel="noopener"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://reddit.com/submit?url=http://jilongliao.com/2014/10/12/Jekyll-with-Multi-collection-Blog/&title=Jekyll With Multi-Collection Blog" target="_blank" rel="noopener"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://jilongliao.com/2014/10/12/Jekyll-with-Multi-collection-Blog/&title=Jekyll With Multi-Collection Blog" target="_blank" rel="noopener"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://digg.com/submit?url=http://jilongliao.com/2014/10/12/Jekyll-with-Multi-collection-Blog/&title=Jekyll With Multi-Collection Blog" target="_blank" rel="noopener"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://jilongliao.com/2014/10/12/Jekyll-with-Multi-collection-Blog/&name=Jekyll With Multi-Collection Blog&description=&lt;p&gt;When we host our blogs on Github, I guess most of us use Jekyll. Before I realize I need a different collection of blogs, I always start with a single collection or category as everybody does. However, I have to face a problem that to make multiple categories of blog into different URLs under the same domain. For example,&lt;/p&gt;
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://jilongliao.com/2014/10/12/Jekyll-with-Multi-collection-Blog/&title=Jekyll With Multi-Collection Blog"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://jilongliao.com/2014/10/12/Jekyll-with-Multi-collection-Blog/&title=Jekyll With Multi-Collection Blog"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://jilongliao.com/2014/10/12/Jekyll-with-Multi-collection-Blog/&title=Jekyll With Multi-Collection Blog"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://jilongliao.com/2014/10/12/Jekyll-with-Multi-collection-Blog/&title=Jekyll With Multi-Collection Blog"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://jilongliao.com/2014/10/12/Jekyll-with-Multi-collection-Blog/&name=Jekyll With Multi-Collection Blog&description=&lt;p&gt;When we host our blogs on Github, I guess most of us use Jekyll. Before I realize I need a different collection of blogs, I always start with a single collection or category as everybody does. However, I have to face a problem that to make multiple categories of blog into different URLs under the same domain. For example,&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;&lt;a href=&#34;http://jilongliao.com/technology&#34;&gt;http://jilongliao.com/technology&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -115,6 +113,7 @@
 &lt;p&gt;&lt;a href=&#34;http://jilongliao.com/journey&#34;&gt;http://jilongliao.com/journey&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;I searched the web for a little while and figure out this could be easily solved, but also a little challenging when handle some tricky cases with Github policies (we will get there later). Jekyll does a very good job for you to make your blog multi-categories. Simply put a new directory under your Jekyll site root directory would work. Inside that directory it needs to contains an &lt;code&gt;index.html&lt;/code&gt; file and &lt;code&gt;_posts&lt;/code&gt; folder. The &lt;code&gt;_posts&lt;/code&gt; folder is the place you can put all your post belonging to this category in the future. After that, you will have a directory structure like the following.&lt;/p&gt;"><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://jilongliao.com/2014/10/12/Jekyll-with-Multi-collection-Blog/&t=Jekyll With Multi-Collection Blog"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
@@ -138,7 +137,7 @@
 
     <div class="meta">
       <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
-        <span itemprop="name">The Little's Place</span>
+        <span itemprop="name">Jilong Liao</span>
       </span>
       
     <div class="postdate">
@@ -159,7 +158,7 @@
       
     <div class="article-tag">
         <i class="fas fa-tag"></i>
-        <a class="tag-link" href="/tags/git/" rel="tag">git</a>, <a class="tag-link" href="/tags/jekyll/" rel="tag">jekyll</a>
+        <a class="tag-link-link" href="/tags/git/" rel="tag">git</a>, <a class="tag-link-link" href="/tags/jekyll/" rel="tag">jekyll</a>
     </div>
 
 
@@ -176,22 +175,22 @@
 <p><a href="http://jilongliao.com/journey">http://jilongliao.com/journey</a></p>
 </blockquote>
 <p>I searched the web for a little while and figure out this could be easily solved, but also a little challenging when handle some tricky cases with Github policies (we will get there later). Jekyll does a very good job for you to make your blog multi-categories. Simply put a new directory under your Jekyll site root directory would work. Inside that directory it needs to contains an <code>index.html</code> file and <code>_posts</code> folder. The <code>_posts</code> folder is the place you can put all your post belonging to this category in the future. After that, you will have a directory structure like the following.</p>
-<a id="more"></a>
+<span id="more"></span>
 
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">+ </span>MySite</span><br><span class="line"><span class="bullet">  - </span>index.html</span><br><span class="line"><span class="bullet">+ </span>css/</span><br><span class="line"><span class="bullet">+ </span>js/</span><br><span class="line"><span class="bullet">+ </span>_posts/</span><br><span class="line"><span class="bullet">+ </span>_layouts/</span><br><span class="line"><span class="bullet">+ </span>Your new collection</span><br><span class="line"><span class="bullet">  - </span>index.html</span><br><span class="line"><span class="bullet">+ </span>_posts/</span><br><span class="line"><span class="bullet">  - </span>A.md</span><br><span class="line"><span class="bullet">  - </span>B.md</span><br></pre></td></tr></table></figure>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">+</span> MySite</span><br><span class="line"><span class="bullet">  -</span> index.html</span><br><span class="line"><span class="bullet">+</span> css/</span><br><span class="line"><span class="bullet">+</span> js/</span><br><span class="line"><span class="bullet">+</span> <span class="emphasis">_posts/</span></span><br><span class="line"><span class="emphasis">+ _</span>layouts/</span><br><span class="line"><span class="bullet">+</span> Your new collection</span><br><span class="line"><span class="bullet">  -</span> index.html</span><br><span class="line"><span class="bullet">+</span> <span class="emphasis">_posts/</span></span><br><span class="line"><span class="emphasis">  - A.md</span></span><br><span class="line"><span class="emphasis">  - B.md</span></span><br></pre></td></tr></table></figure>
 
 <p>This would make your site’s URL functioning well, however, it lacks of the ability to filter your blogs. To address this issue, I use the <code>category</code> keyword as the collection separator inside the markdown file. So you might want to add the category information in each of your blog. For instance,</p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: "Jekyll with Multi-collections"</span><br><span class="line">layout: post</span><br><span class="line">tags: jekyll, git</span><br><span class="line">category: technology</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: &quot;Jekyll with Multi-collections&quot;</span><br><span class="line">layout: post</span><br><span class="line">tags: jekyll, git</span><br><span class="line"><span class="section">category: technology</span></span><br><span class="line"><span class="section">---</span></span><br></pre></td></tr></table></figure>
 
-<p>To filter out the different category, you can write whatever ruby code you feel comfortable. I found <a href="http://ajclarkson.co.uk/blog/jekyll-category-post-navigation/" target="_blank" rel="noopener">Adam’s code</a> is very clean and well designed, which I could borrow for this purpose in my site. For convenience purpose, I put the code as bellow. You save this code to your <code>_plugins</code> folder.</p>
-<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">module</span> <span class="title">Jekyll</span></span></span><br><span class="line">  <span class="class"><span class="keyword">class</span> <span class="title">WithinCategoryPostNavigation</span> &lt; Generator</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">generate</span><span class="params">(site)</span></span></span><br><span class="line">      site.categories.each_pair <span class="keyword">do</span> <span class="params">|category, posts|</span></span><br><span class="line">        posts.sort! &#123; <span class="params">|a,b|</span> b &lt;=&gt; a&#125;</span><br><span class="line">        posts.each <span class="keyword">do</span> <span class="params">|post|</span></span><br><span class="line">          index = posts.index post</span><br><span class="line">          next_in_category = <span class="literal">nil</span></span><br><span class="line">          previous_in_category = <span class="literal">nil</span></span><br><span class="line">          <span class="keyword">if</span> index</span><br><span class="line">            <span class="keyword">if</span> index &lt; posts.length - <span class="number">1</span></span><br><span class="line">              next_in_category = posts[index + <span class="number">1</span>]</span><br><span class="line">            <span class="keyword">end</span></span><br><span class="line">            <span class="keyword">if</span> index &gt; <span class="number">0</span></span><br><span class="line">              previous_in_category = posts[index - <span class="number">1</span>]</span><br><span class="line">            <span class="keyword">end</span></span><br><span class="line">          <span class="keyword">end</span></span><br><span class="line">          post.data[<span class="string">"next_in_category"</span>] = next_in_category <span class="keyword">unless</span> next_in_category.<span class="literal">nil</span>?</span><br><span class="line">          post.data[<span class="string">"previous_in_category"</span>] = previous_in_category <span class="keyword">unless</span> previous_in_category.<span class="literal">nil</span>?</span><br><span class="line">        <span class="keyword">end</span></span><br><span class="line">      <span class="keyword">end</span></span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+<p>To filter out the different category, you can write whatever ruby code you feel comfortable. I found <a target="_blank" rel="noopener" href="http://ajclarkson.co.uk/blog/jekyll-category-post-navigation/">Adam’s code</a> is very clean and well designed, which I could borrow for this purpose in my site. For convenience purpose, I put the code as bellow. You save this code to your <code>_plugins</code> folder.</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">module</span> <span class="title">Jekyll</span></span></span><br><span class="line">  <span class="class"><span class="keyword">class</span> <span class="title">WithinCategoryPostNavigation</span> &lt; Generator</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">generate</span><span class="params">(site)</span></span></span><br><span class="line">      site.categories.each_pair <span class="keyword">do</span> <span class="params">|category, posts|</span></span><br><span class="line">        posts.sort! &#123; <span class="params">|a,b|</span> b &lt;=&gt; a&#125;</span><br><span class="line">        posts.each <span class="keyword">do</span> <span class="params">|post|</span></span><br><span class="line">          index = posts.index post</span><br><span class="line">          next_in_category = <span class="literal">nil</span></span><br><span class="line">          previous_in_category = <span class="literal">nil</span></span><br><span class="line">          <span class="keyword">if</span> index</span><br><span class="line">            <span class="keyword">if</span> index &lt; posts.length - <span class="number">1</span></span><br><span class="line">              next_in_category = posts[index + <span class="number">1</span>]</span><br><span class="line">            <span class="keyword">end</span></span><br><span class="line">            <span class="keyword">if</span> index &gt; <span class="number">0</span></span><br><span class="line">              previous_in_category = posts[index - <span class="number">1</span>]</span><br><span class="line">            <span class="keyword">end</span></span><br><span class="line">          <span class="keyword">end</span></span><br><span class="line">          post.data[<span class="string">&quot;next_in_category&quot;</span>] = next_in_category <span class="keyword">unless</span> next_in_category.<span class="literal">nil</span>?</span><br><span class="line">          post.data[<span class="string">&quot;previous_in_category&quot;</span>] = previous_in_category <span class="keyword">unless</span> previous_in_category.<span class="literal">nil</span>?</span><br><span class="line">        <span class="keyword">end</span></span><br><span class="line">      <span class="keyword">end</span></span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
 
 <p>Use this Jekyll plugin is very simple, because it makes all the blog a dictionary which indexed by the <code>category</code>. As an example, the code is blow.</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;script language=<span class="string">"javascript"</span>&gt;</span><br><span class="line"><span class="built_in">window</span>.location.href = <span class="string">"&#123; &#123; site.categories['technology'].first.url &#125; &#125;"</span></span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;script language=<span class="string">&quot;javascript&quot;</span>&gt;</span><br><span class="line"><span class="built_in">window</span>.location.href = <span class="string">&quot;&#123; &#123; site.categories[&#x27;technology&#x27;].first.url &#125; &#125;&quot;</span></span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
 
 <p>After you finish this, you can test it perfectly locally. However when you publish the site to Github, the site will fail to build because the Github does not allow customized plugin in their build system. So we have to hack this a little.</p>
 <p>An interesting compromise Github provides is that you can push your <code>_site</code> directly to the <code>master</code> branch where you can play any plugins as you want. So instead of maintain the code in the <code>master</code> branch, I switch it to <code>source</code> branch but use <code>master</code> branch to push <code>_site</code>. This is a little complicated because you need to manipulate the repository between remote and local back-and-forth. So I prepare a bash script that could easily do this job.</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="title">cleanup</span></span>() &#123;</span><br><span class="line">  <span class="built_in">echo</span> -e <span class="string">'\e[1;32mSwitch to source branch ...\e[0m'</span></span><br><span class="line">  git checkout <span class="built_in">source</span></span><br><span class="line"></span><br><span class="line">  <span class="built_in">echo</span> -e <span class="string">'\e[1;32mDelete master branch ...\e[0m'</span></span><br><span class="line">  git branch -D master</span><br><span class="line"></span><br><span class="line">  <span class="built_in">echo</span> -e <span class="string">'\e[1;32mPull and merge remote/source branch ...\e[0m'</span></span><br><span class="line">  git pull origin <span class="built_in">source</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> -e <span class="string">'\e[1;32mStart deploying ...\e[0m'</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> -e <span class="string">'\e[1;32mClean up remote/master branch ...\e[0m'</span></span><br><span class="line">git push origin :master || cleanup</span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> -e <span class="string">'\e[1;32mCreate local/master branch ...\e[0m'</span></span><br><span class="line">git branch master</span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> -e <span class="string">'\e[1;32mSwitch to master branch ...\e[0m'</span></span><br><span class="line">git checkout master</span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> -e <span class="string">'\e[1;32mBuild the site ...\e[0m'</span></span><br><span class="line">jekyll build</span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> -e <span class="string">'\e[1;32mRe-map site directory to the root ...\e[0m'</span></span><br><span class="line">git filter-branch --subdirectory-filter _site -- --all</span><br><span class="line">mv _site/* .</span><br><span class="line">rm -r _site</span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> -e <span class="string">'\e[1;32mCommit changes to Git ...\e[0m'</span></span><br><span class="line">git add *</span><br><span class="line">git commit -am <span class="string">"deploy"</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> -e <span class="string">'\e[1;32mPush to Github and deploy ...\e[0m'</span></span><br><span class="line">git push origin master || cleanup</span><br><span class="line"></span><br><span class="line">cleanup</span><br></pre></td></tr></table></figure>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="title">cleanup</span></span>() &#123;</span><br><span class="line">  <span class="built_in">echo</span> -e <span class="string">&#x27;\e[1;32mSwitch to source branch ...\e[0m&#x27;</span></span><br><span class="line">  git checkout <span class="built_in">source</span></span><br><span class="line"></span><br><span class="line">  <span class="built_in">echo</span> -e <span class="string">&#x27;\e[1;32mDelete master branch ...\e[0m&#x27;</span></span><br><span class="line">  git branch -D master</span><br><span class="line"></span><br><span class="line">  <span class="built_in">echo</span> -e <span class="string">&#x27;\e[1;32mPull and merge remote/source branch ...\e[0m&#x27;</span></span><br><span class="line">  git pull origin <span class="built_in">source</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> -e <span class="string">&#x27;\e[1;32mStart deploying ...\e[0m&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> -e <span class="string">&#x27;\e[1;32mClean up remote/master branch ...\e[0m&#x27;</span></span><br><span class="line">git push origin :master || cleanup</span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> -e <span class="string">&#x27;\e[1;32mCreate local/master branch ...\e[0m&#x27;</span></span><br><span class="line">git branch master</span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> -e <span class="string">&#x27;\e[1;32mSwitch to master branch ...\e[0m&#x27;</span></span><br><span class="line">git checkout master</span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> -e <span class="string">&#x27;\e[1;32mBuild the site ...\e[0m&#x27;</span></span><br><span class="line">jekyll build</span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> -e <span class="string">&#x27;\e[1;32mRe-map site directory to the root ...\e[0m&#x27;</span></span><br><span class="line">git filter-branch --subdirectory-filter _site -- --all</span><br><span class="line">mv _site/* .</span><br><span class="line">rm -r _site</span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> -e <span class="string">&#x27;\e[1;32mCommit changes to Git ...\e[0m&#x27;</span></span><br><span class="line">git add *</span><br><span class="line">git commit -am <span class="string">&quot;deploy&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> -e <span class="string">&#x27;\e[1;32mPush to Github and deploy ...\e[0m&#x27;</span></span><br><span class="line">git push origin master || cleanup</span><br><span class="line"></span><br><span class="line">cleanup</span><br></pre></td></tr></table></figure>
 
 <p>so you run this script in bash shell should do the job automatically. Of course, you site will be down for a little while, but it should be back in a few seconds.</p>
 
@@ -221,7 +220,7 @@
          
           <li><a href="/archives/">Writing</a></li>
          
-          <li><a href="https://github.com/little-eyes" target="_blank" rel="noopener">Projects</a></li>
+          <li><a target="_blank" rel="noopener" href="https://github.com/little-eyes">Projects</a></li>
          
           <li><a href="/search/">Search</a></li>
         
@@ -234,16 +233,16 @@
 
     <div id="share-footer" style="display: none">
       <ul>
-  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://jilongliao.com/2014/10/12/Jekyll-with-Multi-collection-Blog/" target="_blank" rel="noopener"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://twitter.com/share?url=http://jilongliao.com/2014/10/12/Jekyll-with-Multi-collection-Blog/&text=Jekyll With Multi-Collection Blog" target="_blank" rel="noopener"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://jilongliao.com/2014/10/12/Jekyll-with-Multi-collection-Blog/&title=Jekyll With Multi-Collection Blog" target="_blank" rel="noopener"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://jilongliao.com/2014/10/12/Jekyll-with-Multi-collection-Blog/&is_video=false&description=Jekyll With Multi-Collection Blog" target="_blank" rel="noopener"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://jilongliao.com/2014/10/12/Jekyll-with-Multi-collection-Blog/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://jilongliao.com/2014/10/12/Jekyll-with-Multi-collection-Blog/&text=Jekyll With Multi-Collection Blog"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://jilongliao.com/2014/10/12/Jekyll-with-Multi-collection-Blog/&title=Jekyll With Multi-Collection Blog"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://jilongliao.com/2014/10/12/Jekyll-with-Multi-collection-Blog/&is_video=false&description=Jekyll With Multi-Collection Blog"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
   <li><a class="icon" href="mailto:?subject=Jekyll With Multi-Collection Blog&body=Check out this article: http://jilongliao.com/2014/10/12/Jekyll-with-Multi-collection-Blog/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://getpocket.com/save?url=http://jilongliao.com/2014/10/12/Jekyll-with-Multi-collection-Blog/&title=Jekyll With Multi-Collection Blog" target="_blank" rel="noopener"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://reddit.com/submit?url=http://jilongliao.com/2014/10/12/Jekyll-with-Multi-collection-Blog/&title=Jekyll With Multi-Collection Blog" target="_blank" rel="noopener"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://jilongliao.com/2014/10/12/Jekyll-with-Multi-collection-Blog/&title=Jekyll With Multi-Collection Blog" target="_blank" rel="noopener"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://digg.com/submit?url=http://jilongliao.com/2014/10/12/Jekyll-with-Multi-collection-Blog/&title=Jekyll With Multi-Collection Blog" target="_blank" rel="noopener"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://jilongliao.com/2014/10/12/Jekyll-with-Multi-collection-Blog/&name=Jekyll With Multi-Collection Blog&description=&lt;p&gt;When we host our blogs on Github, I guess most of us use Jekyll. Before I realize I need a different collection of blogs, I always start with a single collection or category as everybody does. However, I have to face a problem that to make multiple categories of blog into different URLs under the same domain. For example,&lt;/p&gt;
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://jilongliao.com/2014/10/12/Jekyll-with-Multi-collection-Blog/&title=Jekyll With Multi-Collection Blog"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://jilongliao.com/2014/10/12/Jekyll-with-Multi-collection-Blog/&title=Jekyll With Multi-Collection Blog"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://jilongliao.com/2014/10/12/Jekyll-with-Multi-collection-Blog/&title=Jekyll With Multi-Collection Blog"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://jilongliao.com/2014/10/12/Jekyll-with-Multi-collection-Blog/&title=Jekyll With Multi-Collection Blog"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://jilongliao.com/2014/10/12/Jekyll-with-Multi-collection-Blog/&name=Jekyll With Multi-Collection Blog&description=&lt;p&gt;When we host our blogs on Github, I guess most of us use Jekyll. Before I realize I need a different collection of blogs, I always start with a single collection or category as everybody does. However, I have to face a problem that to make multiple categories of blog into different URLs under the same domain. For example,&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;&lt;a href=&#34;http://jilongliao.com/technology&#34;&gt;http://jilongliao.com/technology&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -251,6 +250,7 @@
 &lt;p&gt;&lt;a href=&#34;http://jilongliao.com/journey&#34;&gt;http://jilongliao.com/journey&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;I searched the web for a little while and figure out this could be easily solved, but also a little challenging when handle some tricky cases with Github policies (we will get there later). Jekyll does a very good job for you to make your blog multi-categories. Simply put a new directory under your Jekyll site root directory would work. Inside that directory it needs to contains an &lt;code&gt;index.html&lt;/code&gt; file and &lt;code&gt;_posts&lt;/code&gt; folder. The &lt;code&gt;_posts&lt;/code&gt; folder is the place you can put all your post belonging to this category in the future. After that, you will have a directory structure like the following.&lt;/p&gt;"><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://jilongliao.com/2014/10/12/Jekyll-with-Multi-collection-Blog/&t=Jekyll With Multi-Collection Blog"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
@@ -268,7 +268,11 @@
         
         <footer id="footer">
   <div class="footer-left">
-    Copyright &copy; 2021 Jilong Liao
+    Copyright &copy;
+    
+    
+    2010-2021
+    Jilong Liao
   </div>
   <div class="footer-right">
     <nav>
@@ -282,7 +286,7 @@
          
           <li><a href="/archives/">Writing</a></li>
          
-          <li><a href="https://github.com/little-eyes" target="_blank" rel="noopener">Projects</a></li>
+          <li><a target="_blank" rel="noopener" href="https://github.com/little-eyes">Projects</a></li>
          
           <li><a href="/search/">Search</a></li>
         
@@ -294,18 +298,42 @@
     </div>
     <!-- styles -->
 
-<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
 
 
-<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
 
 
     <!-- jquery -->
+ 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script> 
 
-<script src="/lib/jquery/jquery.min.js"></script>
 
 
-<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script> 
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
 
 
 <script src="/js/main.js"></script>
@@ -314,16 +342,19 @@
 
 <!-- Google Analytics -->
 
-    <script type="text/javascript">
-        (function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
-        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-        ga('create', 'UA-32402817-1', 'auto');
-        ga('send', 'pageview');
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-32402817-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-32402817-1');
     </script>
 
 <!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Umami Analytics -->
 
 <!-- Disqus Comments -->
 

@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
     <meta name="description" content="Benchmarking has been studying for a long period of time, but most of the concentration has been put in PC field. People want to have a sense of the performance level of a PC or server from the benchm">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Introducing ReCapture - a New Direction to Benchmark Smartphones">
@@ -14,7 +14,7 @@
 <meta property="og:description" content="Benchmarking has been studying for a long period of time, but most of the concentration has been put in PC field. People want to have a sense of the performance level of a PC or server from the benchm">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2013-08-15T00:00:00.000Z">
-<meta property="article:modified_time" content="2021-01-10T05:51:39.889Z">
+<meta property="article:modified_time" content="2021-05-07T04:09:05.352Z">
 <meta property="article:author" content="Jilong Liao">
 <meta property="article:tag" content="android">
 <meta property="article:tag" content="benchmark">
@@ -22,21 +22,21 @@
 <meta name="twitter:card" content="summary">
     
     
+      
         
-          
-              <link rel="shortcut icon" href="/images/favicon.ico">
-          
+          <link rel="shortcut icon" href="/images/favicon.ico">
         
+      
+      
         
-          
-            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
-          
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
         
+      
+      
         
-          
-            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
-          
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
         
+      
     
     <!-- title -->
     <title>Introducing ReCapture - a New Direction to Benchmark Smartphones</title>
@@ -46,21 +46,19 @@
 
     <!-- persian styles -->
     
-      
-<link rel="stylesheet" href="/css/rtl.css">
-
-    
     <!-- rss -->
     
     
-<meta name="generator" content="Hexo 4.2.1"></head>
+	<!-- mathjax -->
+	
+<meta name="generator" content="Hexo 5.4.0"></head>
 
 <body class="max-width mx-auto px3 ltr">
     
       <div id="header-post">
-  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
-  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
-  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" "Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
   <span id="menu">
     <span id="nav">
       <ul>
@@ -73,7 +71,7 @@
          
           <li><a href="/archives/">Writing</a></li>
          
-          <li><a href="https://github.com/little-eyes" target="_blank" rel="noopener">Projects</a></li>
+          <li><a target="_blank" rel="noopener" href="https://github.com/little-eyes">Projects</a></li>
          
           <li><a href="/search/">Search</a></li>
         
@@ -83,13 +81,13 @@
     <span id="actions">
       <ul>
         
-        <li><a class="icon" href="/2013/09/17/Be-an-Early-Bird/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Previous post " href="/2013/09/17/Be-an-Early-Bird/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
         
         
-        <li><a class="icon" href="/2013/04/05/In-Love-with-Big-Data-Analysis/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Next post " href="/2013/04/05/In-Love-with-Big-Data-Analysis/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
         
-        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
-        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+        <li><a class="icon" aria-label="Back to top " href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Share post " href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
       </ul>
       <span id="i-prev" class="info" style="display:none;">Previous post</span>
       <span id="i-next" class="info" style="display:none;">Next post</span>
@@ -99,16 +97,17 @@
     <br/>
     <div id="share" style="display: none">
       <ul>
-  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://jilongliao.com/2013/08/15/A-New-Direction-to-Benchmarking/" target="_blank" rel="noopener"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://twitter.com/share?url=http://jilongliao.com/2013/08/15/A-New-Direction-to-Benchmarking/&text=Introducing ReCapture - a New Direction to Benchmark Smartphones" target="_blank" rel="noopener"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://jilongliao.com/2013/08/15/A-New-Direction-to-Benchmarking/&title=Introducing ReCapture - a New Direction to Benchmark Smartphones" target="_blank" rel="noopener"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://jilongliao.com/2013/08/15/A-New-Direction-to-Benchmarking/&is_video=false&description=Introducing ReCapture - a New Direction to Benchmark Smartphones" target="_blank" rel="noopener"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://jilongliao.com/2013/08/15/A-New-Direction-to-Benchmarking/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://jilongliao.com/2013/08/15/A-New-Direction-to-Benchmarking/&text=Introducing ReCapture - a New Direction to Benchmark Smartphones"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://jilongliao.com/2013/08/15/A-New-Direction-to-Benchmarking/&title=Introducing ReCapture - a New Direction to Benchmark Smartphones"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://jilongliao.com/2013/08/15/A-New-Direction-to-Benchmarking/&is_video=false&description=Introducing ReCapture - a New Direction to Benchmark Smartphones"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
   <li><a class="icon" href="mailto:?subject=Introducing ReCapture - a New Direction to Benchmark Smartphones&body=Check out this article: http://jilongliao.com/2013/08/15/A-New-Direction-to-Benchmarking/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://getpocket.com/save?url=http://jilongliao.com/2013/08/15/A-New-Direction-to-Benchmarking/&title=Introducing ReCapture - a New Direction to Benchmark Smartphones" target="_blank" rel="noopener"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://reddit.com/submit?url=http://jilongliao.com/2013/08/15/A-New-Direction-to-Benchmarking/&title=Introducing ReCapture - a New Direction to Benchmark Smartphones" target="_blank" rel="noopener"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://jilongliao.com/2013/08/15/A-New-Direction-to-Benchmarking/&title=Introducing ReCapture - a New Direction to Benchmark Smartphones" target="_blank" rel="noopener"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://digg.com/submit?url=http://jilongliao.com/2013/08/15/A-New-Direction-to-Benchmarking/&title=Introducing ReCapture - a New Direction to Benchmark Smartphones" target="_blank" rel="noopener"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://jilongliao.com/2013/08/15/A-New-Direction-to-Benchmarking/&name=Introducing ReCapture - a New Direction to Benchmark Smartphones&description=&lt;p&gt;&lt;code&gt;Benchmarking&lt;/code&gt; has been studying for a long period of time, but most of the concentration has been put in PC field. People want to have a sense of the performance level of a PC or server from the benchmark results, so multiple different type of benchmarking method has been developed, such as &lt;a href=&#34;http://www.spec.org/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;SPEC&lt;/a&gt;. Some classic program to push the CPU performance is super-pi, which is to solve the value of pi as accurate as possible.&lt;/p&gt;"><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://jilongliao.com/2013/08/15/A-New-Direction-to-Benchmarking/&title=Introducing ReCapture - a New Direction to Benchmark Smartphones"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://jilongliao.com/2013/08/15/A-New-Direction-to-Benchmarking/&title=Introducing ReCapture - a New Direction to Benchmark Smartphones"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://jilongliao.com/2013/08/15/A-New-Direction-to-Benchmarking/&title=Introducing ReCapture - a New Direction to Benchmark Smartphones"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://jilongliao.com/2013/08/15/A-New-Direction-to-Benchmarking/&title=Introducing ReCapture - a New Direction to Benchmark Smartphones"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://jilongliao.com/2013/08/15/A-New-Direction-to-Benchmarking/&name=Introducing ReCapture - a New Direction to Benchmark Smartphones&description=&lt;p&gt;&lt;code&gt;Benchmarking&lt;/code&gt; has been studying for a long period of time, but most of the concentration has been put in PC field. People want to have a sense of the performance level of a PC or server from the benchmark results, so multiple different type of benchmarking method has been developed, such as &lt;a href=&#34;http://www.spec.org/&#34;&gt;SPEC&lt;/a&gt;. Some classic program to push the CPU performance is super-pi, which is to solve the value of pi as accurate as possible.&lt;/p&gt;"><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://jilongliao.com/2013/08/15/A-New-Direction-to-Benchmarking/&t=Introducing ReCapture - a New Direction to Benchmark Smartphones"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
@@ -132,7 +131,7 @@
 
     <div class="meta">
       <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
-        <span itemprop="name">The Little's Place</span>
+        <span itemprop="name">Jilong Liao</span>
       </span>
       
     <div class="postdate">
@@ -153,7 +152,7 @@
       
     <div class="article-tag">
         <i class="fas fa-tag"></i>
-        <a class="tag-link" href="/tags/android/" rel="tag">android</a>, <a class="tag-link" href="/tags/benchmark/" rel="tag">benchmark</a>, <a class="tag-link" href="/tags/smartphone/" rel="tag">smartphone</a>
+        <a class="tag-link-link" href="/tags/android/" rel="tag">android</a>, <a class="tag-link-link" href="/tags/benchmark/" rel="tag">benchmark</a>, <a class="tag-link-link" href="/tags/smartphone/" rel="tag">smartphone</a>
     </div>
 
 
@@ -162,8 +161,8 @@
   
 
   <div class="content" itemprop="articleBody">
-    <p><code>Benchmarking</code> has been studying for a long period of time, but most of the concentration has been put in PC field. People want to have a sense of the performance level of a PC or server from the benchmark results, so multiple different type of benchmarking method has been developed, such as <a href="http://www.spec.org/" target="_blank" rel="noopener">SPEC</a>. Some classic program to push the CPU performance is super-pi, which is to solve the value of pi as accurate as possible.</p>
-<a id="more"></a>
+    <p><code>Benchmarking</code> has been studying for a long period of time, but most of the concentration has been put in PC field. People want to have a sense of the performance level of a PC or server from the benchmark results, so multiple different type of benchmarking method has been developed, such as <a target="_blank" rel="noopener" href="http://www.spec.org/">SPEC</a>. Some classic program to push the CPU performance is super-pi, which is to solve the value of pi as accurate as possible.</p>
+<span id="more"></span>
 
 <p>However, do you believe this type of benchmark will reflect the reality you are looking for? If you are seeking high performance servers: <strong>YES</strong>. But if not, you should think of it carefully. More serious cases is the smartphones. Do you want an extremely high performance phones or you need a normal phone? Usually the high performance phone requires more energy which means you may recharge the phone more than one time a day, and you need to spend more money. What if the phone is not super, but satisfies your need with decent performance. Which one do you choose? I bet most of you will choose the later one for battery issue and price issue.</p>
 <p>So does it mean a lower score of some benchmarks will tell you this? The answer probably is <em>not</em>, because the purpose of the current benchmark is to find the most powerful devices instead of something <strong>good</strong> for you. You do not have any personalized criteria input or you do not even know what those criteria means. You probably want to say: 1) I want my Internet is fast; 2) I want my phone switch smoothly from app to app. So you have no experience how those scores could be mapped to your expectations.</p>
@@ -175,11 +174,11 @@
 <h3 id="Auto-Recapture-Stage"><a href="#Auto-Recapture-Stage" class="headerlink" title="Auto Recapture Stage"></a>Auto Recapture Stage</h3><p>Once we collect enough data, the benchmark program will take the <em>data</em> as input, then based on the timestamp and duration of app usage to reconstruct an auto execution sequence. Then the benchmark start auto emulate the user’s action on the new phone. In the meantime, the program will monitor the performance of the smartphone’s CPU, battery, network and graphics, which will be used to generate the final report.</p>
 <p>After the two stage, we are able to calculate the scores of the smartphone. In addition, the user can feel the experience of the phone by watching the execution of the benchmark. This feature helps a lot because you cannot really feel the experience of the phone if you only see some ridiculous calculation running on the smartphone but have nothing to do with your daily usage.</p>
 <h2 id="Extra-features-benefits"><a href="#Extra-features-benefits" class="headerlink" title="Extra features/benefits"></a>Extra features/benefits</h2><p>The most immediate extra features or benefits of the <em>ReCapture</em> project I can think of is the data collection for researchers. Nowadays, the researchers in mobile system area feel hard to collect data about CPU, network and graphics from the daily usage of a user. Three things block the way:</p>
-<h3 id="Legal-ethnic-issue-to-collect-data"><a href="#Legal-ethnic-issue-to-collect-data" class="headerlink" title="Legal/ethnic issue to collect data"></a>Legal/ethnic issue to collect data</h3><p>In fact, if the researchers want to collect the data from participants, an IRB approval must be obtained. <a href="http://matt-welsh.blogspot.com/2013/01/the-ethics-of-mobile-data-collection.html" target="_blank" rel="noopener">Dr. Welsh’s blog</a> gives a clear description for this and the ethnics in research.</p>
+<h3 id="Legal-ethnic-issue-to-collect-data"><a href="#Legal-ethnic-issue-to-collect-data" class="headerlink" title="Legal/ethnic issue to collect data"></a>Legal/ethnic issue to collect data</h3><p>In fact, if the researchers want to collect the data from participants, an IRB approval must be obtained. <a target="_blank" rel="noopener" href="http://matt-welsh.blogspot.com/2013/01/the-ethics-of-mobile-data-collection.html">Dr. Welsh’s blog</a> gives a clear description for this and the ethnics in research.</p>
 <h3 id="Standard-usage-control"><a href="#Standard-usage-control" class="headerlink" title="Standard usage control"></a>Standard usage control</h3><p>It is very hard to control the usage of a person, if you just tell him how to do. If you cannot control the standard normal usage, how can you claim the standard normal usage in the research paper? How can people trust the results? I always read papers saying “comparing to the normal usage”, but they never define what is the <code>normal</code> and how to guarantee it.</p>
 <h3 id="Multiple-user-at-the-same-time"><a href="#Multiple-user-at-the-same-time" class="headerlink" title="Multiple user at the same time"></a>Multiple user at the same time</h3><p>If you are interested in the networking issue on the smartphone, you may need to consider multiple devices. So do you want to ask a bunch of students to use their smartphone for a month? How do you control their usage?</p>
-<p>Fortunately, we believe the ReCapture project can resolve them very well. First, we need to collect some app usage trace from users. The luck thing is that we already have plenty of such data, like the <a href="http://livelab.recg.rice.edu/" target="_blank" rel="noopener">Livelab</a> data set from Rice University. Second, the ReCapture project can auto execute the app trace in a human-manner. Meanwhile, the CPU, network, battery, etc. can be recorded. In addition, you can have multiple devices running at the same time to reduce the bias of the data set as much as possible.</p>
-<p>Now the ReCpature project is under developing, the project source code is on <a href="https://github.com/little-eyes/ReCapture" target="_blank" rel="noopener">Github</a>.</p>
+<p>Fortunately, we believe the ReCapture project can resolve them very well. First, we need to collect some app usage trace from users. The luck thing is that we already have plenty of such data, like the <a target="_blank" rel="noopener" href="http://livelab.recg.rice.edu/">Livelab</a> data set from Rice University. Second, the ReCapture project can auto execute the app trace in a human-manner. Meanwhile, the CPU, network, battery, etc. can be recorded. In addition, you can have multiple devices running at the same time to reduce the bias of the data set as much as possible.</p>
+<p>Now the ReCpature project is under developing, the project source code is on <a target="_blank" rel="noopener" href="https://github.com/little-eyes/ReCapture">Github</a>.</p>
 
   </div>
 </article>
@@ -207,7 +206,7 @@
          
           <li><a href="/archives/">Writing</a></li>
          
-          <li><a href="https://github.com/little-eyes" target="_blank" rel="noopener">Projects</a></li>
+          <li><a target="_blank" rel="noopener" href="https://github.com/little-eyes">Projects</a></li>
          
           <li><a href="/search/">Search</a></li>
         
@@ -220,16 +219,17 @@
 
     <div id="share-footer" style="display: none">
       <ul>
-  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://jilongliao.com/2013/08/15/A-New-Direction-to-Benchmarking/" target="_blank" rel="noopener"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://twitter.com/share?url=http://jilongliao.com/2013/08/15/A-New-Direction-to-Benchmarking/&text=Introducing ReCapture - a New Direction to Benchmark Smartphones" target="_blank" rel="noopener"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://jilongliao.com/2013/08/15/A-New-Direction-to-Benchmarking/&title=Introducing ReCapture - a New Direction to Benchmark Smartphones" target="_blank" rel="noopener"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://jilongliao.com/2013/08/15/A-New-Direction-to-Benchmarking/&is_video=false&description=Introducing ReCapture - a New Direction to Benchmark Smartphones" target="_blank" rel="noopener"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://jilongliao.com/2013/08/15/A-New-Direction-to-Benchmarking/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://jilongliao.com/2013/08/15/A-New-Direction-to-Benchmarking/&text=Introducing ReCapture - a New Direction to Benchmark Smartphones"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://jilongliao.com/2013/08/15/A-New-Direction-to-Benchmarking/&title=Introducing ReCapture - a New Direction to Benchmark Smartphones"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://jilongliao.com/2013/08/15/A-New-Direction-to-Benchmarking/&is_video=false&description=Introducing ReCapture - a New Direction to Benchmark Smartphones"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
   <li><a class="icon" href="mailto:?subject=Introducing ReCapture - a New Direction to Benchmark Smartphones&body=Check out this article: http://jilongliao.com/2013/08/15/A-New-Direction-to-Benchmarking/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://getpocket.com/save?url=http://jilongliao.com/2013/08/15/A-New-Direction-to-Benchmarking/&title=Introducing ReCapture - a New Direction to Benchmark Smartphones" target="_blank" rel="noopener"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://reddit.com/submit?url=http://jilongliao.com/2013/08/15/A-New-Direction-to-Benchmarking/&title=Introducing ReCapture - a New Direction to Benchmark Smartphones" target="_blank" rel="noopener"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://jilongliao.com/2013/08/15/A-New-Direction-to-Benchmarking/&title=Introducing ReCapture - a New Direction to Benchmark Smartphones" target="_blank" rel="noopener"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://digg.com/submit?url=http://jilongliao.com/2013/08/15/A-New-Direction-to-Benchmarking/&title=Introducing ReCapture - a New Direction to Benchmark Smartphones" target="_blank" rel="noopener"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://jilongliao.com/2013/08/15/A-New-Direction-to-Benchmarking/&name=Introducing ReCapture - a New Direction to Benchmark Smartphones&description=&lt;p&gt;&lt;code&gt;Benchmarking&lt;/code&gt; has been studying for a long period of time, but most of the concentration has been put in PC field. People want to have a sense of the performance level of a PC or server from the benchmark results, so multiple different type of benchmarking method has been developed, such as &lt;a href=&#34;http://www.spec.org/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;SPEC&lt;/a&gt;. Some classic program to push the CPU performance is super-pi, which is to solve the value of pi as accurate as possible.&lt;/p&gt;"><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://jilongliao.com/2013/08/15/A-New-Direction-to-Benchmarking/&title=Introducing ReCapture - a New Direction to Benchmark Smartphones"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://jilongliao.com/2013/08/15/A-New-Direction-to-Benchmarking/&title=Introducing ReCapture - a New Direction to Benchmark Smartphones"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://jilongliao.com/2013/08/15/A-New-Direction-to-Benchmarking/&title=Introducing ReCapture - a New Direction to Benchmark Smartphones"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://jilongliao.com/2013/08/15/A-New-Direction-to-Benchmarking/&title=Introducing ReCapture - a New Direction to Benchmark Smartphones"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://jilongliao.com/2013/08/15/A-New-Direction-to-Benchmarking/&name=Introducing ReCapture - a New Direction to Benchmark Smartphones&description=&lt;p&gt;&lt;code&gt;Benchmarking&lt;/code&gt; has been studying for a long period of time, but most of the concentration has been put in PC field. People want to have a sense of the performance level of a PC or server from the benchmark results, so multiple different type of benchmarking method has been developed, such as &lt;a href=&#34;http://www.spec.org/&#34;&gt;SPEC&lt;/a&gt;. Some classic program to push the CPU performance is super-pi, which is to solve the value of pi as accurate as possible.&lt;/p&gt;"><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://jilongliao.com/2013/08/15/A-New-Direction-to-Benchmarking/&t=Introducing ReCapture - a New Direction to Benchmark Smartphones"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
@@ -247,7 +247,11 @@
         
         <footer id="footer">
   <div class="footer-left">
-    Copyright &copy; 2021 Jilong Liao
+    Copyright &copy;
+    
+    
+    2010-2021
+    Jilong Liao
   </div>
   <div class="footer-right">
     <nav>
@@ -261,7 +265,7 @@
          
           <li><a href="/archives/">Writing</a></li>
          
-          <li><a href="https://github.com/little-eyes" target="_blank" rel="noopener">Projects</a></li>
+          <li><a target="_blank" rel="noopener" href="https://github.com/little-eyes">Projects</a></li>
          
           <li><a href="/search/">Search</a></li>
         
@@ -273,18 +277,42 @@
     </div>
     <!-- styles -->
 
-<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
 
 
-<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
 
 
     <!-- jquery -->
+ 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script> 
 
-<script src="/lib/jquery/jquery.min.js"></script>
 
 
-<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script> 
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
 
 
 <script src="/js/main.js"></script>
@@ -293,16 +321,19 @@
 
 <!-- Google Analytics -->
 
-    <script type="text/javascript">
-        (function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
-        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-        ga('create', 'UA-32402817-1', 'auto');
-        ga('send', 'pageview');
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-32402817-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-32402817-1');
     </script>
 
 <!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Umami Analytics -->
 
 <!-- Disqus Comments -->
 

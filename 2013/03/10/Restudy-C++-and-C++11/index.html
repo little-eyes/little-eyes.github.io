@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
     <meta name="description" content="Oh! C++ … Yes! C++ …  The major reason that I switched to Python from C++ is the complexity of C++ at that time. I thought writing large program using C++ was a disaster: it took too much effort in c">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Restudy C++ and C++11">
@@ -14,28 +14,28 @@
 <meta property="og:description" content="Oh! C++ … Yes! C++ …  The major reason that I switched to Python from C++ is the complexity of C++ at that time. I thought writing large program using C++ was a disaster: it took too much effort in c">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2013-03-10T00:00:00.000Z">
-<meta property="article:modified_time" content="2021-01-10T05:51:39.893Z">
+<meta property="article:modified_time" content="2021-05-07T04:09:05.356Z">
 <meta property="article:author" content="Jilong Liao">
 <meta property="article:tag" content="programming">
 <meta property="article:tag" content="c++">
 <meta name="twitter:card" content="summary">
     
     
+      
         
-          
-              <link rel="shortcut icon" href="/images/favicon.ico">
-          
+          <link rel="shortcut icon" href="/images/favicon.ico">
         
+      
+      
         
-          
-            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
-          
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
         
+      
+      
         
-          
-            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
-          
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
         
+      
     
     <!-- title -->
     <title>Restudy C++ and C++11</title>
@@ -45,21 +45,19 @@
 
     <!-- persian styles -->
     
-      
-<link rel="stylesheet" href="/css/rtl.css">
-
-    
     <!-- rss -->
     
     
-<meta name="generator" content="Hexo 4.2.1"></head>
+	<!-- mathjax -->
+	
+<meta name="generator" content="Hexo 5.4.0"></head>
 
 <body class="max-width mx-auto px3 ltr">
     
       <div id="header-post">
-  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
-  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
-  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" "Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
   <span id="menu">
     <span id="nav">
       <ul>
@@ -72,7 +70,7 @@
          
           <li><a href="/archives/">Writing</a></li>
          
-          <li><a href="https://github.com/little-eyes" target="_blank" rel="noopener">Projects</a></li>
+          <li><a target="_blank" rel="noopener" href="https://github.com/little-eyes">Projects</a></li>
          
           <li><a href="/search/">Search</a></li>
         
@@ -82,13 +80,13 @@
     <span id="actions">
       <ul>
         
-        <li><a class="icon" href="/2013/04/05/In-Love-with-Big-Data-Analysis/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Previous post " href="/2013/04/05/In-Love-with-Big-Data-Analysis/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
         
         
-        <li><a class="icon" href="/2012/03/29/How-Do-We-Access-a-Sensor/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Next post " href="/2012/03/29/How-Do-We-Access-a-Sensor/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
         
-        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
-        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+        <li><a class="icon" aria-label="Back to top " href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Share post " href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
       </ul>
       <span id="i-prev" class="info" style="display:none;">Previous post</span>
       <span id="i-next" class="info" style="display:none;">Next post</span>
@@ -98,19 +96,20 @@
     <br/>
     <div id="share" style="display: none">
       <ul>
-  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://jilongliao.com/2013/03/10/Restudy-C++-and-C++11/" target="_blank" rel="noopener"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://twitter.com/share?url=http://jilongliao.com/2013/03/10/Restudy-C++-and-C++11/&text=Restudy C++ and C++11" target="_blank" rel="noopener"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://jilongliao.com/2013/03/10/Restudy-C++-and-C++11/&title=Restudy C++ and C++11" target="_blank" rel="noopener"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://jilongliao.com/2013/03/10/Restudy-C++-and-C++11/&is_video=false&description=Restudy C++ and C++11" target="_blank" rel="noopener"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://jilongliao.com/2013/03/10/Restudy-C++-and-C++11/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://jilongliao.com/2013/03/10/Restudy-C++-and-C++11/&text=Restudy C++ and C++11"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://jilongliao.com/2013/03/10/Restudy-C++-and-C++11/&title=Restudy C++ and C++11"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://jilongliao.com/2013/03/10/Restudy-C++-and-C++11/&is_video=false&description=Restudy C++ and C++11"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
   <li><a class="icon" href="mailto:?subject=Restudy C++ and C++11&body=Check out this article: http://jilongliao.com/2013/03/10/Restudy-C++-and-C++11/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://getpocket.com/save?url=http://jilongliao.com/2013/03/10/Restudy-C++-and-C++11/&title=Restudy C++ and C++11" target="_blank" rel="noopener"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://reddit.com/submit?url=http://jilongliao.com/2013/03/10/Restudy-C++-and-C++11/&title=Restudy C++ and C++11" target="_blank" rel="noopener"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://jilongliao.com/2013/03/10/Restudy-C++-and-C++11/&title=Restudy C++ and C++11" target="_blank" rel="noopener"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://digg.com/submit?url=http://jilongliao.com/2013/03/10/Restudy-C++-and-C++11/&title=Restudy C++ and C++11" target="_blank" rel="noopener"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://jilongliao.com/2013/03/10/Restudy-C++-and-C++11/&name=Restudy C++ and C++11&description=&lt;blockquote&gt;
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://jilongliao.com/2013/03/10/Restudy-C++-and-C++11/&title=Restudy C++ and C++11"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://jilongliao.com/2013/03/10/Restudy-C++-and-C++11/&title=Restudy C++ and C++11"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://jilongliao.com/2013/03/10/Restudy-C++-and-C++11/&title=Restudy C++ and C++11"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://jilongliao.com/2013/03/10/Restudy-C++-and-C++11/&title=Restudy C++ and C++11"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://jilongliao.com/2013/03/10/Restudy-C++-and-C++11/&name=Restudy C++ and C++11&description=&lt;blockquote&gt;
 &lt;p&gt;Oh! C++ … Yes! C++ …&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;The major reason that I switched to Python from C++ is the complexity of C++ at that time. I thought writing large program using C++ was a disaster: it took too much effort in coding. Instead, if I use Python, I could save tons of lines. However, when I re-read the &lt;em&gt;C++ Primer&lt;/em&gt; again today, I know C++ is not as bad as I thought. Especially for C++11.&lt;/p&gt;"><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://jilongliao.com/2013/03/10/Restudy-C++-and-C++11/&t=Restudy C++ and C++11"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
@@ -134,7 +133,7 @@
 
     <div class="meta">
       <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
-        <span itemprop="name">The Little's Place</span>
+        <span itemprop="name">Jilong Liao</span>
       </span>
       
     <div class="postdate">
@@ -155,7 +154,7 @@
       
     <div class="article-tag">
         <i class="fas fa-tag"></i>
-        <a class="tag-link" href="/tags/c/" rel="tag">c++</a>, <a class="tag-link" href="/tags/programming/" rel="tag">programming</a>
+        <a class="tag-link-link" href="/tags/c/" rel="tag">c++</a>, <a class="tag-link-link" href="/tags/programming/" rel="tag">programming</a>
     </div>
 
 
@@ -168,7 +167,7 @@
 <p>Oh! C++ … Yes! C++ …</p>
 </blockquote>
 <p>The major reason that I switched to Python from C++ is the complexity of C++ at that time. I thought writing large program using C++ was a disaster: it took too much effort in coding. Instead, if I use Python, I could save tons of lines. However, when I re-read the <em>C++ Primer</em> again today, I know C++ is not as bad as I thought. Especially for C++11.</p>
-<a id="more"></a>
+<span id="more"></span>
 
 <h2 id="Programming-Styles"><a href="#Programming-Styles" class="headerlink" title="Programming Styles"></a>Programming Styles</h2><p>Before I start talking about C++11, I would like to tell something about our C++ programming style. Frankly speaking, I am a dis-organized programmer when writing a large project. Usually, I do not take care of header files very much in the small project, but now I think the structure of the whole project is <strong>very</strong> important for us. Now I am improving myself. For how to organize the your project, I recommend you to read C++ Primer for details. In general, you can put the following (and ONLY) into the headers:</p>
 <ul>
@@ -179,13 +178,13 @@
 <li>Template declarations</li>
 <li>Inline functions</li>
 </ul>
-<h2 id="C-11"><a href="#C-11" class="headerlink" title="C++11"></a>C++11</h2><p>As for C++11, the first feature I like is the <code>tuple</code> type. In Python, it is extremely easy to make a tuple and use it as the return value from a function. However, the previous C++ can drive you crazy if you want to return more than one piece of data, even you can make an object of your return type. Fortunately, C++11 introduces such a wonderful feature. If you like to know more about it, check out this <a href="http://en.cppreference.com/w/cpp/utility/tuple" target="_blank" rel="noopener">reference</a>.</p>
-<p>Then, C++11 surprisingly supports <code>type inference</code> via <code>auto</code> keyword. Just like Python, you do not need to worry about the exact type of the object, the compiler can help you figure it out. But I do not know the exact way in C++11 to derive the type (maybe a semantic approach). The coin still brings a bad edge: obscure programming. If you use <em>auto</em> keyword, it may be hard for others to infer what you really want to write here. I guess that’s why <a href="http://google-styleguide.googlecode.com/svn/trunk/cppguide.xml" target="_blank" rel="noopener">Google C++ Style Standards</a> does NOT recommend us to use it. Personally, it is a good stuff to write your program easy and flexible.</p>
+<h2 id="C-11"><a href="#C-11" class="headerlink" title="C++11"></a>C++11</h2><p>As for C++11, the first feature I like is the <code>tuple</code> type. In Python, it is extremely easy to make a tuple and use it as the return value from a function. However, the previous C++ can drive you crazy if you want to return more than one piece of data, even you can make an object of your return type. Fortunately, C++11 introduces such a wonderful feature. If you like to know more about it, check out this <a target="_blank" rel="noopener" href="http://en.cppreference.com/w/cpp/utility/tuple">reference</a>.</p>
+<p>Then, C++11 surprisingly supports <code>type inference</code> via <code>auto</code> keyword. Just like Python, you do not need to worry about the exact type of the object, the compiler can help you figure it out. But I do not know the exact way in C++11 to derive the type (maybe a semantic approach). The coin still brings a bad edge: obscure programming. If you use <em>auto</em> keyword, it may be hard for others to infer what you really want to write here. I guess that’s why <a target="_blank" rel="noopener" href="http://google-styleguide.googlecode.com/svn/trunk/cppguide.xml">Google C++ Style Standards</a> does NOT recommend us to use it. Personally, it is a good stuff to write your program easy and flexible.</p>
 <p>For containers, C++11 adds <code>unordered</code> for set, multiset, map and multimap. In addition, <code>array</code> seems to be very interesting, it provides an interface for C-like array but encapsulated. Comparing to vector in C++, I guess it improves the performance a lot, yet I have not measured it. Further, iterators add the <code>lambda function</code> support. I pretty much like this feature because I hate write for loops by myself. This feature makes C++ much simpler and more concise just like Python’s way.</p>
 <p>Finally, the <code>threading</code>. Although it is always a significant component, thread library has not be in C++ standard until this modern one, yet we use <code>pthread</code> for a while. Now you can write multi-threading code as you want, whichever the compiler is. It’s just the standard! Besides threading, the regular expression can also be interesting and important to C++ programmer.</p>
-<p>Since C++11 brings so much new features in and achieves an excellent performance which has a large margin comparing to other programming languages (<a href="http://research.google.com/pubs/pub37122.html" target="_blank" rel="noopener">the literature from Google Research</a>). From both performance and simplicity’s viewpoints, I would recommend to use C++11. But I am not saying to replace something, because languages like Python has it’s perfect power to do web service, natural language process, etc. A hybrid language environment is very common nowadays, but we just need to be careful about the right language for the specific work.</p>
+<p>Since C++11 brings so much new features in and achieves an excellent performance which has a large margin comparing to other programming languages (<a target="_blank" rel="noopener" href="http://research.google.com/pubs/pub37122.html">the literature from Google Research</a>). From both performance and simplicity’s viewpoints, I would recommend to use C++11. But I am not saying to replace something, because languages like Python has it’s perfect power to do web service, natural language process, etc. A hybrid language environment is very common nowadays, but we just need to be careful about the right language for the specific work.</p>
 <blockquote>
-<p>P.S.<br>Check out this <a href="http://channel9.msdn.com/Events/GoingNative/GoingNative-2012/Keynote-Bjarne-Stroustrup-Cpp11-Style?goback=%2Egde_2771729_member_93354359" target="_blank" rel="noopener">Video</a> from Bjarne Stroustrup.</p>
+<p>P.S.<br>Check out this <a target="_blank" rel="noopener" href="http://channel9.msdn.com/Events/GoingNative/GoingNative-2012/Keynote-Bjarne-Stroustrup-Cpp11-Style?goback=.gde_2771729_member_93354359">Video</a> from Bjarne Stroustrup.</p>
 </blockquote>
 
   </div>
@@ -214,7 +213,7 @@
          
           <li><a href="/archives/">Writing</a></li>
          
-          <li><a href="https://github.com/little-eyes" target="_blank" rel="noopener">Projects</a></li>
+          <li><a target="_blank" rel="noopener" href="https://github.com/little-eyes">Projects</a></li>
          
           <li><a href="/search/">Search</a></li>
         
@@ -227,19 +226,20 @@
 
     <div id="share-footer" style="display: none">
       <ul>
-  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://jilongliao.com/2013/03/10/Restudy-C++-and-C++11/" target="_blank" rel="noopener"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://twitter.com/share?url=http://jilongliao.com/2013/03/10/Restudy-C++-and-C++11/&text=Restudy C++ and C++11" target="_blank" rel="noopener"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://jilongliao.com/2013/03/10/Restudy-C++-and-C++11/&title=Restudy C++ and C++11" target="_blank" rel="noopener"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://jilongliao.com/2013/03/10/Restudy-C++-and-C++11/&is_video=false&description=Restudy C++ and C++11" target="_blank" rel="noopener"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://jilongliao.com/2013/03/10/Restudy-C++-and-C++11/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://jilongliao.com/2013/03/10/Restudy-C++-and-C++11/&text=Restudy C++ and C++11"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://jilongliao.com/2013/03/10/Restudy-C++-and-C++11/&title=Restudy C++ and C++11"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://jilongliao.com/2013/03/10/Restudy-C++-and-C++11/&is_video=false&description=Restudy C++ and C++11"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
   <li><a class="icon" href="mailto:?subject=Restudy C++ and C++11&body=Check out this article: http://jilongliao.com/2013/03/10/Restudy-C++-and-C++11/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://getpocket.com/save?url=http://jilongliao.com/2013/03/10/Restudy-C++-and-C++11/&title=Restudy C++ and C++11" target="_blank" rel="noopener"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://reddit.com/submit?url=http://jilongliao.com/2013/03/10/Restudy-C++-and-C++11/&title=Restudy C++ and C++11" target="_blank" rel="noopener"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://jilongliao.com/2013/03/10/Restudy-C++-and-C++11/&title=Restudy C++ and C++11" target="_blank" rel="noopener"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://digg.com/submit?url=http://jilongliao.com/2013/03/10/Restudy-C++-and-C++11/&title=Restudy C++ and C++11" target="_blank" rel="noopener"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://jilongliao.com/2013/03/10/Restudy-C++-and-C++11/&name=Restudy C++ and C++11&description=&lt;blockquote&gt;
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://jilongliao.com/2013/03/10/Restudy-C++-and-C++11/&title=Restudy C++ and C++11"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://jilongliao.com/2013/03/10/Restudy-C++-and-C++11/&title=Restudy C++ and C++11"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://jilongliao.com/2013/03/10/Restudy-C++-and-C++11/&title=Restudy C++ and C++11"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://jilongliao.com/2013/03/10/Restudy-C++-and-C++11/&title=Restudy C++ and C++11"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://jilongliao.com/2013/03/10/Restudy-C++-and-C++11/&name=Restudy C++ and C++11&description=&lt;blockquote&gt;
 &lt;p&gt;Oh! C++ … Yes! C++ …&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;The major reason that I switched to Python from C++ is the complexity of C++ at that time. I thought writing large program using C++ was a disaster: it took too much effort in coding. Instead, if I use Python, I could save tons of lines. However, when I re-read the &lt;em&gt;C++ Primer&lt;/em&gt; again today, I know C++ is not as bad as I thought. Especially for C++11.&lt;/p&gt;"><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://jilongliao.com/2013/03/10/Restudy-C++-and-C++11/&t=Restudy C++ and C++11"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
@@ -257,7 +257,11 @@
         
         <footer id="footer">
   <div class="footer-left">
-    Copyright &copy; 2021 Jilong Liao
+    Copyright &copy;
+    
+    
+    2010-2021
+    Jilong Liao
   </div>
   <div class="footer-right">
     <nav>
@@ -271,7 +275,7 @@
          
           <li><a href="/archives/">Writing</a></li>
          
-          <li><a href="https://github.com/little-eyes" target="_blank" rel="noopener">Projects</a></li>
+          <li><a target="_blank" rel="noopener" href="https://github.com/little-eyes">Projects</a></li>
          
           <li><a href="/search/">Search</a></li>
         
@@ -283,18 +287,42 @@
     </div>
     <!-- styles -->
 
-<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
 
 
-<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
 
 
     <!-- jquery -->
+ 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script> 
 
-<script src="/lib/jquery/jquery.min.js"></script>
 
 
-<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script> 
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
 
 
 <script src="/js/main.js"></script>
@@ -303,16 +331,19 @@
 
 <!-- Google Analytics -->
 
-    <script type="text/javascript">
-        (function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
-        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-        ga('create', 'UA-32402817-1', 'auto');
-        ga('send', 'pageview');
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-32402817-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-32402817-1');
     </script>
 
 <!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Umami Analytics -->
 
 <!-- Disqus Comments -->
 
